@@ -16,6 +16,7 @@
 .hd-search .search-box{
   flex:1;
   height: 70rpx;
+  line-height: 70rpx;
   padding-left: 20rpx;
   background-color: #eee;
   border-radius: 10rpx;
@@ -118,4 +119,19 @@ swiper {
 }
 .prefecture .right image{
   width: 100%;
+}
+.weui-navbar{
+  box-shadow: 1px 1px 5px #ddd;
+  border:none;
+}
+.weui-navbar__slider{
+  bottom:20rpx;
+  width: 70rpx;
+}
+.weui-navbar__item{
+  color: #999;
+  font-weight: 700;
+}
+.weui-navbar__item.weui-bar__item_on {
+  color:#000;
 }
