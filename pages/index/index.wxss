@@ -1,0 +1,121 @@
+/**index.wxss**/
+.hd-search{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  height: 90rpx;
+  z-index: 999;
+}
+.hd-search .icon{
+  width: 80rpx;
+  text-align: center;
+}
+.hd-search .search-box{
+  flex:1;
+  height: 70rpx;
+  padding-left: 20rpx;
+  background-color: #eee;
+  border-radius: 10rpx;
+}
+swiper {
+  height: 320rpx;
+}
+
+.slide-image{
+  width: 750rpx;
+  height: 320rpx;
+}
+
+.index-msg{
+  position: fixed;
+  top:0;
+  left: 0;
+  right: 0;
+  height: 0;
+  padding: 0 30rpx;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 0, .5);
+  z-index: 9999;
+  transition: height 1s;
+  overflow: hidden;
+}
+.index-msg.on{
+  height: 64rpx;
+}
+
+.index-nav{
+  display: flex;
+  flex-wrap: wrap;
+}
+.index-nav navigator{
+  width: 20%;
+  text-align: center;
+}
+.index-nav navigator image{
+  width: 70%;
+}
+.index-ad{
+  height: 210rpx;
+}
+.index-ad image{
+  width: 100%;
+  height: 100%;
+}
+
+.seckill-time{
+  position: relative;
+  width:100%;
+}
+.seckill-time view{
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 76rpx;
+  line-height: 76rpx;
+  text-align: right;
+}
+.seckill-time view text{
+  background-color: #333;
+  color:#fff;
+  padding:5rpx 10rpx;
+  border-radius: 5rpx;
+}
+.seckill-list{
+  width: 100%;
+  height: 400rpx;
+  white-space: nowrap;
+}
+.seckill-item{
+  display: inline-block;
+  width: 168rpx;
+  margin-right: 20rpx;
+}
+.seckill-item image{
+  width: 100%;
+}
+.seckill-item view{
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+.prefecture{
+  display: flex;
+  justify-content: space-between;
+}
+.prefecture view{
+  width: 49.5%;
+}
+.prefecture .left image{
+  width: 100%;
+}
+.prefecture .right image{
+  width: 100%;
+}

@@ -1,0 +1,11 @@
+{
+  "pages":[
+    "pages/index/index"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "裕发食品",
+    "navigationBarTextStyle":"black"
+  }
+}

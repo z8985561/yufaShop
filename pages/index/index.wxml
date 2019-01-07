@@ -1,0 +1,108 @@
+<!-- 头部搜索区域 -->
+<view class='hd-search'>
+  <navigator class='icon' url='' hover-class='none'>
+    <text class='fa fa-headphones cf'></text>
+  </navigator>
+  <navigator class='search-box' url="" hover-class='none'>
+    <text class='fa fa-search c6'></text>
+    <text class='fz-28 c9'> 火锅丸子8.99折</text>
+  </navigator>
+  <navigator class='icon' url='' hover-class='none'>
+    <text class='fa fa-commenting cf'></text>
+  </navigator>
+</view>
+<!-- 头部搜索区域end -->
+<!-- 通知 -->
+<view class='index-msg {{ topMsgFlag ? "on" : ""}}'>
+  <view>
+    <text class='fa fa-volume-up cf'></text>
+    <text class='cf fz-28 ml-40'>最新消息：{{topMsg}}</text>
+  </view>
+  <view bindtap='closeTopMsg'>
+    <text class='fa fa-times-circle cf'></text>
+  </view>
+</view>
+<!-- 通知end -->
+<!-- 页面主体部分 -->
+<scroll-view scroll-y style="height: 100vh;" scroll-top="{{scrollTop}}">
+  <!-- 轮播部分 -->
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" class='mb-40'>
+    <block wx:for="{{indexBannerList}}" wx:key="index">
+      <swiper-item>
+        <navigator url='{{item.navUrl}}'>
+          <image src="{{item.imgUrl}}" mode='' class="slide-image" />
+        </navigator>
+      </swiper-item>
+    </block>
+  </swiper>
+  <!-- 轮播部分end -->
+
+  <!-- 首页导航部分 -->
+  <view class='index-nav mb-40'>
+    <block wx:for="{{indexNavList}}" wx:key="index">
+      <navigator class='mb-20' url='{{item.url}}' hover-class='none'>
+        <image src='{{item.imgUrl}}' mode='widthFix'></image>
+        <view class='fz-28'>{{item.text}}</view>
+      </navigator>
+    </block>
+  </view>
+  <!-- 首页导航部分end -->
+  <!-- 广告位1 -->
+  <view class='index-ad plr-20 mb-40' wx:if="{{indexAd[0].imgUrl}}">
+    <navigator url='{{indexAd[0].url}}' hover-class='none'>
+      <image src='{{indexAd[0].imgUrl}}' mode='widthFix'></image>
+    </navigator>
+  </view>
+  <!-- 广告位1end -->
+  <!-- 超级秒杀 -->
+  <view class='seckill plr-20 mb-40'>
+    <image class='seckill-time mb-20' src='/img/seckill.png' mode='widthFix'>
+      <view class='fz-30'>
+        距8点场结束还剩
+        <text>{{hour}}</text> ：
+        <text>{{minute}}</text> ：
+        <text>{{sec}}</text>
+      </view>
+    </image>
+    <scroll-view scroll-x class='seckill-list'>
+      <block wx:for="{{seckillProductList}}" wx:key="item.id">
+        <navigator class='seckill-item' url='{{item.url}}' hover-class='none'>
+          <image src='{{item.imgUrl}}' mode='widthFix'></image>
+          <view class='fz-30'>{{item.title}}</view>
+          <view class='fz-30 c9'>{{item.specDes}}</view>
+          <view class='fz-30 cf9721a'>￥{{item.newPrice}}/{{item.spec}}</view>
+          <view class='fz-24 c9 text-line'>￥{{item.oldPrice}}/{{item.spec}}</view>
+        </navigator>
+      </block>
+    </scroll-view>
+  </view>
+  <!-- 超级秒杀end -->
+  <!-- 专区 -->
+  <view class='prefecture plr-20 mb-40'>
+    <view class='left'>
+      <navigator url='{{prefecture[0]}}.url}}' hover-class='none'>
+        <image src='{{prefecture[0].imgUrl}}' mode='widthFix'></image>
+      </navigator>
+    </view>
+    <view class='right'>
+      <navigator url='{{prefecture[1]}}.url}}' hover-class='none'>
+        <image src='{{prefecture[1].imgUrl}}' mode='widthFix'></image>
+      </navigator>
+      <navigator url='{{prefecture[2]}}.url}}' hover-class='none'>
+        <image src='{{prefecture[2].imgUrl}}' mode='widthFix'></image>
+      </navigator>
+    </view>
+  </view>
+  <!-- 专区end -->
+  <!-- 广告位1 -->
+  <view class='index-ad plr-20 mb-40' wx:if="{{indexAd[1].imgUrl}}">
+    <navigator url='{{indexAd[1].url}}' hover-class='none'>
+      <image src='{{indexAd[1].imgUrl}}' mode='widthFix'></image>
+    </navigator>
+  </view>
+  <!-- 广告位1end -->
+  <!-- 推荐 -->
+  <view class='fz-34 plr-20 mb-20'>为您推荐</view>
+</scroll-view>
+<!-- 页面主体部分 -->
+<!-- 底部导航 -->

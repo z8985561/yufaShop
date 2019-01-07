@@ -1,0 +1,46 @@
+/**app.wxss**/
+@import "lib/fontAwesome.wxss";
+@import "lib/weui.wxss";
+
+/* 字体大小 */
+.fz-24{font-size: 24rpx;}
+.fz-26{font-size: 26rpx;}
+.fz-28{font-size: 28rpx;}
+.fz-30{font-size: 30rpx;}
+.fz-32{font-size: 32rpx;}
+.fz-34{font-size: 34rpx;}
+/* 字体颜色 */
+.c0{color:#000;}
+.c3{color:#333;}
+.c6{color:#666;}
+.c9{color:#999;}
+.ca{color:#aaa;}
+.cf{color:#fff;}
+.cf9721a{color: #F9721A}
+/* 字体横线 */
+.text-line{text-decoration: line-through}
+/* 外边距 */
+.ml-20{margin-left: 20rpx;}
+.ml-40{margin-left: 40rpx;}
+.ml-60{margin-left: 60rpx;}
+.ml-80{margin-left: 80rpx;}
+.mb-20{margin-bottom: 20rpx;}
+.mb-40{margin-bottom: 40rpx;}
+.mb-60{margin-bottom: 60rpx;}
+.mb-80{margin-bottom: 80rpx;}
+/* 内边距 */
+.plr-20{padding: 0 20rpx;}
+.plr-30{padding: 0 30rpx;}
+
+/* 浮动 */
+.pull-left{
+  float: left;
+}
+pull-right{
+  float: right;
+}
+.clearfix::after{
+  content: "";
+  display: block;
+  clear: both;
+}
