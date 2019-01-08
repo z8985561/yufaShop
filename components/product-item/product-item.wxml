@@ -20,9 +20,9 @@
   </view>
   <view class='right'>
     <view class='plus' catchtap='add' hidden='{{num > 0 ? true : false}}'>+</view>
-    <view class='ctrl-btn' hidden='{{num == 0 ? true : false}}'>
+    <view class='ctrl-btn {{num == 0 ? "" : "on"}}'>
       <view catchtap='sub'>-</view>
-      <input value='{{num}}'></input>
+      <input value='{{num}}' type='number' catchtap='fn' bindblur="bindBlurChange"></input>
       <view  catchtap='add'>+</view>
     </view>
   </view>

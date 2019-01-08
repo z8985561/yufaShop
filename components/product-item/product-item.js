@@ -45,6 +45,14 @@ Component({
       this.setData({
         num: num
       })
+    },
+    bindBlurChange:function(e){
+      this.setData({
+        num: e.detail.value
+      })
+    },
+    fn:function(){
+      return false;
     }
   }
 })

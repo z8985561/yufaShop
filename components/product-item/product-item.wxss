@@ -23,7 +23,7 @@
 .product-item .center .count{
   display: inline-block;
   padding: 0 10rpx;
-  border: 1rpx solid #f9721a;
+  border: 2rpx solid #f9721a;
   border-radius: 25rpx;
   text-align: center;
 }
@@ -42,35 +42,50 @@
   color: #fff;
 }
 .product-item .right{
+  position: relative;
   display: flex;
-  flex-direction: column;
+  justify-content: flex-end;
   align-items: center;
+  width: 164rpx;
 }
 .product-item .right .plus{
-  width: 50rpx;
-  height: 50rpx;
-  line-height: 46rpx;
+  position: absolute;
+  right: 0;
+  width: 60rpx;
+  height: 60rpx;
+  line-height: 56rpx;
   background-color: #0EAF51;
   border: 2rpx solid #0DE567;
   border-radius: 50%;
   text-align: center;
   color: #fff;
+  font-size: 46rpx;
   font-weight: 700;
+  z-index: 9;
 }
 .ctrl-btn{
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 164rpx;
+  width: 0;
+  height: 56rpx;
+  background-color: #eee;
+  overflow: hidden;
+  border-radius: 28rpx;
+  transition: width .1s;
 }
 .ctrl-btn input{
-  width: 25%;
+  width: 30%;
   text-align: center;
   font-size: 30rpx;
 }
 .ctrl-btn view{
-  width: 30rpx;
+  width: 30%;
   color:#0EAF51;
-  font-size: 36rpx;
+  font-size: 46rpx;
   text-align: center;
+}
+
+.ctrl-btn.on{
+  width: 164rpx;
 }
