@@ -105,20 +105,70 @@
   <view class='fz-34 plr-20 mb-20'>为您推荐</view>
   <view class="weui-tab">
     <view class="weui-navbar">
-      <block wx:for="{{tabs}}" wx:key="*this">
+      <block wx:for="{{tabs}}" wx:key="index">
         <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
           <view class="weui-navbar__title">{{item}}</view>
         </view>
       </block>
       <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
     </view>
-    <view class="weui-tab__panel">
-      <view class="weui-tab__content" hidden="{{activeIndex != 0}}">选项一的内容</view>
-      <view class="weui-tab__content" hidden="{{activeIndex != 1}}">选项二的内容</view>
-      <view class="weui-tab__content" hidden="{{activeIndex != 2}}">选项三的内容</view>
-      <view class="weui-tab__content" hidden="{{activeIndex != 3}}">选项四的内容</view>
+    <view class="weui-tab__panel pt-150">
+      <view class="weui-tab__content plr-20" hidden="{{activeIndex != 0}}">
+        <block wx:for="{{productDataList.vegetables}}" wx:key="{{item.id}}">
+          <product-item productData="{{item}}" count="{{item.count}}"></product-item>
+        </block>
+      </view>
+      <view class="weui-tab__content plr-20" hidden="{{activeIndex != 1}}">
+        <block wx:for="{{productDataList.riceNoodleGrainOil}}" wx:key="{{item.id}}">
+          <product-item productData="{{item}}"></product-item>
+        </block>
+      </view>
+      <view class="weui-tab__content plr-20" hidden="{{activeIndex != 2}}">
+        <block wx:for="{{productDataList.eggLegumina}}" wx:key="{{item.id}}">
+          <product-item productData="{{item}}" ></product-item>
+        </block>
+      </view>
+      <view class="weui-tab__content plr-20" hidden="{{activeIndex != 3}}">
+        <block wx:for="{{productDataList.beverages}}" wx:key="{{item.id}}">
+          <product-item productData="{{item}}"></product-item>
+        </block>
+      </view>
     </view>
   </view>
 </scroll-view>
 <!-- 页面主体部分 -->
+<!-- 底部导航 -->
+<view class='footer-nav'>
+  <navigator class='nav-item on' url='' hover-class='none'>
+    <view>
+      <text class='fa fa-home'></text>
+    </view>
+    <view>首页</view>
+  </navigator>
+  <navigator class='nav-item' url='' hover-class='none'>
+    <view>
+      <text class='fa fa-list-ul'></text>
+    </view>
+    <view>全部菜品</view>
+  </navigator>
+  <navigator class='nav-item' url='' hover-class='none'>
+    <view>
+      <text class='fa fa-file-text-o'></text>
+    </view>
+    <view>常用清单</view>
+  </navigator>
+  <navigator class='nav-item' url='' hover-class='none'>
+    <view style='position:relative'>
+      <text class='fa fa-shopping-cart'></text>
+      <text class="weui-badge" style="position: absolute;top: -20rpx;right: 28rpx;">8</text>
+    </view>
+    <view>购物车</view>
+  </navigator>
+  <navigator class='nav-item' url='' hover-class='none'>
+    <view>
+      <text class='fa fa-user'></text>
+    </view>
+    <view>我的</view>
+  </navigator>
+</view>
 <!-- 底部导航 -->

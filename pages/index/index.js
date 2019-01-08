@@ -102,7 +102,7 @@ Page({
         specDes: "每箱12瓶", //规格描述
         spec: "箱", //规格
         newPrice: "39.90",
-        oldPrice: "43.00"
+        oldPrice: "43.00",
       },
       {
         id: 2,
@@ -188,10 +188,278 @@ Page({
         url: "#"
       }
     ],
-    tabs: ["选项一", "选项二", "选项三", "选项四"],
-    activeIndex: 1,
+    //tab切换相关数据
+    tabs: ["新鲜蔬菜", "米面粮油", "蛋品豆面", "休闲酒饮"],
+    activeIndex: 0,
     sliderOffset: 0,
-    sliderLeft: 0
+    sliderLeft: 0,
+    //产品列表相关数据
+    productDataList: {
+      vegetables: [{
+          id: 1, //产品id
+          navUrl: "#", //产品链接
+          imgUrl: "/img/product-1.png", //产品图片
+          title: "100%花生食用油", //产品标题
+          peopleBuy: "2978", //购买人数
+          spec: "斤", //规格
+          specDec: "￥10.50/袋(10斤)", //规格描述
+          newPrice: "1.05", //最新价格
+          oldPrice: "1.40", //原始价格
+          label: "降价", //标签
+          count: 1
+        },
+        {
+          id: 2, //产品id
+          navUrl: "#", //产品链接
+          imgUrl: "/img/product-2.png", //产品图片
+          title: "小土豆", //产品标题
+          peopleBuy: "2978", //购买人数
+          spec: "斤", //规格
+          specDec: "￥10.50/袋(10斤)", //规格描述
+          newPrice: "1.05", //最新价格
+          oldPrice: "1.40", //原始价格
+          label: "降价", //标签
+          count: 0
+        },
+        {
+          id: 3, //产品id
+          navUrl: "#", //产品链接
+          imgUrl: "/img/product-3.png", //产品图片
+          title: "上等优质猪肉", //产品标题
+          peopleBuy: "2978", //购买人数
+          spec: "斤", //规格
+          specDec: "￥10.50/袋(10斤)", //规格描述
+          newPrice: "1.05", //最新价格
+          oldPrice: "1.40", //原始价格
+          label: "降价", //标签
+          count: 0
+        },
+        {
+          id: 4, //产品id
+          navUrl: "#", //产品链接
+          imgUrl: "/img/product-4.png", //产品图片
+          title: "大蒜", //产品标题
+          peopleBuy: "2978", //购买人数
+          spec: "斤", //规格
+          specDec: "￥10.50/袋(10斤)", //规格描述
+          newPrice: "10.05", //最新价格
+          oldPrice: "13.40", //原始价格
+          label: "降价", //标签
+          count: 2
+        },
+        {
+          id: 5, //产品id
+          navUrl: "#", //产品链接
+          imgUrl: "/img/product-1.png", //产品图片
+          title: "100%花生食用油", //产品标题
+          peopleBuy: "2978", //购买人数
+          spec: "斤", //规格
+          specDec: "￥10.50/袋(10斤)", //规格描述
+          newPrice: "1.05", //最新价格
+          oldPrice: "1.40", //原始价格
+          label: "降价", //标签
+          count: 0
+        }
+      ],
+      riceNoodleGrainOil: [{
+          id: 6, //产品id
+          navUrl: "#", //产品链接
+          imgUrl: "/img/product-2.png", //产品图片
+          title: "100%花生食用油", //产品标题
+          peopleBuy: "2978", //购买人数
+          spec: "斤", //规格
+          specDec: "￥10.50/袋(10斤)", //规格描述
+          newPrice: "1.05", //最新价格
+          oldPrice: "1.40", //原始价格
+          label: "降价", //标签
+          count: 0
+        },
+        {
+          id: 7, //产品id
+          navUrl: "#", //产品链接
+          imgUrl: "/img/product-1.png", //产品图片
+          title: "小土豆", //产品标题
+          peopleBuy: "2978", //购买人数
+          spec: "斤", //规格
+          specDec: "￥10.50/袋(10斤)", //规格描述
+          newPrice: "1.05", //最新价格
+          oldPrice: "1.40", //原始价格
+          label: "降价", //标签
+          count: 2
+        },
+        {
+          id: 8, //产品id
+          navUrl: "#", //产品链接
+          imgUrl: "/img/product-3.png", //产品图片
+          title: "上等优质猪肉", //产品标题
+          peopleBuy: "2978", //购买人数
+          spec: "斤", //规格
+          specDec: "￥10.50/袋(10斤)", //规格描述
+          newPrice: "1.05", //最新价格
+          oldPrice: "1.40", //原始价格
+          label: "降价", //标签
+          count: 0
+        },
+        {
+          id: 9, //产品id
+          navUrl: "#", //产品链接
+          imgUrl: "/img/product-4.png", //产品图片
+          title: "大蒜", //产品标题
+          peopleBuy: "2978", //购买人数
+          spec: "斤", //规格
+          specDec: "￥10.50/袋(10斤)", //规格描述
+          newPrice: "10.05", //最新价格
+          oldPrice: "13.40", //原始价格
+          label: "降价", //标签
+          count: 0
+        },
+        {
+          id: 10, //产品id
+          navUrl: "#", //产品链接
+          imgUrl: "/img/product-1.png", //产品图片
+          title: "100%花生食用油", //产品标题
+          peopleBuy: "2978", //购买人数
+          spec: "斤", //规格
+          specDec: "￥10.50/袋(10斤)", //规格描述
+          newPrice: "1.05", //最新价格
+          oldPrice: "1.40", //原始价格
+          label: "降价", //标签
+          count: 0
+        }
+      ],
+      eggLegumina: [{
+          id: 11, //产品id
+          navUrl: "#", //产品链接
+          imgUrl: "/img/product-3.png", //产品图片
+          title: "100%花生食用油", //产品标题
+          peopleBuy: "2978", //购买人数
+          spec: "斤", //规格
+          specDec: "￥10.50/袋(10斤)", //规格描述
+          newPrice: "1.05", //最新价格
+          oldPrice: "1.40", //原始价格
+          label: "降价", //标签
+          count: 2
+        },
+        {
+          id: 12, //产品id
+          navUrl: "#", //产品链接
+          imgUrl: "/img/product-1.png", //产品图片
+          title: "小土豆", //产品标题
+          peopleBuy: "2978", //购买人数
+          spec: "斤", //规格
+          specDec: "￥10.50/袋(10斤)", //规格描述
+          newPrice: "1.05", //最新价格
+          oldPrice: "1.40", //原始价格
+          label: "降价", //标签
+          count: 1
+        },
+        {
+          id: 13, //产品id
+          navUrl: "#", //产品链接
+          imgUrl: "/img/product-2.png", //产品图片
+          title: "上等优质猪肉", //产品标题
+          peopleBuy: "2978", //购买人数
+          spec: "斤", //规格
+          specDec: "￥10.50/袋(10斤)", //规格描述
+          newPrice: "1.05", //最新价格
+          oldPrice: "1.40", //原始价格
+          label: "降价", //标签
+          count: 0
+        },
+        {
+          id: 14, //产品id
+          navUrl: "#", //产品链接
+          imgUrl: "/img/product-4.png", //产品图片
+          title: "大蒜", //产品标题
+          peopleBuy: "2978", //购买人数
+          spec: "斤", //规格
+          specDec: "￥10.50/袋(10斤)", //规格描述
+          newPrice: "10.05", //最新价格
+          oldPrice: "13.40", //原始价格
+          label: "降价", //标签
+          count: 0
+        },
+        {
+          id: 15, //产品id
+          navUrl: "#", //产品链接
+          imgUrl: "/img/product-1.png", //产品图片
+          title: "100%花生食用油", //产品标题
+          peopleBuy: "2978", //购买人数
+          spec: "斤", //规格
+          specDec: "￥10.50/袋(10斤)", //规格描述
+          newPrice: "1.05", //最新价格
+          oldPrice: "1.40", //原始价格
+          label: "降价", //标签
+          count: 0
+        }
+      ],
+      beverages: [{
+          id: 16, //产品id
+          navUrl: "#", //产品链接
+          imgUrl: "/img/product-4.png", //产品图片
+          title: "100%花生食用油", //产品标题
+          peopleBuy: "2978", //购买人数
+          spec: "斤", //规格
+          specDec: "￥10.50/袋(10斤)", //规格描述
+          newPrice: "1.05", //最新价格
+          oldPrice: "1.40", //原始价格
+          label: "降价", //标签
+          count: 0
+        },
+        {
+          id: 17, //产品id
+          navUrl: "#", //产品链接
+          imgUrl: "/img/product-3.png", //产品图片
+          title: "小土豆", //产品标题
+          peopleBuy: "2978", //购买人数
+          spec: "斤", //规格
+          specDec: "￥10.50/袋(10斤)", //规格描述
+          newPrice: "1.05", //最新价格
+          oldPrice: "1.40", //原始价格
+          label: "降价", //标签
+          count: 0
+        },
+        {
+          id: 18, //产品id
+          navUrl: "#", //产品链接
+          imgUrl: "/img/product-2.png", //产品图片
+          title: "上等优质猪肉", //产品标题
+          peopleBuy: "2978", //购买人数
+          spec: "斤", //规格
+          specDec: "￥10.50/袋(10斤)", //规格描述
+          newPrice: "1.05", //最新价格
+          oldPrice: "1.40", //原始价格
+          label: "降价", //标签
+          count: 0
+        },
+        {
+          id: 19, //产品id
+          navUrl: "#", //产品链接
+          imgUrl: "/img/product-4.png", //产品图片
+          title: "大蒜", //产品标题
+          peopleBuy: "2978", //购买人数
+          spec: "斤", //规格
+          specDec: "￥10.50/袋(10斤)", //规格描述
+          newPrice: "10.05", //最新价格
+          oldPrice: "13.40", //原始价格
+          label: "降价", //标签
+          count: 0
+        },
+        {
+          id: 20, //产品id
+          navUrl: "#", //产品链接
+          imgUrl: "/img/product-1.png", //产品图片
+          title: "100%花生食用油", //产品标题
+          peopleBuy: "2978", //购买人数
+          spec: "斤", //规格
+          specDec: "￥10.50/袋(10斤)", //规格描述
+          newPrice: "1.05", //最新价格
+          oldPrice: "1.40", //原始价格
+          label: "降价", //标签
+          count: 0
+        }
+      ]
+    }
 
 
   },

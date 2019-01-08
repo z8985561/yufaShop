@@ -1,5 +1,0 @@
-<view class='weui-tabbar'>
-  <navigator url="" hover-class='none' class='weui-tabbar__item weui-bar__item_on'>
-    <view></view>
-  </navigator>
-</view>

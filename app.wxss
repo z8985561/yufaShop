@@ -28,10 +28,12 @@
 .mb-40{margin-bottom: 40rpx;}
 .mb-60{margin-bottom: 60rpx;}
 .mb-80{margin-bottom: 80rpx;}
+.mt-20{margin-top: 20rpx;}
+.mt-40{margin-top: 40rpx;}
 /* 内边距 */
 .plr-20{padding: 0 20rpx;}
 .plr-30{padding: 0 30rpx;}
-
+.pt-150{padding-top: 150rpx;}
 /* 浮动 */
 .pull-left{
   float: left;
@@ -43,4 +45,31 @@ pull-right{
   content: "";
   display: block;
   clear: both;
+}
+
+
+/* 底部导航样式 */
+.footer-nav{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100rpx;
+  z-index: 999;
+  background-color: #fff;
+}
+.nav-item{
+  width: 20%;
+  font-size: 26rpx;
+  text-align: center;
+  color: #999;
+}
+.nav-item .fa{
+  font-size: 50rpx;
+}
+.nav-item.on{
+  color: #0FB54F;
 }
