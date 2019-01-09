@@ -12,7 +12,7 @@
 		"autoAudits": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.4.3",
+	"libVersion": "2.4.4",
 	"appid": "wx84da2d3882480da9",
 	"projectname": "meicai",
 	"debugOptions": {

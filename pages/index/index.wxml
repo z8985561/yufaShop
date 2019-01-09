@@ -115,22 +115,39 @@
     <view class="weui-tab__panel pt-150">
       <view class="weui-tab__content plr-20" hidden="{{activeIndex != 0}}">
         <block wx:for="{{productDataList.vegetables}}" wx:key="{{item.id}}">
-          <product-item productData="{{item}}" count="{{item.count}}"></product-item>
+          <product-item productData="{{item}}"
+          count="{{item.count}}"
+          bind:addEvent='addEventListener'
+          bind:subEvent='subEventListener'
+          bind:blurEvent='blurEventListener'
+          ></product-item>
         </block>
       </view>
       <view class="weui-tab__content plr-20" hidden="{{activeIndex != 1}}">
         <block wx:for="{{productDataList.riceNoodleGrainOil}}" wx:key="{{item.id}}">
-          <product-item productData="{{item}}"></product-item>
+          <product-item productData="{{item}}" count="{{item.count}}"
+          bind:addEvent='addEventListener'
+          bind:subEvent='subEventListener'
+          bind:blurEvent='blurEventListener'
+          ></product-item>
         </block>
       </view>
       <view class="weui-tab__content plr-20" hidden="{{activeIndex != 2}}">
         <block wx:for="{{productDataList.eggLegumina}}" wx:key="{{item.id}}">
-          <product-item productData="{{item}}" ></product-item>
+          <product-item productData="{{item}}" count="{{item.count}}"
+          bind:addEvent='addEventListener'
+          bind:subEvent='subEventListener'
+          bind:blurEvent='blurEventListener'
+          ></product-item>
         </block>
       </view>
       <view class="weui-tab__content plr-20" hidden="{{activeIndex != 3}}">
         <block wx:for="{{productDataList.beverages}}" wx:key="{{item.id}}">
-          <product-item productData="{{item}}"></product-item>
+          <product-item productData="{{item}}" count="{{item.count}}"
+          bind:addEvent='addEventListener'
+          bind:subEvent='subEventListener'
+          bind:blurEvent='blurEventListener'
+          ></product-item>
         </block>
       </view>
     </view>
@@ -160,7 +177,7 @@
   <navigator class='nav-item' url='' hover-class='none'>
     <view style='position:relative'>
       <text class='fa fa-shopping-cart'></text>
-      <text class="weui-badge" style="position: absolute;top: -20rpx;right: 28rpx;">8</text>
+      <text class="weui-badge" style="position: absolute;top: -20rpx;right: 28rpx;">{{cartListNum}}</text>
     </view>
     <view>购物车</view>
   </navigator>

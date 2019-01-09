@@ -417,7 +417,7 @@ Page({
           newPrice: "1.05", //最新价格
           oldPrice: "1.40", //原始价格
           label: "降价", //标签
-          count: 0
+          count: 1
         },
         {
           id: 18, //产品id
@@ -459,8 +459,8 @@ Page({
           count: 0
         }
       ]
-    }
-
+    },
+    cartListNum: 0
 
   },
   //关闭头部消息事件
@@ -511,6 +511,29 @@ Page({
       activeIndex: e.currentTarget.id
     });
   },
+  // 监听添加商品事件
+  addEventListener:function(e){
+    //console.log(e.detail)
+    var addCartCount = this.data.cartListNum + 1;
+    this.setData({
+      cartListNum: addCartCount
+    })
+  },
+  // 监听删除商品事件
+  subEventListener: function (e) {
+    //console.log(e.detail)
+    var subCartCount = this.data.cartListNum - 1;
+    this.setData({
+      cartListNum: subCartCount
+    })
+  },
+  blurEventListener:function(e){
+    //console.log(e.detail.value)
+    var blurCartCount = this.data.cartListNum + e.detail.value;
+    this.setData({
+      cartListNum: blurCartCount
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -539,6 +562,16 @@ Page({
         })
       }
     }, 1000)
+    //计算购物车商品数量
+    var cartCount = 0;
+    for (var item in this.data.productDataList) {
+      this.data.productDataList[item].forEach(function(a) {
+        cartCount += a.count;
+      })
+    }
+    this.setData({
+      cartListNum: cartCount
+    })
   },
 
   /**

@@ -22,14 +22,6 @@ Component({
       })
     }
   },
-  pageLifetimes: {
-    show() {
-      // 页面被展示
-      this.setData({
-        num: this.properties.count
-      })
-    }
-  },
   /**
    * 组件的方法列表
    */
@@ -38,18 +30,28 @@ Component({
       var num = this.data.num + 1;
       this.setData({
         num: num
-      })
+      });
+      this.triggerEvent('addEvent',{
+        value: num
+      },{})
     },
     sub: function() {
       var num = this.data.num - 1;
       this.setData({
         num: num
       })
+      this.triggerEvent('subEvent', {
+        value: num
+      }, {})
     },
     bindBlurChange:function(e){
+      var num = e.detail.value - this.data.num
       this.setData({
         num: e.detail.value
       })
+      this.triggerEvent('blurEvent', {
+        value: num
+      }, {})
     },
     fn:function(){
       return false;

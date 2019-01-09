@@ -72,7 +72,8 @@
   background-color: #eee;
   overflow: hidden;
   border-radius: 28rpx;
-  transition: width .1s;
+  opacity: 0;
+  transition: all .1s;
 }
 .ctrl-btn input{
   width: 30%;
@@ -88,4 +89,5 @@
 
 .ctrl-btn.on{
   width: 164rpx;
+  opacity: 1;
 }
