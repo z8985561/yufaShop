@@ -1,0 +1,18 @@
+<!-- 头部搜索区域 -->
+<view class='hd-search {{showSearchBg ? "hd-bg":""}} ' hidden='{{showSearch}}'>
+  <navigator class='icon' url='' hover-class='none'>
+    <text class='fa fa-headphones c6'></text>
+  </navigator>
+  <navigator class='search-box' url="" hover-class='none'>
+    <text class='fa fa-search c6'></text>
+    <text class='fz-28 c9'> 火锅丸子8.99折</text>
+  </navigator>
+  <navigator class='icon' url='' hover-class='none'>
+    <text class='fa fa-commenting c6'></text>
+  </navigator>
+</view>
+<!-- 头部搜索区域end -->
+<view class='mb-80'></view>
+<!-- 分类导航 -->
+<category-nav></category-nav>
+<!-- 分类导航 -->

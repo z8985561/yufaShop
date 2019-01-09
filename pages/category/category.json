@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "category-nav": "/components/category-nav/category-nav"
+  },
+  "navigationBarTitleText": "全部类别"
+}

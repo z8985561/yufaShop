@@ -460,8 +460,10 @@ Page({
         }
       ]
     },
-    cartListNum: 0
-
+    cartListNum: 0,
+    showCoupons: false, //控制优惠券显示
+    showSearchBg: false, //控制顶部搜索背景颜色
+    showSearch: false, //控制底部搜索隐藏显示
   },
   //关闭头部消息事件
   closeTopMsg: function() {
@@ -512,7 +514,7 @@ Page({
     });
   },
   // 监听添加商品事件
-  addEventListener:function(e){
+  addEventListener: function(e) {
     //console.log(e.detail)
     var addCartCount = this.data.cartListNum + 1;
     this.setData({
@@ -520,19 +522,47 @@ Page({
     })
   },
   // 监听删除商品事件
-  subEventListener: function (e) {
+  subEventListener: function(e) {
     //console.log(e.detail)
     var subCartCount = this.data.cartListNum - 1;
     this.setData({
       cartListNum: subCartCount
     })
   },
-  blurEventListener:function(e){
+  //监听input失去焦点事件
+  blurEventListener: function(e) {
     //console.log(e.detail.value)
     var blurCartCount = this.data.cartListNum + e.detail.value;
     this.setData({
       cartListNum: blurCartCount
     })
+  },
+  //关闭优惠券事件
+  closeCoupons: function() {
+    this.setData({
+      showCoupons: true
+    })
+  },
+  // 页面滚动事件
+  scroll: function(e) {
+    console.log(e.detail.scrollTop)
+    e.detail.scrollTop > 90 ? this.setData({
+      showSearchBg: true
+    }) : this.setData({
+      showSearchBg: false
+    });
+
+    e.detail.scrollTop > 1100 ?
+      this.setData({
+        showSearch: true
+      }) : this.setData({
+        showSearch: false
+      });
+
+
+  },
+  move:function(){
+    return;
   },
   /**
    * 生命周期函数--监听页面加载

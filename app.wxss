@@ -18,6 +18,7 @@
 .cf{color:#fff;}
 .cf9721a{color: #F9721A}
 /* 字体横线 */
+.text-center{text-align: center;}
 .text-line{text-decoration: line-through}
 /* 外边距 */
 .ml-20{margin-left: 20rpx;}
@@ -72,4 +73,39 @@ pull-right{
 }
 .nav-item.on{
   color: #0FB54F;
+}
+
+
+/* 头部搜索样式 */
+.hd-search {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  height: 90rpx;
+  z-index: 999;
+}
+
+.hd-bg {
+  background-color: #fff;
+}
+
+.hd-bg .fa {
+  color: #666;
+}
+
+.hd-search .icon {
+  width: 80rpx;
+  text-align: center;
+}
+
+.hd-search .search-box {
+  flex: 1;
+  height: 70rpx;
+  line-height: 70rpx;
+  padding-left: 20rpx;
+  background-color: #eee;
+  border-radius: 10rpx;
 }

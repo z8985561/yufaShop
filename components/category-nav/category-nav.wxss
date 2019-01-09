@@ -1,0 +1,30 @@
+.category-nav{
+  position: relative;
+  height: 70rpx;
+  padding: 0 20rpx;
+  line-height: 70rpx;
+  width: 100%;
+  white-space: nowrap;
+}
+.nav-item{
+  position: relative;
+  display: inline-block;
+  width: 160rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  color:#999;
+  font-size: 32rpx;
+  text-align: center;
+  z-index: 9;
+}
+.nav-item.on{
+  color: #fff;
+}
+.nav-slider{
+  position: absolute;
+  width: 160rpx;
+  height: 60rpx;
+  top: 5rpx;
+  background-color: #0EAF51;
+  border-radius: 30rpx;
+}
