@@ -105,34 +105,21 @@
   <view class='fz-34 plr-20 mb-20'>为您推荐</view>
   <view class="weui-tab">
     <view class="weui-navbar {{showSearch ? 'on':''}}">
-      <block wx:for="{{tabs}}" wx:key="index">
+      <block wx:for="{{recProductDataList}}" wx:key="index">
         <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
-          <view class="weui-navbar__title">{{item}}</view>
+          <view class="weui-navbar__title">{{item.cateTitle}}</view>
         </view>
       </block>
       <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
     </view>
     <view class="weui-tab__panel pt-150">
-      <view class="weui-tab__content plr-20" hidden="{{activeIndex != 0}}">
-        <block wx:for="{{productDataList.vegetables}}" wx:key="{{item.id}}">
-          <product-item productData="{{item}}" count="{{item.count}}" bind:addEvent='addEventListener' bind:subEvent='subEventListener' bind:blurEvent='blurEventListener'></product-item>
-        </block>
-      </view>
-      <view class="weui-tab__content plr-20" hidden="{{activeIndex != 1}}">
-        <block wx:for="{{productDataList.riceNoodleGrainOil}}" wx:key="{{item.id}}">
-          <product-item productData="{{item}}" count="{{item.count}}" bind:addEvent='addEventListener' bind:subEvent='subEventListener' bind:blurEvent='blurEventListener'></product-item>
-        </block>
-      </view>
-      <view class="weui-tab__content plr-20" hidden="{{activeIndex != 2}}">
-        <block wx:for="{{productDataList.eggLegumina}}" wx:key="{{item.id}}">
-          <product-item productData="{{item}}" count="{{item.count}}" bind:addEvent='addEventListener' bind:subEvent='subEventListener' bind:blurEvent='blurEventListener'></product-item>
-        </block>
-      </view>
-      <view class="weui-tab__content plr-20" hidden="{{activeIndex != 3}}">
-        <block wx:for="{{productDataList.beverages}}" wx:key="{{item.id}}">
-          <product-item productData="{{item}}" count="{{item.count}}" bind:addEvent='addEventListener' bind:subEvent='subEventListener' bind:blurEvent='blurEventListener'></product-item>
-        </block>
-      </view>
+      <block wx:for="{{recProductDataList}}" wx:key="index">
+        <view class="weui-tab__content plr-20" hidden="{{activeIndex != index}}" data-count="{{index}}">
+          <block wx:for="{{item.data}}" wx:key="{{item.id}}">
+            <product-item productData="{{item}}" count="{{item.count}}" bind:addEvent='addEventListener' bind:subEvent='subEventListener' bind:blurEvent='blurEventListener'></product-item>
+          </block>
+        </view>
+      </block>
     </view>
   </view>
 </scroll-view>
@@ -145,7 +132,7 @@
     </view>
     <view>首页</view>
   </navigator>
-  <navigator class='nav-item' url='' hover-class='none'>
+  <navigator class='nav-item' url='/pages/category/category' hover-class='none'>
     <view>
       <text class='fa fa-list-ul'></text>
     </view>

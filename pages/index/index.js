@@ -189,13 +189,14 @@ Page({
       }
     ],
     //tab切换相关数据
-    tabs: ["新鲜蔬菜", "米面粮油", "蛋品豆面", "休闲酒饮"],
     activeIndex: 0,
     sliderOffset: 0,
     sliderLeft: 0,
-    //产品列表相关数据
-    productDataList: {
-      vegetables: [{
+    //推荐产品列表相关数据
+    recProductDataList: [{
+      cateId: 1,
+      cateTitle:"新鲜蔬菜",
+      data: [{
           id: 1, //产品id
           navUrl: "#", //产品链接
           imgUrl: "/img/product-1.png", //产品图片
@@ -260,8 +261,11 @@ Page({
           label: "降价", //标签
           count: 0
         }
-      ],
-      riceNoodleGrainOil: [{
+      ]
+    }, {
+      cateId: 2,
+      cateTitle: "米面粮油",
+      data: [{
           id: 6, //产品id
           navUrl: "#", //产品链接
           imgUrl: "/img/product-2.png", //产品图片
@@ -326,8 +330,11 @@ Page({
           label: "降价", //标签
           count: 0
         }
-      ],
-      eggLegumina: [{
+      ]
+    }, {
+      cateId: 3,
+      cateTitle: "蛋品豆面",
+      data: [{
           id: 11, //产品id
           navUrl: "#", //产品链接
           imgUrl: "/img/product-3.png", //产品图片
@@ -392,8 +399,11 @@ Page({
           label: "降价", //标签
           count: 0
         }
-      ],
-      beverages: [{
+      ]
+    }, {
+      cateId: 4,
+      cateTitle: "休闲酒饮",
+      data: [{
           id: 16, //产品id
           navUrl: "#", //产品链接
           imgUrl: "/img/product-4.png", //产品图片
@@ -459,7 +469,7 @@ Page({
           count: 0
         }
       ]
-    },
+    }],
     cartListNum: 0,
     showCoupons: false, //控制优惠券显示
     showSearchBg: false, //控制顶部搜索背景颜色
@@ -545,7 +555,7 @@ Page({
   },
   // 页面滚动事件
   scroll: function(e) {
-    console.log(e.detail.scrollTop)
+    //console.log(e.detail.scrollTop)
     e.detail.scrollTop > 90 ? this.setData({
       showSearchBg: true
     }) : this.setData({
@@ -561,7 +571,7 @@ Page({
 
 
   },
-  move:function(){
+  move: function() {
     return;
   },
   /**
@@ -573,8 +583,8 @@ Page({
     wx.getSystemInfo({
       success: function(res) {
         that.setData({
-          sliderLeft: (res.windowWidth / that.data.tabs.length - sliderWidth) / 2,
-          sliderOffset: res.windowWidth / that.data.tabs.length * that.data.activeIndex
+          sliderLeft: (res.windowWidth / that.data.recProductDataList.length - sliderWidth) / 2,
+          sliderOffset: res.windowWidth / that.data.recProductDataList.length * that.data.activeIndex
         });
       }
     });
@@ -594,11 +604,11 @@ Page({
     }, 1000)
     //计算购物车商品数量
     var cartCount = 0;
-    for (var item in this.data.productDataList) {
-      this.data.productDataList[item].forEach(function(a) {
-        cartCount += a.count;
+    this.data.recProductDataList.forEach(function(a){
+      a.data.forEach(function(b){
+        cartCount += b.count;
       })
-    }
+    })
     this.setData({
       cartListNum: cartCount
     })

@@ -1,14 +1,15 @@
 <!--components/category-nav/category-nav.wxml-->
-<scroll-view scroll-x class='category-nav'>
-  <view class='nav-item on'>新鲜蔬菜</view>
-  <view class='nav-item'>适龄水果</view>
-  <view class='nav-item'>肉禽类</view>
-  <view class='nav-item'>方便菜</view>
-  <view class='nav-item'>水产冻货</view>
-  <view class='nav-item'>蛋品豆面</view>
-  <view class='nav-item'>米油粮面</view>
-  <view class='nav-item'>休闲酒饮</view>
-  <view class='nav-item'>调料干货</view>
-  <view class='nav-item'>餐厨用品</view>
-  <view class='nav-slider'></view>
+<view class='category-wrap'>
+<scroll-view scroll-x class='category-nav' scroll-left="{{scrollLeft}}" scroll-with-animation="true">
+  <view class="nav-item {{activeIndex == index ? 'on' : ''}}" wx:for="{{titleList}}" wx:key="index" bindtap="oneTabClick" id="{{index}}">{{item.cateTitle}}</view>
+  <view class="nav-item"></view>
+  <view class='nav-slider' style="ransform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
 </scroll-view>
+<view catchtap='showAllCate' class='down'>
+  <image class='{{showCate ? "":"on"}}' src='/img/down.png'></image>
+</view>
+<view class='show-cate' hidden='{{showCate}}'>
+  <view wx:for="{{titleList}}" wx:key="index" catchtap="twoTabClick" id="{{index}}">{{item.cateTitle}}</view>
+</view>
+<view class='mask' hidden='{{showCate}}'></view>
+</view>

@@ -1,14 +1,23 @@
+.category-wrap{
+  position: fixed;
+  top: 80rpx;
+  left: 0;
+  right: 0;
+  box-shadow: 1px 1px 7px #ddd;
+}
 .category-nav{
   position: relative;
-  height: 70rpx;
-  padding: 0 20rpx;
+  height: 84rpx;
   line-height: 70rpx;
   width: 100%;
   white-space: nowrap;
+  background-color: #fff;
+  z-index: 9;
 }
 .nav-item{
   position: relative;
   display: inline-block;
+  padding: 0 20rpx;
   width: 160rpx;
   height: 60rpx;
   line-height: 60rpx;
@@ -19,12 +28,63 @@
 }
 .nav-item.on{
   color: #fff;
+  transition: color .3s;
 }
 .nav-slider{
   position: absolute;
   width: 160rpx;
   height: 60rpx;
-  top: 5rpx;
+  top: 20rpx;
+  left: 20rpx;
   background-color: #0EAF51;
   border-radius: 30rpx;
+  transition: transform .3s;
+}
+.down{
+  position: fixed;
+  right:0;
+  top: 82rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80rpx;
+  width: 92rpx;
+  background-color: #fff;
+  z-index: 10;
+}
+.down image{
+  width: 32rpx;
+  height: 18rpx;
+  transition: .3s;
+}
+.down .on{
+  transform: rotate(180deg)
+}
+.show-cate{
+  position: fixed;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 30rpx;
+  background-color: #fff;
+  z-index: 9;
+}
+.show-cate view{
+  margin-bottom: 20rpx;
+  width: 200rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 32rpx;
+  background-color: #EBEBEB;
+  text-align: center;
+  border-radius: 35rpx;
+}
+.mask{
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, .5);
+  z-index: 8;
 }
