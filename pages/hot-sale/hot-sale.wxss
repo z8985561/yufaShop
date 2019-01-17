@@ -1,0 +1,8 @@
+/* pages/hot-sale/hot-sale.wxss */
+.hot-sale{
+  display: flex;
+  justify-content: space-between;
+}
+.cate-nav{
+  box-shadow:1px 1px 7px #ddd;
+}

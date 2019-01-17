@@ -1,0 +1,72 @@
+<!-- 畅销榜 -->
+<view class='plr-30'>
+  <text class='cf9721a fz-34'>家庭/个人 </text>
+  <text class='fz-34'>商家推荐销量排行榜</text>
+</view>
+<view class='plr-30 mb-150'>
+<block wx:for="{{readySaleProductList}}" wx:key="index">
+<navigator class='product-item mb-40' hover-class='none' url='{{item.navUrl}}'>
+  <view class='left'>
+    <image src='{{item.imgUrl}}' mode='widthFix'></image>
+    <view class='top'>
+          <image src='/img/top-{{index < 3 ? index + 1 : 4}}.png' mode='widthFix'></image>
+          <view class='fz-24 {{index < 3 ? "cf" : "c9"}}'>{{index+1}}</view>
+    </view>
+  </view>
+  <view class='center'>
+    <!-- 产品标题 -->
+    <view class='fz-30'>{{item.title}}</view>
+    <!-- 购买人数 -->
+    <view class='fz-24 count'  wx:if="{{peopleBuyShow}}">
+      <image src='/img/hot.png'></image>
+      <text class='cf9721a'>{{item.peopleBuy}}人已买</text>
+    </view>
+    <view class='fz-24 c9'>{{item.specDec}}</view>
+    <view>
+      <text class='fz-30 cf9721a'>￥{{item.newPrice}}/{{item.spec}}</text>
+      <text class='fz-24 c9 text-line'>￥{{item.newPrice}}/{{item.spec}}</text>
+    </view>
+    <view class='fz-28 label'>{{item.label}}</view>
+  </view>
+  <view class='right'>
+    <view class='btn cf fz-30'>立即抢购</view>
+  </view>
+</navigator>
+</block>
+</view>
+
+<!-- 底部导航 -->
+<view class='footer-nav'>
+  <navigator class='nav-item on' url='' hover-class='none'>
+    <view>
+      <text class='fa fa-home'></text>
+    </view>
+    <view>首页</view>
+  </navigator>
+  <navigator class='nav-item' url='/pages/category/category' hover-class='none'>
+    <view>
+      <text class='fa fa-list-ul'></text>
+    </view>
+    <view>全部菜品</view>
+  </navigator>
+  <navigator class='nav-item' url='' hover-class='none'>
+    <view>
+      <text class='fa fa-file-text-o'></text>
+    </view>
+    <view>常用清单</view>
+  </navigator>
+  <navigator class='nav-item' url='' hover-class='none'>
+    <view style='position:relative'>
+      <text class='fa fa-shopping-cart'></text>
+      <text class="weui-badge" style="position: absolute;top: -20rpx;right: 28rpx;">{{cartListNum}}</text>
+    </view>
+    <view>购物车</view>
+  </navigator>
+  <navigator class='nav-item' url='' hover-class='none'>
+    <view>
+      <text class='fa fa-user'></text>
+    </view>
+    <view>我的</view>
+  </navigator>
+</view>
+<!-- 底部导航end -->

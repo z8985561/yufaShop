@@ -5,8 +5,7 @@ Component({
    */
   properties: {
     productData: Object, // 简化的定义方式
-    count: Number,
-    peopleBuyShow:Boolean
+    count: Number
   },
 
   /**
@@ -27,16 +26,16 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    add: function() {
-      var num = parseInt(this.data.num)  + 1;
+    add: function () {
+      var num = this.data.num + 1;
       this.setData({
         num: num
       });
-      this.triggerEvent('addEvent',{
+      this.triggerEvent('addEvent', {
         value: num
-      },{})
+      }, {})
     },
-    sub: function() {
+    sub: function () {
       var num = this.data.num - 1;
       this.setData({
         num: num
@@ -45,7 +44,7 @@ Component({
         value: num
       }, {})
     },
-    bindBlurChange:function(e){
+    bindBlurChange: function (e) {
       var num = e.detail.value - this.data.num
       this.setData({
         num: e.detail.value
@@ -54,7 +53,7 @@ Component({
         value: num
       }, {})
     },
-    fn:function(){
+    fn: function () {
       return false;
     }
   }

@@ -55,7 +55,7 @@ Page({
         text: "肉禽"
       },
       {
-        url: "#",
+        url: "/pages/ready-sale/ready-sale",
         imgUrl: "/img/index-nav-6.png",
         text: "畅销榜"
       },
@@ -82,11 +82,11 @@ Page({
     ],
     indexAd: [{ //首页广告
       id: 1,
-      url: "#",
+      url: "/pages/beverages/beverages",
       imgUrl: "/img/index-ad-1.png"
     }, {
       id: 2,
-      url: "#",
+        url: "/pages/meat-poultry/meat-poultry",
       imgUrl: "/img/index-ad-2.png"
     }],
     countdown: '',
@@ -177,15 +177,15 @@ Page({
     // 专区图片
     prefecture: [{
         imgUrl: "/img/prefecture-1.png",
-        url: "#"
+        url: "/pages/hot-sale/hot-sale"
       },
       {
         imgUrl: "/img/prefecture-2.png",
-        url: "#"
+        url: "/pages/rice/rice"
       },
       {
         imgUrl: "/img/prefecture-3.png",
-        url: "#"
+        url: "/pages/edible-oil/edible-oil"
       }
     ],
     //tab切换相关数据
@@ -474,6 +474,7 @@ Page({
     showCoupons: false, //控制优惠券显示
     showSearchBg: false, //控制顶部搜索背景颜色
     showSearch: false, //控制底部搜索隐藏显示
+    peopleBuyShow:true,//控制展示多少人购买
   },
   //关闭头部消息事件
   closeTopMsg: function() {

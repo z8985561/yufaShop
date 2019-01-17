@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "header-sale":"/components/header-sale/header-sale"
+  }
+}

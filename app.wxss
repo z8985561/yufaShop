@@ -29,6 +29,8 @@
 .mb-40{margin-bottom: 40rpx;}
 .mb-60{margin-bottom: 60rpx;}
 .mb-80{margin-bottom: 80rpx;}
+.mb-100{margin-bottom: 100rpx;}
+.mb-150{margin-bottom: 150rpx;}
 .mt-20{margin-top: 20rpx;}
 .mt-40{margin-top: 40rpx;}
 /* 内边距 */

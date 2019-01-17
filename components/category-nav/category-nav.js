@@ -4,7 +4,8 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    titleList: Array
+    titleList: Array,
+    showAllCateShow:Boolean
   },
 
   /**

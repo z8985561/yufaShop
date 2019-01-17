@@ -1,0 +1,10 @@
+/* pages/meat-poultry/meat-poultry.wxss */
+.meat-poultry{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.meat-poultry header-sale{
+  width: 32%;
+  margin-bottom: 80rpx;
+}

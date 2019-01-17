@@ -17,6 +17,7 @@ Component({
         })
       }
     },
+    peopleBuyShow:Boolean,
     subActiveIndex: { // 属性名
       type: Number, // 类型（必填），目前接受的类型包括：String, Number, Boolean, Object, Array, null（表示任意类型）
       value: 0, // 属性初始值（可选），如果未指定则会根据类型选择一个
@@ -32,6 +33,7 @@ Component({
   },
   lifetimes: {
     attached() {
+      console.log(this.data.allCateDataList, this.data.peopleBuyShow)
       var that = this;
       // 在组件实例进入页面节点树时执行
       wx.getSystemInfo({

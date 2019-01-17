@@ -5,7 +5,7 @@
   <view class="nav-item"></view>
   <view class='nav-slider' style="ransform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
 </scroll-view>
-<view catchtap='showAllCate' class='down'>
+<view catchtap='showAllCate' class='down' hidden='{{showAllCateShow}}'>
   <image class='{{showCate ? "":"on"}}' src='/img/down.png'></image>
 </view>
 <view class='show-cate' hidden='{{showCate}}'>

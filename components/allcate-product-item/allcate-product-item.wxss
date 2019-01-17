@@ -13,7 +13,7 @@
   border-bottom: 1rpx solid #ddd;
 }
 .product-item .left{
-  width: 31%;
+  width: 235rpx;
 }
 .product-item .left image{
   width: 100%;

@@ -1,25 +1,19 @@
-<!-- 头部搜索区域 -->
-<view class='hd-search hd-bg' hidden='{{showSearch}}'>
-  <navigator class='icon' url='' hover-class='none'>
-    <text class='fa fa-headphones c6'></text>
-  </navigator>
-  <navigator class='search-box' url="" hover-class='none'>
-    <text class='fa fa-search c6'></text>
-    <text class='fz-28 c9'> 火锅丸子8.99折</text>
-  </navigator>
-  <navigator class='icon' url='' hover-class='none'>
-    <text class='fa fa-commenting c6'></text>
-  </navigator>
-</view>
-<!-- 头部搜索区域end -->
-<view class='mb-80'></view>
-<!-- 分类导航 -->
-<category-nav class="category-wrap" titleList="{{allProductData}}" bind:tabEvent="tabEventListener"></category-nav>
-<!-- 分类导航 -->
-<!-- 展示全部类别产品区域 -->
-<category-list  style='z-index:-1;' allCateDataList="{{allProductData}}" activeIndex="{{activeIndex}}" subActiveIndex="{{subActiveIndex}}" peopleBuyShow="{{peopleBuyShow}}"></category-list>
-<!-- 展示全部类别产品区域 -->
-
+<!-- 分类导航部分 -->
+<category-nav class="cate-nav" titleList="{{hotSaleProduct}}" showAllCateShow="{{true}}" bind:tabEvent="tabEventListener"></category-nav>
+<!-- 分类导航部分end -->
+<!-- 产品列表 -->
+<view class="weui-tab__panel mb-80">
+      <block wx:for="{{hotSaleProduct}}" wx:key="index">
+        <view class="weui-tab__content plr-20" hidden="{{subActiveIndex != index}}" data-count="{{index}}">
+          <block wx:for="{{item.data}}" wx:key="{{item.id}}">
+            <product-item productData="{{item}}" count="{{item.count}}" bind:addEvent='addEventListener' bind:subEvent='subEventListener' bind:blurEvent='blurEventListener' peopleBuyShow="{{peopleBuyShow}}">
+            <view class='fz-28 c9'>茎扁阔而颜色雪白;叶青，面上有许多...</view>
+            </product-item>
+          </block>
+        </view>
+      </block>
+    </view>
+<!-- 产品列表end -->
 <!-- 底部导航 -->
 <view class='footer-nav'>
   <navigator class='nav-item on' url='' hover-class='none'>

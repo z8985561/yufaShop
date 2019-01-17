@@ -1,0 +1,14 @@
+<!--components/header-sale/header-sale.wxml-->
+<navigator class='head-sale-item' hover-class='none' url='{{productData.navUrl}}'>
+  <image src='{{productData.imgUrl}}' mode='widthFix'></image>
+  <view class='fz-30'>{{productData.title}}</view>
+  <view class='fz-28 c9'>{{productData.specDes}}</view>
+  <view class='flex'>
+    <view>
+      <view class='fz-28 cf9721a'>￥{{productData.newPrice}}/{{productData.spec}}</view>
+      <view class='fz-24 text-line c9'>￥{{productData.oldPrice}}/{{productData.spec}}</view>
+    </view>
+    <view class='btn' catchtap='add'>+</view>
+  </view>
+  <image class='icon' src='/img/sale-1.png' mode="widthFix"></image>
+</navigator>

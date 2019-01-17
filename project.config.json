@@ -37,12 +37,37 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
 					"name": "全部菜品",
-					"pathName": "pages/category/category"
+					"pathName": "pages/category/category",
+					"query": ""
+				},
+				{
+					"id": 1,
+					"name": "爆品专区",
+					"pathName": "pages/hot-sale/hot-sale",
+					"query": ""
+				},
+				{
+					"id": 2,
+					"name": "常用清单",
+					"pathName": "pages/detailed-list/detailed-list",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "酒饮专区",
+					"pathName": "pages/beverages/beverages",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "食用油专区",
+					"pathName": "pages/edible-oil/edible-oil",
+					"query": ""
 				}
 			]
 		}

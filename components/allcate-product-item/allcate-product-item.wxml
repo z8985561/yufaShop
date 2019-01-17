@@ -6,9 +6,8 @@
   <view class='center'>
     <!-- 产品标题 -->
     <view class='fz-30'>{{productData.title}}</view>
-    <slot></slot>
     <!-- 购买人数 -->
-    <view class='fz-24 count'  wx:if="{{peopleBuyShow}}">
+    <view class='fz-24 count'>
       <image src='/img/hot.png'></image>
       <text class='cf9721a'>{{productData.peopleBuy}}人已买</text>
     </view>

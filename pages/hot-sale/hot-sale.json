@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "header-sale":"/components/header-sale/header-sale",
+    "category-nav":"/components/category-nav/category-nav",
+    "product-item":"/components/product-item/product-item"
+  },
+  "navigationBarTitleText": "爆品推荐"
+}

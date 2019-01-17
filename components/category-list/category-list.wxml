@@ -7,23 +7,9 @@
         </block>
       </scroll-view>
       <scroll-view class='sub-prod-list' scroll-y  style='height:{{scrollHeight}}px;'>
-      <view>11111111111111</view>
-      <view>11111111111111</view>
-      <view>11111111111111</view>
-      <view>11111111111111</view>
-      <view>11111111111111</view>
-      <view>11111111111111</view>
-      <view>11111111111111</view>
-      <view>11111111111111</view>
-      <view>11111111111111</view>
-      <view>11111111111111</view>
-      <view>11111111111111</view>
-      <view>11111111111111</view>
-      <view>11111111111111</view>
-      <view>11111111111111</view>
-      <view>11111111111111</view>
-      <view>11111111111111</view>
-      <view>11111111111111</view>      
+      <block wx:for="{{item.data[0].data}}" wx:key="index">
+      <product-item productData="{{item}}" peopleBuyShow="{{peopleBuyShow}}" count="{{item.count}}" bind:addEvent='addEventListener' bind:subEvent='subEventListener' bind:blurEvent='blurEventListener'></product-item>
+      </block>
       </scroll-view>
     </view>
   </block>

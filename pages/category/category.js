@@ -4877,14 +4877,39 @@ Page({
         ]
       }]
     }],
-    activeIndex: 0,
-    subActiveIndex:0
+    activeIndex: 0,//控制顶级分类分页
+    subActiveIndex:0,//控制子分类分页
+    peopleBuyShow:false,
   },
   tabEventListener:function(e){
     //console.log(e.detail.index)
     this.setData({
       activeIndex: e.detail.index,
       subActiveIndex:0
+    })
+  },
+  // 监听添加商品事件
+  addEventListener: function (e) {
+    //console.log(e.detail)
+    var addCartCount = this.data.cartListNum + 1;
+    this.setData({
+      cartListNum: addCartCount
+    })
+  },
+  // 监听删除商品事件
+  subEventListener: function (e) {
+    //console.log(e.detail)
+    var subCartCount = this.data.cartListNum - 1;
+    this.setData({
+      cartListNum: subCartCount
+    })
+  },
+  //监听input失去焦点事件
+  blurEventListener: function (e) {
+    //console.log(e.detail.value)
+    var blurCartCount = this.data.cartListNum + e.detail.value;
+    this.setData({
+      cartListNum: blurCartCount
     })
   },
   /**

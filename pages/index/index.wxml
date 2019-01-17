@@ -80,15 +80,15 @@
   <!-- 专区 -->
   <view class='prefecture plr-20 mb-40'>
     <view class='left'>
-      <navigator url='{{prefecture[0]}}.url}}' hover-class='none'>
+      <navigator url='{{prefecture[0].url}}' hover-class='none'>
         <image src='{{prefecture[0].imgUrl}}' mode='widthFix'></image>
       </navigator>
     </view>
     <view class='right'>
-      <navigator url='{{prefecture[1]}}.url}}' hover-class='none'>
+      <navigator url='{{prefecture[1].url}}' hover-class='none'>
         <image src='{{prefecture[1].imgUrl}}' mode='widthFix'></image>
       </navigator>
-      <navigator url='{{prefecture[2]}}.url}}' hover-class='none'>
+      <navigator url='{{prefecture[2].url}}' hover-class='none'>
         <image src='{{prefecture[2].imgUrl}}' mode='widthFix'></image>
       </navigator>
     </view>
@@ -116,7 +116,7 @@
       <block wx:for="{{recProductDataList}}" wx:key="index">
         <view class="weui-tab__content plr-20" hidden="{{activeIndex != index}}" data-count="{{index}}">
           <block wx:for="{{item.data}}" wx:key="{{item.id}}">
-            <product-item productData="{{item}}" count="{{item.count}}" bind:addEvent='addEventListener' bind:subEvent='subEventListener' bind:blurEvent='blurEventListener'></product-item>
+            <product-item productData="{{item}}" count="{{item.count}}" bind:addEvent='addEventListener' bind:subEvent='subEventListener' bind:blurEvent='blurEventListener' peopleBuyShow="{{peopleBuyShow}}"></product-item>
           </block>
         </view>
       </block>

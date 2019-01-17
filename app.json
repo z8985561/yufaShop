@@ -1,7 +1,14 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/category/category"
+    "pages/category/category",
+    "pages/ready-sale/ready-sale",
+    "pages/hot-sale/hot-sale",
+    "pages/meat-poultry/meat-poultry",
+    "pages/beverages/beverages",
+    "pages/edible-oil/edible-oil",
+    "pages/rice/rice",
+    "pages/detailed-list/detailed-list"
   ],
   "window":{
     "backgroundTextStyle":"light",

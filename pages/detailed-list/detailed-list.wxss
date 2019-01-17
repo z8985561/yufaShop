@@ -1,0 +1,73 @@
+/* pages/detailed-list/detailed-list.wxss */
+.top-searchnav{
+  position: fixed;
+  top:0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  height: 80rpx;
+  background-color: #fff;
+  z-index: 999;
+}
+.top-searchnav.on{
+    box-shadow:1px 1px 5px #ddd;
+}
+.nav{
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+}
+.nav view{
+  width: 50%;
+  height: 66rpx;
+  line-height: 66rpx;
+  text-align: center;
+}
+.nav .slider{
+  position: absolute;
+  left: 53rpx;
+  top: 60rpx;
+  width: 80rpx;
+  height: 6rpx;
+  background-color: #0EAF52;
+  border-radius: 3rpx;
+  transition: transform .3s;
+}
+.search{
+  width: 50%;
+}
+.search view{
+  padding: 0 30px;
+  height: 66rpx;
+  line-height: 66rpx;
+  color:#999;
+  background-color: #eee;
+  border-radius: 33rpx;
+}
+.on{
+  color: #000;
+}
+.tab-panel{
+  position: fixed;
+  top: 80rpx;
+  bottom: 100rpx;
+  left: 15rpx;
+  right: 15rpx;
+  overflow-y: scroll;
+}
+.my-detailed{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.my-detailed-nav{
+  height: 80rpx;
+  white-space: nowrap;
+}
+.my-detailed-nav view{
+  display: inline-block;
+  padding: 10rpx;
+}

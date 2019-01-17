@@ -1,25 +1,11 @@
-<!-- 头部搜索区域 -->
-<view class='hd-search hd-bg' hidden='{{showSearch}}'>
-  <navigator class='icon' url='' hover-class='none'>
-    <text class='fa fa-headphones c6'></text>
-  </navigator>
-  <navigator class='search-box' url="" hover-class='none'>
-    <text class='fa fa-search c6'></text>
-    <text class='fz-28 c9'> 火锅丸子8.99折</text>
-  </navigator>
-  <navigator class='icon' url='' hover-class='none'>
-    <text class='fa fa-commenting c6'></text>
-  </navigator>
+<!--pages/rice/rice.wxml-->
+<view class='plr-30 mb-150'>
+  <block wx:for="{{productList.data}}" wx:key="{{item.id}}">
+    <product-item productData="{{item}}" count="{{item.count}}" bind:addEvent='addEventListener' bind:subEvent='subEventListener' bind:blurEvent='blurEventListener' peopleBuyShow="{{peopleBuyShow}}">
+      <view class='fz-28 c9'>茎扁阔而颜色雪白;叶青，面上有许多...</view>
+    </product-item>
+  </block>
 </view>
-<!-- 头部搜索区域end -->
-<view class='mb-80'></view>
-<!-- 分类导航 -->
-<category-nav class="category-wrap" titleList="{{allProductData}}" bind:tabEvent="tabEventListener"></category-nav>
-<!-- 分类导航 -->
-<!-- 展示全部类别产品区域 -->
-<category-list  style='z-index:-1;' allCateDataList="{{allProductData}}" activeIndex="{{activeIndex}}" subActiveIndex="{{subActiveIndex}}" peopleBuyShow="{{peopleBuyShow}}"></category-list>
-<!-- 展示全部类别产品区域 -->
-
 <!-- 底部导航 -->
 <view class='footer-nav'>
   <navigator class='nav-item on' url='' hover-class='none'>
