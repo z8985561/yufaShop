@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "header-sale": "/components/header-sale/header-sale",
+    "product-item": "/components/product-item/product-item"
+  },
+  "navigationBarTitleText": "食用油专区"
+}

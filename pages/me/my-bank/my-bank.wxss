@@ -1,0 +1,36 @@
+/* pages/me/my-bank/my-bank.wxss */
+.bank-head{
+  position: relative;
+}
+.bank-head image{
+  width: 100%;
+}
+.bank-head .bank{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.filtrate image{
+  width: 32rpx;
+  height: 34rpx;
+}
+
+.picker{
+  padding: 6rpx 20rpx;
+  background-color: #F5F5F5;
+}
+.btn{
+  margin-left: 20rpx;
+  width: 82rpx;
+  height: 46rpx;
+  line-height: 46rpx;
+  background-color: #FF893F;
+  border-radius: 23rpx;
+  text-align: center;
+}
+.bank-item{
+  padding: 50rpx 0 50rpx;
+  border-bottom: 1px solid #ddd;
+}

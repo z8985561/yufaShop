@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "category-nav": "/components/category-nav/category-nav",
+    "category-list": "/components/category-list/category-list"
+  },
+  "navigationBarTitleText": "全部类别"
+}

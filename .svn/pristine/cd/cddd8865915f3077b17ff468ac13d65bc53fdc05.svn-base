@@ -8,10 +8,7 @@
     "pages/beverages/beverages",
     "pages/edible-oil/edible-oil",
     "pages/rice/rice",
-    "pages/detailed-list/detailed-list",
-    "pages/me/me",
-    "pages/me/my-bank/my-bank",
-    "pages/me/discount coupon/discount-coupon"
+    "pages/detailed-list/detailed-list"
   ],
   "window":{
     "backgroundTextStyle":"light",

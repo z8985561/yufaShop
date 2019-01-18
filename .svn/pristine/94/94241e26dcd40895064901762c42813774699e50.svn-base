@@ -1,0 +1,16 @@
+<view class="category-list">
+  <block wx:for="{{allCateDataList}}" wx:key="index">
+    <view class='category-list-box' hidden="{{activeIndex != index}}" data-count="{{index}}">
+      <scroll-view class='sub-cate' scroll-y style='height:{{scrollHeight}}px;'>
+        <block wx:for="{{item.data}}" wx:for-item="sCate" wx:key="index">
+          <view id='{{index}}' class='{{subActiveIndex != index ? "":"on"}}' bindtap='tabClick'>{{sCate.cateTitle}}</view>
+        </block>
+      </scroll-view>
+      <scroll-view class='sub-prod-list' scroll-y  style='height:{{scrollHeight}}px;'>
+      <block wx:for="{{item.data[0].data}}" wx:key="index">
+      <product-item productData="{{item}}" peopleBuyShow="{{peopleBuyShow}}" count="{{item.count}}" bind:addEvent='addEventListener' bind:subEvent='subEventListener' bind:blurEvent='blurEventListener'></product-item>
+      </block>
+      </scroll-view>
+    </view>
+  </block>
+</view>

@@ -1,8 +1,7 @@
 /**app.wxss**/
 @import "lib/fontAwesome.wxss";
 @import "lib/weui.wxss";
-/* 字体相关样式 */
-.fw-700{font-weight: 700}
+
 /* 字体大小 */
 .fz-24{font-size: 24rpx;}
 .fz-26{font-size: 26rpx;}
@@ -10,14 +9,12 @@
 .fz-30{font-size: 30rpx;}
 .fz-32{font-size: 32rpx;}
 .fz-34{font-size: 34rpx;}
-.fz-56{font-size: 56rpx;}
 /* 字体颜色 */
 .c0{color:#000;}
 .c3{color:#333;}
 .c6{color:#666;}
 .c9{color:#999;}
 .ca{color:#aaa;}
-.cc{color:#ccc;}
 .cf{color:#fff;}
 .cf9721a{color: #F9721A}
 /* 字体横线 */
@@ -53,34 +50,7 @@ pull-right{
   clear: both;
 }
 
-/* flex布局 */
-.flex{
-  display: flex;
-}
-.flex-jus{
-  justify-content: space-between;
-}
-.flex-center{
-  justify-content: center;
-}
-.flex-start{
-  justify-content: flex-start;
-}
-.flex-end{
-  justify-content: flex-end;
-}
-.flex-align-start{
-  align-items: flex-start;
-}
-.flex-align-end{
-  align-items: flex-end;
-}
-.flex-align-center{
-  align-items: center;
-}
-.flex-warp{
-  flex-wrap: wrap;
-}
+
 /* 底部导航样式 */
 .footer-nav{
   position: fixed;

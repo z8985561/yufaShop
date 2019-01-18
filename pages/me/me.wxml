@@ -1,0 +1,151 @@
+<!--pages/me/me.wxml-->
+<!-- 家庭/个人区域 -->
+<view class='page'>
+  <view class='my-head'>
+    <image class='bg' src='/img/shucai.png' mode='widthFix'></image>
+    <navigator hover-class='none' url=''>
+      <image src='/img/icon-shop.png'></image>
+      <view class='cf ml-20'>家庭/个人</view>
+    </navigator>
+  </view>
+  <!-- 家庭/个人区域end -->
+  <!-- 余额优惠券 -->
+  <view class='plr-30 coupons'>
+    <view>
+      <navigator hover-class='none' url='/pages/me/my-bank/my-bank'>
+        <view class='fz-26 c9'>余额</view>
+        <view class='fz-28 fw-700 cf9721a'>10.00</view>
+      </navigator>
+      <view class='bar'></view>
+      <navigator hover-class='none' ulr=''>
+        <view class='fz-26 c9'>优惠券</view>
+        <view class='fz-28 fw-700 c6'>8</view>
+      </navigator>
+    </view>
+  </view>
+  <!-- 余额优惠券end -->
+  <!-- 我的订单 -->
+  <view class='my-order plr-30  mb-40'>
+    <view class='flex flex-jus flex-align-end  mb-20'>
+      <view class='fz-34'>我的订单</view>
+      <navigator class='fz-26 c9' hover-class='none' url=''>查看全部</navigator>
+    </view>
+    <view class='flex flex-jus'>
+      <navigator hover-class='none' url=''>
+        <image src='/img/icon-1.png' mode='widthFix'></image>
+        <view class='fz-26 c9'>待支付</view>
+        <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;">8</view>
+      </navigator>
+      <navigator hover-class='none' url=''>
+        <image src='/img/icon-2.png' mode='widthFix'></image>
+        <view class='fz-26 c9'>代发货</view>
+        <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;">4</view>
+      </navigator>
+      <navigator hover-class='none' url=''>
+        <image src='/img/icon-3.png' mode='widthFix'></image>
+        <view class='fz-26 c9'>待收货</view>
+        <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;">3</view>
+      </navigator>
+      <navigator hover-class='none' url=''>
+        <image src='/img/icon-4.png' mode='widthFix'></image>
+        <view class='fz-26 c9'>已收货</view>
+        <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;">2</view>
+      </navigator>
+      <navigator hover-class='none' url=''>
+        <image src='/img/icon-5.png' mode='widthFix'></image>
+        <view class='fz-26 c9'>退款/售后</view>
+        <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;">1</view>
+      </navigator>
+    </view>
+  </view>
+  <!-- 我的订单end -->
+  <!-- 在线充值 -->
+  <view class='recharge plr-30 mb-40'>
+    <view class='flex flex-jus flex-align-end  mb-20'>
+      <view class='fz-34'>在线充值</view>
+      <navigator class='fz-26 c9' hover-class='none' url=''>查看全部</navigator>
+    </view>
+    <scroll-view scroll-x class='money mb-20'>
+      <view bindtap='changRechargeMoney' data-money='500'>
+        <image src='/img/500.png'></image>
+        <icon hidden='{{rechargeMoney != 500}}' type="success" size="20" color='rgb(255,255,255)' />
+      </view>
+      <view bindtap='changRechargeMoney' data-money='1000'>
+        <image src='/img/1000.png'></image>
+        <icon hidden='{{rechargeMoney != 1000}}' type="success" size="20" color='rgb(255,255,255)' />
+      </view>
+      <view bindtap='changRechargeMoney' data-money='2000'>
+        <image src='/img/2000.png'></image>
+        <icon hidden='{{rechargeMoney != 2000}}' type="success" size="20" color='rgb(255,255,255)' />
+      </view>
+      <view bindtap='changRechargeMoney' data-money='3000'>
+        <image src='/img/3000.png'></image>
+        <icon hidden='{{rechargeMoney != 3000}}' type="success" size="20" color='rgb(255,255,255)' />
+      </view>
+      <view bindtap='changRechargeMoney' data-money='5000'>
+        <image src='/img/5000.png'></image>
+        <icon hidden='{{rechargeMoney != 5000}}' type="success" size="20" color='rgb(255,255,255)' />
+      </view>
+      <view bindtap='changRechargeMoney' data-money='10000'>
+        <image src='/img/10000.png'></image>
+        <icon hidden='{{rechargeMoney != 10000}}' type="success" size="20" color='rgb(255,255,255)' />
+      </view>
+    </scroll-view>
+    <navigator class='btn fz-34' hover-class='none' url=''>立即充值</navigator>
+  </view>
+  <!-- 在线充值end -->
+  <!-- 常用工具 -->
+  <view class='tool plr-30 mb-40'>
+    <view class='fz-34 mb-20'>常用工具</view>
+    <view class='flex flex-jus'>
+      <navigator class='text-center' hover-class='none' url=''>
+      <image src='/img/icon-6.png'></image>
+      <view class='fz-28 c6'>常用清单</view>
+      </navigator>
+      <navigator class='text-center' hover-class='none' url=''>
+      <image src='/img/icon-7.png'></image>
+      <view class='fz-28 c6'>新品需求</view>
+      </navigator>
+      <navigator class='text-center' hover-class='none' url=''>
+      <image src='/img/icon-8.png'></image>
+      <view class='fz-28 c6'>去开发票</view>
+      </navigator>
+      <navigator class='text-center' hover-class='none' url=''>
+      <image src='/img/icon-9.png'></image>
+      <view class='fz-28 c6'>裕发运费</view>
+      </navigator>
+    </view>
+  </view>
+  <!-- 常用工具end -->
+  <!-- 帮助中心 -->
+  <view class='tool plr-30 mb-150'>
+    <view class='fz-34 mb-20'>帮助中心</view>
+    <view class='flex flex-warp'>
+      <navigator class='text-center' hover-class='none' url=''>
+      <image src='/img/icon-10.png'></image>
+      <view class='fz-28 c6'>常见问题</view>
+      </navigator>
+      <navigator class='text-center' hover-class='none' url=''>
+      <image src='/img/icon-11.png'></image>
+      <view class='fz-28 c6'>服务协议</view>
+      </navigator>
+      <navigator class='text-center' hover-class='none' url=''>
+      <image src='/img/icon-12.png'></image>
+      <view class='fz-28 c6'>在线客服</view>
+      </navigator>
+      <navigator class='text-center' hover-class='none' url=''>
+      <image src='/img/icon-6.png'></image>
+      <view class='fz-28 c6'>售后规则</view>
+      </navigator>
+      <navigator class='text-center' hover-class='none' url=''>
+      <image src='/img/icon-13.png'></image>
+      <view class='fz-28 c6'>申请入驻</view>
+      </navigator>
+      <navigator class='text-center' hover-class='none' url=''>
+      <image src='/img/icon-14.png'></image>
+      <view class='fz-28 c6'>一键拨号</view>
+      </navigator>
+    </view>
+  </view>
+  <!-- 帮助中心end -->
+</view>

@@ -1,0 +1,8 @@
+/* pages/category/category.wxss */
+.category-wrap {
+position:fixed;
+top:80rpx;
+left:0;
+right:0;
+box-shadow:1px 1px 7px #ddd;
+}

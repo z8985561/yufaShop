@@ -1,0 +1,107 @@
+/* pages/me/me.wxss */
+.page{
+  background-color: #f5f5f5;
+  overflow: hidden;
+}
+.my-head{
+  position: relative;
+  width: 100%;
+}
+.my-head .bg{
+  width: 100%;
+}
+.my-head navigator{
+  position: absolute;
+  top: 50%;
+  left: 30rpx;
+  display: flex;
+  align-items: center;
+  transform: translateY(-50%);
+}
+.my-head navigator image{
+  width: 158rpx;
+  height: 158rpx;
+}
+
+.coupons{
+  position: relative;
+  height: 140rpx;
+}
+.coupons > view{
+  position: absolute;
+  height: 150rpx;
+  top: -40rpx;
+  left: 30rpx;
+  right: 30rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 10rpx;
+}
+.coupons .bar{
+  width: 1rpx;
+  height: 114rpx;
+  background-color: #eee;
+}
+.coupons > view navigator{
+  width: 45%;
+  text-align: center;
+}
+.my-order{
+  text-align: center;
+  background-color: #fff;
+}
+.my-order image{
+  display: inline-block;
+  width: 42rpx;
+}
+.my-order navigator{
+  position: relative;
+}
+.recharge{
+  height: 400rpx;
+  background-color: #fff;
+}
+
+.recharge .money{
+  height: 160rpx;
+  white-space: nowrap;
+}
+.money view{
+  position: relative;
+  display: inline-block;
+  margin-right: 20rpx;
+}
+.money image{
+  width: 300rpx;
+  height: 150rpx;
+}
+.money view icon{
+  position: absolute;
+  right: 6rpx;
+  bottom: 20rpx;
+}
+.recharge .btn{
+  margin: 0 auto;
+  width: 620rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border: 1px solid #09B454;
+  border-radius: 10rpx;
+  color: #09B454;
+}
+.tool{
+  min-height: 220rpx;
+  background-color: #fff;
+}
+.tool navigator{
+  width: 25%;
+  margin-bottom: 20rpx;
+}
+.tool image{
+  display: inline-block;
+  width: 80rpx;
+  height: 80rpx;
+}

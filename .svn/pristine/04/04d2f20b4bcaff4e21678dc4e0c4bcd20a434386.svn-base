@@ -1,0 +1,51 @@
+<!-- 分类导航部分 -->
+<category-nav class="cate-nav" titleList="{{hotSaleProduct}}" showAllCateShow="{{true}}" bind:tabEvent="tabEventListener"></category-nav>
+<!-- 分类导航部分end -->
+<!-- 产品列表 -->
+<view class="weui-tab__panel mb-80">
+      <block wx:for="{{hotSaleProduct}}" wx:key="index">
+        <view class="weui-tab__content plr-20" hidden="{{subActiveIndex != index}}" data-count="{{index}}">
+          <block wx:for="{{item.data}}" wx:key="{{item.id}}">
+            <product-item productData="{{item}}" count="{{item.count}}" bind:addEvent='addEventListener' bind:subEvent='subEventListener' bind:blurEvent='blurEventListener' peopleBuyShow="{{peopleBuyShow}}">
+            <view class='fz-28 c9'>茎扁阔而颜色雪白;叶青，面上有许多...</view>
+            </product-item>
+          </block>
+        </view>
+      </block>
+    </view>
+<!-- 产品列表end -->
+<!-- 底部导航 -->
+<view class='footer-nav'>
+  <navigator class='nav-item on' url='' hover-class='none'>
+    <view>
+      <text class='fa fa-home'></text>
+    </view>
+    <view>首页</view>
+  </navigator>
+  <navigator class='nav-item' url='/pages/category/category' hover-class='none'>
+    <view>
+      <text class='fa fa-list-ul'></text>
+    </view>
+    <view>全部菜品</view>
+  </navigator>
+  <navigator class='nav-item' url='' hover-class='none'>
+    <view>
+      <text class='fa fa-file-text-o'></text>
+    </view>
+    <view>常用清单</view>
+  </navigator>
+  <navigator class='nav-item' url='' hover-class='none'>
+    <view style='position:relative'>
+      <text class='fa fa-shopping-cart'></text>
+      <text class="weui-badge" style="position: absolute;top: -20rpx;right: 28rpx;">{{cartListNum}}</text>
+    </view>
+    <view>购物车</view>
+  </navigator>
+  <navigator class='nav-item' url='' hover-class='none'>
+    <view>
+      <text class='fa fa-user'></text>
+    </view>
+    <view>我的</view>
+  </navigator>
+</view>
+<!-- 底部导航end -->

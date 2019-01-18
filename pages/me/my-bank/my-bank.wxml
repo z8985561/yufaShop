@@ -1,0 +1,42 @@
+<!--pages/me/my-bank/my-bank.wxml-->
+<!-- 余额头部 -->
+<view class='bank-head'>
+  <image src='/img/bg-1.png' mode='widthFix'></image>
+  <view class='bank text-center'>
+    <view class='fz-24 cf'>我的余额</view>
+    <view class='fz-56 cf'>298.52元</view>
+  </view>
+</view>
+<!-- 余额头部end -->
+<!-- 余额查询日期筛选 -->
+<view class='filtrate plr-30 flex flex-jus'>
+  <view class='flex flex-align-center'>
+    <image src='/img/icon-15.png'></image>
+    <view class='ml-20 fz-34'>电子账单</view>
+  </view>
+  <view class='flex flex-align-center'>
+    <picker mode="date" value="{{startDate}}" start="2018-01" end="2020-01" fields="month" bindchange="startDateChange">
+      <view class="picker fz-24 c9">{{startDate}}</view>
+    </picker>
+    <view class='fz-24 plr-30'>至</view>
+    <picker mode="date" value="{{endDate}}" start="2018-01" end="2020-01" fields="month" bindchange="endDateChange">
+      <view class="picker fz-24 c9">{{endDate}}</view>
+    </picker>
+    <view class='btn fz-24 cf' bindtap='filtrateDate'>筛选</view>
+  </view>
+</view>
+<scroll-view scroll-y style='height:{{listHeight}}px;' bindscrolltolower="scrollToLower">
+  <view class='plr-30'>
+    <block wx:for="{{bankList}}" wx:key="index">
+      <view class='bank-item flex flex-jus flex-align-center'>
+        <view>
+          <view class='fz-26 c6'>{{item.date}}</view>
+          <view class='fz-24 cc'>{{item.type}}</view>
+        </view>
+        <view wx:if="{{item.money > 0}}" class='fz-28 cf9721a'>+{{item.money}}</view>
+        <view wx:else class='fz-28'>{{item.money}}</view>
+      </view>
+    </block>
+  </view>
+</scroll-view>
+<!-- 余额查询日期筛选 -->

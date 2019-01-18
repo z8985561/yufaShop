@@ -1,0 +1,25 @@
+category-list{
+  position: fixed;
+  top: 166rpx;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+.sub-cate{
+    width: 200rpx;
+}
+.sub-cate view{
+  padding: 20rpx 0;
+  text-align: center;
+  font-size: 32rpx;
+  color: #999;
+}
+.sub-cate .on{
+  color: #333;
+}
+.category-list-box{
+  display: flex;
+}
+.sub-prod-list{
+  flex: 1;
+}
