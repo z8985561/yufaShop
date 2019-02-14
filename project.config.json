@@ -72,8 +72,9 @@
 				{
 					"id": 5,
 					"name": "个人中心优惠券",
-					"pathName": "pages/me/discount coupon/discount-coupon",
-					"query": ""
+					"pathName": "pages/me/all-order/all-order",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

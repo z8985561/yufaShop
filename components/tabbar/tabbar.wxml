@@ -1,0 +1,23 @@
+<!--components/tabbar/tabbar.wxml-->
+<van-tabbar z-index="9999" active="{{ tabActive }}" active-color="#0fb54f" bind:change="onChangeTabbar">
+  <van-tabbar-item>
+    <image slot="icon" src="{{ tabbarIcon.home.normal }}" mode="aspectFit" />
+    <image slot="icon-active" src="{{ tabbarIcon.home.active }}" mode="aspectFit" /> 首页
+  </van-tabbar-item>
+  <van-tabbar-item>
+    <image slot="icon" src="{{ tabbarIcon.cate.normal }}" mode="aspectFit" />
+    <image slot="icon-active" src="{{ tabbarIcon.cate.active }}" mode="aspectFit" /> 全部菜品
+  </van-tabbar-item>
+  <van-tabbar-item>
+    <image slot="icon" src="{{ tabbarIcon.inventory.normal }}" mode="aspectFit" />
+    <image slot="icon-active" src="{{ tabbarIcon.inventory.active }}" mode="aspectFit" /> 常用清单
+  </van-tabbar-item>
+  <van-tabbar-item info="{{cartListNum}}">
+    <image slot="icon" src="{{ tabbarIcon.cart.normal }}" mode="aspectFit" />
+    <image slot="icon-active" src="{{ tabbarIcon.cart.active }}" mode="aspectFit" /> 购物车
+  </van-tabbar-item>
+  <van-tabbar-item>
+    <image slot="icon" src="{{ tabbarIcon.my.normal }}" mode="aspectFit" />
+    <image slot="icon-active" src="{{ tabbarIcon.my.active }}" mode="aspectFit" /> 我的
+  </van-tabbar-item>
+</van-tabbar>

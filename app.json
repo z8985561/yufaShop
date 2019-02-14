@@ -11,7 +11,9 @@
     "pages/detailed-list/detailed-list",
     "pages/me/me",
     "pages/me/my-bank/my-bank",
-    "pages/me/discount coupon/discount-coupon"
+    "pages/me/discount-coupon/discount-coupon",
+    "pages/me/all-order/all-order",
+    "pages/me/order-detail/order-detail"
   ],
   "window":{
     "backgroundTextStyle":"light",

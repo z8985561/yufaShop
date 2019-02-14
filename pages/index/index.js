@@ -9,6 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    //底部导航选中状态索引
+    tabActive:0,
     topMsg: "您的订单已发货", //头部提示消息
     topMsgFlag: false,
     indexBannerList: [{ //banner图连接和图片连接
@@ -20,7 +22,7 @@ Page({
         imgUrl: '/img/index-banner-1.png',
       },
       {
-        navUrl: "#",
+        navUrl: "",
         imgUrl: '/img/index-banner-1.png',
       }
     ],
@@ -90,7 +92,7 @@ Page({
       imgUrl: "/img/index-ad-2.png"
     }],
     countdown: '',
-    endDate2: '2019-01-30 08:00:00',
+    endDate2: '2019-09-30 08:00:00',
     hour: "",
     minute: "",
     sec: "",

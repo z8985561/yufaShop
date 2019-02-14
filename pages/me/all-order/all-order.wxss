@@ -1,0 +1,36 @@
+/* pages/me/all-order/all-order.wxss */
+page{
+  background-color: #f5f5f5;
+}
+.pro-list{
+  position: relative;
+  display: flex;
+}
+.pro-list image{
+  width: 130rpx;
+  margin-left: 20rpx;
+}
+.order-item{
+  margin: 30rpx 0;
+  background-color: #fff;
+}
+.order-item .top{
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx;
+}
+.pro-list van-icon{
+  position: absolute;
+  right: 30rpx;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.bottom{
+  margin:0 20rpx;
+  padding: 20rpx 0;
+  border-top:1px solid #EBEBEB;
+  text-align: right;
+}
+.btn{
+  background-color: #0EAF51;
+}

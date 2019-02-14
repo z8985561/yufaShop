@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    tabActive:1,
     //所有分类产品数据
     allProductData: [{
       cateId: 1,

@@ -1,6 +1,7 @@
 category-list{
   position: fixed;
   top: 166rpx;
+  bottom:100rpx;
   left: 0;
   right: 0;
   width: 100%;

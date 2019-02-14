@@ -17,7 +17,7 @@
         <view class='fz-28 fw-700 cf9721a'>10.00</view>
       </navigator>
       <view class='bar'></view>
-      <navigator hover-class='none' ulr=''>
+      <navigator hover-class='none' url='/pages/me/discount-coupon/discount-coupon'>
         <view class='fz-26 c9'>优惠券</view>
         <view class='fz-28 fw-700 c6'>8</view>
       </navigator>
@@ -28,7 +28,7 @@
   <view class='my-order plr-30  mb-40'>
     <view class='flex flex-jus flex-align-end  mb-20'>
       <view class='fz-34'>我的订单</view>
-      <navigator class='fz-26 c9' hover-class='none' url=''>查看全部</navigator>
+      <navigator class='fz-26 c9' hover-class='none' url='all-order/all-order'>查看全部</navigator>
     </view>
     <view class='flex flex-jus'>
       <navigator hover-class='none' url=''>
