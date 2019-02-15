@@ -8,7 +8,7 @@
     <view class='fz-30'>{{productData.title}}</view>
     <slot></slot>
     <!-- 购买人数 -->
-    <view class='fz-24 count'  wx:if="{{peopleBuyShow}}">
+    <view class='fz-24 count'  wx:if="{{productData.peopleBuyShow}}">
       <image src='/img/hot.png'></image>
       <text class='cf9721a'>{{productData.peopleBuy}}人已买</text>
     </view>
@@ -17,7 +17,7 @@
       <text class='fz-30 cf9721a'>￥{{productData.newPrice}}/{{productData.spec}}</text>
       <text class='fz-24 c9 text-line'>￥{{productData.newPrice}}/{{productData.spec}}</text>
     </view>
-    <view class='fz-28 label'>{{productData.label}}</view>
+    <view class='fz-28 label' wx:if="{{productData.label}}">{{productData.label}}</view>
   </view>
   <view class='right'>
     <view class='plus' catchtap='add' hidden='{{num > 0 ? true : false}}'>+</view>

@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
-const app = getApp()
+var t = getApp(),
+  a = t.requirejs("core");
 var sliderWidth = 37.5; // 需要设置slider的宽度，用于计算中间位置
 
 Page({
@@ -9,8 +10,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    //底部导航选中状态索引
-    tabActive:0,
+    modelShow:true,
+    rownum: 20, // 每行显示的个数=100/rownum  此处默认是每行5个图标
+    search_text: '火锅丸子8.99折',
     topMsg: "您的订单已发货", //头部提示消息
     topMsgFlag: false,
     indexBannerList: [{ //banner图连接和图片连接
@@ -22,14 +24,14 @@ Page({
         imgUrl: '/img/index-banner-1.png',
       },
       {
-        navUrl: "",
+        navUrl: "#",
         imgUrl: '/img/index-banner-1.png',
       }
     ],
     indicatorDots: true,
     autoplay: true,
-    interval: 3000,
-    duration: 1000,
+    interval: 30000,
+    duration: 3000,
     indexNavList: [ //首页导航图片连接跳转连接
       {
         url: "#",
@@ -88,11 +90,11 @@ Page({
       imgUrl: "/img/index-ad-1.png"
     }, {
       id: 2,
-        url: "/pages/meat-poultry/meat-poultry",
+      url: "/pages/meat-poultry/meat-poultry",
       imgUrl: "/img/index-ad-2.png"
     }],
     countdown: '',
-    endDate2: '2019-09-30 08:00:00',
+    endDate2: '2019-02-30 08:00:00',
     hour: "",
     minute: "",
     sec: "",
@@ -197,7 +199,7 @@ Page({
     //推荐产品列表相关数据
     recProductDataList: [{
       cateId: 1,
-      cateTitle:"新鲜蔬菜",
+      cateTitle: "新鲜蔬菜",
       data: [{
           id: 1, //产品id
           navUrl: "#", //产品链接
@@ -209,7 +211,8 @@ Page({
           newPrice: "1.05", //最新价格
           oldPrice: "1.40", //原始价格
           label: "降价", //标签
-          count: 1
+          count: 1,
+          hasOption : 0
         },
         {
           id: 2, //产品id
@@ -476,7 +479,7 @@ Page({
     showCoupons: false, //控制优惠券显示
     showSearchBg: false, //控制顶部搜索背景颜色
     showSearch: false, //控制底部搜索隐藏显示
-    peopleBuyShow:true,//控制展示多少人购买
+    //peopleBuyShow: true, //控制展示多少人购买
   },
   //关闭头部消息事件
   closeTopMsg: function() {
@@ -556,6 +559,13 @@ Page({
       showCoupons: true
     })
   },
+  // 关闭授权窗口
+  // closeWarrant: function(){
+  //   this.setData({
+  //     modelShow: false
+  //   })
+  // },
+
   // 页面滚动事件
   scroll: function(e) {
     //console.log(e.detail.scrollTop)
@@ -591,12 +601,37 @@ Page({
         });
       }
     });
+    
+  },
+  
+  //取消事件
+  _cancelEvent(e) {
+    this.setData({
+      modelShow:!e.detail.isShow
+    })
+  },
+  //确认事件
+  _confirmEvent() {
+    // console.log('你点击了确定');
+  },
+  yy:function(e){
+    var that = this;
+    console.info(e.detail.detail.userInfo);
+    if (e.detail.detail.userInfo){
+      that.onShow();
+      t.getUserInfo();
+      that.setData({
+        modelShow:true
+      })
+    }
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
+    this.warrant = this.selectComponent("#warrant");
+
     //如果有最新消息就显示最新消息
     setTimeout(() => {
       if (this.data.topMsg) {
@@ -607,23 +642,88 @@ Page({
     }, 1000)
     //计算购物车商品数量
     var cartCount = 0;
-    this.data.recProductDataList.forEach(function(a){
-      a.data.forEach(function(b){
-        cartCount += b.count;
-      })
+    this.data.recProductDataList.forEach(function(a) {
+      if(a.data){
+        a.data.forEach(function (b) {
+          cartCount += b.count;
+        })
+      }
     })
     this.setData({
       cartListNum: cartCount
     })
   },
-
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    
+    var that = this;
+    a.get("yufa/shop/get_shopid", {}, function (d) {
+      console.info(d);
+    });
+
+    wx.getSetting({
+      success: function(t) {
+        var a = t.authSetting["scope.userInfo"];
+        if (a != true) {
+          a = false;
+        }
+        that.setData({
+          limits: a
+        }), a || that.setData({
+          modelShow: !0
+        });
+      }
+    });
+
+    wx.getUserInfo({
+      success(res) {
+        t.globalData.userInfo = res.userInfo;
+        that.setData({
+          modelShow: false
+        })
+      },
+      fail(res) {
+        that.setData({
+          modelShow: true
+        })
+      }
+    });
+
+    // 默认首页页面的id是4,固定的,到时上线时看看id是多少
+    a.get("yufa/index", {'id': '4'}, function(d) {
+      console.info(d.title);
+      if (d.error == 0) {
+        that.setData(d);
+        if (d.title) {
+          wx.setNavigationBarTitle({
+            title: d.title
+          });
+        }
+        wx.setNavigationBarColor({
+          frontColor: d.titlebarcolor,
+          backgroundColor: d.titlebarbg
+        });
+        wx.setBackgroundColor({
+          backgroundColor: d.backgroundColor
+        });
+
+      }
+    });
+
 
   },
-
+  // onGotUserInfo: function(e) {
+  //   var that = this;
+  //   console.info(e.detail.userInfo);
+  //   if (e.detail.userInfo){
+  //     that.onShow();
+  //     that.setData({
+  //       modelShow:true
+  //     })
+  //   }
+  // },
   /**
    * 生命周期函数--监听页面隐藏
    */

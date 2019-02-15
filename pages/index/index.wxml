@@ -5,7 +5,7 @@
   </navigator>
   <navigator class='search-box' url="/pages/index/index?name={{}}" hover-class='none'>
     <text class='fa fa-search c6'></text>
-    <text class='fz-28 c9'> 火锅丸子8.99折</text>
+    <text class='fz-28 c9'>{{search_text}} </text>
   </navigator>
   <navigator class='icon' url='' hover-class='none'>
     <text class='fa fa-commenting cf'></text>
@@ -40,9 +40,9 @@
   <!-- 首页导航部分 -->
   <view class='index-nav mb-40'>
     <block wx:for="{{indexNavList}}" wx:key="index">
-      <navigator class='mb-20' url='{{item.url}}' hover-class='none'>
+      <navigator class='mb-20' url='{{item.url}}' hover-class='none' style='width:{{rownum}}%'>
         <image src='{{item.imgUrl}}' mode='widthFix'></image>
-        <view class='fz-28'>{{item.text}}</view>
+        <view class='fz-28' style='color:{{item.color}}'>{{item.text}}</view>
       </navigator>
     </block>
   </view>
@@ -94,13 +94,14 @@
     </view>
   </view>
   <!-- 专区end -->
-  <!-- 广告位1 -->
+  <!-- 广告位2 -->
   <view class='index-ad plr-20 mb-40' wx:if="{{indexAd[1].imgUrl}}">
     <navigator url='{{indexAd[1].url}}' hover-class='none'>
       <image src='{{indexAd[1].imgUrl}}' mode='widthFix'></image>
     </navigator>
   </view>
-  <!-- 广告位1end -->
+  <!-- 广告位2end -->
+
   <!-- 推荐 -->
   <view class='fz-34 plr-20 mb-20'>为您推荐</view>
   <view class="weui-tab">
@@ -116,17 +117,20 @@
       <block wx:for="{{recProductDataList}}" wx:key="index">
         <view class="weui-tab__content plr-20" hidden="{{activeIndex != index}}" data-count="{{index}}">
           <block wx:for="{{item.data}}" wx:key="{{item.id}}">
-            <product-item productData="{{item}}" count="{{item.count}}" bind:addEvent='addEventListener' bind:subEvent='subEventListener' bind:blurEvent='blurEventListener' peopleBuyShow="{{peopleBuyShow}}"></product-item>
+            <product-item productData="{{item}}" count="{{item.count}}" bind:addEvent='addEventListener' bind:subEvent='subEventListener' bind:blurEvent='blurEventListener' peopleBuyShow="{{item.peopleBuyShow}}"></product-item>
           </block>
         </view>
       </block>
     </view>
   </view>
+  
 </scroll-view>
 <!-- 页面主体部分 -->
+
 <!-- 底部导航 -->
 <tabbar active="1"></tabbar>
 <!-- 底部导航end -->
+
 
 <!-- 优惠券 -->
 <view class='coupons' catchtouchmove="move" hidden='{{showCoupons}}' catchtap='closeCoupons'>
@@ -189,3 +193,34 @@
   </view>
 </view>
 <!-- 优惠券 -->
+
+<!-- 用户授权按钮 -->
+<!-- <block wx:if="{{modelShow}}">
+  <view class='coupons' catchtouchmove="move" catchtap=''>
+    <view class='coupons-box' style='height: 30%;'>
+      <view class='cf text-center mb-40'>点击授权自动登录哦</view>      
+      <button type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">
+        授权
+      </button>
+      <view class='coupons-close' catchtap='closeWarrant'>
+        <text class='fa fa-times-circle-o'></text>
+      </view>
+    </view>
+  </view>
+</block> -->
+<!-- 用户授权按钮结束 -->
+
+
+<view class="container" wx:if='{{modelShow}}'>
+    <warrant id='warrant'
+      title='微信授权'
+      content='{{title}} ,申请获得授权'
+      cancelText='取消'
+      confirm='确定'
+      isShow="{{modelShow}}"
+      bind:cancelEvent="_cancelEvent"
+      bind:confirmEvent="_confirmEvent"
+      bind:uu="yy"
+      >
+    </warrant>
+</view>

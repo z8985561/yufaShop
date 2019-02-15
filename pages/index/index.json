@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "product-item": "/components/product-item/product-item",
+    "warrant": "/components/warrant/warrant",
     "tabbar":"/components/tabbar/tabbar"
   },
   "navigationBarBackgroundColor": "#ffffff"

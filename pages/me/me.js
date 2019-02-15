@@ -1,5 +1,8 @@
 // pages/me/me.js
+var t = getApp(),
+  a = t.requirejs("core");
 Page({
+  modelShow: true,
 
   /**
    * 页面的初始数据
@@ -32,7 +35,58 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var that = this;
 
+    wx.getSetting({
+      success: function (t) {
+        var a = t.authSetting["scope.userInfo"];
+        if (a != true) {
+          a = false;
+        }
+        that.setData({
+          limits: a
+        }), a || that.setData({
+          modelShow: !0
+        });
+      }
+    });
+    
+
+    wx.getUserInfo({
+      success(res) {
+        t.globalData.userInfo = res.userInfo;
+        console.info("获取到了用户信息,");
+        t.setCache
+        a.get("yufa/index", { 'id': '4' }, function (d) {
+          console.info(d)
+        });
+        that.setData({
+          modelShow: false
+        })
+      },
+      fail(res) {
+        console.info("没有获取到用户信息")
+        that.setData({
+          modelShow: true
+        })
+      }
+    });
+
+  },
+  //确认事件
+  _confirmEvent() {
+    // console.log('你点击了确定');
+  },
+  yy: function (e) {
+    var that = this;
+    console.info(e.detail.detail.userInfo);
+    if (e.detail.detail.userInfo) {
+      that.onShow();
+      t.getUserInfo();
+      that.setData({
+        modelShow: true
+      })
+    }
   },
 
   /**
@@ -68,5 +122,25 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  
+  // 取消事件
+  _cancelEvent(e){
+    this.onShow();
+  },
+  //确认事件
+  _confirmEvent() {
+    // console.log('你点击了确定');
+  },
+  yy: function (e) {
+    var that = this;
+    console.info(e.detail.detail.userInfo);
+    if (e.detail.detail.userInfo) {
+      that.onShow();
+      t.getUserInfo();
+      that.setData({
+        modelShow: true
+      })
+    }
+  },
 })
