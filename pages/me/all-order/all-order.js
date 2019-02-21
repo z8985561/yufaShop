@@ -1,4 +1,8 @@
 // pages/me/all-order/all-order.js
+var e = getApp(),
+  t = e.requirejs("core"),
+  r = e.requirejs("jquery");
+
 Page({
 
   /**
@@ -6,7 +10,9 @@ Page({
    */
   data: {
     active:0,
-    sHeight:0
+    sHeight:0,
+    // 全部订单数据
+    list : [],
   },
   //切换导航事件
   onChange(e){
@@ -44,6 +50,10 @@ Page({
         })
       },
     })
+    console.log(options)
+    this.setData({
+      active: options.active
+    })
   },
 
   /**
@@ -57,7 +67,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this;
+    t.get("yufa/order/get_list", {}, function (d) {
+      that.setData(d);
+      console.info(d);
+    });
   },
 
   /**

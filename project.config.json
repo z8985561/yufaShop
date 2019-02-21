@@ -13,12 +13,12 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.4.4",
-	"appid": "wx32b12b26bbfd1943",
+	"appid": "wx84da2d3882480da9",
 	"projectname": "meicai",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
-	"isGameTourist": false,
+	"scripts": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -33,11 +33,10 @@
 			"list": []
 		},
 		"game": {
-			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
-			"current": 7,
+			"current": 5,
 			"list": [
 				{
 					"id": -1,
@@ -71,8 +70,8 @@
 				},
 				{
 					"id": 5,
-					"name": "个人中心优惠券",
-					"pathName": "pages/me/all-order/all-order",
+					"name": "个人中心-充值",
+					"pathName": "pages/me/recharge/recharge",
 					"query": "",
 					"scene": null
 				},
@@ -85,7 +84,8 @@
 				{
 					"id": -1,
 					"name": "首页",
-					"pathName": "pages/index/index"
+					"pathName": "pages/index/index",
+					"query": ""
 				}
 			]
 		}

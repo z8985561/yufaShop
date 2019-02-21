@@ -182,10 +182,10 @@ App({
   },
   globalData: {
     appid: "wx32b12b26bbfd1943",
-    // api: "https://s100.kemanduo.cc/app/ewei_shopv2_api.php?i=4",
-    // approot: "https://s100.kemanduo.cc/addons/ewei_shopv2/",
-    api: "http://www.yufa.com/app/ewei_shopv2_api.php?i=4",
-    approot: "http://www.yufa.com/addons/ewei_shopv2/",
+    api: "http://yufa.guangzhoubaidu.com/app/ewei_shopv2_api.php?i=4",
+    approot: "http://yufa.guangzhoubaidu.com/addons/ewei_shopv2/",
+    // api: "http://www.yufa.com/app/ewei_shopv2_api.php?i=4",
+    // approot: "http://www.yufa.com/addons/ewei_shopv2/",
     
     userInfo: null,
   }

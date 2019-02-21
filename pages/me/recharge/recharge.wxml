@@ -1,0 +1,29 @@
+<!--pages/me/recharge/recharge.wxml-->
+<view class='p-30'>
+  <block wx:for="{{moneyList}}" wx:key="index">
+    <image class='money-pc' src='{{item.imgUrl}}' mode='widthFix' hidden='{{active != item.id}}'></image>
+  </block>
+</view>
+<view class='plr-20 change-money'>
+<block wx:for="{{moneyList}}" wx:key="index">
+  <view class='{{active == item.id ? "on":"" }}' data-id="{{item.id}}" data-money='{{item.money}}' bindtap='onChangeMoney'>
+    <view>￥{{item.money}}</view>
+    <view class='fz-24 c9'>直充</view>
+  </view>
+</block>
+</view>
+<view class='p-30'>
+  <view class='fz-34'>充值卡购卡说明</view>
+  <view class='fz-24 c9'>1.充值面额：10000元、5000元、3000元、2000元、1000元、500元；</view>
+  <view class='fz-24 c9'>2.购卡充值成功后，不支持提现，除非法律另有规定；</view>
+  <view class='fz-24 c9'>3.使用方式：此充值卡在裕发副食品商城消费视同于现金结算，在结算时候选择“充值卡支付即可”</view>
+</view>
+
+<view class='p-30'>
+  <view class='pay-btn' bindtap='onPay'>支付{{money}}元</view>
+</view>
+
+                            
+
+
+                        

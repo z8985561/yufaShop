@@ -12,6 +12,7 @@
       </view>
       <view class="weui-tab__panel plr-30">
         <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+          
           <block wx:for="{{coupon[0].data}}" wx:key="index">
             <view class='coupon-item'>
               <view class='top'>
@@ -32,8 +33,10 @@
               </view>
             </view>
           </block>
+
         </view>
         <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+          
           <block wx:for="{{coupon[1].data}}" wx:key="index">
             <view class='coupon-item'>
               <view class='top'>
@@ -54,8 +57,10 @@
               </view>
             </view>
           </block>
+
         </view>
         <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
+          
           <block wx:for="{{coupon[2].data}}" wx:key="index">
             <view class='coupon-item'>
               <view class='top'>
@@ -76,6 +81,7 @@
               </view>
             </view>
           </block>
+          
         </view>
       </view>
     </view>

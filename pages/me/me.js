@@ -1,14 +1,66 @@
 // pages/me/me.js
-var t = getApp(),
-  a = t.requirejs("core");
+var e = getApp(),
+  t = e.requirejs("core"),
+  a = e.requirejs("wxParse/wxParse"),
+  i = e.requirejs("biz/diypage"),
+  r = e.requirejs("jquery");
+
+
+
 Page({
-  modelShow: true,
+  
 
   /**
    * 页面的初始数据
    */
   data: {
-    rechargeMoney:500
+    rechargeMoney:5000,
+    active:2,
+    modelShow: false,
+    nickname: '家庭/个人',
+    avatar: '/img/icon-shop.png',
+    moneytext: '余额',
+    credit2: '10.01',
+    statics : {
+      coupon : 7, // 优惠券
+      order_0: 7, // 待支付
+      order_1: 7, // 待发货
+      order_2: 7, // 待收货
+      order_3: 7, // 后台没写,这个可以填入[已收货]
+      order_4: 7, // 退换货
+    },
+    moneyList: [
+      {
+        id: 1,
+        money: 10000,
+        imgUrl: '/img/10000.png'
+      },
+      {
+        id: 2,
+        money: 5000,
+        imgUrl: '/img/5000.png'
+      },
+      {
+        id: 3,
+        money: 3000,
+        imgUrl: '/img/3000.png',
+      },
+      {
+        id: 4,
+        money: 2000,
+        imgUrl: '/img/2000.png',
+      },
+      {
+        id: 5,
+        money: 1000,
+        imgUrl: '/img/1000.png',
+      },
+      {
+        id: 6,
+        money: 500,
+        imgUrl: '/img/500.png',
+      },
+    ]
   },
 
   /**
@@ -16,12 +68,54 @@ Page({
    */
   onLoad: function (options) {
 
+    e.checkAccount();
+    var that = this;
+    // wx.getSystemInfo({
+    //   success: function (res) {
+    //     that.setData({
+    //       sliderLeft: (res.windowWidth / that.data.recProductDataList.length - sliderWidth) / 2,
+    //       sliderOffset: res.windowWidth / that.data.recProductDataList.length * that.data.activeIndex
+    //     });
+    //   }
+    // });
+
+    // wx.getSetting({
+    //   success: function (t) {
+    //     var a = t.authSetting["scope.userInfo"];
+    //     if (a != true) {
+    //       a = false;
+    //     }
+    //     that.setData({
+    //       limits: a
+    //     }), a || that.setData({
+    //       modelShow: !1
+    //     });
+    //   }
+    // });
+
+    // wx.getUserInfo({
+    //   success(res) {
+    //     e.globalData.userInfo = res.rawData;
+    //     that.setData({
+    //       modelShow: !1
+    //     })
+    //   },
+    //   fail(res) {
+    //     that.setData({
+    //       modelShow: !0
+    //     })
+    //   }
+    // });
+
+
+
   },
   // 选择充值金额
   changRechargeMoney:function(e){
     //console.log(e.currentTarget.dataset.money)
     this.setData({
-      rechargeMoney: e.currentTarget.dataset.money
+      rechargeMoney: e.currentTarget.dataset.money,
+      active: e.currentTarget.dataset.id
     })
   },
   /**
@@ -30,63 +124,58 @@ Page({
   onReady: function () {
 
   },
+  getInfo: function () {
+    var e = this;
+    t.get("yufa/me/index", {}, function (t) {
+      if (0 != t.error) {
+        e.setData({
+          modelShow: !0
+        })
+      } else {
+        if (t.notsatisfygrade) {
+          wx.redirectTo({
+            url: t.jumpUrl,
+          })
+        }
+        // 获取用户成功,设置页面数据
+        console.info(t);
+        e.setData(t);
+        // e.setData({
+        //   modelShow: !1,
+        //   nickname: t.nickname,
+        //   member: t,
+        //   show: !0,
+        //   background: t.background ? t.background : "#ff5555",
+        //   customer: t.customer,
+        //   customercolor: t.customercolor,
+        //   phone: t.phone,
+        //   phonecolor: t.phonecolor,
+        //   phonenumber: t.phonenumber,
+        //   // iscycelbuy: t.iscycelbuy,
+        //   bargain: t.bargain
+        // });
+        //a.wxParse("wxParseData", "html", t.copyright, e, "5");
+      }
+    });
+  },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var that = this;
-
+    // this.getInfo();
+    var e = this;
     wx.getSetting({
-      success: function (t) {
-        var a = t.authSetting["scope.userInfo"];
-        if (a != true) {
-          a = false;
-        }
-        that.setData({
-          limits: a
-        }), a || that.setData({
+      success: function (s) {
+        var a = s.authSetting["scope.userInfo"];
+        a && e.getInfo();
+        e.setData({
+          // limits: a
+        }), a || e.setData({
           modelShow: !0
         });
       }
     });
-    
-
-    wx.getUserInfo({
-      success(res) {
-        t.globalData.userInfo = res.userInfo;
-        console.info("获取到了用户信息,");
-        t.setCache
-        a.get("yufa/index", { 'id': '4' }, function (d) {
-          console.info(d)
-        });
-        that.setData({
-          modelShow: false
-        })
-      },
-      fail(res) {
-        console.info("没有获取到用户信息")
-        that.setData({
-          modelShow: true
-        })
-      }
-    });
-
-  },
-  //确认事件
-  _confirmEvent() {
-    // console.log('你点击了确定');
-  },
-  yy: function (e) {
-    var that = this;
-    console.info(e.detail.detail.userInfo);
-    if (e.detail.detail.userInfo) {
-      that.onShow();
-      t.getUserInfo();
-      that.setData({
-        modelShow: true
-      })
-    }
   },
 
   /**
@@ -132,15 +221,12 @@ Page({
   _confirmEvent() {
     // console.log('你点击了确定');
   },
-  yy: function (e) {
+  yy: function (a) {
     var that = this;
-    console.info(e.detail.detail.userInfo);
-    if (e.detail.detail.userInfo) {
-      that.onShow();
-      t.getUserInfo();
-      that.setData({
-        modelShow: true
-      })
+    if (a.detail.detail.userInfo) {
+      e.getUserInfo(function () {
+        that.onShow();
+      });
     }
   },
 })

@@ -13,7 +13,12 @@
     "pages/me/my-bank/my-bank",
     "pages/me/discount-coupon/discount-coupon",
     "pages/me/all-order/all-order",
-    "pages/me/order-detail/order-detail"
+    "pages/me/order-detail/order-detail",
+    "pages/me/help/question",
+    "pages/me/help/agreement",
+    "pages/me/help/agreement-detail",
+    "pages/me/help/rule",
+    "pages/me/recharge/recharge"
   ],
   "window":{
     "backgroundTextStyle":"light",

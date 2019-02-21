@@ -10,6 +10,7 @@
 .fz-30{font-size: 30rpx;}
 .fz-32{font-size: 32rpx;}
 .fz-34{font-size: 34rpx;}
+.fz-40{font-size: 40rpx;}
 .fz-56{font-size: 56rpx;}
 /* 字体颜色 */
 .c0{color:#000;}

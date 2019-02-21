@@ -55,7 +55,7 @@
   </view>
   <!-- 广告位1end -->
   <!-- 超级秒杀 -->
-  <view class='seckill plr-20 mb-40'>
+  <view class='seckill plr-20 mb-40' wx:if="{{showSeckill}}">
     <image class='seckill-time mb-20' src='/img/seckill.png' mode='widthFix'>
       <view class='fz-30'>
         距8点场结束还剩
@@ -133,58 +133,31 @@
 
 
 <!-- 优惠券 -->
-<view class='coupons' catchtouchmove="move" hidden='{{showCoupons}}' catchtap='closeCoupons'>
+<view class='coupons' catchtouchmove="move" hidden='{{showCoupons}}' catchtap='closeCoupons' wx:if="{{couponlist.length!=0}}">
   <view class='coupons-box'>
     <view class='cf text-center mb-40'>你的专属优惠券</view>
     <scroll-view scroll-y style="height: 65%;" class='coupons-list mb-40'>
-      <navigator class='coupons-item mb-40'>
-        <view class='left'>
-          <text>￥6</text>
-        </view>
-        <view class='center'>
-          <view class='fz-34'>通用指定品类可用</view>
-          <view class='fz-28 c9'>12.29 23:00前可用</view>
-        </view>
-        <view class='right'>
-          <view class='cf'>立即使用</view>
-        </view>
-      </navigator>
-      <navigator class='coupons-item mb-40'>
-        <view class='left'>
-          <text>￥6</text>
-        </view>
-        <view class='center'>
-          <view class='fz-34'>通用指定品类可用</view>
-          <view class='fz-28 c9'>12.29 23:00前可用</view>
-        </view>
-        <view class='right'>
-          <view class='cf'>立即使用</view>
-        </view>
-      </navigator>
-      <navigator class='coupons-item mb-40'>
-        <view class='left'>
-          <text>￥6</text>
-        </view>
-        <view class='center'>
-          <view class='fz-34'>通用指定品类可用</view>
-          <view class='fz-28 c9'>12.29 23:00前可用</view>
-        </view>
-        <view class='right'>
-          <view class='cf'>立即使用</view>
-        </view>
-      </navigator>
-      <navigator class='coupons-item mb-40'>
-        <view class='left'>
-          <text>￥6</text>
-        </view>
-        <view class='center'>
-          <view class='fz-34'>通用指定品类可用</view>
-          <view class='fz-28 c9'>12.29 23:00前可用</view>
-        </view>
-        <view class='right'>
-          <view class='cf'>立即使用</view>
-        </view>
-      </navigator>
+
+      <block wx:for="{{couponlist}}" wx:key="index">
+        <navigator class='coupons-item mb-40'>
+          <view class='left'>
+            <block wx:if="{{!item.discount}}">
+            <text>￥{{item.deduct}}</text>
+            </block>
+            <block wx:else>
+            <text>{{item.discount}}折</text>
+            </block>
+          </view>
+          <view class='center'>
+            <view class='fz-34'>{{item.couponname}}</view>
+            <view class='fz-28 c9'>{{item.usestr}}</view>
+          </view>
+          <view class='right'>
+            <view class='cf'>立即领取</view>
+          </view>
+        </navigator>
+      </block>
+
     </scroll-view>
     <navigator url='#' hover-class='none' class='cf text-center'>查看优惠券 ></navigator>
     <view class='coupons-close' catchtap='closeCoupons'>

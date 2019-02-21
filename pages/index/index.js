@@ -10,6 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    couponlist: [],
     modelShow:true,
     rownum: 20, // 每行显示的个数=100/rownum  此处默认是每行5个图标
     search_text: '火锅丸子8.99折',
@@ -479,6 +480,7 @@ Page({
     showCoupons: false, //控制优惠券显示
     showSearchBg: false, //控制顶部搜索背景颜色
     showSearch: false, //控制底部搜索隐藏显示
+    showSeckill : false, // 控制秒杀区显示
     //peopleBuyShow: true, //控制展示多少人购买
   },
   //关闭头部消息事件
@@ -659,16 +661,14 @@ Page({
   onShow: function() {
     
     var that = this;
-    a.get("yufa/shop/get_shopid", {}, function (d) {
-      console.info(d);
-    });
+    // a.get("yufa/shop/get_shopid", {}, function (d) {
+    //   console.info(d);
+    // });
 
     wx.getSetting({
       success: function(t) {
         var a = t.authSetting["scope.userInfo"];
-        if (a != true) {
-          a = false;
-        }
+      
         that.setData({
           limits: a
         }), a || that.setData({
@@ -710,6 +710,11 @@ Page({
         });
 
       }
+    });
+
+    a.get("yufa.coupon.index.getlist", { 'id': '4' }, function (d) {
+      that.setData(d);
+      console.info(d);
     });
 
 

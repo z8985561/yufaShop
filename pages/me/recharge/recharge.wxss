@@ -1,0 +1,53 @@
+/* pages/me/recharge/recharge.wxss */
+.money-pc{
+  display: block;
+  margin: 0 auto;
+  width: 640rpx;
+}
+.change-money{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.change-money > view{
+  margin-bottom: 30rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 220rpx;
+  height: 204rpx;
+  border-radius: 10rpx;
+  border: 1px solid #ccc;
+}
+.change-money > view view:first-child{
+  font-size: 19px;
+  color: #F54945;
+  font-weight: 700;
+}
+.change-money > view.on{
+  border-color: #B7AF5A;
+}
+.change-money > view.on view:first-child{
+  font-size: 19px;
+  color: #C8A264;
+  font-weight: 700;
+}
+.change-money > view.on view:last-child{
+  width: 70rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  color: #7C4300;
+  text-align: center;
+  background-color: #F6E1AC;
+  border-top-right-radius: 10rpx;
+  border-bottom-left-radius: 10rpx;
+}
+.pay-btn{
+  height: 47px;
+  line-height: 47px;
+  background: linear-gradient(to left,#0EAF51,#10CE5F);
+  border-radius: 10rpx;
+  color: #fff;
+  text-align: center;
+}

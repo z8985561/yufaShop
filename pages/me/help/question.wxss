@@ -1,0 +1,20 @@
+/* pages/me/help/question.wxss */
+.question-list{
+  padding-bottom: 20px;
+}
+.question-list .title{
+  position: relative;
+  padding: 0 20rpx;
+  height: 40px;
+  line-height: 40px;
+  background-color: #F5F5F5;
+  font-size: 16px;
+  color: #333;
+}
+.question-list navigator{
+  padding: 0 20rpx;
+  height: 35px;
+  line-height: 35px;
+  color: #666;
+  font-size: 13px;
+}

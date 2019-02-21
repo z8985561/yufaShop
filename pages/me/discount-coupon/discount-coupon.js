@@ -1,4 +1,6 @@
 // pages/me/discount coupon/discount-coupon.js
+var t = getApp(),
+  a = t.requirejs("core");
 var sliderWidth = 96; // 需要设置slider的宽度，用于计算中间位置
 
 Page({
@@ -98,6 +100,13 @@ Page({
         });
       }
     });
+  },
+  onShow : function(){
+    var that = this;
+    a.get("yufa/coupon/my/getlist", {}, function (d) {
+      that.setData(d);
+      console.info(d);
+    })
   },
   tabClick: function(e) {
     this.setData({
