@@ -110,7 +110,8 @@
     <view class='fz-26 right'>2018-12-02  7:00-11：00</view>
   </view>
 </view>
-<view class='flex flex-end' style=''>
-  <van-button round type="green" size="normal">退款/售后</van-button>
+<view class='flex flex-end' style='background-color:#fff;'>
+  <van-button round type="default" size="normal">退款/售后</van-button>
+  <text class='cf'>1</text>
   <van-button round type="default" size="normal">再来一单</van-button>
 </view>

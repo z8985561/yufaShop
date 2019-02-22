@@ -18,7 +18,11 @@
     "pages/me/help/agreement",
     "pages/me/help/agreement-detail",
     "pages/me/help/rule",
-    "pages/me/recharge/recharge"
+    "pages/me/recharge/recharge",
+    "pages/me/add-demand/add-demand",
+    "pages/me/invoice/invoice",
+    "pages/me/settled/settled",
+    "pages/me/comment/comment"
   ],
   "window":{
     "backgroundTextStyle":"light",

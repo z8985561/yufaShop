@@ -21,6 +21,7 @@ Page({
     avatar: '/img/icon-shop.png',
     moneytext: '余额',
     credit2: '10.01',
+    phone:"13800008888",
     statics : {
       coupon : 7, // 优惠券
       order_0: 7, // 待支付
@@ -229,4 +230,10 @@ Page({
       });
     }
   },
+  // 一键拨号
+  makePhoneCall(){
+    wx.makePhoneCall({
+      phoneNumber: this.data.phone
+    })
+  }
 })

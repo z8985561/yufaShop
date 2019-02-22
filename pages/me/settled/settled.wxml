@@ -1,0 +1,42 @@
+<!--pages/me/settled/settled.wxml-->
+<van-cell-group custom-class="mb-40">
+  <van-field required value="{{ showName }}" label="店铺名称" placeholder="请输入门店的店面（必填）" border="{{ true }}" bind:change="onChange" />
+  <van-field required value="{{ userName }}" label="联系人" placeholder="请输入联系人" border="{{ true }}" bind:change="onChange" />
+  <van-field required value="{{ phoneNum }}" label="联系电话" placeholder="请输入联系电话" border="{{ true }}" bind:change="onChange" />
+  <van-field value="{{ wechat }}" label="微信号" placeholder="请输入微信号" border="{{ true }}" bind:change="onChange" />
+  <van-field required value="{{ adress }}" label="详细地址" placeholder="请输入详细地址" border="{{ true }}" bind:change="onChange" />
+</van-cell-group>
+<view class='plr-20 mb-20'>
+  <view class='fz-28 c6 mb-20'>上传证件照</view>
+  <view class='flex flex-jus'>
+    <view bindtap='chooseImage' data-name="shopHeader">
+    <image class='up-pic' src='{{shopHeader}}' wx:if="{{shopHeader}}"></image>
+      <view class='flex flex-column flex-center flex-align-center up-pic' wx:if="{{!shopHeader}}">
+        <image class='icon' src='/img/icon-camera.png' mode='widthFix'></image>
+        <text class='fz-26 cc'>上传门店/门头照片</text>
+      </view>
+    </view>
+    <view bindtap='chooseImage' data-name="businessLicense">
+    <image class='up-pic' src='{{businessLicense}}' wx:if="{{businessLicense}}"></image>
+      <view class='flex flex-column flex-center flex-align-center up-pic' wx:if="{{!businessLicense}}">
+        <image class='icon' src='/img/icon-camera.png' mode='widthFix'></image>
+        <text class='fz-26 cc'>上传工商执照照片</text>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='plr-20 mb-100'>
+  <view class='fz-28 c6 mb-20'>上传店铺照片</view>
+  <view class='flex flex-jus'>
+    <view bindtap='chooseImage' data-name="shopPicUrl">
+      <image class='up-pic' src='{{shopPicUrl}}' wx:if="{{shopPicUrl}}"></image>
+      <view class='flex flex-column flex-center flex-align-center up-pic' wx:if="{{!shopPicUrl}}">
+        <image class='icon' src='/img/icon-camera.png' mode='widthFix'></image>
+        <text class='fz-26 cc'>上传店铺照片</text>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='p-30'>
+  <view class='btn-big' bindtap='sumbit'>提交申请</view>
+</view>

@@ -1,0 +1,7 @@
+/* pages/me/add-demand/add-demand.wxss */
+.text-left{
+  text-align: left !important;
+}
+.c0{
+  color: #000 !important;
+}

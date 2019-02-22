@@ -1,4 +1,5 @@
 // pages/me/all-order/all-order.js
+import Dialog from '../../../vant-ui/dialog/dialog';
 var e = getApp(),
   t = e.requirejs("core"),
   r = e.requirejs("jquery");
@@ -22,21 +23,40 @@ Page({
   },
   //确认收货事件
   confirmReceipt(e){
-    console.log(e)
+    console.log(e);
+    Dialog.confirm({
+      title: '确认收货？',
+      message: '确认收货后，交易金额将直接打到对方的账号。'
+    }).then(() => {
+      console.log("确认收货！")
+    }).catch(() => {
+      // on cancel
+    });
+  },
+  // 评价事件
+  onComment(){
+    wx.navigateTo({
+      url: '../comment/comment',
+    })
   },
   //取消订单事件
   cancelOrder(e){
-    wx.showModal({
+    Dialog.confirm({
       title: '提示',
-      content: '取消可能会错过某些优惠券，确定要取消吗？',
-      success(res) {
-        if (res.confirm) {
-          console.log('用户点击确定')
-        } else if (res.cancel) {
-          console.log('用户点击取消')
-        }
-      }
-    })
+      message: '取消可能会错过某些优惠券，确定要取消吗？'
+    }).then(() => {
+      console.log("确认取消订单")
+    }).catch(() => {
+      // on cancel
+    });
+  },
+  //去支付事件
+  toPay(){
+
+  },
+  //再次下单事件
+  anotherList(){
+    
   },
   /**
    * 生命周期函数--监听页面加载

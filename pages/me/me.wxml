@@ -84,7 +84,7 @@
         <image src='/img/icon-6.png'></image>
         <view class='fz-28 c6'>常用清单</view>
       </navigator>
-      <navigator class='text-center' hover-class='none' url=''>
+      <navigator class='text-center' hover-class='none' url='add-demand/add-demand'>
         <image src='/img/icon-7.png'></image>
         <view class='fz-28 c6'>新品需求</view>
       </navigator>
@@ -119,11 +119,11 @@
         <image src='/img/icon-6.png'></image>
         <view class='fz-28 c6'>售后规则</view>
       </navigator>
-      <navigator class='text-center' hover-class='none' url=''>
+      <navigator class='text-center' hover-class='none' url='/pages/me/settled/settled'>
         <image src='/img/icon-13.png'></image>
         <view class='fz-28 c6'>申请入驻</view>
       </navigator>
-      <navigator class='text-center' hover-class='none' url=''>
+      <navigator bindtap='makePhoneCall' class='text-center' hover-class='none' url=''>
         <image src='/img/icon-14.png'></image>
         <view class='fz-28 c6'>一键拨号</view>
       </navigator>

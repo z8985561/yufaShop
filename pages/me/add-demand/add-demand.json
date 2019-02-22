@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "van-field": "/vant-ui/field/index",
+    "van-picker": "/vant-ui/picker/index",
+    "van-cell": "/vant-ui/cell/index",
+    "van-cell-group": "/vant-ui/cell-group/index"
+  },
+  "navigationBarTitleText": "添加新品信息"
+}

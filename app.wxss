@@ -60,6 +60,9 @@ pull-right{
 .flex{
   display: flex;
 }
+.flex-column{
+  flex-direction: column;
+}
 .flex-jus{
   justify-content: space-between;
 }
@@ -143,4 +146,13 @@ pull-right{
   padding-left: 20rpx;
   background-color: #eee;
   border-radius: 10rpx;
+}
+/* 按钮样式 */
+.btn-big{
+  height: 47px;
+  line-height: 47px;
+  background: linear-gradient(to left,#0EAF51,#10CE5F);
+  border-radius: 10rpx;
+  color: #fff;
+  text-align: center;
 }

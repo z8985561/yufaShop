@@ -3,7 +3,7 @@
   <van-tab title-style="color:{{active == 0 ? '#0EAF51':'#AFAFAF'}};" title="全部订单">
     <scroll-view scroll-y style='height:{{sHeight}}px'>
       
-      <navigator class='order-item' hover-class='none'>
+      <navigator class='order-item' hover-class='none' url='../order-detail/order-detail'>
         <view class='top'>
           <text class='fz-26 c9'>下单时间：2019-02-12 17:34:51</text>
           <text class='fz-28 c0eaf51'>待收货</text>
@@ -25,7 +25,7 @@
         </view>
       </navigator>
 
-      <navigator class='order-item' hover-class='none'>
+      <navigator class='order-item' hover-class='none' url='../order-detail/order-detail'>
         <view class='top'>
           <text class='fz-26 c9'>下单时间：201902-12 17:34:51</text>
           <text class='fz-28 c0eaf51'>待支付</text>
@@ -43,10 +43,10 @@
         </view>
         <view class='bottom' catchtap='fn'>
           <van-button bind:click="cancelOrder" round type="default" size='small'>取消订单</van-button>
-          <van-button id='111' data-url="aaaa" catch:click="confirmReceipt" class='ml-20' round type="green" size='small'>去付款</van-button>
+          <van-button id='111' data-url="aaaa" catch:click="toPay" class='ml-20' round type="green" size='small'>去付款</van-button>
         </view>
       </navigator>
-      <navigator class='order-item' hover-class='none'>
+      <navigator class='order-item' hover-class='none' url='../order-detail/order-detail'>
         <view class='top'>
           <text class='fz-26 c9'>下单时间：201902-12 17:34:51</text>
           <text class='fz-28 c0eaf51'>待发货</text>
@@ -67,7 +67,7 @@
           <van-button id='111' data-url="aaaa" catch:click="confirmReceipt" class='ml-20' round type="green" size='small'>补货</van-button>
         </view>
       </navigator>
-      <navigator class='order-item' hover-class='none'>
+      <navigator class='order-item' hover-class='none' url='../order-detail/order-detail'>
         <view class='top'>
           <text class='fz-26 c9'>下单时间：201902-12 17:34:51</text>
           <text class='fz-28 c0eaf51'>待评论</text>
@@ -85,10 +85,10 @@
         </view>
         <view class='bottom' catchtap='fn'>
           <van-button bind:click="" round type="default" size='small'>退款/售后</van-button>
-          <van-button id='111' data-url="aaaa" catch:click="confirmReceipt" class='ml-20' round type="green" size='small'>去评论</van-button>
+          <van-button id='111' data-url="aaaa" catch:click="onComment" class='ml-20' round type="green" size='small'>去评论</van-button>
         </view>
       </navigator>
-      <navigator class='order-item' hover-class='none'>
+      <navigator class='order-item' hover-class='none' url='../order-detail/order-detail'>
         <view class='top'>
           <text class='fz-26 c9'>下单时间：201902-12 17:34:51</text>
           <text class='fz-28 c0eaf51'>已完成</text>
@@ -106,7 +106,7 @@
         </view>
         <view class='bottom' catchtap='fn'>
           <van-button bind:click="" round type="default" size='small'>退款/售后</van-button>
-          <van-button id='111' data-url="aaaa" catch:click="confirmReceipt" class='ml-20' round type="default" size='small'>再来一单</van-button>
+          <van-button id='111' data-url="aaaa" catch:click="anotherList" class='ml-20' round type="default" size='small'>再来一单</van-button>
         </view>
       </navigator>
     </scroll-view>
@@ -226,3 +226,5 @@
     </scroll-view>
   </van-tab>
 </van-tabs>
+
+<van-dialog id="van-dialog" />
