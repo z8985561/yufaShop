@@ -1,0 +1,31 @@
+<!--pages/search/search.wxml-->
+<van-search 
+  value="{{ value }}" 
+  placeholder="请输入搜索关键词" 
+  use-action-slot 
+  bind:search="onSearch"
+  bind:change="onChange"
+  background="#ffffff"
+  field-class="search-input"
+  custom-class="mb-40"
+  >
+  <view slot="action" bind:tap="onSearch">搜索</view>
+</van-search>
+
+<view class='plr-30 mb-40' wx:if="{{searchHistory.length}}">
+  <view class='fz-28 c9'>历史记录</view>
+  <view class='flex-wrap'>
+    <block wx:for="{{searchHistory}}" wx:key="index">
+    <view class='key-item fz-28 c6' bindtap='toSearch' data-key="{{item}}">{{item}}</view>
+    </block>
+  </view>
+</view>
+
+<view class='plr-30 mb-40' wx:if="{{searchHot}}">
+  <view class='fz-28 c9'>热门搜素</view>
+  <view class='flex-wrap'>
+    <block wx:for="{{searchHot}}" wx:key="index">
+    <view class='key-item fz-28 c6' bindtap='toSearch' data-key="{{item}}">{{item}}</view>
+    </block>
+  </view>
+</view>

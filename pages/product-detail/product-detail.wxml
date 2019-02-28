@@ -1,0 +1,36 @@
+<!--pages/product-detail/product-detail.wxml-->
+<swiper autoplay="{{true}}" interval="{{5000}}" duration="{{1000}}" indicator-dots="true" indicator-color="rgba(134, 215, 168, 1)" indicator-active-color="#0EAF52">
+  <block wx:for="{{productDetail.images}}" wx:key="index">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" mode='widthFix' />
+    </swiper-item>
+  </block>
+</swiper>
+<!-- 产品标题、描述 -->
+<view class='p-30 bgc-f'>
+  <view class='fz-36 c3 fw-700 text-center'>{{productDetail.title}}</view>
+</view>
+<view class='description bgc-f mb-40'>
+  <view class='fz-30 c9'>{{productDetail.description}}</view>
+</view>
+<!-- 产品标题、描述 end -->
+
+<view class='bgc-f spec-list'>
+  <view class='fz-36 fe893f'>￥{{productDetail.specList[active].price}}/{{productDetail.spec}}({{productDetail.specList[active].specTitle}})</view>
+  <view class='fz-24 c9 mb-40'>￥{{single}}/斤</view>
+  <view class='flex-wrap'>
+    <block wx:for="{{productDetail.specList}}" wx:key="index">
+      <view class='spec-item fz-30 c6 {{active == index ? "on":""}}' data-index="{{index}}" data-id="{{item.id}}" bindtap='onChangeSpec'>每{{productDetail.spec}}({{item.specTitle}})</view>
+    </block>
+  </view>
+</view>
+
+<!-- 店铺 -->
+<view class='shop'>
+  <image src='{{shop.logo}}' class='shop-logo'></image>
+  <view class='shop-name'>
+    <view class='fz-30 c3'>{{shop.name}}</view>
+    <view class='fz-24 c9'>{{shop.description}}</view>
+  </view>
+  <navigator url='/url?id={{shop.id}}' hover-class='none' class='btn'>进入店铺</navigator>
+</view>

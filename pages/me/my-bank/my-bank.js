@@ -1,4 +1,6 @@
 // pages/me/my-bank/my-bank.js
+
+var e = getApp(), t = e.requirejs("core"), a = e.requirejs("jquery");
 Page({
 
   /**
@@ -7,48 +9,8 @@ Page({
   data: {
     startDate:"2018-01",
     endDate:"2020-01",
-    bankList:[
-      {
-        date:"2018-01-01",
-        type:"充值",
-        money:2894,
-      },
-      {
-        date: "2018-01-01",
-        type: "购买产品",
-        money: -894,
-      },
-      {
-        date: "2018-01-01",
-        type: "充值",
-        money: 2894,
-      },
-      {
-        date: "2018-01-01",
-        type: "购买产品",
-        money: -894,
-      },
-      {
-        date: "2018-01-01",
-        type: "充值",
-        money: 2894,
-      },
-      {
-        date: "2018-01-01",
-        type: "购买产品",
-        money: -894,
-      },
-      {
-        date: "2018-01-01",
-        type: "充值",
-        money: 2894,
-      },
-      {
-        date: "2018-01-01",
-        type: "购买产品",
-        money: -894,
-      },
-    ]
+    bankList:[],
+    credit2 : '',
   },
   //开始日期选择事件
   startDateChange:function(e){
@@ -65,8 +27,16 @@ Page({
     })
   },
   //筛选按钮事件
-  filtrateDate:function(){
-    console.log("发送请求！！")
+  filtrateDate:function(e){
+    console.log("点击筛选");
+    console.log(this.data.startDate);
+    console.log(this.data.endDate);
+    
+    var that = this;
+    t.get("yufa/me/log/get_list", { "startDate": that.data.startDate, "endDate": that.data.endDate}, function (a) {
+      console.info(a);
+      that.setData(a);
+    })
   },
   //上拉加载事件
   scrollToLower:function(){
@@ -97,7 +67,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this;
+    t.get("yufa/me/log/get_balance", {}, function (a) {
+      !a.error && that.setData(a);
+    })
+    t.get("yufa/me/log/get_list", {}, function (a) {
+      console.info(a);
+      that.setData(a);
+    })
   },
 
   /**

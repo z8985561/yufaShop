@@ -1,4 +1,6 @@
 // pages/me/recharge/recharge.js
+
+var e = getApp(), t = e.requirejs("core"), a = e.requirejs("jquery");
 Page({
 
   /**
@@ -50,6 +52,19 @@ Page({
   // 支付事件
   onPay(){
     console.log(this.data.money)
+    var e = a.toFixed(this.data.money, 2), i = {};
+    
+    this.data.disabled || (void 0 === e || isNaN(e) ? t.alert("请填写正确的充值金额!") : e <= 0 || this.data.disabled ? t.alert("最低充值金额为" + this.data.minimumcharge + "元!") : (i.money = e,
+      i.type = "wechat",  t.post("member/recharge/submit", i, function (e) {
+        0 == e.error ? e.wechat.success ? t.pay(e.wechat.payinfo, function (a) {
+          console.log(a)
+          "requestPayment:ok" == a.errMsg && t.post("member/recharge/wechat_complete", {
+            logid: e.logid
+          }, function (e) {
+            0 == e.error ? wx.navigateBack() : t.alert(e.message);
+          }, !0);
+        }) : t.alert(list.wechat.payinfo.message + "\n不能使用微信支付!") : t.alert(e.message);
+      }, !0)));
   },
   /**
    * 生命周期函数--监听页面加载

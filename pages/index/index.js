@@ -10,6 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    timeField : "",
     couponlist: [],
     modelShow:true,
     rownum: 20, // 每行显示的个数=100/rownum  此处默认是每行5个图标
@@ -480,7 +481,7 @@ Page({
     showCoupons: false, //控制优惠券显示
     showSearchBg: false, //控制顶部搜索背景颜色
     showSearch: false, //控制底部搜索隐藏显示
-    showSeckill : false, // 控制秒杀区显示
+    showSeckill : true, // 控制秒杀区显示
     //peopleBuyShow: true, //控制展示多少人购买
   },
   //关闭头部消息事件
@@ -496,7 +497,7 @@ Page({
     var now = date.getTime();
     var endDate = new Date(that.data.endDate2); //设置截止时间
     var end = endDate.getTime();
-    var leftTime = end - now; //时间差                              
+    var leftTime = end - now; //时间差
     var d, h, m, s, ms;
     if (leftTime >= 0) {
       d = Math.floor(leftTime / 1000 / 60 / 60 / 24);

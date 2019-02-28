@@ -58,13 +58,14 @@
   <view class='seckill plr-20 mb-40' wx:if="{{showSeckill}}">
     <image class='seckill-time mb-20' src='/img/seckill.png' mode='widthFix'>
       <view class='fz-30'>
-        距8点场结束还剩
+        距{{timeField}}点场结束还剩
         <text>{{hour}}</text> ：
         <text>{{minute}}</text> ：
         <text>{{sec}}</text>
       </view>
     </image>
-    <scroll-view scroll-x class='seckill-list'>
+    <block wx:if="{{!!seckillProductList}}">
+    <scroll-view scroll-x class='seckill-list' >
       <block wx:for="{{seckillProductList}}" wx:key="item.id">
         <navigator class='seckill-item' url='{{item.url}}' hover-class='none'>
           <image src='{{item.imgUrl}}' mode='widthFix'></image>
@@ -75,6 +76,7 @@
         </navigator>
       </block>
     </scroll-view>
+    </block>
   </view>
   <!-- 超级秒杀end -->
   <!-- 专区 -->

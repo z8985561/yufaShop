@@ -102,7 +102,7 @@
   <!-- 帮助中心 -->
   <view class='tool plr-30 mb-150'>
     <view class='fz-34 mb-20'>帮助中心</view>
-    <view class='flex flex-warp'>
+    <view class='flex flex-wrap'>
       <navigator class='text-center' hover-class='none' url='/pages/me/help/question'>
         <image src='/img/icon-10.png'></image>
         <view class='fz-28 c6'>常见问题</view>

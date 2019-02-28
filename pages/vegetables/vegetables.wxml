@@ -1,0 +1,19 @@
+<!--pages/vegetables/vegetables.wxml-->
+<van-tabs active="{{ active }}" bind:change="onChange" color="#0eaf51">
+  <block wx:for="{{vegetables}}" wx:key="index">
+    <van-tab title="{{item.cateName}}">
+      <view class='hot-sale p-30'>
+        <block wx:for="{{item.top}}" wx:for-item="topPro" wx:key="topIdenx">
+          <header-sale productData="{{topPro}}"></header-sale>
+        </block>
+      </view>
+      <view class='plr-30 mb-100'>
+        <block wx:for="{{item.productList}}" wx:for-item="product" wx:key="proIndex">
+          <product-item productData="{{product}}" count="{{item.count}}" bind:addEvent='addEventListener' bind:subEvent='subEventListener' bind:blurEvent='blurEventListener'>
+            <view class='fz-28 c9'>茎扁阔而颜色雪白;叶青，面上有许多...</view>
+          </product-item>
+        </block>
+      </view>
+    </van-tab>
+  </block>
+</van-tabs>

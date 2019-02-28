@@ -7,4 +7,8 @@ function t(t) {
       i = t.getMinutes(),
        g = t.getSeconds(); 
        return [ o, r].map(e).join("月") + "日" + [u, i].map(e).join(":") 
-       } function e(t) { return t = t.toString(), t[1] ? t : "0" + t } module.exports = { formatTime: t }
+       } function e(t) { return t = t.toString(), t[1] ? t : "0" + t }
+String.prototype.trim = function () {
+  return this.replace(/(^\s*)|(\s*$)/g, "");
+}
+ module.exports = { formatTime: t }

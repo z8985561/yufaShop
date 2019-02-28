@@ -1,5 +1,6 @@
 {
   "usingComponents": {
     "header-sale":"/components/header-sale/header-sale"
-  }
+  },
+  "navigationBarTitleText": "肉禽专区"
 }

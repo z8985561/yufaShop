@@ -1,4 +1,7 @@
 // pages/me/add-demand/add-demand.js
+import Toast from "../../../vant-ui/toast/toast";
+var t = getApp(), a = (t.requirejs("jquery"), t.requirejs("core")),h=t.requirejs("util");
+
 Page({
 
   /**
@@ -92,15 +95,41 @@ Page({
   },
   //提交
   sumbit() {
+    var that = this;
     var json = {
-      cateName: this.data.cateName, //分类名称
-      proName: this.data.proName, //产品名称
-      brandName: this.data.brandName, //品牌名称
-      spec: this.data.spec, //规格
-      count: this.data.count, //数量
-      remarks: this.data.remarks, //备注
+      cateName: this.data.cateName.trim(), //分类名称
+      proName: this.data.proName.trim(), //产品名称
+      brandName: this.data.brandName.trim(), //品牌名称
+      spec: this.data.spec.trim(), //规格
+      count: this.data.count.trim(), //数量
+      remarks: this.data.remarks.trim(), //备注
     }
-    console.log(json)
+    if (!json.proName) {
+      Toast.fail({message:'请填写名称', duration:500});
+      return
+    }
+    if (!json.cateName) {
+      Toast.fail({ message: '请选择分类', duration: 500 });
+      return
+    }
+    a.post("yufa/me/addNewDemand", {"data":json}, function (e) {
+      if(e.error!=0){
+        Toast.fail({ message: e.message, duration: 1000 });
+        return
+      }
+      if(e.error==0){
+        Toast.success({ message: e.message, duration: 1000 });
+        that.setData({
+          cateName: "", //分类名称
+          proName: "", //产品名称
+          brandName: "", //品牌名称
+          spec: "", //规格
+          count: "", //数量
+          remarks: "", //备注
+        })
+      }
+      
+    })
   },
   /**
    * 生命周期函数--监听页面加载

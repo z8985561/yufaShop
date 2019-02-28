@@ -1,4 +1,3 @@
-<!--pages/hot-sale/hot-sale.wxml-->
 <!-- 头部特惠区域 -->
 <view class='hot-sale plr-30 mb-40'>
   <block wx:for="{{headSaleProductData}}" wx:key="index">

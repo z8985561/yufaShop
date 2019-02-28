@@ -4,7 +4,7 @@
   <image src='/img/bg-1.png' mode='widthFix'></image>
   <view class='bank text-center'>
     <view class='fz-24 cf'>我的余额</view>
-    <view class='fz-56 cf'>298.52元</view>
+    <view class='fz-56 cf'>{{credit2}}元</view>
   </view>
 </view>
 <!-- 余额头部end -->

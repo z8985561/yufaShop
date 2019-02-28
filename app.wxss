@@ -22,6 +22,8 @@
 .cf{color:#fff;}
 .cf9721a{color: #F9721A}
 .c0eaf51{color: #0eaf51;}
+.fe893f{color: #FE893F;}
+.bgc-f{background-color: #fff;}
 /* 字体横线 */
 .text-center{text-align: center;}
 .text-line{text-decoration: line-through}
@@ -60,6 +62,10 @@ pull-right{
 .flex{
   display: flex;
 }
+.flex-wrap{
+  display: flex;
+  flex-wrap: wrap;
+}
 .flex-column{
   flex-direction: column;
 }
@@ -83,9 +89,6 @@ pull-right{
 }
 .flex-align-center{
   align-items: center;
-}
-.flex-warp{
-  flex-wrap: wrap;
 }
 /* 底部导航样式 */
 .footer-nav{
