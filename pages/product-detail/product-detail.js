@@ -40,6 +40,76 @@ Page({
         }
       ]
     },
+    // 推荐产品
+    recommend:[
+      {
+        id:45,
+        img:"/img/product-5.png",
+        title:"新鲜嫩芽青菜",
+        specDes: "每箱12瓶", //规格描述
+        spec: "箱", //规格
+        newPrice: "39.90",
+        oldPrice: "43.00",
+      },
+      {
+        id: 45,
+        img: "/img/product-4.png",
+        title: "[青岛]啤酒[青岛]啤酒",
+        specDes: "每箱12瓶", //规格描述
+        spec: "箱", //规格
+        newPrice: "39.90",
+        oldPrice: "43.00",
+      },
+      {
+        id: 45,
+        img: "/img/product-5.png",
+        title: "新鲜嫩芽青菜",
+        specDes: "每箱12瓶", //规格描述
+        spec: "箱", //规格
+        newPrice: "39.90",
+        oldPrice: "43.00",
+      }
+    ],
+    arguments:[
+      {
+        key:"外皮颜色",
+        value:"红色"
+      },
+      {
+        key: "储蓄方式",
+        value: "常温"
+      },
+      {
+        key: "大小",
+        value: "中"
+      },
+    ],
+    commentList:[
+      {
+        userPic:"/img/tx-1.png",
+        name:"G.ajc",
+        time:"08-30  15:42",
+        content:"很新鲜，送货也很及时。工作人员很细心，包装的很好。好评"
+      },
+      {
+        userPic: "/img/tx-2.png",
+        name: "珠宝",
+        time: "07-21  15:42",
+        content: "第二次购买 送货很及时，菜品也很新鲜"
+      },
+      {
+        userPic: "/img/tx-3.png",
+        name: "杰西",
+        time: "09-20  15:42",
+        content: "菜品很新鲜，也很便宜，味道不错"
+      },
+      {
+        userPic: "/img/tx-4.png",
+        name: "炫",
+        time: "08-11  15:42",
+        content: "一如既往的好~新鲜且准时，菜品便宜 物美价廉服务好"
+      },
+    ],
     active:0,
     single:0,//每斤的金额
   },

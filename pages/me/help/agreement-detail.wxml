@@ -1,5 +1,16 @@
 <!--pages/me/help/agreement-detail.wxml-->
+
+<block wx:if="{{!error}}">
 <view class='plr-20'>
-  <view class='flex flex-align-center'><text class='fz-40 cc'>Q：</text><text class='fz-32 c9'>如何申请发票</text></view>
-  <view><text class='fz-40 cc'>A：</text><text class='fz-32 c9'>进入“我的”界面，点击常用工具的“我的发票”按钮，进入开票页面填写发票信息按钮后提交申请。</text></view>
+  <view class='flex flex-align-center'><text class='fz-40 cc' wx:if="{{!type}}">Q：</text><text class='fz-32 c9'>{{title}}</text></view>
+  <view><text class='fz-40 cc' wx:if="{{!type}}">A：</text>
+    <view class='goods-detail-info'>
+      <import src="/utils/wxParse/wxParse.wxml" />
+      <view class='wxParse'>
+        <template is='wxParse' data='{{wxParseData:wxParseData.nodes }}' />
+      </view>
+    </view>
+  </view>
 </view>
+</block>
+

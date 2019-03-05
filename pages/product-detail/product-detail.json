@@ -1,4 +1,11 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "van-icon": "/vant-ui/icon/index",
+    "van-cell": "/vant-ui/cell/index",
+    "van-cell-group": "/vant-ui/cell-group/index",
+    "van-goods-action": "/vant-ui/goods-action/index",
+    "van-goods-action-icon": "/vant-ui/goods-action-icon/index",
+    "van-goods-action-button": "/vant-ui/goods-action-button/index"
+  },
   "navigationBarTitleText": "产品详情"
 }

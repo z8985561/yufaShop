@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "product-item": "/components/product-item/product-item",
+    "van-submit-bar": "/vant-ui/submit-bar/index",
+    "van-icon": "/vant-ui/icon/index"
+  }
+}

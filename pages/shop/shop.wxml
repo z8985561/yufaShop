@@ -1,0 +1,35 @@
+<!--pages/shop/shop.wxml-->
+<view class='shop-head flex flex-align-center plr-20'>
+  <image src='{{shop.logo}}'></image>
+  <view>
+    <view class='fz-30 cf'>{{shop.name}}</view>
+    <view class='fz-24 text-hide' style='color:#5AD986;'>{{shop.description}}</view>
+  </view>
+</view>
+<view class='flex'>
+  <!-- 分类切换导航 -->
+  <scroll-view class='cate-nav' scroll-y style='height:{{scrollHeight}}px;'>
+    <block wx:for="{{shop.cateList}}" wx:key="index">
+      <view class='text-center ptb-30 fz-28 {{active == index ? "c3":"c9"}}' data-index="{{index}}" bindtap='onChangeCate'>{{item.cateName}}</view>
+    </block>
+  </scroll-view>
+  <!-- /分类切换导航 -->
+  <!-- 店铺产品列表 -->
+  <block wx:for="{{shop.cateList}}" wx:key="index">
+    <scroll-view class='goods-list' scroll-y style='height:{{scrollHeight}}px;' hidden='{{active != index}}'>
+      <view class='plr-20 ptb-30'>
+        <block wx:for="{{item.data}}" wx:for-item="product" wx:key="idx">
+          <product-item productData="{{product}}" bind:addEvent='addEventListener' bind:subEvent='subEventListener' bind:blurEvent='blurEventListener'></product-item>
+        </block>
+      </view>
+    </scroll-view>
+  </block>
+  <!--/ 店铺产品列表 -->
+</view>
+<van-submit-bar price="{{ 3050 }}" button-type="green" button-text="去结算" bind:submit="onClickButton" price-class="fe893f" custom-class="bottom-nav">
+  <van-tag type="primary">
+    <view class='cart'>
+      <van-icon size="60rpx" name="shopping-cart-o" info="9" color="#999999" />
+    </view>
+  </van-tag>
+</van-submit-bar>

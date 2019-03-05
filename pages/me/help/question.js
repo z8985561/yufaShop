@@ -1,18 +1,19 @@
 // pages/me/help/question.js
+var app = getApp(), core = app.requirejs("core"), jq = app.requirejs("jquery");
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    type:'',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData(options);
   },
 
   /**
@@ -26,7 +27,17 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var that = this;
+    var type = this.data.type;
+    // console.info(type);
+    core.get('yufa/me/qa',{'type': type},function(data){
+      if(data.error==0){
+        console.info(data);
+        that.setData(data);
+      }else{
 
+      }      
+    });
   },
 
   /**

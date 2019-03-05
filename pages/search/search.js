@@ -24,10 +24,7 @@ Page({
       const value = wx.getStorageSync('searchHistory');
       let arr = []
       if (value) {
-        arr = value.split(',')
-        if (arr.indexOf(this.data.keyName) >=0){
-          return;
-        }
+        arr = value.split(',');
         if ( arr.length === 6 ){
           arr.pop()
         }

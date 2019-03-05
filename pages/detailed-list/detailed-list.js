@@ -5,8 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    active:0,
     cartListNum: 9,//购物车
-    activeIndex: 1,
+    activeIndex: .0,
     sliderOffset: 0,
     listHeight:0,
     productList: [{
@@ -77,7 +78,8 @@ Page({
     ],
     myDetailed:[
       {
-
+        cateId:1,
+        cateName:"新鲜蔬菜",
       }
     ]
   },

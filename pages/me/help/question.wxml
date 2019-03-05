@@ -1,30 +1,11 @@
 <!--pages/me/help/question.wxml-->
+
+<block wx:for="{{cate}}" wx:key="index" wx:for-item="item">
 <view class='question-list'>
-  <view class='title'>一、账户问题</view>
-  <navigator hover-class='none' url='agreement-detail'>1.如何注册和登陆裕发账户？</navigator>
-  <navigator hover-class='none' url='agreement-detail'>2.如何修改账户信息</navigator>
-  <navigator hover-class='none' url='agreement-detail'>3.修改门店负责人/收货人</navigator>
-  <navigator hover-class='none' url='agreement-detail'>4.修改门店地址？</navigator>
-  <navigator hover-class='none' url='agreement-detail'>5.修改收货时间？</navigator>
+  <view class='title'>{{item.catename}}</view>
+  <block wx:for="{{item.qa}}" wx:key="i" wx:for-item="vo">
+  <navigator hover-class='none' url='agreement-detail?id={{vo.qaid}}'>{{vo.title}}</navigator>
+  </block>
 </view>
-<view class='question-list'>
-  <view class='title'>二、订购问题</view>
-  <navigator hover-class='none' url='agreement-detail'>1.如何查找想要的产品？</navigator>
-  <navigator hover-class='none' url='agreement-detail'>2.如何订购商品？</navigator>
-  <navigator hover-class='none' url='agreement-detail'>3.如何取消订单？</navigator>
-  <navigator hover-class='none' url='agreement-detail'>4.什么时候可以下单？</navigator>
-  <navigator hover-class='none' url='agreement-detail'>5.如何查询我的订单是否取消成功？</navigator>
-  <navigator hover-class='none' url='agreement-detail'>6.如何查询订单状态？</navigator>
-  <navigator hover-class='none' url='agreement-detail'>7.没有点击取消订单，订单为何自动取消了？</navigator>
-</view>
-<view class='question-list'>
-  <view class='title'>三、配送问题</view>
-  <navigator hover-class='none' url='agreement-detail'>1.如何查找想要的产品？ </navigator>
-  <navigator hover-class='none' url='agreement-detail'>2.如何订购商品？</navigator>
-  <navigator hover-class='none' url='agreement-detail'>3.如何取消订单？</navigator>
-  <navigator hover-class='none' url='agreement-detail'>4.什么时候可以下单？</navigator>
-  <navigator hover-class='none' url='agreement-detail'>5.如何查询我的订单是否取消成功？</navigator>
-  <navigator hover-class='none' url='agreement-detail'>6.如何查询订单状态？</navigator>
-  <navigator hover-class='none' url='agreement-detail'>7.没有点击取消订单，订单为何自动取消了？</navigator>
-</view>
-                        
+</block>
+     

@@ -10,9 +10,6 @@
   background-color: #fff;
   z-index: 999;
 }
-.top-searchnav.on{
-    box-shadow:1px 1px 5px #ddd;
-}
 .nav{
   display: flex;
   justify-content: space-between;
@@ -52,8 +49,8 @@
   position: fixed;
   top: 80rpx;
   bottom: 100rpx;
-  left: 15rpx;
-  right: 15rpx;
+  left: 0rpx;
+  right: 0rpx;
   overflow-y: scroll;
 }
 .my-detailed{

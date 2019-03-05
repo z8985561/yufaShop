@@ -1,6 +1,4 @@
-// pages/me/help/agreement-detail.js
-var app = getApp(), core = app.requirejs("core"), jq = app.requirejs("jquery");
-var wxparse = app.requirejs("wxParse/wxParse");
+// pages/panic-buying/panic-buying.js
 Page({
 
   /**
@@ -14,7 +12,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData(options);
+
   },
 
   /**
@@ -28,16 +26,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var that = this;
-    core.get('yufa/me/qa/getQAById',{'id':this.data.id},function(data){
-      that.setData(data);
-      console.info(data.content);
-      if(data.error==0){
-        wxparse.wxParse("wxParseData", "html", data.content, that, "5");
-      }else{
 
-      }
-    });
   },
 
   /**

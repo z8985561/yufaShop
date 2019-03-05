@@ -1,5 +1,7 @@
 {
   "usingComponents": {
-    "product-item":"/components/product-item/product-item"
+    "product-item":"/components/product-item/product-item",
+    "van-tab": "/vant-ui/tab/index",
+    "van-tabs": "/vant-ui/tabs/index"
   }
 }

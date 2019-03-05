@@ -3,7 +3,9 @@
 @import "lib/weui.wxss";
 /* 字体相关样式 */
 .fw-700{font-weight: 700}
+.text-hide{overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
 /* 字体大小 */
+.fz-22{font-size: 22rpx;}
 .fz-24{font-size: 24rpx;}
 .fz-26{font-size: 26rpx;}
 .fz-28{font-size: 28rpx;}
@@ -42,8 +44,9 @@
 .mt-40{margin-top: 40rpx;}
 /* 内边距 */
 .p-30{padding: 30rpx;}
-.plr-20{padding: 0 20rpx;}
-.plr-30{padding: 0 30rpx;}
+.plr-20{padding-left: 20rpx;padding-right: 20rpx;}
+.plr-30{padding-left: 30rpx;padding-right: 30rpx;}
+.ptb-30{padding-top: 30rpx;padding-bottom: 30rpx;}
 .pt-150{padding-top: 150rpx;}
 /* 浮动 */
 .pull-left{
@@ -159,3 +162,25 @@ pull-right{
   color: #fff;
   text-align: center;
 }
+
+/* question */
+.question-list{
+  padding-bottom: 20px;
+}
+.question-list .title{
+  position: relative;
+  padding: 0 20rpx;
+  height: 40px;
+  line-height: 40px;
+  background-color: #F5F5F5;
+  font-size: 16px;
+  color: #333;
+}
+.question-list navigator{
+  padding: 0 20rpx;
+  height: 35px;
+  line-height: 35px;
+  color: #666;
+  font-size: 13px;
+}
+/* question end */

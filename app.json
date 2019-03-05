@@ -17,7 +17,6 @@
     "pages/me/help/question",
     "pages/me/help/agreement",
     "pages/me/help/agreement-detail",
-    "pages/me/help/rule",
     "pages/me/recharge/recharge",
     "pages/me/add-demand/add-demand",
     "pages/me/invoice/invoice",
@@ -26,7 +25,9 @@
     "pages/vegetables/vegetables",
     "pages/search/search",
     "pages/search/search-list",
-    "pages/product-detail/product-detail"
+    "pages/product-detail/product-detail",
+    "pages/shop/shop",
+    "pages/panic-buying/panic-buying"
   ],
   "window":{
     "backgroundTextStyle":"light",

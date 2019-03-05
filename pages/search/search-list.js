@@ -1,4 +1,5 @@
 // pages/search/search-list.js
+var app = getApp(), core = app.requirejs("core"), jq = app.requirejs("jquery");
 Page({
 
   /**
@@ -114,6 +115,14 @@ Page({
   onLoad: function(options) {
     console.log(options.key)
     // 这里请求数据
+
+    core.get('yufa/goods/get_list', { "keywords": options.key},function(data){
+      console.log(data);
+    });
+
+
+
+
   },
 
   /**

@@ -1,8 +1,8 @@
 <!--pages/detailed-list/detailed-list.wxml-->
 <view class='top-searchnav {{activeIndex != 1 ? "on": ""}}'>
   <view class='nav'>
-    <view class='fz-30 c9 {{activeIndex == 0 ? "on": ""}}' bindtap="tabClick" id="0">为你推荐</view>
-    <view class='fz-30 c9 {{activeIndex == 1 ? "on": ""}}' bindtap="tabClick" id="1">我的清单</view>
+    <view class='fz-30 c9 {{activeIndex == 0 ? "on": ""}}' bindtap="tabClick" id="0">我的清单</view>
+    <view class='fz-30 c9 {{activeIndex == 1 ? "on": ""}}' bindtap="tabClick" id="1">为你推荐</view>
     <view class='slider' style="transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
   </view>
   <navigator class='search' hover-class='none' url=''>
@@ -12,52 +12,23 @@
     </view>
   </navigator>
 </view>
-<view class='tab-panel plr-30'>
+<view class='tab-panel'>
+  <!-- 我的清单 -->
+  <view class='my-detailed' hidden='{{activeIndex != 0}}'>
+    <van-tabs active="{{ active }}" bind:change="onChange" border="{{false}}" color="#fff">
+      <van-tab title="标签 1" title-style="color:#0EAF52">内容 1</van-tab>
+      <van-tab title="标签 1" title-style="color:#0EAF52">内容 1</van-tab>
+      <van-tab title="标签 1" title-style="color:#0EAF52">内容 1</van-tab>
+    </van-tabs>
+  </view>
+  <!-- 我的清单end -->
   <!-- 为你推荐 -->
-  <view class='' wx:if='{{activeIndex == 0}}'>
+  <view class='' hidden='{{activeIndex != 1}}'>
     <block wx:for="{{productList}}" wx:key="index">
       <product-item productData="{{item}}" bind:addEvent='addEventListener' bind:subEvent='subEventListener' bind:blurEvent='blurEventListener' count="{{item.count}}"></product-item>
     </block>
   </view>
   <!-- 为你推荐end -->
-  <!-- 我的清单 -->
-  <view class='my-detailed' wx:if='{{activeIndex == 1}}'>
-    <scroll-view class='my-detailed-nav' scroll-x>
-      <view>111111</view>
-      <view>111111</view>
-      <view>111111</view>
-      <view>111111</view>
-      <view>111111</view>
-      <view>111111</view>
-      <view>111111</view>
-      <view>111111</view>
-      <view>111111</view>
-    </scroll-view>
-    <scroll-view class='my-detailed-list' scroll-y style='height:{{listHeight}}px;'>
-      <view>111111</view>
-      <view>111111</view>
-      <view>111111</view>
-      <view>111111</view>
-      <view>111111</view>
-      <view>111111</view>
-      <view>111111</view>
-      <view>111111</view>
-      <view>111111</view>
-      <view>111111</view>
-      <view>111111</view>
-      <view>111111</view>
-      <view>111111</view>
-      <view>111111</view>
-      <view>111111</view>
-      <view>111111</view>
-      <view>111111</view>
-      <view>111111</view>
-      <view>111111</view>
-      <view>111111</view>
-      <view>111111</view>
-    </scroll-view>
-  </view>
-  <!-- 我的清单end -->
 </view>
 
 <!-- 底部导航 -->
