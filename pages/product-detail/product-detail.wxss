@@ -16,7 +16,7 @@ swiper image{
   content: "“";
   position: absolute;
   top: -20px;
-  left: -15px;
+  left: 10px;
   font-size: 60px;
   color: #999;
 }
@@ -24,7 +24,7 @@ swiper image{
   content: "”";
   position: absolute;
   top: -20px;
-  right: -15px;
+  right: 10px;
   font-size: 60px;
   color: #999;
 }
@@ -60,6 +60,7 @@ swiper image{
   font-size: 22rpx;
   border-radius: 25rpx;
   text-align: center;
+  z-index: 1;
 }
 .shop-name{
   flex: 1;
@@ -95,4 +96,30 @@ swiper image{
   width: 64rpx;
   height: 64rpx;
   margin-right: 20rpx;
+}
+.total{
+  position: relative;
+  padding: 0 30rpx;
+  height: 50vh;
+}
+.total image{
+  position: absolute;
+  top: -215rpx;
+  left: 30rpx;
+  width: 180rpx;
+  height: 180rpx;
+  border: 2px solid #fff;
+  box-shadow: 0px 0px 2px #ccc;
+}
+.count-change{
+  margin-top: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  font-size: 34rpx;
+}
+.btn-big{
+  position: absolute;
+  left: 30rpx;
+  right: 30rpx;
+  bottom: 30rpx;
 }

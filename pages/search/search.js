@@ -1,4 +1,5 @@
 // pages/search/search.js
+var app = getApp(), core = app.requirejs("core"), jq = app.requirejs("jquery");
 Page({
 
   /**
@@ -58,6 +59,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    var that = this;
     try {
       const value = wx.getStorageSync('searchHistory');
       if (!value) {
@@ -70,6 +72,11 @@ Page({
     } catch (e) {
       // Do something when catch error
     }
+    core.get('yufa/goods/getHotWord',{},function(data){
+      that.setData(data);
+      console.info(data);
+    });
+
   },
 
   /**

@@ -2,7 +2,7 @@
 <view class='plr-30 mb-100'>
   <block wx:for="{{productList}}" wx:for-item="product" wx:key="proIndex">
     <product-item productData="{{product}}" count="{{item.count}}" bind:addEvent='addEventListener' bind:subEvent='subEventListener' bind:blurEvent='blurEventListener'>
-      <view class='fz-28 c9'>茎扁阔而颜色雪白;叶青，面上有许多...</view>
+      <view class='fz-28 c9'>{{product.desc}}</view>
     </product-item>
   </block>
 </view>

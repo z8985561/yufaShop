@@ -5,7 +5,10 @@
     "van-cell-group": "/vant-ui/cell-group/index",
     "van-goods-action": "/vant-ui/goods-action/index",
     "van-goods-action-icon": "/vant-ui/goods-action-icon/index",
-    "van-goods-action-button": "/vant-ui/goods-action-button/index"
+    "van-goods-action-button": "/vant-ui/goods-action-button/index",
+    "van-action-sheet": "/vant-ui/action-sheet/index",
+    "van-stepper": "/vant-ui/stepper/index",
+    "van-toast": "/vant-ui/toast/index"
   },
   "navigationBarTitleText": "产品详情"
 }

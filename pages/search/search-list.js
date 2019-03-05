@@ -113,10 +113,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    var that = this;
     console.log(options.key)
     // 这里请求数据
 
     core.get('yufa/goods/get_list', { "keywords": options.key},function(data){
+      that.setData(data);
       console.log(data);
     });
 

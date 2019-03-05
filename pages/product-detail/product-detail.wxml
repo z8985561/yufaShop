@@ -51,7 +51,7 @@
       <navigator class='recommend' url='/pages/product-detail/product-detail?id={{item.id}}'>
         <image src='{{item.img}}' mode='widthFix'></image>
         <view class='fz-28 c3 text-hide'>{{item.title}}</view>
-        <view class='fz-28 c9'>{{item.specDes}}</view>
+        <view class='fz-28 c9'>每{{item.spec}}{{item.optiontitle}}</view>
         <view class='fz-28 cf9721a'>￥{{item.newPrice}}/{{item.spec}}</view>
         <view class='fz-22 c9 text-line'>￥{{item.oldPrice}}</view>
       </navigator>
@@ -96,7 +96,12 @@
 <view class='ptb-30 bgc-f mb-40'>
   <view class='plr-20 fz-34 c3'>详细信息</view>
   <view>
-    图片描述：
+    <view class='goods-detail-info'>
+      <import src="/utils/wxParse/wxParse.wxml" />
+      <view class='wxParse'>
+        <template is='wxParse' data='{{wxParseData:wxParseData.nodes }}' />
+      </view>
+    </view>
   </view>
 </view>
 <!-- /详细信息 -->
@@ -105,61 +110,63 @@
 <view class='ptb-30 bgc-f mb-40 arguments'>
   <view class=' fz-34 plr-20 c3'>规格参数</view>
   <van-cell-group border="{{false}}">
-  <block wx:for="{{arguments}}" wx:key="index">
-        <van-cell title="{{item.key}}：" title-class="c9" title-width="175rpx" value="{{item.value}}" value-class="c6" />
-  </block>
+    <block wx:for="{{arguments}}" wx:key="index">
+      <van-cell title="{{item.key}}：" title-class="c9" title-width="175rpx" value="{{item.value}}" value-class="c6" />
+    </block>
   </van-cell-group>
 </view>
 <!-- /规格参数 -->
 
 <!-- 评论 -->
-  <view class='ptb-30 plr-20 bgc-f mb-40 arguments'>
+<view class='ptb-30 plr-20 bgc-f mb-150 arguments'>
   <view class=' fz-34 c3 mb-20'>商品评论</view>
   <block wx:for="{{commentList}}" wx:key="index">
     <view class='flex comment mb-20'>
-    <view><image src='{{item.userPic}}'></image></view>
-    <view>
-      <view class='flex flex-jus fz-26 c9'>
-        <text>{{item.name}}</text>
-        <text>{{item.time}}</text>
+      <view>
+        <image src='{{item.userPic}}'></image>
       </view>
-      <view class='fz-28 c3'>{{item.content}}</view>
+      <view>
+        <view class='flex flex-jus fz-26 c9'>
+          <text>{{item.name}}</text>
+          <text>{{item.time}}</text>
+        </view>
+        <view class='fz-28 c3'>{{item.content}}</view>
+      </view>
     </view>
-  </view>
   </block>
   <navigator url="" class='fz-30 text-center c3'>查看更多</navigator>
 </view>
 <!-- 评论 -->
 
-<!-- 相关推荐 -->
-<view class='plr-20 ptb-30 bgc-f mb-150'>
-  <view class='fz-34 c3'>相关推荐</view>
-  <view class='flex flex-jus'>
-    <!-- <navigator class='recommend' url='#'>
-      <image src='/img/product-5.png' mode='widthFix'></image>
-      <view class='fz-28 c3 text-hide'>新鲜嫩芽青菜</view>
-      <view class='fz-28 c9'>每箱12瓶</view>
-      <view class='fz-28 cf9721a'>￥39.90/箱</view>
-      <view class='fz-22 c9 text-line'>￥43.00</view>
-    </navigator> -->
-    <block wx:for="{{recommend}}" wx:key="index">
-      <navigator class='recommend' url='/pages/product-detail/product-detail?id={{item.id}}'>
-        <image src='{{item.img}}' mode='widthFix'></image>
-        <view class='fz-28 c3 text-hide'>{{item.title}}</view>
-        <view class='fz-28 c9'>{{item.specDes}}</view>
-        <view class='fz-28 cf9721a'>￥{{item.newPrice}}/{{item.spec}}</view>
-        <view class='fz-22 c9 text-line'>￥{{item.oldPrice}}</view>
-      </navigator>
-    </block>
-  </view>
-</view>
-<!-- 相关推荐 -->
-
 <!-- 底部按钮 -->
 <van-goods-action>
   <van-goods-action-icon icon="add-o" text="添加常用" />
-  <van-goods-action-icon icon="cart-o" text="购物车" info="5" />
-  <van-goods-action-button text="加入购物车" type="green" />
-  <van-goods-action-button text="立即购买" type='reseda'/>
+  <van-goods-action-icon icon="cart-o" text="购物车" info="{{productDetail.cartcount}}" />
+  <van-goods-action-button bind:click="showSheetAddCart" text="加入购物车" type="green" />
+  <van-goods-action-button bind:click="showSheetBuy" text="立即购买" type='reseda' />
 </van-goods-action>
 <!-- /底部按钮 -->
+
+<van-action-sheet show="{{ showBuy }}" title="{{buyGoods.title}} ({{productDetail.specList[active].specTitle}})" bind:close="onCloseBuy">
+  <view class='total'>
+    <image src='{{productDetail.images[0]}}' mode='aspectFill'></image>
+    <view class='count-change'>
+      <view>数量</view>
+      <van-stepper value="{{ buyGoods.total }}" bind:change="onChangeBuy" />
+    </view>
+    <view class='btn-big' bindtap='buyGoods'>确定</view>
+  </view>
+</van-action-sheet>
+
+<van-action-sheet show="{{ showAddCart }}" title="{{addCartGoods.title}} ({{productDetail.specList[active].specTitle}})" bind:close="onCloseAddCart">
+  <view class='total'>
+    <image src='{{productDetail.images[0]}}' mode='aspectFill'></image>
+    <view class='count-change'>
+      <view>数量</view>
+      <van-stepper value="{{ addCartGoods.total }}" bind:change="onChangeAddCart" />
+    </view>
+    <view class='btn-big' bindtap='pushAddCart'>确定</view>
+  </view>
+</van-action-sheet>
+<van-toast id="custom-selector" />
+<van-toast id="van-toast" />

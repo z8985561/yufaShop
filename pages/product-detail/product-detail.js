@@ -1,32 +1,38 @@
 // pages/product-detail/product-detail.js
+import Toast from '../../vant-ui/toast/toast';
+var app = getApp(),
+  core = app.requirejs("core"),
+  jq = app.requirejs("jquery");
+var wxparse = app.requirejs("wxParse/wxParse");
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    shop:{
-      id:1,
-      name:"福满园副食品批发行",
-      description:"广东省农业龙头企业，放心油粮广东省农业龙头企业，放心油粮广东省农业龙头企业，放心油粮",
-      logo:"/img/shop-logo.png"
+    shop: {
+      id: 1,
+      name: "福满园副食品批发行",
+      description: "广东省农业龙头企业，放心油粮广东省农业龙头企业，放心油粮广东省农业龙头企业，放心油粮",
+      logo: "/img/shop-logo.png"
     },
-    productDetail:{
-      id:1,
-      title:"红皮洋葱",
-      description:"紫色或紫红色，有少量碰伤，季节交替时部分略有新芽或冻伤现象",
-      spec:"袋",
+    productDetail: {
+      id: 1,
+      title: "红皮洋葱",
+      description: "紫色或紫红色，有少量碰伤，季节交替时部分略有新芽或冻伤现象",
+      spec: "袋",
       images: ["/img/product-6.png", "/img/product-6.png", "/img/product-6.png"],
-      specList:[ //规格列表
+      cartcount:5,
+      specList: [ //规格列表
         {
           id: 11,
           specTitle: "2斤",
           price: "4.00",
         },
         {
-          id:12,
-          specTitle:"5斤",
-          price:"7.75",
+          id: 12,
+          specTitle: "5斤",
+          price: "7.75",
         },
         {
           id: 13,
@@ -41,11 +47,10 @@ Page({
       ]
     },
     // 推荐产品
-    recommend:[
-      {
-        id:45,
-        img:"/img/product-5.png",
-        title:"新鲜嫩芽青菜",
+    recommend: [{
+        id: 45,
+        img: "/img/product-5.png",
+        title: "新鲜嫩芽青菜",
         specDes: "每箱12瓶", //规格描述
         spec: "箱", //规格
         newPrice: "39.90",
@@ -56,6 +61,7 @@ Page({
         img: "/img/product-4.png",
         title: "[青岛]啤酒[青岛]啤酒",
         specDes: "每箱12瓶", //规格描述
+        optiontitle: '12瓶',
         spec: "箱", //规格
         newPrice: "39.90",
         oldPrice: "43.00",
@@ -70,10 +76,9 @@ Page({
         oldPrice: "43.00",
       }
     ],
-    arguments:[
-      {
-        key:"外皮颜色",
-        value:"红色"
+    arguments: [{
+        key: "外皮颜色",
+        value: "红色"
       },
       {
         key: "储蓄方式",
@@ -84,12 +89,11 @@ Page({
         value: "中"
       },
     ],
-    commentList:[
-      {
-        userPic:"/img/tx-1.png",
-        name:"G.ajc",
-        time:"08-30  15:42",
-        content:"很新鲜，送货也很及时。工作人员很细心，包装的很好。好评"
+    commentList: [{
+        userPic: "/img/tx-1.png",
+        name: "G.ajc",
+        time: "08-30  15:42",
+        content: "很新鲜，送货也很及时。工作人员很细心，包装的很好。好评"
       },
       {
         userPic: "/img/tx-2.png",
@@ -110,76 +114,170 @@ Page({
         content: "一如既往的好~新鲜且准时，菜品便宜 物美价廉服务好"
       },
     ],
-    active:0,
-    single:0,//每斤的金额
+    active: 0,
+    single: 0, //每斤的金额
+    showBuy: false,
+    showAddCart: false,
+    //购买的商品ID和数量
+    buyGoods: {},
+    // 加入购物车的商品ID和数量
+    addCartGoods: {}
   },
   // 切换规格事件
-  onChangeSpec(e){
+  onChangeSpec(e) {
+    var buyGoods = this.data.buyGoods,
+      addCartGoods = this.data.addCartGoods,
+      index = e.currentTarget.dataset.index;
+    buyGoods.id = this.data.productDetail.specList[index].id;
+    addCartGoods.id = this.data.productDetail.specList[index].id;
     this.setData({
-      active:e.currentTarget.dataset.index,
+      active: index,
+      buyGoods: buyGoods,
+      addCartGoods: addCartGoods
     })
     this.calculate()
   },
   // 计算每斤的金额 sum 总金额  quantity 总斤数
-  calculate(){
+  calculate() {
     var sum = this.data.productDetail.specList[this.data.active].price;
     var quantity = this.data.productDetail.specList[this.data.active].specTitle;
     var single = (parseFloat(sum) / parseInt(quantity)).toFixed(2)
-    this.setData({ single: single})
+    this.setData({
+      single: single
+    })
+  },
+  showSheetBuy() {
+    this.setData({
+      showBuy: true
+    });
+  },
+  showSheetAddCart() {
+    this.setData({
+      showAddCart: true
+    });
+  },
+  //关闭上拉框
+  onCloseBuy() {
+    this.setData({
+      showBuy: false
+    });
+  },
+  onCloseAddCart() {
+    this.setData({
+      showAddCart: false
+    });
+  },
+  onChangeBuy(e) {
+    var buyGoods = this.data.buyGoods;
+    buyGoods.total = e.detail;
+    this.setData({
+      buyGoods: buyGoods
+    })
+  },
+  onChangeAddCart(e){
+    var addCartGoods = this.data.addCartGoods;
+    addCartGoods.total = e.detail;
+    this.setData({
+      addCartGoods: addCartGoods
+    })
+  },
+  // 加入购物车
+  pushAddCart(){
+    this.onCloseAddCart();
+    // 发送请求
+    Toast.loading({
+      duration: 0,       // 持续展示 toast
+      forbidClick: true, // 禁用背景点击
+      message: '加载中...',
+      loadingType: 'spinner',
+      selector: '#custom-selector'
+    });
+    setTimeout(()=>{
+      Toast.clear();
+      Toast.success('已加入购物车');
+    },500)
+  },
+  //购买事件
+  buyGoods(){
+    wx.navigateTo({
+      url: '/pages/order/create/create?id=9269&total=1&optionid=0',
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     this.calculate()
+    var that = this;
+    core.get('yufa/goods/get_detail', {
+      'id': options.id
+    }, function(data) {
+      that.setData(data.goods)
+      if (data.goods.content) {
+        wxparse.wxParse("wxParseData", "html", data.goods.content, that, "5");
+      }
+    });
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-
+  onReady: function() {
+    var buyGoods = {
+        title: this.data.productDetail.title,
+      id: this.data.productDetail.specList[0].id,
+        total: 1
+      },
+      addCartGoods = {
+        title: this.data.productDetail.title,
+        id: this.data.productDetail.specList[0].id,
+        total: 1
+      };
+      this.setData({
+        buyGoods: buyGoods,
+        addCartGoods: addCartGoods
+      })
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

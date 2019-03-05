@@ -19,6 +19,7 @@ page,
 }
 
 .coupon-item{
+  margin-bottom: 30rpx;
   background-color: #fff;
 }
 .coupon-item .top{

@@ -1,5 +1,5 @@
 <!--components/product-item/product-item.wxml-->
-<navigator class='product-item mb-40' hover-class='none' url='{{productData.navUrl}}'>
+<navigator class='product-item mb-40' hover-class='none' url='/pages/product-detail/product-detail?id={{productData.id}}'>
   <view class='left'>
     <image src='{{productData.imgUrl}}' mode='widthFix'></image>
   </view>
@@ -15,7 +15,7 @@
     <view class='fz-24 c9'>{{productData.specDec}}</view>
     <view>
       <text class='fz-30 cf9721a'>￥{{productData.newPrice}}/{{productData.spec}}</text>
-      <text class='fz-24 c9 text-line'>￥{{productData.newPrice}}/{{productData.spec}}</text>
+      <text class='fz-24 c9 text-line'>￥{{productData.oldPrice}}/{{productData.spec}}</text>
     </view>
     <view class='fz-28 label' wx:if="{{productData.label}}">{{productData.label}}</view>
   </view>
