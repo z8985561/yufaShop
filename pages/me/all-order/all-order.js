@@ -1,8 +1,9 @@
 // pages/me/all-order/all-order.js
 import Dialog from '../../../vant-ui/dialog/dialog';
-var e = getApp(),
-  t = e.requirejs("core"),
-  r = e.requirejs("jquery");
+var app = getApp(),
+  core = app.requirejs("core"),
+  cancelArray = app.requirejs("biz/order"),
+  $ = app.requirejs("jquery");
 
 Page({
 
@@ -10,19 +11,21 @@ Page({
    * 页面的初始数据
    */
   data: {
-    active:0,
-    sHeight:0,
+    active: 0,
+    sHeight: 0,
     // 全部订单数据
-    list : [],
+    list: [],
+    cancel: cancelArray.cancelArray,
+    cancelindex: 0
   },
   //切换导航事件
-  onChange(e){
+  onChange(e) {
     this.setData({
       active: e.detail.index
     })
   },
   //确认收货事件
-  confirmReceipt(e){
+  confirmReceipt(e) {
     console.log(e);
     Dialog.confirm({
       title: '确认收货？',
@@ -34,13 +37,13 @@ Page({
     });
   },
   // 评价事件
-  onComment(){
+  onComment() {
     wx.navigateTo({
       url: '../comment/comment',
     })
   },
   //取消订单事件
-  cancelOrder(e){
+  cancelOrder(e) {
     Dialog.confirm({
       title: '提示',
       message: '取消可能会错过某些优惠券，确定要取消吗？'
@@ -51,22 +54,29 @@ Page({
     });
   },
   //去支付事件
-  toPay(){
+  toPay() {
 
   },
   //再次下单事件
-  anotherList(){
-    
+  anotherList() {
+
+  },
+  // 取消订单事件
+  cancel(e){
+    var orderid  = core.data(e).orderid;
+    console.log(orderid)
+    cancelArray.cancel(orderid, e.detail.value, "/pages/me/all-order/all-order?active=" + this.data.active)
+    // this.onLoad()
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     var that = this;
     wx.getSystemInfo({
       success: function(res) {
         that.setData({
-          sHeight:res.windowHeight - 44
+          sHeight: res.windowHeight - 44
         })
       },
     })
@@ -79,16 +89,16 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
     var that = this;
-    t.get("yufa/order/get_list", {}, function (d) {
+    core.get("yufa/order/get_list", {}, function(d) {
       that.setData(d);
       console.info(d);
     });
@@ -97,38 +107,38 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   },
-  fn(){
+  fn() {
     return false;
   }
 })

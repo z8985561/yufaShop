@@ -11,3 +11,4 @@
 <view class='p-30'>
   <view class='btn-big' bindtap='submit'>确定</view>
 </view>
+<van-toast id="van-toast" /> <!-- 引入轻提示 -->

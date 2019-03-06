@@ -141,7 +141,7 @@
 <!-- 底部按钮 -->
 <van-goods-action>
   <van-goods-action-icon icon="add-o" text="添加常用" />
-  <van-goods-action-icon icon="cart-o" text="购物车" info="{{productDetail.cartcount}}" />
+  <van-goods-action-icon icon="cart-o" text="购物车" info="{{cartcount}}" />
   <van-goods-action-button bind:click="showSheetAddCart" text="加入购物车" type="green" />
   <van-goods-action-button bind:click="showSheetBuy" text="立即购买" type='reseda' />
 </van-goods-action>

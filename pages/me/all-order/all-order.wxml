@@ -2,92 +2,104 @@
 <van-tabs color="#0EAF51" bind:change="onChange" active="{{active}}">
   <van-tab title-style="color:{{active == 0 ? '#0EAF51':'#AFAFAF'}};" title="全部订单">
     <scroll-view scroll-y style='height:{{sHeight}}px'>
-      
-      <navigator class='order-item' hover-class='none' url='../order-detail/order-detail'>
-        <view class='top'>
-          <text class='fz-26 c9'>下单时间：2019-02-12 17:34:51</text>
-          <text class='fz-28 c0eaf51'>待收货</text>
-        </view>
-        <view class='pro-list'>
-          <image src='/img/seckill-1.png' mode='widthFix'></image>
-          <image src='/img/seckill-2.png' mode='widthFix'></image>
-          <image src='/img/seckill-3.png' mode='widthFix'></image>
-          <image src='/img/seckill-4.png' mode='widthFix'></image>
-          <van-icon color="#999999" size="15px" name="arrow" />
-        </view>
-        <view class='top'>
-          <text class='fz-26 c9'>共4类商品</text>
-          <text class='fz-28 cf9721a'>￥187.00</text>
-        </view>
-        <view class='bottom' catchtap='fn'>
-          <van-button bind:click="cancelOrder" round type="default" size='small'>取消订单</van-button>
-          <van-button id='111' data-url="aaaa" bind:click="confirmReceipt" class='ml-20' round type="green" size='small'>确认收货</van-button>
-        </view>
-      </navigator>
+      <block wx:for="{{list}}" wx:key="index">
+        <!-- 待发货 -->
+        <navigator class='order-item' hover-class='none' wx:if="{{item.status==1}}">
+          <view class='top'>
+            <text class='fz-26 c9'>下单时间：{{item.createtime}}</text>
+            <text class='fz-28 c0eaf51'>待发货</text>
+          </view>
+          <view class='pro-list'>
+            <block wx:for="{{item.nogift}}" wx:key="i" wx:for-item="nogift">
+              <image src='{{nogift.thumb}}' mode='widthFix'></image>
+            </block>
+            <van-icon color="#999999" size="15px" name="arrow" />
+          </view>
+          <view class='top'>
+            <text class='fz-26 c9'>共{{item.goods.length}}类商品</text>
+            <text class='fz-28 cf9721a'>￥{{item.price}}</text>
+          </view>
+          <view class='bottom' catchtap='fn'>
+            <van-button bind:click="" round type="default" size='small'>取消订单</van-button>
+            <van-button id='111' data-url="aaaa" catch:click="confirmReceipt" class='ml-20' round type="green" size='small'>补货</van-button>
+          </view>
+        </navigator>
+        <!-- 待收货 end -->
+        <!-- 待支付 -->
+        <navigator class='order-item' hover-class='none' wx:if="{{item.status==0}}">
+          <view class='top'>
+            <text class='fz-26 c9'>下单时间：{{item.createtime}}</text>
+            <text class='fz-28 c0eaf51'>待支付</text>
+          </view>
+          <view class='pro-list'>
+            <block wx:for="{{item.nogift}}" wx:key="i" wx:for-item="nogift">
+              <image src='{{nogift.thumb}}' mode='widthFix'></image>
+            </block>
+            <van-icon color="#999999" size="15px" name="arrow" />
+          </view>
+          <view class='top'>
+            <text class='fz-26 c9'>共{{item.goods.length}}类商品</text>
+            <text class='fz-28 cf9721a'>￥{{item.price}}</text>
+          </view>
+          <view class='bottom' catchtap='fn'>
+            <picker bindchange='cancel' range='{{cancel}}' value='{{cancelindex}}' data-orderid='{{item.id}}'>取消订单</picker>
+            <van-button id='111' data-url="aaaa" catch:click="confirmReceipt" class='ml-20' round type="green" size='small'>去付款</van-button>
+          </view>
+        </navigator>
+        <!-- 待支付 end -->
+        <!-- 待收货 -->
+        <navigator class='order-item' hover-class='none' wx:if="{{item.status==2}}">
+          <view class='top'>
+            <text class='fz-26 c9'>下单时间：{{item.createtime}}</text>
+            <text class='fz-28 c0eaf51'>待收货</text>
+          </view>
+          <view class='pro-list'>
+            <block wx:for="{{item.nogift}}" wx:key="i" wx:for-item="nogift">
+              <image src='{{nogift.thumb}}' mode='widthFix'></image>
+            </block>
+            <van-icon color="#999999" size="15px" name="arrow" />
+          </view>
+          <view class='top'>
+            <text class='fz-26 c9'>共{{item.goods.length}}类商品</text>
+            <text class='fz-28 cf9721a'>￥{{item.price}}</text>
+          </view>
+          <view class='bottom' catchtap='fn'>
+            <van-button bind:click="" round type="default" size='small'>取消订单</van-button>
+            <van-button id='111' data-url="aaaa" catch:click="confirmReceipt" class='ml-20' round type="green" size='small'>确认收货</van-button>
+          </view>
+        </navigator>
+        <!-- 待发货 end -->
+        <!-- 待评论 -->
+        <navigator class='order-item' hover-class='none' wx:if="{{item.status==3}}">
+          <view class='top'>
+            <text class='fz-26 c9'>下单时间：{{item.createtime}}</text>
+            <text class='fz-28 c0eaf51'>待评论</text>
+          </view>
+          <view class='pro-list'>
+            <block wx:for="{{item.nogift}}" wx:key="i" wx:for-item="nogift">
+              <image src='{{nogift.thumb}}' mode='widthFix'></image>
+            </block>
+            <van-icon color="#999999" size="15px" name="arrow" />
+          </view>
+          <view class='top'>
+            <text class='fz-26 c9'>共{{item.goods.length}}类商品</text>
+            <text class='fz-28 cf9721a'>￥{{item.price}}</text>
+          </view>
+          <view class='bottom' catchtap='fn'>
+            <van-button bind:click="" round type="default" size='small'>退款/售后</van-button>
+            <block wx:if="{{item.iscomment}}">
+              <van-button id='111' data-url="aaaa" catch:click="confirmReceipt" class='ml-20' round type="green" size='small'>去评论</van-button>
+            </block>
+            <block wx:else>
+              <van-button id='222' data-url="gdsf" catch:click="confirmReceipt1" class='ml-20' round type="default" size='small'>再来一单</van-button>
+            </block>
+          </view>
+        </navigator>
+        <!-- 待评论 end -->
 
-      <navigator class='order-item' hover-class='none' url='../order-detail/order-detail'>
-        <view class='top'>
-          <text class='fz-26 c9'>下单时间：201902-12 17:34:51</text>
-          <text class='fz-28 c0eaf51'>待支付</text>
-        </view>
-        <view class='pro-list'>
-          <image src='/img/seckill-1.png' mode='widthFix'></image>
-          <image src='/img/seckill-2.png' mode='widthFix'></image>
-          <image src='/img/seckill-3.png' mode='widthFix'></image>
-          <image src='/img/seckill-4.png' mode='widthFix'></image>
-          <van-icon color="#999999" size="15px" name="arrow" />
-        </view>
-        <view class='top'>
-          <text class='fz-26 c9'>共4类商品</text>
-          <text class='fz-28 cf9721a'>￥187.00</text>
-        </view>
-        <view class='bottom' catchtap='fn'>
-          <van-button bind:click="cancelOrder" round type="default" size='small'>取消订单</van-button>
-          <van-button id='111' data-url="aaaa" catch:click="toPay" class='ml-20' round type="green" size='small'>去付款</van-button>
-        </view>
-      </navigator>
-      <navigator class='order-item' hover-class='none' url='../order-detail/order-detail'>
-        <view class='top'>
-          <text class='fz-26 c9'>下单时间：201902-12 17:34:51</text>
-          <text class='fz-28 c0eaf51'>待发货</text>
-        </view>
-        <view class='pro-list'>
-          <image src='/img/seckill-1.png' mode='widthFix'></image>
-          <image src='/img/seckill-2.png' mode='widthFix'></image>
-          <image src='/img/seckill-3.png' mode='widthFix'></image>
-          <image src='/img/seckill-4.png' mode='widthFix'></image>
-          <van-icon color="#999999" size="15px" name="arrow" />
-        </view>
-        <view class='top'>
-          <text class='fz-26 c9'>共4类商品</text>
-          <text class='fz-28 cf9721a'>￥187.00</text>
-        </view>
-        <view class='bottom' catchtap='fn'>
-          <van-button bind:click="" round type="default" size='small'>取消订单</van-button>
-          <van-button id='111' data-url="aaaa" catch:click="confirmReceipt" class='ml-20' round type="green" size='small'>补货</van-button>
-        </view>
-      </navigator>
-      <navigator class='order-item' hover-class='none' url='../order-detail/order-detail'>
-        <view class='top'>
-          <text class='fz-26 c9'>下单时间：201902-12 17:34:51</text>
-          <text class='fz-28 c0eaf51'>待评论</text>
-        </view>
-        <view class='pro-list'>
-          <image src='/img/seckill-1.png' mode='widthFix'></image>
-          <image src='/img/seckill-2.png' mode='widthFix'></image>
-          <image src='/img/seckill-3.png' mode='widthFix'></image>
-          <image src='/img/seckill-4.png' mode='widthFix'></image>
-          <van-icon color="#999999" size="15px" name="arrow" />
-        </view>
-        <view class='top'>
-          <text class='fz-26 c9'>共4类商品</text>
-          <text class='fz-28 cf9721a'>￥187.00</text>
-        </view>
-        <view class='bottom' catchtap='fn'>
-          <van-button bind:click="" round type="default" size='small'>退款/售后</van-button>
-          <van-button id='111' data-url="aaaa" catch:click="onComment" class='ml-20' round type="green" size='small'>去评论</van-button>
-        </view>
-      </navigator>
+
+      </block>
+      <!-- 已完成 -->
       <navigator class='order-item' hover-class='none' url='../order-detail/order-detail'>
         <view class='top'>
           <text class='fz-26 c9'>下单时间：201902-12 17:34:51</text>
@@ -109,60 +121,61 @@
           <van-button id='111' data-url="aaaa" catch:click="anotherList" class='ml-20' round type="default" size='small'>再来一单</van-button>
         </view>
       </navigator>
+      <!-- 已完成 end -->
     </scroll-view>
   </van-tab>
   <!-- 待支付 -->
   <van-tab title-style="color:{{active == 1 ? '#0EAF51':'#AFAFAF'}};" title="待支付">
     <scroll-view scroll-y style='height:{{sHeight}}px'>
-
       <block wx:for="{{list}}" wx:key="index">
-      <navigator class='order-item' hover-class='none' wx:if="{{item.status==0}}">
-        <view class='top'>
-          <text class='fz-26 c9'>下单时间：{{item.createtime}}</text>
-          <text class='fz-28 c0eaf51'>待支付</text>
-        </view>
-        <view class='pro-list'>
-          <block wx:for="{{item.nogift}}" wx:key="i" wx:for-item="nogift">
-            <image src='{{nogift.thumb}}' mode='widthFix'></image>
-          </block>
-          <van-icon color="#999999" size="15px" name="arrow" />
-        </view>
-        <view class='top'>
-          <text class='fz-26 c9'>共{{item.goods.length}}类商品</text>
-          <text class='fz-28 cf9721a'>￥{{item.price}}</text>
-        </view>
-        <view class='bottom' catchtap='fn'>
-          <van-button bind:click="" round type="default" size='small'>取消订单</van-button>
-          <van-button id='111' data-url="aaaa" catch:click="confirmReceipt" class='ml-20' round type="green" size='small'>去付款</van-button>
-        </view>
-      </navigator>
+        <navigator class='order-item' hover-class='none' wx:if="{{item.status==0}}">
+          <view class='top'>
+            <text class='fz-26 c9'>下单时间：{{item.createtime}}</text>
+            <text class='fz-28 c0eaf51'>待支付</text>
+          </view>
+          <view class='pro-list'>
+            <block wx:for="{{item.nogift}}" wx:key="i" wx:for-item="nogift">
+              <image src='{{nogift.thumb}}' mode='widthFix'></image>
+            </block>
+            <van-icon color="#999999" size="15px" name="arrow" />
+          </view>
+          <view class='top'>
+            <text class='fz-26 c9'>共{{item.goods.length}}类商品</text>
+            <text class='fz-28 cf9721a'>￥{{item.price}}</text>
+          </view>
+          <view class='bottom' catchtap='fn'>
+              <picker bindchange='cancel' range='{{cancel}}' value='{{cancelindex}}' data-orderid='{{item.id}}'>取消订单</picker>
+            <van-button id='111' data-url="aaaa" catch:click="confirmReceipt" class='ml-20' round type="green" size='small'>去付款</van-button>
+          </view>
+        </navigator>
       </block>
 
     </scroll-view>
   </van-tab>
+  <!-- 待发货 -->
   <van-tab title-style="color:{{active == 2 ? '#0EAF51':'#AFAFAF'}};" title="待发货">
     <scroll-view scroll-y style='height:{{sHeight}}px'>
       <block wx:for="{{list}}" wx:key="index">
-      <navigator class='order-item' hover-class='none' wx:if="{{item.status==1}}">
-        <view class='top'>
-          <text class='fz-26 c9'>下单时间：{{item.createtime}}</text>
-          <text class='fz-28 c0eaf51'>待收货</text>
-        </view>
-        <view class='pro-list'>
-          <block wx:for="{{item.nogift}}" wx:key="i" wx:for-item="nogift">
-          <image src='{{nogift.thumb}}' mode='widthFix'></image>
-          </block>
-          <van-icon color="#999999" size="15px" name="arrow" />
-        </view>
-        <view class='top'>
-          <text class='fz-26 c9'>共{{item.goods.length}}类商品</text>
-          <text class='fz-28 cf9721a'>￥{{item.price}}</text>
-        </view>
-        <view class='bottom' catchtap='fn'>
-          <van-button bind:click="" round type="default" size='small'>取消订单</van-button>
-          <van-button id='111' data-url="aaaa" catch:click="confirmReceipt" class='ml-20' round type="green" size='small'>确认收货</van-button>
-        </view>
-      </navigator>
+        <navigator class='order-item' hover-class='none' wx:if="{{item.status==1}}">
+          <view class='top'>
+            <text class='fz-26 c9'>下单时间：{{item.createtime}}</text>
+            <text class='fz-28 c0eaf51'>待发货</text>
+          </view>
+          <view class='pro-list'>
+            <block wx:for="{{item.nogift}}" wx:key="i" wx:for-item="nogift">
+              <image src='{{nogift.thumb}}' mode='widthFix'></image>
+            </block>
+            <van-icon color="#999999" size="15px" name="arrow" />
+          </view>
+          <view class='top'>
+            <text class='fz-26 c9'>共{{item.goods.length}}类商品</text>
+            <text class='fz-28 cf9721a'>￥{{item.price}}</text>
+          </view>
+          <view class='bottom' catchtap='fn'>
+            <van-button bind:click="" round type="default" size='small'>取消订单</van-button>
+            <van-button id='111' data-url="aaaa" catch:click="confirmReceipt" class='ml-20' round type="green" size='small'>补货</van-button>
+          </view>
+        </navigator>
       </block>
     </scroll-view>
   </van-tab>
@@ -170,26 +183,26 @@
   <van-tab title-style="color:{{active == 3 ? '#0EAF51':'#AFAFAF'}};" title="待收货">
     <scroll-view scroll-y style='height:{{sHeight}}px'>
       <block wx:for="{{list}}" wx:key="index">
-      <navigator class='order-item' hover-class='none' wx:if="{{item.status==2}}">
-        <view class='top'>
-          <text class='fz-26 c9'>下单时间：{{item.createtime}}</text>
-          <text class='fz-28 c0eaf51'>待收货</text>
-        </view>
-        <view class='pro-list'>
-          <block wx:for="{{item.nogift}}" wx:key="i" wx:for-item="nogift">
-          <image src='{{nogift.thumb}}' mode='widthFix'></image>
-          </block>
-          <van-icon color="#999999" size="15px" name="arrow" />
-        </view>
-        <view class='top'>
-          <text class='fz-26 c9'>共{{item.goods.length}}类商品</text>
-          <text class='fz-28 cf9721a'>￥{{item.price}}</text>
-        </view>
-        <view class='bottom' catchtap='fn'>
-          <van-button bind:click="" round type="default" size='small'>取消订单</van-button>
-          <van-button id='111' data-url="aaaa" catch:click="confirmReceipt" class='ml-20' round type="green" size='small'>补货</van-button>
-        </view>
-      </navigator>
+        <navigator class='order-item' hover-class='none' wx:if="{{item.status==2}}">
+          <view class='top'>
+            <text class='fz-26 c9'>下单时间：{{item.createtime}}</text>
+            <text class='fz-28 c0eaf51'>待收货</text>
+          </view>
+          <view class='pro-list'>
+            <block wx:for="{{item.nogift}}" wx:key="i" wx:for-item="nogift">
+              <image src='{{nogift.thumb}}' mode='widthFix'></image>
+            </block>
+            <van-icon color="#999999" size="15px" name="arrow" />
+          </view>
+          <view class='top'>
+            <text class='fz-26 c9'>共{{item.goods.length}}类商品</text>
+            <text class='fz-28 cf9721a'>￥{{item.price}}</text>
+          </view>
+          <view class='bottom' catchtap='fn'>
+            <van-button bind:click="" round type="default" size='small'>取消订单</van-button>
+            <van-button id='111' data-url="aaaa" catch:click="confirmReceipt" class='ml-20' round type="green" size='small'>确认收货</van-button>
+          </view>
+        </navigator>
       </block>
     </scroll-view>
   </van-tab>
@@ -197,31 +210,31 @@
   <van-tab title-style="color:{{active == 4 ? '#0EAF51':'#AFAFAF'}};" title="完成">
     <scroll-view scroll-y style='height:{{sHeight}}px'>
       <block wx:for="{{list}}" wx:key="index">
-      <navigator class='order-item' hover-class='none' wx:if="{{item.status==3}}">
-        <view class='top'>
-          <text class='fz-26 c9'>下单时间：{{item.createtime}}</text>
-          <text class='fz-28 c0eaf51'>待评论</text>
-        </view>
-        <view class='pro-list'>
-          <block wx:for="{{item.nogift}}" wx:key="i" wx:for-item="nogift">
-          <image src='{{nogift.thumb}}' mode='widthFix'></image>
-          </block>
-          <van-icon color="#999999" size="15px" name="arrow" />
-        </view>
-        <view class='top'>
-          <text class='fz-26 c9'>共{{item.goods.length}}类商品</text>
-          <text class='fz-28 cf9721a'>￥{{item.price}}</text>
-        </view>
-        <view class='bottom' catchtap='fn'>
-          <van-button bind:click="" round type="default" size='small'>退款/售后</van-button>
-          <block wx:if="{{item.iscomment}}">
-          <van-button id='111' data-url="aaaa" catch:click="confirmReceipt" class='ml-20' round type="green" size='small'>去评论</van-button>
-          </block>
-          <block wx:else>
-          <van-button id='222' data-url="gdsf" catch:click="confirmReceipt1" class='ml-20' round type="default" size='small'>再来一单</van-button>
-          </block>
-        </view>
-      </navigator>
+        <navigator class='order-item' hover-class='none' wx:if="{{item.status==3}}">
+          <view class='top'>
+            <text class='fz-26 c9'>下单时间：{{item.createtime}}</text>
+            <text class='fz-28 c0eaf51'>待评论</text>
+          </view>
+          <view class='pro-list'>
+            <block wx:for="{{item.nogift}}" wx:key="i" wx:for-item="nogift">
+              <image src='{{nogift.thumb}}' mode='widthFix'></image>
+            </block>
+            <van-icon color="#999999" size="15px" name="arrow" />
+          </view>
+          <view class='top'>
+            <text class='fz-26 c9'>共{{item.goods.length}}类商品</text>
+            <text class='fz-28 cf9721a'>￥{{item.price}}</text>
+          </view>
+          <view class='bottom' catchtap='fn'>
+            <van-button bind:click="" round type="default" size='small'>退款/售后</van-button>
+            <block wx:if="{{item.iscomment}}">
+              <van-button id='111' data-url="aaaa" catch:click="confirmReceipt" class='ml-20' round type="green" size='small'>去评论</van-button>
+            </block>
+            <block wx:else>
+              <van-button id='222' data-url="gdsf" catch:click="confirmReceipt1" class='ml-20' round type="default" size='small'>再来一单</van-button>
+            </block>
+          </view>
+        </navigator>
       </block>
     </scroll-view>
   </van-tab>

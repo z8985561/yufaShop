@@ -10,14 +10,14 @@
   <!-- 分类切换导航 -->
   <scroll-view class='cate-nav' scroll-y style='height:{{scrollHeight}}px;'>
     <block wx:for="{{shop.cateList}}" wx:key="index">
-      <view class='text-center ptb-30 fz-28 {{active == index ? "c3":"c9"}}' data-index="{{index}}" bindtap='onChangeCate'>{{item.cateName}}</view>
+      <view class='text-center ptb-30 fz-28 {{active == index ? "c3":"c9"}}' data-index="{{index}}" bindtap='onChangeCate' wx:if="{{item.data.length}}" >{{item.cateName}}</view>
     </block>
   </scroll-view>
   <!-- /分类切换导航 -->
   <!-- 店铺产品列表 -->
   <block wx:for="{{shop.cateList}}" wx:key="index">
     <scroll-view class='goods-list' scroll-y style='height:{{scrollHeight}}px;' hidden='{{active != index}}'>
-      <view class='plr-20 ptb-30'>
+      <view class='plr-20 ptb-30' wx:if="{{item.data}}">
         <block wx:for="{{item.data}}" wx:for-item="product" wx:key="idx">
           <product-item productData="{{product}}" bind:addEvent='addEventListener' bind:subEvent='subEventListener' bind:blurEvent='blurEventListener'></product-item>
         </block>

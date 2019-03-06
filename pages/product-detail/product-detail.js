@@ -10,37 +10,38 @@ Page({
    * 页面的初始数据
    */
   data: {
+    goods: {},
     shop: {
       id: 1,
       name: "福满园副食品批发行",
       description: "广东省农业龙头企业，放心油粮广东省农业龙头企业，放心油粮广东省农业龙头企业，放心油粮",
       logo: "/img/shop-logo.png"
     },
+    cartcount: 0,
     productDetail: {
-      id: 1,
+      id: 2996,
       title: "红皮洋葱",
       description: "紫色或紫红色，有少量碰伤，季节交替时部分略有新芽或冻伤现象",
       spec: "袋",
       images: ["/img/product-6.png", "/img/product-6.png", "/img/product-6.png"],
-      cartcount:5,
       specList: [ //规格列表
         {
-          id: 11,
+          id: 543,
           specTitle: "2斤",
           price: "4.00",
         },
         {
-          id: 12,
+          id: 544,
           specTitle: "5斤",
           price: "7.75",
         },
         {
-          id: 13,
+          id: 545,
           specTitle: "10斤",
           price: "15.00",
         },
         {
-          id: 14,
+          id: 546,
           specTitle: "50斤",
           price: "72.50",
         }
@@ -91,8 +92,8 @@ Page({
     ],
     commentList: [{
         userPic: "/img/tx-1.png",
-        name: "G.ajc",
         time: "08-30  15:42",
+        name: "G.ajc",
         content: "很新鲜，送货也很及时。工作人员很细心，包装的很好。好评"
       },
       {
@@ -174,7 +175,7 @@ Page({
       buyGoods: buyGoods
     })
   },
-  onChangeAddCart(e){
+  onChangeAddCart(e) {
     var addCartGoods = this.data.addCartGoods;
     addCartGoods.total = e.detail;
     this.setData({
@@ -182,25 +183,36 @@ Page({
     })
   },
   // 加入购物车
-  pushAddCart(){
+  pushAddCart() {
+    var that = this;
     this.onCloseAddCart();
-    // 发送请求
     Toast.loading({
-      duration: 0,       // 持续展示 toast
+      duration: 0, // 持续展示 toast
       forbidClick: true, // 禁用背景点击
       message: '加载中...',
       loadingType: 'spinner',
       selector: '#custom-selector'
     });
-    setTimeout(()=>{
-      Toast.clear();
-      Toast.success('已加入购物车');
-    },500)
+    // 发送请求
+    core.post("member/cart/add", {
+      id: this.data.productDetail.id,
+      total: this.data.addCartGoods.total,
+      optionid: this.data.addCartGoods.id
+    }, function(res) {
+      console.log(res)
+      that.setData({
+        cartcount: res.cartcount
+      })
+      setTimeout(() => {
+        Toast.clear();
+        Toast.success('已加入购物车');
+      }, 500)
+    })
   },
   //购买事件
-  buyGoods(){
+  buyGoods() {
     wx.navigateTo({
-      url: '/pages/order/create/create?id=9269&total=1&optionid=0',
+      url: `/pages/order/create/create?id=${this.data.productDetail.id}&total=${this.data.buyGoods.total}&optionid=${this.data.buyGoods.id}`,
     })
   },
   /**
@@ -211,11 +223,19 @@ Page({
     var that = this;
     core.get('yufa/goods/get_detail', {
       'id': options.id
-    }, function(data) {
-      that.setData(data.goods)
+    }, function(res) {
+      console.log(res);
+      that.setData({
+        goods: res.goods
+      })
       if (data.goods.content) {
         wxparse.wxParse("wxParseData", "html", data.goods.content, that, "5");
       }
+    });
+    core.get('yufa/goods/get_comments', {
+      'id': options.id
+    }, function (data) {
+      that.setData(data);
     });
   },
 
@@ -225,7 +245,7 @@ Page({
   onReady: function() {
     var buyGoods = {
         title: this.data.productDetail.title,
-      id: this.data.productDetail.specList[0].id,
+        id: this.data.productDetail.specList[0].id,
         total: 1
       },
       addCartGoods = {
@@ -233,10 +253,10 @@ Page({
         id: this.data.productDetail.specList[0].id,
         total: 1
       };
-      this.setData({
-        buyGoods: buyGoods,
-        addCartGoods: addCartGoods
-      })
+    this.setData({
+      buyGoods: buyGoods,
+      addCartGoods: addCartGoods
+    })
   },
 
   /**
