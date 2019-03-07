@@ -5,6 +5,7 @@ Component({
    */
   properties: {
     tabActive: Number,
+    cartTotal: Number
   },
 
   /**
@@ -55,7 +56,7 @@ Component({
           break;
         case 2:
           wx.reLaunch({
-            url: '/pages/category/category'
+            url: '/pages/detailed-list/detailed-list'
           })
           break;
         case 3:

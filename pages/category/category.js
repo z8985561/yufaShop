@@ -1,4 +1,5 @@
 // pages/category/category.js
+var app = getApp(), core = app.requirejs("core");
 Page({
 
   /**
@@ -6,6 +7,7 @@ Page({
    */
   data: {
     tabActive:1,
+    cartTotal:0,
     //所有分类产品数据
     allProductData: [{
       cateId: 1,
@@ -4917,7 +4919,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    var that = this;
+    //获取购物车数量
+    core.get("member/cart/get_cart", {}, function (res) {
+      that.setData({
+        cartTotal: res.total
+      })
+    })
   },
 
   /**

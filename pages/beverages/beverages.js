@@ -1,10 +1,15 @@
+
+import Toast from '../../vant-ui/toast/toast';
+var app = getApp(),
+  core = app.requirejs("core"),
+  jq = app.requirejs("jquery");
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    cartListNum: 9,//购物车
+    // cartListNum: 9,//购物车
     hotSaleProduct: [
       {
         cateId: 1,
@@ -186,7 +191,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    console.info(options);
+    this.setData(options);
+    core.get('yufa/goods/getZonegoods',{'id':this.options.id},function(data){
+      console.info(data);
+    });
   },
 
   /**

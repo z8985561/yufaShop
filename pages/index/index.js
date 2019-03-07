@@ -1,7 +1,7 @@
 //index.js
 //获取应用实例
 var t = getApp(),
-  a = t.requirejs("core");
+  core = t.requirejs("core");
 var sliderWidth = 37.5; // 需要设置slider的宽度，用于计算中间位置
 
 Page({
@@ -17,6 +17,28 @@ Page({
     search_text: '火锅丸子8.99折',
     topMsg: "您的订单已发货", //头部提示消息
     topMsgFlag: false,
+    tabbarIcon: {
+      home: {
+        normal: '/img/home.png',
+        active: '/img/home-active.png'
+      },
+      cate: {
+        normal: '/img/cate.png',
+        active: '/img/cate-active.png'
+      },
+      inventory: {
+        normal: '/img/inventory.png',
+        active: '/img/inventory-active.png'
+      },
+      cart: {
+        normal: '/img/cart.png',
+        active: '/img/cart-active.png'
+      },
+      my: {
+        normal: '/img/my.png',
+        active: '/img/my-active.png'
+      }
+    },
     indexBannerList: [{ //banner图连接和图片连接
         navUrl: "#",
         imgUrl: '/img/index-banner-1.png',
@@ -477,7 +499,7 @@ Page({
         }
       ]
     }],
-    cartListNum: 0,
+    cartTotal: 0,
     showCoupons: false, //控制优惠券显示
     showSearchBg: false, //控制顶部搜索背景颜色
     showSearch: false, //控制底部搜索隐藏显示
@@ -535,25 +557,25 @@ Page({
   // 监听添加商品事件
   addEventListener: function(e) {
     //console.log(e.detail)
-    var addCartCount = this.data.cartListNum + 1;
+    var addCartCount = this.data.cartTotal + 1;
     this.setData({
-      cartListNum: addCartCount
+      cartTotal: addCartCount
     })
   },
   // 监听删除商品事件
   subEventListener: function(e) {
     //console.log(e.detail)
-    var subCartCount = this.data.cartListNum - 1;
+    var subCartCount = this.data.cartTotal - 1;
     this.setData({
-      cartListNum: subCartCount
+      cartTotal: subCartCount
     })
   },
   //监听input失去焦点事件
   blurEventListener: function(e) {
     //console.log(e.detail.value)
-    var blurCartCount = this.data.cartListNum + e.detail.value;
+    var blurCartCount = this.data.cartTotal + e.detail.value;
     this.setData({
-      cartListNum: blurCartCount
+      cartTotal: blurCartCount
     })
   },
   //关闭优惠券事件
@@ -604,6 +626,12 @@ Page({
         });
       }
     });
+    //获取购物车数量
+    core.get("member/cart/get_cart", {}, function (res) {
+      that.setData({
+        cartTotal: res.total
+      })
+    })
     
   },
   
@@ -643,18 +671,6 @@ Page({
         })
       }
     }, 1000)
-    //计算购物车商品数量
-    var cartCount = 0;
-    this.data.recProductDataList.forEach(function(a) {
-      if(a.data){
-        a.data.forEach(function (b) {
-          cartCount += b.count;
-        })
-      }
-    })
-    this.setData({
-      cartListNum: cartCount
-    })
   },
   /**
    * 生命周期函数--监听页面显示
@@ -693,7 +709,7 @@ Page({
     });
 
     // 默认首页页面的id是4,固定的,到时上线时看看id是多少
-    a.get("yufa/index", {'id': '4'}, function(d) {
+    core.get("yufa/index", {'id': '4'}, function(d) {
       console.info(d.title);
       if (d.error == 0) {
         that.setData(d);
@@ -713,7 +729,7 @@ Page({
       }
     });
 
-    a.get("yufa.coupon.index.getlist", { 'id': '4' }, function (d) {
+    core.get("yufa.coupon.index.getlist", { 'id': '4' }, function (d) {
       that.setData(d);
       console.info(d);
     });

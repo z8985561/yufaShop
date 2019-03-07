@@ -21,5 +21,5 @@
 <!-- 展示全部类别产品区域 -->
 
 <!-- 底部导航 -->
-<tabbar tabActive="{{tabActive}}"></tabbar>
+<tabbar tabActive="{{tabActive}}" cartTotal="{{cartTotal}}"></tabbar>
 <!-- 底部导航end -->

@@ -1,0 +1,10 @@
+<!--pages/register/select-type.wxml-->
+<view class='plr-20'>
+  <view class='qus c3'>你属于哪种类型商户？</view>
+  <view class='fz-24 c9 mb-40'>我们将推荐给您合适的商品</view>
+  <view class='text-center fz-34 c3'>
+  <block wx:for="{{type}}" wx:key="index">
+    <navigator url='/pages/register/create-store?type={{item}}'>{{item}}</navigator>
+  </block>
+  </view>
+</view>

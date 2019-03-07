@@ -49,3 +49,5 @@
   </navigator>
 </view>
 <!-- 底部导航end -->
+
+<van-toast id="van-toast" />

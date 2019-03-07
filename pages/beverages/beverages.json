@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "category-nav": "/components/category-nav/category-nav",
-    "product-item": "/components/product-item/product-item"
+    "product-item": "/components/product-item/product-item",
+    "van-toast": "/vant-ui/toast/index"
   },
   "navigationBarTitleText": "酒饮专区"
 }

@@ -225,11 +225,9 @@ Page({
       'id': options.id
     }, function(res) {
       console.log(res);
-      that.setData({
-        goods: res.goods
-      })
-      if (data.goods.content) {
-        wxparse.wxParse("wxParseData", "html", data.goods.content, that, "5");
+      that.setData(res.goods)
+      if (res.goods.content) {
+        wxparse.wxParse("wxParseData", "html", res.goods.content, that, "5");
       }
     });
     core.get('yufa/goods/get_comments', {

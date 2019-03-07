@@ -13,7 +13,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.4.4",
-	"appid": "wx84da2d3882480da9",
+	"appid": "wx32b12b26bbfd1943",
 	"projectname": "meicai",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 12,
+			"current": 13,
 			"list": [
 				{
 					"id": -1,
@@ -71,16 +71,17 @@
 				},
 				{
 					"id": 5,
-					"name": "个人中心-开发票",
-					"pathName": "pages/me/comment/comment",
-					"query": "",
+					"name": "个人中心-订单",
+					"pathName": "pages/me/all-order/all-order",
+					"query": "active=0",
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "个人中心",
-					"pathName": "pages/me/me",
-					"query": ""
+					"id": 6,
+					"name": "个人中心-评论",
+					"pathName": "pages/me/comment/comment",
+					"query": "",
+					"scene": null
 				},
 				{
 					"id": -1,
@@ -120,6 +121,14 @@
 					"id": -1,
 					"name": "商品详情",
 					"pathName": "pages/product-detail/product-detail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "选择门店类型",
+					"pathName": "pages/register/select-type",
+					"query": "",
 					"scene": null
 				}
 			]

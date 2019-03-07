@@ -1,190 +1,6 @@
 /**app.wxss**/
 @import "lib/fontAwesome.wxss";
 @import "lib/weui.wxss";
-/* 字体相关样式 */
-.fw-700{font-weight: 700}
-.text-hide{overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
-/* 字体大小 */
-.fz-22{font-size: 22rpx;}
-.fz-24{font-size: 24rpx;}
-.fz-26{font-size: 26rpx;}
-.fz-28{font-size: 28rpx;}
-.fz-30{font-size: 30rpx;}
-.fz-32{font-size: 32rpx;}
-.fz-34{font-size: 34rpx;}
-.fz-40{font-size: 40rpx;}
-.fz-56{font-size: 56rpx;}
-/* 字体颜色 */
-.c0{color:#000;}
-.c3{color:#333;}
-.c6{color:#666;}
-.c9{color:#999;}
-.ca{color:#aaa;}
-.cc{color:#ccc;}
-.cf{color:#fff;}
-.cf9721a{color: #F9721A}
-.c0eaf51{color: #0eaf51;}
-.fe893f{color: #FE893F;}
-.bgc-f{background-color: #fff;}
-/* 字体横线 */
-.text-center{text-align: center;}
-.text-line{text-decoration: line-through}
-/* 外边距 */
-.ml-20{margin-left: 20rpx;}
-.ml-40{margin-left: 40rpx;}
-.ml-60{margin-left: 60rpx;}
-.ml-80{margin-left: 80rpx;}
-.mb-20{margin-bottom: 20rpx;}
-.mb-40{margin-bottom: 40rpx;}
-.mb-60{margin-bottom: 60rpx;}
-.mb-80{margin-bottom: 80rpx;}
-.mb-100{margin-bottom: 100rpx;}
-.mb-150{margin-bottom: 150rpx;}
-.mt-20{margin-top: 20rpx;}
-.mt-40{margin-top: 40rpx;}
-/* 内边距 */
-.p-30{padding: 30rpx;}
-.plr-20{padding-left: 20rpx;padding-right: 20rpx;}
-.plr-30{padding-left: 30rpx;padding-right: 30rpx;}
-.ptb-30{padding-top: 30rpx;padding-bottom: 30rpx;}
-.pt-150{padding-top: 150rpx;}
-/* 浮动 */
-.pull-left{
-  float: left;
-}
-pull-right{
-  float: right;
-}
-.clearfix::after{
-  content: "";
-  display: block;
-  clear: both;
-}
-
-/* flex布局 */
-.flex{
-  display: flex;
-}
-.flex-wrap{
-  display: flex;
-  flex-wrap: wrap;
-}
-.flex-column{
-  flex-direction: column;
-}
-.flex-jus{
-  justify-content: space-between;
-}
-.flex-center{
-  justify-content: center;
-}
-.flex-start{
-  justify-content: flex-start;
-}
-.flex-end{
-  justify-content: flex-end;
-}
-.flex-align-start{
-  align-items: flex-start;
-}
-.flex-align-end{
-  align-items: flex-end;
-}
-.flex-align-center{
-  align-items: center;
-}
-/* 底部导航样式 */
-.footer-nav{
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 100rpx;
-  z-index: 999;
-  background-color: #fff;
-}
-.nav-item{
-  width: 20%;
-  font-size: 26rpx;
-  text-align: center;
-  color: #999;
-}
-.nav-item .fa{
-  font-size: 50rpx;
-}
-.nav-item.on{
-  color: #0FB54F;
-}
-
-
-/* 头部搜索样式 */
-.hd-search {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  align-items: center;
-  height: 90rpx;
-  z-index: 999;
-}
-
-.hd-bg {
-  background-color: #fff;
-}
-
-.hd-bg .fa {
-  color: #666;
-}
-
-.hd-search .icon {
-  width: 80rpx;
-  text-align: center;
-}
-
-.hd-search .search-box {
-  flex: 1;
-  height: 70rpx;
-  line-height: 70rpx;
-  padding-left: 20rpx;
-  background-color: #eee;
-  border-radius: 10rpx;
-}
-/* 按钮样式 */
-.btn-big{
-  height: 47px;
-  line-height: 47px;
-  background: linear-gradient(to left,#0EAF51,#10CE5F);
-  border-radius: 10rpx;
-  color: #fff;
-  text-align: center;
-}
-
-/* question */
-.question-list{
-  padding-bottom: 20px;
-}
-.question-list .title{
-  position: relative;
-  padding: 0 20rpx;
-  height: 40px;
-  line-height: 40px;
-  background-color: #F5F5F5;
-  font-size: 16px;
-  color: #333;
-}
-.question-list navigator{
-  padding: 0 20rpx;
-  height: 35px;
-  line-height: 35px;
-  color: #666;
-  font-size: 13px;
-}
-/* question end */
-
 .fui-danmu {
     height: 1.6rem;
     max-width: 20rem;
@@ -3677,7 +3493,7 @@ image {
 }
 
 page {
-    background-color: #f3f3f3;
+    background-color: #fff;
     font-size: 16px;
     height: 100%;
     font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
@@ -3819,3 +3635,187 @@ page {
     margin-top: -5rpx;
     margin-right: 10rpx;
 }
+
+/* 字体相关样式 */
+.fw-700{font-weight: 700}
+.text-hide{overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+/* 字体大小 */
+.fz-22{font-size: 22rpx;}
+.fz-24{font-size: 24rpx;}
+.fz-26{font-size: 26rpx;}
+.fz-28{font-size: 28rpx;}
+.fz-30{font-size: 30rpx;}
+.fz-32{font-size: 32rpx;}
+.fz-34{font-size: 34rpx;}
+.fz-40{font-size: 40rpx;}
+.fz-56{font-size: 56rpx;}
+/* 字体颜色 */
+.c0{color:#000;}
+.c3{color:#333;}
+.c6{color:#666;}
+.c9{color:#999;}
+.ca{color:#aaa;}
+.cc{color:#ccc;}
+.cf{color:#fff;}
+.cf9721a{color: #F9721A}
+.c0eaf51{color: #0eaf51;}
+.fe893f{color: #FE893F;}
+.bgc-f{background-color: #fff;}
+/* 字体横线 */
+.text-center{text-align: center;}
+.text-line{text-decoration: line-through}
+/* 外边距 */
+.ml-20{margin-left: 20rpx;}
+.ml-40{margin-left: 40rpx;}
+.ml-60{margin-left: 60rpx;}
+.ml-80{margin-left: 80rpx;}
+.mb-20{margin-bottom: 20rpx;}
+.mb-40{margin-bottom: 40rpx;}
+.mb-60{margin-bottom: 60rpx;}
+.mb-80{margin-bottom: 80rpx;}
+.mb-100{margin-bottom: 100rpx;}
+.mb-150{margin-bottom: 150rpx;}
+.mt-20{margin-top: 20rpx;}
+.mt-40{margin-top: 40rpx;}
+/* 内边距 */
+.p-30{padding: 30rpx;}
+.plr-20{padding-left: 20rpx;padding-right: 20rpx;}
+.plr-30{padding-left: 30rpx;padding-right: 30rpx;}
+.ptb-30{padding-top: 30rpx;padding-bottom: 30rpx;}
+.pt-150{padding-top: 150rpx;}
+/* 浮动 */
+.pull-left{
+  float: left;
+}
+pull-right{
+  float: right;
+}
+.clearfix::after{
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* flex布局 */
+.flex{
+  display: flex;
+}
+.flex-wrap{
+  display: flex;
+  flex-wrap: wrap;
+}
+.flex-column{
+  flex-direction: column;
+}
+.flex-jus{
+  justify-content: space-between;
+}
+.flex-center{
+  justify-content: center;
+}
+.flex-start{
+  justify-content: flex-start;
+}
+.flex-end{
+  justify-content: flex-end;
+}
+.flex-align-start{
+  align-items: flex-start;
+}
+.flex-align-end{
+  align-items: flex-end;
+}
+.flex-align-center{
+  align-items: center;
+}
+/* 底部导航样式 */
+.footer-nav{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100rpx;
+  z-index: 999;
+  background-color: #fff;
+}
+.nav-item{
+  width: 20%;
+  font-size: 26rpx;
+  text-align: center;
+  color: #999;
+}
+.nav-item .fa{
+  font-size: 50rpx;
+}
+.nav-item.on{
+  color: #0FB54F;
+}
+
+
+/* 头部搜索样式 */
+.hd-search {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  height: 90rpx;
+  z-index: 999;
+}
+
+.hd-bg {
+  background-color: #fff;
+}
+
+.hd-bg .fa {
+  color: #666;
+}
+
+.hd-search .icon {
+  width: 80rpx;
+  text-align: center;
+}
+
+.hd-search .search-box {
+  flex: 1;
+  height: 70rpx;
+  line-height: 70rpx;
+  padding-left: 20rpx;
+  background-color: #eee;
+  border-radius: 10rpx;
+}
+/* 按钮样式 */
+.btn-big{
+  height: 47px;
+  line-height: 47px;
+  background: linear-gradient(to left,#0EAF51,#10CE5F);
+  border-radius: 10rpx;
+  color: #fff;
+  text-align: center;
+}
+
+/* question */
+.question-list{
+  padding-bottom: 20px;
+}
+.question-list .title{
+  position: relative;
+  padding: 0 20rpx;
+  height: 40px;
+  line-height: 40px;
+  background-color: #F5F5F5;
+  font-size: 16px;
+  color: #333;
+}
+.question-list navigator{
+  padding: 0 20rpx;
+  height: 35px;
+  line-height: 35px;
+  color: #666;
+  font-size: 13px;
+}
+/* question end */

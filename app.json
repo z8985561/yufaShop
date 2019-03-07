@@ -30,6 +30,7 @@
     "pages/panic-buying/panic-buying",
     "pages/order/order",
     "pages/order/create/create",
+    "pages/order/pay/index",
     "pages/member/index/index",
     "pages/member/info/index",
     "pages/member/bind/index",
@@ -44,7 +45,9 @@
     "pages/member/user/index",
     "pages/member/user/apply",
     "pages/member/appointment/index",
-    "pages/member/appointment/bind"
+    "pages/member/appointment/bind",
+    "pages/register/select-type",
+    "pages/register/create-store"
   ],
   "window":{
     "backgroundTextStyle":"light",

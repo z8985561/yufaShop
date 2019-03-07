@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "van-notice-bar": "/vant-ui/notice-bar/index"
+  },
+  "navigationBarTitleText":"创建门店"
+}

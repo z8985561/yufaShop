@@ -37,9 +37,10 @@ Page({
     });
   },
   // 评价事件
-  onComment() {
+  onComment(e) {
+    var id= e.currentTarget.id;
     wx.navigateTo({
-      url: '../comment/comment',
+      url: '/pages/me/comment/comment?id=' + id,
     })
   },
   //取消订单事件

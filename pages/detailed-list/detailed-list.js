@@ -1,4 +1,5 @@
 // pages/detailed-list/detailed-list.js
+var app = getApp(),core = app.requirejs("core");
 Page({
 
   /**
@@ -6,7 +7,7 @@ Page({
    */
   data: {
     active:0,
-    cartListNum: 9,//购物车
+    cartTotal: 0,//购物车
     activeIndex: .0,
     sliderOffset: 0,
     listHeight:0,
@@ -125,6 +126,12 @@ Page({
           listHeight:res.windowHeight - 130
         })
       },
+    })
+    //获取购物车数量
+    core.get("member/cart/get_cart", {}, function (res) {
+      that.setData({
+        cartTotal: res.total
+      })
     })
   },
 

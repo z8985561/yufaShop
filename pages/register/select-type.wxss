@@ -1,0 +1,7 @@
+/* pages/register/select-type.wxss */
+.qus{
+  font-size: 26px;
+}
+navigator{
+  margin-bottom: 30rpx;
+}

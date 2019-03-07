@@ -1,0 +1,16 @@
+<!--pages/register/create-store.wxml-->
+<form bindsubmit="formSubmit">
+  <van-notice-bar custom-class="mb-20" backgroundColor="#f3f3f3" color="#333" speed="30" text="温馨提示：目前裕发商城只针对佛山地区的用户。请填写佛山地区的地址。谢谢合作！" />
+  <view class='plr-20'>
+    <view class='c3 fz-34'>您的收货地址在哪里？</view>
+    <input name="adress_area" placeholder='首先选择小区／街道／商厦' placeholder-style='color:#ccc'></input>
+    <input name="adress_street" class='mb-20' placeholder='然后输入详细地址（如安贞８号）' placeholder-style='color:#ccc'></input>
+    <view class='c3 fz-34'>您的名字是？</view>
+    <input name="username" class='mb-20' placeholder='请输入' placeholder-style='color:#ccc'></input>
+    <view class='c3 fz-34'>您的店名是</view>
+    <input name="shopname" class='mb-20' placeholder='请输入' placeholder-style='color:#ccc'></input>
+    <view class='c3 fz-34'>您的联系方式</view>
+    <input name="phone" type="number"  class='mb-150' placeholder='请输入' placeholder-style='color:#ccc'></input>
+    <button class='btn-big' formType="submit">创建门店</button>
+  </view>
+</form>

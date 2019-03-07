@@ -65,17 +65,17 @@
       </view>
     </image>
     <block wx:if="{{!!seckillProductList}}">
-    <scroll-view scroll-x class='seckill-list' >
-      <block wx:for="{{seckillProductList}}" wx:key="item.id">
-        <navigator class='seckill-item' url='{{item.url}}' hover-class='none'>
-          <image src='{{item.imgUrl}}' mode='widthFix'></image>
-          <view class='fz-30'>{{item.title}}</view>
-          <view class='fz-30 c9'>{{item.specDes}}</view>
-          <view class='fz-30 cf9721a'>￥{{item.newPrice}}/{{item.spec}}</view>
-          <view class='fz-24 c9 text-line'>￥{{item.oldPrice}}/{{item.spec}}</view>
-        </navigator>
-      </block>
-    </scroll-view>
+      <scroll-view scroll-x class='seckill-list'>
+        <block wx:for="{{seckillProductList}}" wx:key="item.id">
+          <navigator class='seckill-item' url='{{item.url}}' hover-class='none'>
+            <image src='{{item.imgUrl}}' mode='widthFix'></image>
+            <view class='fz-30'>{{item.title}}</view>
+            <view class='fz-30 c9'>{{item.specDes}}</view>
+            <view class='fz-30 cf9721a'>￥{{item.newPrice}}/{{item.spec}}</view>
+            <view class='fz-24 c9 text-line'>￥{{item.oldPrice}}/{{item.spec}}</view>
+          </navigator>
+        </block>
+      </scroll-view>
     </block>
   </view>
   <!-- 超级秒杀end -->
@@ -125,12 +125,12 @@
       </block>
     </view>
   </view>
-  
+
 </scroll-view>
 <!-- 页面主体部分 -->
 
 <!-- 底部导航 -->
-<tabbar active="1"></tabbar>
+<tabbar tabActive="{{activeIndex}}" cartTotal="{{cartTotal}}"></tabbar>
 <!-- 底部导航end -->
 
 
@@ -144,10 +144,10 @@
         <navigator class='coupons-item mb-40'>
           <view class='left'>
             <block wx:if="{{!item.discount}}">
-            <text>￥{{item.deduct}}</text>
+              <text>￥{{item.deduct}}</text>
             </block>
             <block wx:else>
-            <text>{{item.discount}}折</text>
+              <text>{{item.discount}}折</text>
             </block>
           </view>
           <view class='center'>
@@ -187,15 +187,6 @@
 
 
 <view class="container" wx:if='{{modelShow}}'>
-    <warrant id='warrant'
-      title='微信授权'
-      content='{{title}} ,申请获得授权'
-      cancelText='取消'
-      confirm='确定'
-      isShow="{{modelShow}}"
-      bind:cancelEvent="_cancelEvent"
-      bind:confirmEvent="_confirmEvent"
-      bind:uu="yy"
-      >
-    </warrant>
+  <warrant id='warrant' title='微信授权' content='{{title}} ,申请获得授权' cancelText='取消' confirm='确定' isShow="{{modelShow}}" bind:cancelEvent="_cancelEvent" bind:confirmEvent="_confirmEvent" bind:uu="yy">
+  </warrant>
 </view>

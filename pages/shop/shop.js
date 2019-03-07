@@ -330,7 +330,13 @@ Page({
     })
     core.get('yufa/shop/getShopinfo', { 'merchid': this.data.shopid}, function (data) {
       data.error && fail(data.message);
-      data.error || that.setData(data);
+      if (!data.error){
+        that.setData(data);
+        // 动态设置页面标题
+        wx.setNavigationBarTitle({
+          title: that.data.shop.name
+        })
+      }
       // 动态设置页面标题
       wx.setNavigationBarTitle({
         title: that.data.shop.name
@@ -349,7 +355,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   },
 
   /**

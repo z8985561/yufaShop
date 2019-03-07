@@ -20,7 +20,6 @@
             <text class='fz-28 cf9721a'>￥{{item.price}}</text>
           </view>
           <view class='bottom' catchtap='fn'>
-            <van-button bind:click="" round type="default" size='small'>取消订单</van-button>
             <van-button id='111' data-url="aaaa" catch:click="confirmReceipt" class='ml-20' round type="green" size='small'>补货</van-button>
           </view>
         </navigator>
@@ -64,7 +63,6 @@
             <text class='fz-28 cf9721a'>￥{{item.price}}</text>
           </view>
           <view class='bottom' catchtap='fn'>
-            <van-button bind:click="" round type="default" size='small'>取消订单</van-button>
             <van-button id='111' data-url="aaaa" catch:click="confirmReceipt" class='ml-20' round type="green" size='small'>确认收货</van-button>
           </view>
         </navigator>
@@ -88,10 +86,10 @@
           <view class='bottom' catchtap='fn'>
             <van-button bind:click="" round type="default" size='small'>退款/售后</van-button>
             <block wx:if="{{item.iscomment}}">
-              <van-button id='111' data-url="aaaa" catch:click="confirmReceipt" class='ml-20' round type="green" size='small'>去评论</van-button>
+              <van-button id='{{item.id}}' data-url="/pages/me/comment/comment" catch:click="onComment" class='ml-20' round type="green" size='small'>去评论</van-button>
             </block>
             <block wx:else>
-              <van-button id='222' data-url="gdsf" catch:click="confirmReceipt1" class='ml-20' round type="default" size='small'>再来一单</van-button>
+              <van-button id='{{item.id}}' data-url="gdsf" catch:click="confirmReceipt1" class='ml-20' round type="default" size='small'>再来一单</van-button>
             </block>
           </view>
         </navigator>
@@ -172,7 +170,6 @@
             <text class='fz-28 cf9721a'>￥{{item.price}}</text>
           </view>
           <view class='bottom' catchtap='fn'>
-            <van-button bind:click="" round type="default" size='small'>取消订单</van-button>
             <van-button id='111' data-url="aaaa" catch:click="confirmReceipt" class='ml-20' round type="green" size='small'>补货</van-button>
           </view>
         </navigator>
@@ -199,7 +196,6 @@
             <text class='fz-28 cf9721a'>￥{{item.price}}</text>
           </view>
           <view class='bottom' catchtap='fn'>
-            <van-button bind:click="" round type="default" size='small'>取消订单</van-button>
             <van-button id='111' data-url="aaaa" catch:click="confirmReceipt" class='ml-20' round type="green" size='small'>确认收货</van-button>
           </view>
         </navigator>
