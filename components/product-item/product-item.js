@@ -1,3 +1,4 @@
+import core from "../../utils/core.js"
 // components/product-item/product-item.js
 Component({
   /**
@@ -32,6 +33,13 @@ Component({
       this.setData({
         num: num
       });
+      core.get("member/cart/add", {
+        id: 2995,
+        optionid: 541,
+        total: 1
+        },function(res){
+        console.log(res)
+      });
       this.triggerEvent('addEvent',{
         value: num
       },{})
@@ -41,6 +49,13 @@ Component({
       this.setData({
         num: num
       })
+      core.get("member/cart/add", {
+        id: 2995,
+        optionid: 541,
+        total: -1
+      }, function (res) {
+        console.log(res)
+      });
       this.triggerEvent('subEvent', {
         value: num
       }, {})
