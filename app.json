@@ -47,7 +47,8 @@
     "pages/member/appointment/index",
     "pages/member/appointment/bind",
     "pages/register/select-type",
-    "pages/register/create-store"
+    "pages/register/create-store",
+    "pages/cart/cart"
   ],
   "window":{
     "backgroundTextStyle":"light",

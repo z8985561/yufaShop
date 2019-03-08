@@ -12,6 +12,7 @@ Page({
   data: {
     timeField : "",
     couponlist: [],
+    cartTotal: 0,//购物车数量
     modelShow:true,
     rownum: 20, // 每行显示的个数=100/rownum  此处默认是每行5个图标
     search_text: '火锅丸子8.99折',
@@ -499,7 +500,6 @@ Page({
         }
       ]
     }],
-    cartTotal: 0,
     showCoupons: false, //控制优惠券显示
     showSearchBg: false, //控制顶部搜索背景颜色
     showSearch: false, //控制底部搜索隐藏显示
@@ -626,12 +626,6 @@ Page({
         });
       }
     });
-    //获取购物车数量
-    core.get("member/cart/get_cart", {}, function (res) {
-      that.setData({
-        cartTotal: res.total
-      })
-    })
     
   },
   
@@ -734,7 +728,19 @@ Page({
       console.info(d);
     });
 
+    //获取购物车数量
+    core.get("member/cart/get_cart", {}, function (res) {
+      that.setData({
+        cartTotal: res.total
+      })
+    })
 
+  },
+  getCart(){
+    var that = this;
+    core.get("member/cart/get_cart", {}, function (res) {
+      console.log(res)
+    });
   },
   // onGotUserInfo: function(e) {
   //   var that = this;

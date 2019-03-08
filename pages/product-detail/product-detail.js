@@ -17,7 +17,7 @@ Page({
       description: "广东省农业龙头企业，放心油粮广东省农业龙头企业，放心油粮广东省农业龙头企业，放心油粮",
       logo: "/img/shop-logo.png"
     },
-    cartcount: 0,
+    cartTotal: "",
     productDetail: {
       id: 2996,
       title: "红皮洋葱",
@@ -261,7 +261,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    var that = this;
+    //获取购物车数量
+    core.get("member/cart/get_cart", {}, function (res) {
+      that.setData({
+        cartTotal: res.total
+      })
+    })
   },
 
   /**

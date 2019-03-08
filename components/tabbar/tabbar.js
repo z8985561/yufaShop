@@ -61,7 +61,7 @@ Component({
           break;
         case 3:
           wx.reLaunch({
-            url: '/pages/category/category'
+            url: '/pages/cart/cart'
           })
           break;
         case 4:
