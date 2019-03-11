@@ -99,7 +99,7 @@
       </view>
     </block>
     <block wx:if='{{!empty}}'>
-      <view class='fui-footer' style='padding-bottom:100rpx;'>
+      <view class='fui-footer' style='padding-bottom:{{isIpx?180:100}}rpx;'>
         <view class='tool'>
           <view class='check'>
             <block wx:if='{{!edit}}'>

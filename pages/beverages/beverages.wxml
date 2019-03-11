@@ -15,39 +15,7 @@
     </view>
 <!-- 产品列表end -->
 <!-- 底部导航 -->
-<view class='footer-nav'>
-  <navigator class='nav-item on' url='' hover-class='none'>
-    <view>
-      <text class='fa fa-home'></text>
-    </view>
-    <view>首页</view>
-  </navigator>
-  <navigator class='nav-item' url='/pages/category/category' hover-class='none'>
-    <view>
-      <text class='fa fa-list-ul'></text>
-    </view>
-    <view>全部菜品</view>
-  </navigator>
-  <navigator class='nav-item' url='' hover-class='none'>
-    <view>
-      <text class='fa fa-file-text-o'></text>
-    </view>
-    <view>常用清单</view>
-  </navigator>
-  <navigator class='nav-item' url='' hover-class='none'>
-    <view style='position:relative'>
-      <text class='fa fa-shopping-cart'></text>
-      <text class="weui-badge" style="position: absolute;top: -20rpx;right: 28rpx;">{{cartListNum}}</text>
-    </view>
-    <view>购物车</view>
-  </navigator>
-  <navigator class='nav-item' url='' hover-class='none'>
-    <view>
-      <text class='fa fa-user'></text>
-    </view>
-    <view>我的</view>
-  </navigator>
-</view>
+<tabbar tabActive="{{0}}" cartTotal="{{cartTotal}}"></tabbar>
 <!-- 底部导航end -->
 
 <van-toast id="van-toast" />

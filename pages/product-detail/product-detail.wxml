@@ -32,7 +32,7 @@
     <view class='fz-30 c3'>{{shop.name}}</view>
     <view class='fz-24 c9'>{{shop.description}}</view>
   </view>
-  <navigator url='/url?id={{shop.id}}' hover-class='none' class='btn'>进入店铺</navigator>
+  <navigator url='/pages/shop/shop?merchid={{shop.id}}' hover-class='none' class='btn'>进入店铺</navigator>
 </view>
 <!-- /店铺 -->
 

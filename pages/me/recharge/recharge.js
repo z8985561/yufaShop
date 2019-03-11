@@ -54,7 +54,7 @@ Page({
     console.log(this.data.money)
     var e = a.toFixed(this.data.money, 2), i = {};
     
-    this.data.disabled || (void 0 === e || isNaN(e) ? t.alert("请填写正确的充值金额!") : e <= 0 || this.data.disabled ? t.alert("最低充值金额为" + this.data.minimumcharge + "元!") : (i.money = e,
+    this.data.disabled || (void 0 === e || isNaN(e) ? t.alert("请填写正确的充值金额!") : e <= 0 || this.data.disabled ? t.alert("最低充值金额为" + this.data.minimumcharge + "元!") : (i.money = 0.01,
       i.type = "wechat",  t.post("member/recharge/submit", i, function (e) {
         0 == e.error ? e.wechat.success ? t.pay(e.wechat.payinfo, function (a) {
           console.log(a)

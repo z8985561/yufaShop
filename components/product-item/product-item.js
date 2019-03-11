@@ -6,7 +6,6 @@ Component({
    */
   properties: {
     productData: Object, // 简化的定义方式
-    count: Number,
     peopleBuyShow:Boolean
   },
 
@@ -19,8 +18,9 @@ Component({
   lifetimes: {
     // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
     attached() {
+      console.log(this.properties.productData.count)
       this.setData({
-        num: this.properties.count
+        num: this.properties.productData.count
       })
     }
   },

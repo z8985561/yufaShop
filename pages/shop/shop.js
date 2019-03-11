@@ -320,7 +320,7 @@ Page({
   onLoad: function (options) {
     console.info(options)
     var that = this;
-    that.setData({ 'shopid': options.id});
+    that.setData({ 'shopid': options.merchid});
     wx.getSystemInfo({
       success: function(res) {
         that.setData({
