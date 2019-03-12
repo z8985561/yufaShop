@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "warrant": "/components/warrant/warrant"
+    "warrant": "/components/warrant/warrant",
+    "tabbar": "/components/tabbar/tabbar"
   },
   "navigationBarTitleText": "个人中心"
 }

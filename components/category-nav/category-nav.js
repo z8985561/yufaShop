@@ -42,7 +42,8 @@ Component({
     oneTabClick: function(e) {
       this.setData({
         sliderOffset: e.currentTarget.offsetLeft,
-        activeIndex: e.currentTarget.id
+        activeIndex: e.currentTarget.id,
+        showCate: !this.data.showCate,
       });
       this.triggerEvent('tabEvent', {
         index: e.currentTarget.id
@@ -54,17 +55,19 @@ Component({
         scrollLeft: 100 * e.currentTarget.id,
         sliderOffset: 100 * e.currentTarget.id,
         activeIndex: e.currentTarget.id,
-        showCate: !this.data.showCate
+        showCate: !this.data.showCate,
       });
       this.triggerEvent('tabEvent', {
-        index: e.currentTarget.id
+        index: e.currentTarget.id,
+        flag:true
       }, {})
     },
     //显示隐藏所有分类
     showAllCate: function() {
       this.setData({
         showCate: !this.data.showCate
-      })
+      });
+      this.triggerEvent('click', {}, {})
     }
   }
 })

@@ -33,7 +33,6 @@ Component({
   },
   lifetimes: {
     attached() {
-      console.log(this.data.allCateDataList, this.data.peopleBuyShow)
       var that = this;
       // 在组件实例进入页面节点树时执行
       wx.getSystemInfo({
@@ -49,7 +48,6 @@ Component({
   pageLifetimes: {
     show() {
       // 页面被展示
-      console.log(1111)
     }
   },
   /**
@@ -63,7 +61,8 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    tabClick:function(e){
+    changeCate:function(e){
+      console.log(e)
       this.setData({
         subActiveIndex: e.currentTarget.id
       });

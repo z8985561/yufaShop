@@ -136,6 +136,7 @@
     </warrant>
   </view>
   <!-- 弹出授权提示框结束 -->
-
-
 </view>
+<!-- 底部导航 -->
+<tabbar tabActive="4" cartTotal="{{cartTotal}}"></tabbar>
+<!-- 底部导航end -->

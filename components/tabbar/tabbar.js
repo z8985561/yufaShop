@@ -42,7 +42,6 @@ Component({
   methods: {
     //底部导航切换事件
     onChangeTabbar(e) {
-      console.log(e.detail)
       switch (e.detail) {
         case 0:
           wx.reLaunch({

@@ -29,6 +29,13 @@ Page({
       }
     });
   },
+  // 点击跳转页面
+  toUrl(e){
+    var url = e.currentTarget.dataset.url;
+    wx.navigateTo({
+      url: url,
+    })
+  },
   get_cart: function () {
     var t, i = this;
     e.get("member/cart/get_cart", {}, function (e) {
@@ -80,7 +87,7 @@ Page({
 
         case "pay":
           this.data.total > 0 && wx.navigateTo({
-            url: "/pages/order/create/index"
+            url: "/pages/order/create/create"
           });
       }
     } else s.setData({

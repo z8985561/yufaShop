@@ -23,7 +23,7 @@
   </view>
   <!-- 我的清单end -->
   <!-- 为你推荐 -->
-  <view class='' hidden='{{activeIndex != 1}}'>
+  <view class='plr-20' hidden='{{activeIndex != 1}}'>
     <block wx:for="{{productList}}" wx:key="index">
       <product-item productData="{{item}}" bind:addEvent='addEventListener' bind:subEvent='subEventListener' bind:blurEvent='blurEventListener' count="{{item.count}}"></product-item>
     </block>

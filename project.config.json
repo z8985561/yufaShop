@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 13,
+			"current": 14,
 			"list": [
 				{
 					"id": -1,
@@ -129,6 +129,13 @@
 					"name": "选择门店类型",
 					"pathName": "pages/register/select-type",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "购物车",
+					"pathName": "pages/cart/cart",
+					"query": "active=0",
 					"scene": null
 				}
 			]

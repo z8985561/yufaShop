@@ -8,6 +8,8 @@ Page({
   data: {
     tabActive:1,
     cartTotal:0,
+    category:"",
+    cateListShow:true,
     //所有分类产品数据
     allProductData: [{
       cateId: 1,
@@ -4888,7 +4890,8 @@ Page({
     //console.log(e.detail.index)
     this.setData({
       activeIndex: e.detail.index,
-      subActiveIndex:0
+      subActiveIndex:0,
+      cateListShow: !this.data.cateListShow
     })
   },
   // 监听添加商品事件
@@ -4915,6 +4918,20 @@ Page({
       cartListNum: blurCartCount
     })
   },
+  showAllCateListener(){
+    this.setData({
+      cateListShow: !this.data.cateListShow
+    })
+  },
+  getCategory(){
+    var that = this;
+    core.get("shop/get_category",{},function(res){
+      that.setData({
+        category: res.category
+      })
+
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -4924,8 +4941,9 @@ Page({
     core.get("member/cart/get_cart", {}, function (res) {
       that.setData({
         cartTotal: res.total
-      })
-    })
+      });
+    });
+    this.getCategory();
   },
 
   /**

@@ -1,9 +1,9 @@
 // pages/me/me.js
-var e = getApp(),
-  t = e.requirejs("core"),
-  a = e.requirejs("wxParse/wxParse"),
-  i = e.requirejs("biz/diypage"),
-  r = e.requirejs("jquery");
+var app = getApp(),
+  core = app.requirejs("core"),
+  a = app.requirejs("wxParse/wxParse"),
+  i = app.requirejs("biz/diypage"),
+  r = app.requirejs("jquery");
 
 
 
@@ -22,6 +22,7 @@ Page({
     moneytext: '余额',
     credit2: '10.01',
     phone:"13800008888",
+    cartTotal:"",
     statics : {
       coupon : 7, // 优惠券
       order_0: 7, // 待支付
@@ -63,14 +64,23 @@ Page({
       },
     ]
   },
-
+  // 获取购物车数量
+  getCartCount(){ 
+    var that = this;
+    core.get("member/cart/get_cart", {}, function (res) {
+      that.setData({
+        cartTotal: res.total
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
 
-    e.checkAccount();
+    app.checkAccount();
     var that = this;
+    this.getCartCount();
     // wx.getSystemInfo({
     //   success: function (res) {
     //     that.setData({
@@ -126,21 +136,21 @@ Page({
 
   },
   getInfo: function () {
-    var e = this;
-    t.get("yufa/me/index", {}, function (t) {
-      if (0 != t.error) {
-        e.setData({
+    var that = this;
+    core.get("yufa/me/index", {}, function (res) {
+      if (0 != res.error) {
+        that.setData({
           modelShow: !0
         })
       } else {
-        if (t.notsatisfygrade) {
+        if (res.notsatisfygrade) {
           wx.redirectTo({
-            url: t.jumpUrl,
+            url: res.jumpUrl,
           })
         }
         // 获取用户成功,设置页面数据
-        console.info(t);
-        e.setData(t);
+        console.info(res);
+        that.setData(res);
         // e.setData({
         //   modelShow: !1,
         //   nickname: t.nickname,
@@ -165,18 +175,20 @@ Page({
    */
   onShow: function () {
     // this.getInfo();
-    var e = this;
+    var that = this;
     wx.getSetting({
-      success: function (s) {
-        var a = s.authSetting["scope.userInfo"];
-        a && e.getInfo();
-        e.setData({
+      success: function (res) {
+        var a = res.authSetting["scope.userInfo"];
+        a && that.getInfo();
+        that.setData({
           // limits: a
-        }), a || e.setData({
+        }), a || that.setData({
           modelShow: !0
         });
       }
     });
+
+    this.getCartCount()
   },
 
   /**
