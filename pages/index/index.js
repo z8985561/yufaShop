@@ -677,9 +677,9 @@ Page({
     // });
 
     wx.getSetting({
-      success: function(t) {
-        var a = t.authSetting["scope.userInfo"];
-      
+      success: function(res) {
+        console.log(res)
+        var a = res.authSetting["scope.userInfo"];
         that.setData({
           limits: a
         }), a || that.setData({

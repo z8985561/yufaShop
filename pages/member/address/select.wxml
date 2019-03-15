@@ -8,7 +8,7 @@
         <view class='fui-list-group'>
           <view class='fui-list address-item'>
             <view class='fui-list-media' data-index='{{index}}' bindtap='select'>
-              <radio color='#fd5454' checked='{{item.isdefault > 0?1:0}}' class='zoom-70' name='default'></radio>
+              <radio color='#0EAF51' checked='{{item.isdefault > 0?1:0}}' class='zoom-70' name='default'></radio>
             </view>
             <view class='fui-list-inner' data-index='{{index}}' bindtap='select'>
               <view class='title'>{{item.realname}} {{item.mobile}}</view>

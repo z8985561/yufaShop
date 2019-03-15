@@ -240,7 +240,7 @@ wx-view{ word-break:break-all; }
 .btn.btn-primary:active, .btn.btn-primary.disabled { background: #027297; color: #67abc1; border: 1px solid #026688; }
 .btn.btn-warning { background: #ff9326; color: #fff; border: 1px solid #ff8507; }
 .btn.btn-warning:active, .btn.btn-warning.disabled { background: #e67300; color: #f4a85a; border: 1px solid #ce6600; }
-.btn.btn-danger { background: #ef4f4f; color: #fff; border: 1px solid #d84747; }
+.btn.btn-danger { background: #0EAF51; color: #fff; border: 1px solid #0EAF51; }
 .btn.btn-danger:active, .btn.btn-danger.disabled { background: #c13e3e; color: #d2848b; border: 1px solid #ae3838; }
 .btn.btn-default-o { background: transparent; color: #333; border: 1px solid #333 }
 .btn.btn-default-o:active { background: transparent; color: #666; border: 1px solid #666 }

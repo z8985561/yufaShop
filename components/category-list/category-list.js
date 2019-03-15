@@ -1,10 +1,28 @@
+import core from "../../utils/core.js"
 // components/category-list/category-list.js
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    allCateDataList: Array,
+    allCateDataList: {
+      type: Array,
+      value:[],
+      observer(newVal, oldVal, changedPath) {
+        var that = this;
+        if (newVal.length){
+          core.get("yufa/goods/get_list",{
+            cate: newVal[0].child[0].id,
+            page:1
+          },function(res){
+            console.log(res)
+            that.setData({
+              goodsList: res.goodsList
+            })
+          })
+        }
+      }
+    },
     activeIndex: { // 属性名
       type: Number, // 类型（必填），目前接受的类型包括：String, Number, Boolean, Object, Array, null（表示任意类型）
       value: 0, // 属性初始值（可选），如果未指定则会根据类型选择一个
@@ -55,6 +73,11 @@ Component({
    */
   data: {
     scrollHeight:0,
+    params:{
+      page:1,
+      cate:""
+    }, 
+    goodsList:[]
   },
 
   /**
@@ -62,7 +85,8 @@ Component({
    */
   methods: {
     changeCate:function(e){
-      console.log(e)
+      var cateId = e.currentTarget.dataset.cate;
+      console.log(cateId)
       this.setData({
         subActiveIndex: e.currentTarget.id
       });

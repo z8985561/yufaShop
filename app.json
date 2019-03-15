@@ -19,6 +19,7 @@
     "pages/me/help/agreement-detail",
     "pages/me/recharge/recharge",
     "pages/me/add-demand/add-demand",
+    "pages/me/add-demand/demand-list/demand-list",
     "pages/me/invoice/invoice",
     "pages/me/settled/settled",
     "pages/me/comment/comment",

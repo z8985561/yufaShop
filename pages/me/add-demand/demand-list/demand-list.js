@@ -1,0 +1,102 @@
+// pages/me/add-demand/demand-list/demand-list.js
+const app = getApp(),core = app.requirejs("core");
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    demandList:[],
+    show:false,
+    progress:{
+      active:0,
+      steps: [
+        {
+          text: '新品已提报',
+          desc: '2019-03-15'
+        },
+        {
+          text: '裕发已采纳',
+          desc: '未采纳'
+        },
+        {
+          text: '新品已上线',
+          desc: '未上线'
+        }
+      ]
+    }
+    
+  },
+  showPopup(e){
+    console.log(e.currentTarget.dataset.id)
+    wx.showLoading({
+      title: '加载中'
+    })
+    // 这里写请求。一下是示范
+    core.get("goods/get_list",{},res=>{
+      console.log(res);
+      //隐藏加载
+      wx.hideLoading();
+      //设置数据
+      this.setData({ show: true });
+    })
+  },
+  onClose() {
+    this.setData({ show: false });
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  }
+})

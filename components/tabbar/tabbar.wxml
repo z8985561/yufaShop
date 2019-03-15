@@ -12,7 +12,7 @@
     <image slot="icon" src="{{ tabbarIcon.inventory.normal }}" mode="aspectFit" />
     <image slot="icon-active" src="{{ tabbarIcon.inventory.active }}" mode="aspectFit" /> 常用清单
   </van-tabbar-item>
-  <van-tabbar-item info="{{cartTotal}}">
+  <van-tabbar-item info="{{cartTotal?cartTotal:''}}">
     <image slot="icon" src="{{ tabbarIcon.cart.normal }}" mode="aspectFit" />
     <image slot="icon-active" src="{{ tabbarIcon.cart.active }}" mode="aspectFit" /> 购物车
   </van-tabbar-item>

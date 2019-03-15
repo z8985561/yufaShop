@@ -42,8 +42,7 @@ Component({
     oneTabClick: function(e) {
       this.setData({
         sliderOffset: e.currentTarget.offsetLeft,
-        activeIndex: e.currentTarget.id,
-        showCate: !this.data.showCate,
+        activeIndex: e.currentTarget.id
       });
       this.triggerEvent('tabEvent', {
         index: e.currentTarget.id
@@ -57,7 +56,7 @@ Component({
         activeIndex: e.currentTarget.id,
         showCate: !this.data.showCate,
       });
-      this.triggerEvent('tabEvent', {
+      this.triggerEvent('tabEvent2', {
         index: e.currentTarget.id,
         flag:true
       }, {})

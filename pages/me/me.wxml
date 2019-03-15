@@ -84,7 +84,7 @@
         <image src='/img/icon-6.png'></image>
         <view class='fz-28 c6'>常用清单</view>
       </navigator>
-      <navigator class='text-center' hover-class='none' url='add-demand/add-demand'>
+      <navigator class='text-center' hover-class='none' url='add-demand/demand-list/demand-list'>
         <image src='/img/icon-7.png'></image>
         <view class='fz-28 c6'>新品需求</view>
       </navigator>

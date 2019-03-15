@@ -4891,8 +4891,14 @@ Page({
     this.setData({
       activeIndex: e.detail.index,
       subActiveIndex:0,
-      cateListShow: !this.data.cateListShow
     })
+  },
+  tab2EventListener(e){
+    this.setData({
+      activeIndex: e.detail.index,
+      subActiveIndex: 0,
+    })
+    this.showAllCateListener();
   },
   // 监听添加商品事件
   addEventListener: function (e) {

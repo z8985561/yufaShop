@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-cell": "/vant-ui/cell/index",
+    "van-cell-group": "/vant-ui/cell-group/index",
+    "van-popup": "/vant-ui/popup/index",
+    "van-steps": "/vant-ui/steps/index"
+  }
+}
