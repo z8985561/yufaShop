@@ -1,7 +1,7 @@
 <!--components/category-nav/category-nav.wxml-->
 <view class='category-wrap'>
 <scroll-view scroll-x class='category-nav' scroll-left="{{scrollLeft}}" scroll-with-animation="true">
-  <view class="nav-item {{activeIndex == index ? 'on' : ''}}" wx:for="{{titleList}}" wx:key="index" bindtap="oneTabClick" id="{{index}}">{{item.name}}</view>
+  <view class="nav-item {{activeIndex == index ? 'on' : ''}}" wx:for="{{titleList}}" wx:key="index" bindtap="oneTabClick" data-index="{{index}}" data-cate="{{item.id}}">{{item.name}}</view>
   <view class="nav-item"></view>
   <view class='nav-slider' style="ransform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
 </scroll-view>
@@ -9,7 +9,7 @@
   <image class='{{showCate ? "":"on"}}' src='/img/down.png'></image>
 </view>
 <view class='show-cate' hidden='{{showCate}}'>
-  <view wx:for="{{titleList}}" wx:key="index" catchtap="twoTabClick" id="{{index}}">{{item.name}}</view>
+  <view wx:for="{{titleList}}" wx:key="index" catchtap="twoTabClick" data-index="{{index}}" data-cate="{{item.id}}">{{item.name}}</view>
 </view>
 <view class='mask' hidden='{{showCate}}'></view>
 </view>

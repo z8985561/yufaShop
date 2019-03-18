@@ -13,10 +13,10 @@
 .nav-item{
   position: relative;
   display: inline-block;
-  padding: 0 20rpx;
-  width: 160rpx;
-  height: 60rpx;
-  line-height: 60rpx;
+  padding: 0 10px;
+  width: 80px;
+  height: 30px;
+  line-height: 30px;
   color:#999;
   font-size: 32rpx;
   text-align: center;

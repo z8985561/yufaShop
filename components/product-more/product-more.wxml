@@ -1,34 +1,38 @@
 <!--components/product-more/product-more.wxml-->
 <view class='pr-15'>
-  <navigator class='product-item' hover-class='none' url='{{productData.navUrl}}'>
+  <navigator class='product-item' hover-class='none' url='/pages/product-detail/product-detail?id={{goodsData.id}}'>
     <view class='left'>
-      <image src='{{productData.imgUrl}}' mode='widthFix'></image>
+      <image src='{{goodsData.thumb}}' mode='widthFix'></image>
     </view>
     <view class='center'>
       <!-- 产品标题 -->
-      <view class='fz-28'>{{productData.title}}</view>
+      <view class='fz-28'>{{goodsData.title}}</view>
       <view>
-        <text class='fz-28 cf9721a'>￥{{productData.newPrice}}-{{productData.newPrice}}/{{productData.spec}}</text>
+        <text class='fz-28 cf9721a'>￥{{goodsData.minprice}}-{{goodsData.maxprice}}/{{goodsData.shorttitle}}</text>
       </view>
     </view>
     <view class='right'>
-      <view class='plus down {{show?"on":""}}' catchtap='showMore'><image style='width:13px' src='/img/icon-down.png' mode='widthFix'></image></view>
+      <view class='plus down {{show?"on":""}}' catchtap='showMore'>
+        <image style='width:13px' src='/img/icon-down.png' mode='widthFix'></image>
+      </view>
     </view>
   </navigator>
-  <view class='more ' style='height:{{show?"100":0}}px;'>
-    <navigator hover-class='none'>
-      <view class='left'>
-        <view class='fz-24 c9'>{{productData.specDec}}</view>
-        <text class='fz-30 cf9721a'>￥{{productData.newPrice}}/{{productData.spec}}</text>
-      </view>
-      <view class='right'>
-        <view class='plus' catchtap='add' hidden='{{num > 0 ? true : false}}'>+</view>
-        <view class='ctrl-btn {{num == 0 ? "" : "on"}}'>
-          <view catchtap='sub'>-</view>
-          <input value='{{num}}' type='number' catchtap='fn' bindblur="bindBlurChange"></input>
-          <view catchtap='add'>+</view>
+  <view class='more ' style='height:{{show?"auto":0}};'>
+    <block wx:for="{{goodsData.option}}" wx:key="index">
+      <navigator wx:if="{{item.stock > 0}}" hover-class='none' url='/pages/product-detail/product-detail?id={{goodsData.id}}'>
+        <view class='left'>
+          <view class='fz-24 c9'> ￥{{item.marketprice}}/{{item.spectitle}}</view>
+          <text class='fz-30 cf9721a'>￥{{item.marketprice}}/{{item.spectitle}}</text>
         </view>
-      </view>
-    </navigator>
+        <view class='right'>
+          <view class='plus' catchtap='add' hidden='{{item.cartCount > 0 ? true : false}}' data-optionid="{{item.optionid}}" data-stock="{{item.stock}}" data-index="{{index}}">+</view>
+          <view class='ctrl-btn {{item.cartCount  == 0 ? "" : "on"}}'>
+            <view catchtap='sub' data-index="{{index}}" data-optionid="{{item.optionid}}" data-max="{{item.stock}}">-</view>
+            <input value='{{item.cartCount}}' data-optionid="{{item.optionid}}" data-max="{{item.stock}}" type='number' catchtap='fn' bindblur="bindBlurChange" data-index="{{index}}" data-optionid="{{item.optionid}}" data-max="{{item.stock}}"></input>
+            <view catchtap='add'  data-index="{{index}}" data-optionid="{{item.optionid}}" data-max="{{item.stock}}">+</view>
+          </view>
+        </view>
+      </navigator>
+    </block>
   </view>
 </view>

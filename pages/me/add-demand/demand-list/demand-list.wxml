@@ -1,27 +1,28 @@
 <!--pages/me/add-demand/demand-list/demand-list.wxml-->
 
 <van-cell-group>
-  <van-cell title="加加 特级面条鲜" value="已提交" is-link bind:click="showPopup" data-id="111" />
+<block wx:for="{{demandList}}" wx:key="index">
+  <van-cell title="{{item.title}}" value="{{item.status}}" is-link bind:click="showPopup" data-id="{{item.id}}" />
+</block>
 </van-cell-group>
+<view class='plr-20 mt-40'>
+  <navigator class='btn-big' url='../add-demand'>增加新品需求</navigator>
+</view>
 <van-popup show="{{ show }}" position="right" bind:close="onClose">
   <view style="width:100vw;height:100vh;">
-    <van-steps steps="{{ progress.steps }}" active="{{ progress.active }}" />
+    <van-steps steps="{{ progress.steps }}" active="{{ progress.status }}" />
     <van-cell-group>
-      <van-cell title="名称" value="加加 特级面条鲜" />
-      <van-cell title="分类" value="特料干货" />
-      <van-cell title="品牌" value="加加" />
-      <van-cell title="规格" value="500ml*12瓶/件" />
-      <van-cell title="条形码" value="6920761200706" />
-      <van-cell title="月需求量" value="3件" />
-      <van-cell title="提报时间" value="2019.03.15 11:01:17" border="{{ false }}" />
+      <van-cell title="名称" value="{{progress.title}}" />
+      <van-cell title="分类" value="{{progress.cate}}" />
+      <van-cell title="品牌" value="{{progress.brand}}" />
+      <van-cell title="规格" value="{{progress.spec}}" />
+      <van-cell title="月需求量" value="{{progress.demand}}" />
+      <van-cell title="备注" value="{{progress.remarks}}" />
+      <van-cell title="提报时间" value="{{progress.date}}" border="{{ false }}" />
     </van-cell-group>
-    <view class='plr-20 flex mb-40'>
-      <image style='height:100px;width:100px;' class='ml-40' src='/img/product-2.png'></image>
-      <image style='height:100px;width:100px;' class='ml-40' src='/img/product-2.png'></image>
-      <image style='height:100px;width:100px;' class='ml-40' src='/img/product-2.png'></image>
-    </view>
-    <view class='plr-20'>
+    <view class='plr-20 mt-40'>
       <view class='btn-big' bindtap="onClose">返回</view>
     </view>
   </view>
 </van-popup>
+

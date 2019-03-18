@@ -36,13 +36,14 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 6,
+			"current": 0,
 			"list": [
 				{
-					"id": -1,
+					"id": 0,
 					"name": "全部菜品",
 					"pathName": "pages/category/category",
-					"query": ""
+					"query": "id=1259",
+					"scene": null
 				},
 				{
 					"id": 1,

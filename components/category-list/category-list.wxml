@@ -6,13 +6,13 @@
           <view id='{{index}}' data-cate="{{sCate.id}}" class='{{subActiveIndex != index ? "":"on"}}' bindtap='changeCate'>{{sCate.name}}</view>
         </block>
       </scroll-view>
-      <scroll-view class='sub-prod-list' scroll-y  style='height:{{scrollHeight}}px;'>
-      <!-- <block wx:for="{{item.data[0].data}}" wx:key="index">
+      <scroll-view class='sub-prod-list' scroll-y style='height:{{scrollHeight}}px;padding:40rpx 0;'>
+        <!-- <block wx:for="{{item.data[0].data}}" wx:key="index">
       <product-item productData="{{item}}" peopleBuyShow="{{peopleBuyShow}}" count="{{item.count}}" bind:addEvent='addEventListener' bind:subEvent='subEventListener' bind:blurEvent='blurEventListener'></product-item>
       </block> -->
-      <block wx:for="{{goodsList}}" wx:key="index">
-      <product-more productData="{{item}}"></product-more>
-      </block>
+        <block wx:for="{{goodsList}}" wx:key="index">
+          <product-more productData="{{item}}"></product-more>
+        </block>
       </scroll-view>
     </view>
   </block>

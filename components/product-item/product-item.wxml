@@ -8,7 +8,7 @@
     <view class='fz-30'>{{productData.title}}</view>
     <slot></slot>
     <!-- 购买人数 -->
-    <view class='fz-24 count'  wx:if="{{productData.peopleBuyShow}}">
+    <view class='fz-24 count' wx:if="{{productData.peopleBuyShow}}">
       <image src='/img/hot.png'></image>
       <text class='cf9721a'>{{productData.peopleBuy}}人已买</text>
     </view>
@@ -24,7 +24,7 @@
     <view class='ctrl-btn {{num == 0 ? "" : "on"}}'>
       <view catchtap='sub'>-</view>
       <input value='{{num}}' type='number' catchtap='fn' bindblur="bindBlurChange"></input>
-      <view  catchtap='add'>+</view>
+      <view catchtap='add'>+</view>
     </view>
   </view>
 </navigator>

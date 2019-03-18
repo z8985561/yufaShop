@@ -1,17 +1,39 @@
 // pages/me/add-demand/demand-list/demand-list.js
-const app = getApp(),core = app.requirejs("core");
+const app = getApp(),
+  core = app.requirejs("core");
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    demandList:[],
-    show:false,
-    progress:{
-      active:0,
-      steps: [
-        {
+    demandList: [{
+        id: 1,
+        title: "加加 特级面条鲜1",
+        status: "已提交"
+      },
+      {
+        id: 2,
+        title: "加加 特级面条鲜2",
+        status: "已采纳"
+      },
+      {
+        id: 3,
+        title: "加加 特级面条鲜3",
+        status: "已上线"
+      }
+    ],
+    show: false,
+    progress: {
+      status: 0,
+      title:"加加 特级面条鲜",
+      cate:"特料干货",
+      brand:"加加",
+      spec:"500ml*12瓶/件",
+      demand:"30件",
+      remarks:"备注",
+      date:"2019.03.15 11:01:17",
+      steps: [{
           text: '新品已提报',
           desc: '2019-03-15'
         },
@@ -25,78 +47,81 @@ Page({
         }
       ]
     }
-    
+
   },
-  showPopup(e){
-    console.log(e.currentTarget.dataset.id)
+  showPopup(e) {
     wx.showLoading({
       title: '加载中'
     })
     // 这里写请求。一下是示范
-    core.get("goods/get_list",{},res=>{
+    core.get("goods/get_list", {}, res => {
       console.log(res);
       //隐藏加载
       wx.hideLoading();
       //设置数据
-      this.setData({ show: true });
+      this.setData({
+        show: true
+      });
     })
   },
   onClose() {
-    this.setData({ show: false });
+    this.setData({
+      show: false
+    });
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
 
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

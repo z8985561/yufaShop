@@ -14,7 +14,7 @@
 <!-- 头部搜索区域end -->
 <view class='mb-80'></view>
 <!-- 分类导航 -->
-<category-nav class="category-wrap" titleList="{{category}}" bind:tabEvent="tabEventListener" bind:tabEvent2="tab2EventListener" bind:click="showAllCateListener"></category-nav>
+<category-nav class="category-wrap" titleList="{{category}}" bind:tabEvent="tabEventListener" bind:tabEvent2="tab2EventListener" activeIndex="{{activeIndex}}" bind:click="showAllCateListener"></category-nav>
 <!-- 分类导航 -->
 <!-- 展示全部类别产品区域 -->
 <category-list style="z-index:{{cateListShow?'1':'-1'}}"  allCateDataList="{{category}}" activeIndex="{{activeIndex}}" subActiveIndex="{{subActiveIndex}}" peopleBuyShow="{{peopleBuyShow}}"></category-list>

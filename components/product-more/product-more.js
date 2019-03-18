@@ -1,54 +1,93 @@
+import core from "../../utils/core.js"
 // components/product-more/product-more.js
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    productData: Object,
+    productData: {
+      type: Object,
+      value: {},
+      observer(newVal, oldVal, changedPath) {
+        if (newVal != oldVal){
+          this.setData({
+            goodsData: newVal
+          })
+        }
+      }
+    }
   },
-
   /**
    * 组件的初始数据
    */
   data: {
-    show:false,
-    num: 0
+    show: false,
+    goodsData:{}
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-    showMore(){
+    upCartTotal(params){
+      var that = this;
+      core.get("",params,res=>{
+        console.log(res)
+      })
+    },
+    showMore() {
       this.setData({
         show: !this.data.show
       })
     },
-    add: function () {
-      var num = parseInt(this.data.num) + 1;
+    add: function(e) {
+      var index = e.currentTarget.dataset.index,
+            json = this.data.goodsData;
+            json.option[index].cartCount = parseInt(json.option[index].cartCount) + 1;
       this.setData({
-        num: num
+        goodsData: json
       });
+      var optionid = e.currentTarget.dataset.optionid,
+        stock = e.currentTarget.dataset.max;
       this.triggerEvent('addEvent', {
-        value: num
+        id: this.data.goodsData.id,
+        optionid: optionid,
+        stock: stock
       }, {})
     },
-    sub: function () {
-      var num = this.data.num - 1;
+    sub: function(e) {
+      var index = e.currentTarget.dataset.index,
+        json = this.data.goodsData;
+      json.option[index].cartCount = parseInt(json.option[index].cartCount) - 1;
       this.setData({
-        num: num
-      })
+        goodsData: json
+      });
+      var optionid = e.currentTarget.dataset.optionid,
+        stock = e.currentTarget.dataset.max;
       this.triggerEvent('subEvent', {
-        value: num
+        id:this.data.goodsData.id,
+        optionid: optionid,
+        stock: stock,
+        total: json.option[index].cartCount
       }, {})
     },
-    bindBlurChange: function (e) {
-      var num = e.detail.value - this.data.num
+    bindBlurChange: function(e) {
+      var index = e.currentTarget.dataset.index,
+          json = this.data.goodsData;
+      json.option[index].cartCount = e.detail.value;
       this.setData({
-        num: e.detail.value
+        goodsData: json
+      });
+      var optionid = e.currentTarget.dataset.optionid,
+        stock = e.currentTarget.dataset.max;
+      upCartTotal({
+        id: this.data.goodsData.id,
       })
       this.triggerEvent('blurEvent', {
-        value: num
+        id: this.data.goodsData.id,
+        optionid: optionid,
+        stock: stock,
+        total: json.option[index].cartCount
       }, {})
     },
   }
