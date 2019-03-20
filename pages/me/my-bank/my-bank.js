@@ -20,7 +20,7 @@ Page({
     })
   },
   //结束日期选择事件
-  endtDateChange: function (e) {
+  endDateChange: function (e) {
     //console.log(e.detail.value)
     this.setData({
       endDate: e.detail.value

@@ -114,7 +114,7 @@ Page({
     this.setData({
       active: options.active
     })
-    core.get("yufa/order/get_list", {}, function (d) {
+    core.get("order/get_list", {}, function (d) {
       that.setData(d);
     });
   },

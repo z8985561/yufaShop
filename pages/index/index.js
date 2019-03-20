@@ -734,13 +734,66 @@ Page({
         cartTotal: res.total
       })
     })
-
+    that.get_danmu();
   },
   getCart(){
     var that = this;
     core.get("member/cart/get_cart", {}, function (res) {
       console.log(res)
     });
+  },
+  // 弹幕
+  get_danmu: function () {
+    var t = this;
+    var dm_index = 0;
+    var showtext = '';
+    core.get("shop/get_danmu", {}, function (res) {
+      if (res.error == 0) {
+        var timer = setInterval(function () {
+          var data = res.list[dm_index];
+          if (data['type'] == 0) {
+            showtext = "新订单来自 " + data.nickname;
+          } else if (data['type'] == 1) {
+            showtext = "新充值来自 " + data.nickname;
+          } else if (data['type'] == 2) {
+            showtext = "恭喜 " + data.nickname + "加入会员，财富大门为您打开！";
+          } else if (data['type'] == 3) {
+            showtext = "恭喜 " + data.nickname + "加入分销，财富大门为您打开！";
+          }
+          t.setData({
+            headimgurl: data.headimgurl,
+            showtext: showtext,
+            showtime: data.time
+          })
+          if (dm_index == 0) {
+            t.setData({
+              displaycss: "flex"
+            })
+          } else {
+            t.setData({
+              displayshow: "show"
+            })
+
+          }
+          if (dm_index == res.list.length - 1) {
+            dm_index = 0;
+          } else {
+            dm_index++;
+          }
+          setTimeout(function () {
+            t.setData({
+              displayshow: "noshow",
+              displaycss: ""
+            })
+          }, 2000);
+        }, 3000);
+
+        t.setData({
+          dm_json: res.list,
+          timer: timer
+        })
+      }
+    })
   },
   // onGotUserInfo: function(e) {
   //   var that = this;

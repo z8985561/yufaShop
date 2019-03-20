@@ -15,11 +15,11 @@
     <view class='ml-20 fz-34'>电子账单</view>
   </view>
   <view class='flex flex-align-center'>
-    <picker mode="date" value="{{startDate}}" start="2018-01" end="2020-01" fields="month" bindchange="startDateChange">
+    <picker mode="date" value="{{startDate}}" start="2018-01" end="2050-01" fields="month" bindchange="startDateChange">
       <view class="picker fz-24 c9">{{startDate}}</view>
     </picker>
     <view class='fz-24 plr-30'>至</view>
-    <picker mode="date" value="{{endDate}}" start="2018-01" end="2020-01" fields="month" bindchange="endDateChange">
+    <picker mode="date" value="{{endDate}}" start="2018-01" end="2050-01" fields="month" bindchange="endDateChange">
       <view class="picker fz-24 c9">{{endDate}}</view>
     </picker>
     <view class='btn fz-24 cf' bindtap='filtrateDate'>筛选</view>

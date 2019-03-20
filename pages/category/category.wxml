@@ -3,7 +3,7 @@
   <navigator class='icon' url='' hover-class='none'>
     <text class='fa fa-headphones c6'></text>
   </navigator>
-  <navigator class='search-box' url="" hover-class='none'>
+  <navigator class='search-box' url="/pages/search/search" hover-class='none'>
     <text class='fa fa-search c6'></text>
     <text class='fz-28 c9'> 火锅丸子8.99折</text>
   </navigator>
@@ -17,7 +17,7 @@
 <category-nav class="category-wrap" titleList="{{category}}" bind:tabEvent="tabEventListener" bind:tabEvent2="tab2EventListener" activeIndex="{{activeIndex}}" bind:click="showAllCateListener"></category-nav>
 <!-- 分类导航 -->
 <!-- 展示全部类别产品区域 -->
-<category-list style="z-index:{{cateListShow?'1':'-1'}}"  allCateDataList="{{category}}" activeIndex="{{activeIndex}}" subActiveIndex="{{subActiveIndex}}" peopleBuyShow="{{peopleBuyShow}}"></category-list>
+<category-list style="z-index:{{cateListShow?'1':'-1'}}"  allCateDataList="{{category}}" activeIndex="{{activeIndex}}" subActiveIndex="{{subActiveIndex}}" peopleBuyShow="{{peopleBuyShow}}" bind:_upCartCount="getCartCount"></category-list>
 <!-- 展示全部类别产品区域 -->
 
 <!-- 底部导航 -->

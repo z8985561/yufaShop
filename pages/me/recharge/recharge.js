@@ -1,5 +1,5 @@
 // pages/me/recharge/recharge.js
-
+import Toast from "../../../vant-ui/toast/toast";
 var e = getApp(), t = e.requirejs("core"), a = e.requirejs("jquery");
 Page({
 

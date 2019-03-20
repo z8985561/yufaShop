@@ -30,7 +30,7 @@
     <block wx:if='{{list.wechat.success && list.order.price != 0}}'>
       <view class='fui-list' bindtap='pay' data-type='wechat'>
         <view class='fui-list-media wechat'>
-          <image class='round' src='/static/images/icon-white/wechat.png'></image>
+          <van-icon name="wechat" color='#ffffff' size='80rpx'/>
         </view>
         <view class='fui-list-inner'>
           <view class='row'>
@@ -44,7 +44,7 @@
     <block wx:if='{{list.credit.success && list.order.price != 0}}'>
       <view class='fui-list' bindtap='pay' data-type='credit'>
         <view class='fui-list-media credit radius'>
-          <image class='round' src='/static/images/icon-white/money.png'></image>
+          <van-icon name="cash-back-record" color='#ffffff' size='80rpx'/>
         </view>
         <view class='fui-list-inner'>
           <view class='row'>

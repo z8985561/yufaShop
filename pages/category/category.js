@@ -80,10 +80,7 @@ Page({
       console.log(res)
     })
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function(options) {
+  getCartCount(e){
     var that = this;
     //获取购物车数量
     core.get("member/cart/get_cart", {}, function (res) {
@@ -91,6 +88,13 @@ Page({
         cartTotal: res.total
       });
     });
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function(options) {
+    var that = this;
+    this.getCartCount()
     this.getCategory(options.id);
   },
 

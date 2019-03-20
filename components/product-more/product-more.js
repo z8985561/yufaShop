@@ -32,8 +32,11 @@ Component({
     upCartTotal(params){
       var that = this;
       core.get("yufa/goods/uptotal",params,res=>{
-        
+        that.upCartCount()
       })
+    },
+    upCartCount(){
+      this.triggerEvent("_upCartCount",{},{})
     },
     showMore() {
       this.setData({
@@ -92,8 +95,10 @@ Component({
       });
       var optionid = e.currentTarget.dataset.optionid,
         stock = e.currentTarget.dataset.max;
-      upCartTotal({
+      this.upCartTotal({
         id: this.data.goodsData.id,
+        optionid: optionid,
+        total: json.option[index].cartCount
       })
       this.triggerEvent('blurEvent', {
         id: this.data.goodsData.id,

@@ -96,6 +96,9 @@ Component({
           goodsList: res.goodsList
         })
       })
+    },
+    upCartCount(e){
+      this.triggerEvent('_upCartCount', {}, {})
     }
   }
 })

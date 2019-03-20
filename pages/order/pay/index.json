@@ -1,3 +1,6 @@
 {
+  "usingComponents": {
+    "van-icon": "/vant-ui/icon/index"
+  },
   "navigationBarTitleText": "收银台"
 }

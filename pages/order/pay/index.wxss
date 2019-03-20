@@ -1,6 +1,6 @@
 .fui-list-inner .subtitle{ color: #8a8a8a }
 .fui-list{ padding:20rpx 10rpx }
-.credit,.wechat,.car{ height: 90rpx; width: 90rpx; display: -webkit-flex; display: flex; -webkit-justify-content: center; justify-content: center; border-radius:10rpx }
+.credit,.wechat,.car{ height: 90rpx; width: 90rpx; display: -webkit-flex; display: flex; -webkit-justify-content: center; justify-content: center; align-items: center; border-radius:10rpx }
 .credit{ background:#e2cb04; }
 .wechat{ background:#04ab02; }
 .car{ background:#0291bf; }

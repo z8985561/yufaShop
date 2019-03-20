@@ -27,13 +27,13 @@
     </navigator>
   </block>
   <!-- 赠品 -->
-  <view class='flex flex-align-start'>
+  <!-- <view class='flex flex-align-start'>
     <view class='present'>赠品</view>
     <view>
       <view class='fz-30'>围裙</view>
       <view class='fz-24 c9'>78cm*1条</view>
     </view>
-  </view>
+  </view> -->
   <view class='flex flex-jus'>
     <view class='fz-30'>共6件</view>
     <view class='fz-30'>合计
@@ -53,7 +53,11 @@
   </view>
   <view class='flex flex-jus'>
     <view class='fz-26 c9 left'>支付方式：</view>
-    <view class='fz-26 right'>货到付款</view>
+    <view class='fz-26 right'>
+      {{orderData.order.paytype == 1?"余额支付":""}}
+      {{orderData.order.paytype == 21?"微信支付":""}}
+      {{orderData.order.paytype == 3?"货到付款":""}}
+    </view>
   </view>
   <view class='flex flex-jus'>
     <view class='fz-26 c9 left'>创建时间：</view>

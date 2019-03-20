@@ -13,7 +13,7 @@
 </view>
 <!-- 头部搜索区域end -->
 <!-- 通知 -->
-<view class='index-msg {{ topMsgFlag ? "on" : ""}}'>
+<!-- <view class='index-msg {{ topMsgFlag ? "on" : ""}}'>
   <view>
     <text class='fa fa-volume-up cf'></text>
     <text class='cf fz-28 ml-40'>最新消息：{{topMsg}}</text>
@@ -21,7 +21,7 @@
   <view bindtap='closeTopMsg'>
     <text class='fa fa-times-circle cf'></text>
   </view>
-</view>
+</view> -->
 <!-- 通知end -->
 <!-- 页面主体部分 -->
 <scroll-view scroll-y style="height: 100vh;" bindscroll="scroll" enable-back-to-top="{{true}}">
@@ -57,12 +57,12 @@
   <!-- 超级秒杀 -->
   <view class='seckill plr-20 mb-40' wx:if="{{showSeckill}}">
     <image class='seckill-time mb-20' src='/img/seckill.png' mode='widthFix'>
-      <view class='fz-30'>
+      <navigator class='fz-30' hover-class='none' url="/application/pages/seckill/index/index">
         距{{timeField}}点场结束还剩
         <text>{{hour}}</text> ：
         <text>{{minute}}</text> ：
         <text>{{sec}}</text>
-      </view>
+      </navigator>
     </image>
     <block wx:if="{{!!seckillProductList}}">
       <scroll-view scroll-x class='seckill-list'>
@@ -192,4 +192,9 @@
 <view class="container" wx:if='{{modelShow}}'>
   <warrant id='warrant' title='微信授权' content='{{title}} ,申请获得授权' cancelText='取消' confirm='确定' isShow="{{modelShow}}" bind:cancelEvent="_cancelEvent" bind:confirmEvent="_confirmEvent" bind:uu="yy">
   </warrant>
+</view>
+<view class="fui-danmu {{displayshow}}" style="display:{{displaycss}}">
+	<image class="thumb" mode='widthFix' src="{{headimgurl?headimgurl:'https://s100.kemanduo.cc/addons/ewei_shopv2/static/images/nopic100.jpg'}}"></image>
+	<text class="text">{{showtext}}</text>
+	<text class="time">{{showtime}}</text>
 </view>

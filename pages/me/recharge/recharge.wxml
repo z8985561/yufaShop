@@ -23,7 +23,7 @@
   <view class='pay-btn' bindtap='onPay'>支付{{money}}元</view>
 </view>
 
-                            
+<van-toast id="van-toast" /> <!-- 引入轻提示 -->
 
 
                         
