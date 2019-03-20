@@ -1,6 +1,6 @@
 // pages/me/add-demand/add-demand.js
 import Toast from "../../../vant-ui/toast/toast";
-var t = getApp(), a = (t.requirejs("jquery"), t.requirejs("core")),h=t.requirejs("util");
+var app = getApp(), jq = app.requirejs("jquery"), core = app.requirejs("core"), util = app.requirejs("util");
 
 Page({
 
@@ -112,7 +112,7 @@ Page({
       Toast.fail({ message: '请选择分类', duration: 500 });
       return
     }
-    a.post("yufa/me/addNewDemand", {"data":json}, function (e) {
+    core.post("yufa/me/addNewDemand", {"data":json}, function (e) {
       if(e.error!=0){
         Toast.fail({ message: e.message, duration: 1000 });
         return

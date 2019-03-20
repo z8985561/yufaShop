@@ -1,6 +1,8 @@
 // pages/me/settled/settled.js
 import Toast from "../../../vant-ui/toast/toast";
-var t = getApp(), jq = t.requirejs("jquery"), a = t.requirejs("core"), h = t.requirejs("util");
+
+var t = getApp(), jq = t.requirejs("jquery"), core = t.requirejs("core"), h = t.requirejs("util");
+
 
 Page({
 
@@ -8,16 +10,30 @@ Page({
    * 页面的初始数据
    */
   data: {
-    shopPicUrl: "",//店铺照片
-    businessLicense:"",//营业执照
-    shopHeader:"",//门头照片
+    shopPicUrl: "", //店铺照片
+    businessLicense: "", //营业执照
+    shopHeader: "", //门头照片
+    active:1,
+    steps: [{
+        text: '已提交',
+        desc: '2019.03.19'
+      },
+      {
+        text: '审核中',
+        desc: '正在审核中'
+      },
+      {
+        text: '已通过',
+        desc: '暂未通过'
+      }
+    ]
   },
   //图片上传事件
   chooseImage(e) {
     var that = this;
     var json = {},
     name = e.currentTarget.dataset.name;
-    a.upload(function(t){
+    core.upload(function(t){
       if (t.status == 1) {
         json[name] = t.url;
         that.setData(json);
@@ -31,69 +47,110 @@ Page({
     this.setData(json)
   },
   // 申请提交按钮
-  sumbit(){
+  sumbit() {
     var that = this;
     var json = {
       shopPicUrl: this.data.shopPicUrl,
       businessLicense: this.data.businessLicense,
       shopHeader: this.data.shopHeader,
-      showName : this.data.showName,
+      showName: this.data.showName,
       userName: this.data.userName,
       phoneNum: this.data.phoneNum,
       wechat: this.data.wechat,
-      adress: this.data.adress,
+      address: this.data.address,
       salecate: this.data.salecate, // 主营项目
       uname: this.data.uname, // 用户名
       upass: this.data.upass, // 密码
+      email: this.data.email, // email
     }
-    if (!json.showName){
-      Toast({ message: '请填写店铺名称', duration: 1000 });
+    if (!json.showName) {
+      Toast({
+        message: '请填写店铺名称',
+        duration: 1000
+      });
       return
     }
     if (!json.salecate) {
-      Toast({ message: '请填写主营项目', duration: 1000 });
+      Toast({
+        message: '请填写主营项目',
+        duration: 1000
+      });
       return
     }
     if (!json.userName) {
-      Toast({ message: '请填写联系人', duration: 1000 });
+      Toast({
+        message: '请填写联系人',
+        duration: 1000
+      });
       return
     }
     if (!json.phoneNum) {
-      Toast({ message: '请填写联系电话', duration: 1000 });
+      Toast({
+        message: '请填写联系电话',
+        duration: 1000
+      });
       return
     }
     if (!json.adress) {
-      Toast({ message: '请填写店铺详细地址', duration: 1000 });
+      Toast({
+        message: '请填写店铺详细地址',
+        duration: 1000
+      });
       return
     }
     if (!json.uname) {
-      Toast({ message: '请填写注册账号', duration: 1000 });
+      Toast({
+        message: '请填写注册账号',
+        duration: 1000
+      });
       return
     }
     if (!json.upass) {
-      Toast({ message: '请填写密码', duration: 1000 });
+      Toast({
+        message: '请填写密码',
+        duration: 1000
+      });
+      return
+    }
+    if (!json.email) {
+      Toast({ message: '请填写邮箱1', duration: 1000 });
       return
     }
     if (!json.shopHeader) {
-      Toast({ message: '请上传店铺门头照片', duration: 1000 });
+      Toast({
+        message: '请上传店铺门头照片',
+        duration: 1000
+      });
       return
     }
     if (!json.businessLicense) {
-      Toast({ message: '请上传店铺工商执照照片', duration: 1000 });
+      Toast({
+        message: '请上传店铺工商执照照片',
+        duration: 1000
+      });
       return
     }
     if (!json.shopPicUrl) {
-      Toast({ message: '请上传店铺图片', duration: 1000 });
+      Toast({
+        message: '请上传店铺图片',
+        duration: 1000
+      });
       return
     }
 
-    a.post("yufa/me/settled/apply", { "data": json }, function (e) {
+    core.post("yufa/me/settled/apply", { "data": json }, function (e) {
       if (e.error != 0) {
-        Toast({ message: e.message, duration: 2000 });
+        Toast({
+          message: e.message,
+          duration: 2000
+        });
         return
       }
       if (e.error == 0) {
-        Toast.success({ message: e.message, duration: 1000 });
+        Toast.success({
+          message: e.message,
+          duration: 1000
+        });
         that.setData({
           shopPicUrl: '',
           businessLicense: '',
@@ -106,6 +163,7 @@ Page({
           salecate: '', // 主营项目
           uname: '', // 用户名
           upass: '', // 密码
+          email: '', 
         });
       }
     })

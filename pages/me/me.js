@@ -1,9 +1,9 @@
 // pages/me/me.js
 var app = getApp(),
   core = app.requirejs("core"),
-  a = app.requirejs("wxParse/wxParse"),
+  wxParse = app.requirejs("wxParse/wxParse"),
   i = app.requirejs("biz/diypage"),
-  r = app.requirejs("jquery");
+  jq = app.requirejs("jquery");
 
 
 
@@ -165,7 +165,7 @@ Page({
         //   // iscycelbuy: t.iscycelbuy,
         //   bargain: t.bargain
         // });
-        //a.wxParse("wxParseData", "html", t.copyright, e, "5");
+        //wxParse.wxParse("wxParseData", "html", t.copyright, e, "5");
       }
     });
   },

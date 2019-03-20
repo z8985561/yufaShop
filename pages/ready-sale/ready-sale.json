@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "tabbar": "/components/tabbar/tabbar"
+  },
   "navigationBarTitleText": "畅销榜"
 }

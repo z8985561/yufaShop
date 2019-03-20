@@ -1,4 +1,8 @@
 // pages/ready-sale/ready-sale.js
+
+var app = getApp(),
+  core = app.requirejs("core");
+
 Page({
 
   /**
@@ -6,138 +10,7 @@ Page({
    */
   data: {
     cartListNum:9,
-    readySaleProductList:[
-      {
-        id: 1, //产品id
-        navUrl: "#", //产品链接
-        imgUrl: "/img/product-1.png", //产品图片
-        title: "100%花生食用油", //产品标题
-        peopleBuy: "2978", //购买人数
-        spec: "斤", //规格
-        specDec: "￥10.50/袋(10斤)", //规格描述
-        newPrice: "1.05", //最新价格
-        oldPrice: "1.40", //原始价格
-        label: "降价", //标签
-        count: 1
-      },
-      {
-        id: 2, //产品id
-        navUrl: "#", //产品链接
-        imgUrl: "/img/product-2.png", //产品图片
-        title: "小土豆", //产品标题
-        peopleBuy: "2978", //购买人数
-        spec: "斤", //规格
-        specDec: "￥10.50/袋(10斤)", //规格描述
-        newPrice: "1.05", //最新价格
-        oldPrice: "1.40", //原始价格
-        label: "降价", //标签
-        count: 0
-      },
-      {
-        id: 3, //产品id
-        navUrl: "#", //产品链接
-        imgUrl: "/img/product-3.png", //产品图片
-        title: "上等优质猪肉", //产品标题
-        peopleBuy: "2978", //购买人数
-        spec: "斤", //规格
-        specDec: "￥10.50/袋(10斤)", //规格描述
-        newPrice: "1.05", //最新价格
-        oldPrice: "1.40", //原始价格
-        label: "降价", //标签
-        count: 0
-      },
-      {
-        id: 4, //产品id
-        navUrl: "#", //产品链接
-        imgUrl: "/img/product-4.png", //产品图片
-        title: "大蒜", //产品标题
-        peopleBuy: "2978", //购买人数
-        spec: "斤", //规格
-        specDec: "￥10.50/袋(10斤)", //规格描述
-        newPrice: "10.05", //最新价格
-        oldPrice: "13.40", //原始价格
-        label: "降价", //标签
-        count: 2
-      },
-      {
-        id: 5, //产品id
-        navUrl: "#", //产品链接
-        imgUrl: "/img/product-1.png", //产品图片
-        title: "100%花生食用油", //产品标题
-        peopleBuy: "2978", //购买人数
-        spec: "斤", //规格
-        specDec: "￥10.50/袋(10斤)", //规格描述
-        newPrice: "1.05", //最新价格
-        oldPrice: "1.40", //原始价格
-        label: "降价", //标签
-        count: 0
-      },
-      {
-        id: 1, //产品id
-        navUrl: "#", //产品链接
-        imgUrl: "/img/product-1.png", //产品图片
-        title: "100%花生食用油", //产品标题
-        peopleBuy: "2978", //购买人数
-        spec: "斤", //规格
-        specDec: "￥10.50/袋(10斤)", //规格描述
-        newPrice: "1.05", //最新价格
-        oldPrice: "1.40", //原始价格
-        label: "降价", //标签
-        count: 1
-      },
-      {
-        id: 2, //产品id
-        navUrl: "#", //产品链接
-        imgUrl: "/img/product-2.png", //产品图片
-        title: "小土豆", //产品标题
-        peopleBuy: "2978", //购买人数
-        spec: "斤", //规格
-        specDec: "￥10.50/袋(10斤)", //规格描述
-        newPrice: "1.05", //最新价格
-        oldPrice: "1.40", //原始价格
-        label: "降价", //标签
-        count: 0
-      },
-      {
-        id: 3, //产品id
-        navUrl: "#", //产品链接
-        imgUrl: "/img/product-3.png", //产品图片
-        title: "上等优质猪肉", //产品标题
-        peopleBuy: "2978", //购买人数
-        spec: "斤", //规格
-        specDec: "￥10.50/袋(10斤)", //规格描述
-        newPrice: "1.05", //最新价格
-        oldPrice: "1.40", //原始价格
-        label: "降价", //标签
-        count: 0
-      },
-      {
-        id: 4, //产品id
-        navUrl: "#", //产品链接
-        imgUrl: "/img/product-4.png", //产品图片
-        title: "大蒜", //产品标题
-        peopleBuy: "2978", //购买人数
-        spec: "斤", //规格
-        specDec: "￥10.50/袋(10斤)", //规格描述
-        newPrice: "10.05", //最新价格
-        oldPrice: "13.40", //原始价格
-        label: "降价", //标签
-        count: 2
-      },
-      {
-        id: 5, //产品id
-        navUrl: "#", //产品链接
-        imgUrl: "/img/product-1.png", //产品图片
-        title: "100%花生食用油", //产品标题
-        peopleBuy: "2978", //购买人数
-        spec: "斤", //规格
-        specDec: "￥10.50/袋(10斤)", //规格描述
-        newPrice: "1.05", //最新价格
-        oldPrice: "1.40", //原始价格
-        label: "降价", //标签
-        count: 0
-      }
-    ]
+    readySaleProductList:[]
   },
 
   /**
@@ -158,7 +31,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this;
+    core.get('yufa/index/getHotlist', { 'type': 1,'num':10},function(data){
+      that.setData(data);
+    });
   },
 
   /**

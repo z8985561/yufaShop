@@ -15,7 +15,6 @@ Page({
     peopleBuyShow:false,
   },
   tabEventListener:function(e){
-    console.log(e.detail)
     this.setData({
       activeIndex: e.detail.index,
       subActiveIndex:0,

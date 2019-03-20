@@ -7,7 +7,7 @@
 <block wx:for="{{readySaleProductList}}" wx:key="index">
 <navigator class='product-item mb-40' hover-class='none' url='{{item.navUrl}}'>
   <view class='left'>
-    <image src='{{item.imgUrl}}' mode='widthFix'></image>
+    <image src='{{item.thumb}}' mode='widthFix'></image>
     <view class='top'>
           <image src='/img/top-{{index < 3 ? index + 1 : 4}}.png' mode='widthFix'></image>
           <view class='fz-24 {{index < 3 ? "cf" : "c9"}}'>{{index+1}}</view>
@@ -17,16 +17,16 @@
     <!-- 产品标题 -->
     <view class='fz-30'>{{item.title}}</view>
     <!-- 购买人数 -->
-    <view class='fz-24 count'  wx:if="{{peopleBuyShow}}">
+    <view class='fz-24 count'  wx:if="{{item.showsales&&item.sales>0}}">
       <image src='/img/hot.png'></image>
-      <text class='cf9721a'>{{item.peopleBuy}}人已买</text>
+      <text class='cf9721a'>{{item.sales}}人已买</text>
     </view>
-    <view class='fz-24 c9'>{{item.specDec}}</view>
+    <view class='fz-24 c9'>每{{item.option[0].spectitle}}/{{item.option[0].optiontitle}}</view>
     <view>
-      <text class='fz-30 cf9721a'>￥{{item.newPrice}}/{{item.spec}}</text>
-      <text class='fz-24 c9 text-line'>￥{{item.newPrice}}/{{item.spec}}</text>
+      <text class='fz-30 cf9721a'>￥{{item.option[0].marketprice}}/{{item.option[0].spectitle}}</text>
+      <text class='fz-24 c9 text-line'>￥{{item.option[0].productprice}}/{{item.option[0].spectitle}}</text>
     </view>
-    <view class='fz-28 label'>{{item.label}}</view>
+    <view class='fz-28 label' wx:if="{{item.labelname}}">{{item.labelname}}</view>
   </view>
   <view class='right'>
     <view class='btn cf fz-30'>立即抢购</view>
@@ -36,37 +36,5 @@
 </view>
 
 <!-- 底部导航 -->
-<view class='footer-nav'>
-  <navigator class='nav-item on' url='' hover-class='none'>
-    <view>
-      <text class='fa fa-home'></text>
-    </view>
-    <view>首页</view>
-  </navigator>
-  <navigator class='nav-item' url='/pages/category/category' hover-class='none'>
-    <view>
-      <text class='fa fa-list-ul'></text>
-    </view>
-    <view>全部菜品</view>
-  </navigator>
-  <navigator class='nav-item' url='' hover-class='none'>
-    <view>
-      <text class='fa fa-file-text-o'></text>
-    </view>
-    <view>常用清单</view>
-  </navigator>
-  <navigator class='nav-item' url='' hover-class='none'>
-    <view style='position:relative'>
-      <text class='fa fa-shopping-cart'></text>
-      <text class="weui-badge" style="position: absolute;top: -20rpx;right: 28rpx;">{{cartListNum}}</text>
-    </view>
-    <view>购物车</view>
-  </navigator>
-  <navigator class='nav-item' url='' hover-class='none'>
-    <view>
-      <text class='fa fa-user'></text>
-    </view>
-    <view>我的</view>
-  </navigator>
-</view>
+<tabbar tabActive="{{activeIndex}}" cartTotal="{{cartTotal}}"></tabbar>
 <!-- 底部导航end -->

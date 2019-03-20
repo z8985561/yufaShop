@@ -52,10 +52,16 @@ Page({
     }
     
     core.post('yufa/goods/setComments', { 'goodsComment': this.data.goodsList,'orderid':this.data.orderid},function(data){
+      
       if(data.error!=0){
         Toast(data.message);
       }else{
         Toast(data.message);
+        setTimeout(() =>{
+          wx.navigateBack({
+            delta: 1
+          })
+        },500)
       }
     });
   },

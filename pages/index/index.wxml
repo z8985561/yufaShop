@@ -118,6 +118,9 @@
     <view class="weui-tab__panel pt-150">
       <block wx:for="{{recProductDataList}}" wx:key="index">
         <view class="weui-tab__content plr-20" hidden="{{activeIndex != index}}" data-count="{{index}}">
+          <block wx:if="{{!item.data.length}}">
+            <view class='text-center fz-30 c9' style='height:400rpx;'>暂无更多数据</view>
+          </block>
           <block wx:for="{{item.data}}" wx:key="{{item.id}}">
             <product-item productData="{{item}}" count="{{item.count}}" bind:addEvent='addEventListener' bind:subEvent='subEventListener' bind:blurEvent='blurEventListener' peopleBuyShow="{{item.peopleBuyShow}}"></product-item>
           </block>
@@ -130,7 +133,7 @@
 <!-- 页面主体部分 -->
 
 <!-- 底部导航 -->
-<tabbar tabActive="{{activeIndex}}" cartTotal="{{cartTotal}}"></tabbar>
+<tabbar tabActive="{{0}}" cartTotal="{{cartTotal}}"></tabbar>
 <!-- 底部导航end -->
 
 

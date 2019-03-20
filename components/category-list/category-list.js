@@ -82,7 +82,7 @@ Component({
     changeCate:function(e){
       var cateId = e.currentTarget.dataset.cate;
       this.setData({
-        subActiveIndex: e.currentTarget.id
+        subActiveIndex: e.currentTarget.dataset.id
       });
       this.data.params.page = 1;
       this.data.params.cate = cateId;

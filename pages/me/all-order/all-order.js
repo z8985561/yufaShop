@@ -26,21 +26,47 @@ Page({
   },
   //确认收货事件
   confirmReceipt(e) {
-    console.log(e);
+    var that = this;
+    var orderId = e.currentTarget.dataset.orderid;
     Dialog.confirm({
       title: '确认收货？',
       message: '确认收货后，交易金额将直接打到对方的账号。'
     }).then(() => {
-      console.log("确认收货！")
+      wx.showLoading({
+        title: '加载中',
+        mask: true
+      })
+      console.log(orderId);
+      core.post("order/op/finish", {
+        id: orderId
+      }, res => {
+        console.log(res.error);
+        if (!res.error) {
+          wx.hideLoading();
+          wx.showToast({
+            title: '确认成功！',
+            success(){
+              that.onLoad({
+                active:0
+              })
+            }
+          })
+        } else {
+          wx.showToast({
+            title: '确认失败！',
+            icon: none
+          })
+        }
+      })
     }).catch(() => {
       // on cancel
     });
   },
   // 评价事件
   onComment(e) {
-    var id= e.currentTarget.id;
+    var id = e.currentTarget.id;
     wx.navigateTo({
-      url: '/pages/me/comment/comment?id=' + id,
+      url: '/pages/me/comment/comment?orderid=' + id,
     })
   },
   //取消订单事件
@@ -55,16 +81,19 @@ Page({
     });
   },
   //去支付事件
-  toPay() {
-
+  toPay(e) {
+    var orderId = e.currentTarget.id;
+    wx.navigateTo({
+      url: '/pages/order/pay/index?id=' + orderId,
+    })
   },
   //再次下单事件
   anotherList() {
 
   },
   // 取消订单事件
-  cancel(e){
-    var orderid  = core.data(e).orderid;
+  cancel(e) {
+    var orderid = core.data(e).orderid;
     console.log(orderid)
     cancelArray.cancel(orderid, e.detail.value, "/pages/me/all-order/all-order?active=" + this.data.active)
     // this.onLoad()
@@ -74,6 +103,7 @@ Page({
    */
   onLoad: function(options) {
     var that = this;
+    options.active = options.active || 0
     wx.getSystemInfo({
       success: function(res) {
         that.setData({
@@ -81,10 +111,12 @@ Page({
         })
       },
     })
-    console.log(options)
     this.setData({
       active: options.active
     })
+    core.get("yufa/order/get_list", {}, function (d) {
+      that.setData(d);
+    });
   },
 
   /**
@@ -98,11 +130,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    var that = this;
-    core.get("yufa/order/get_list", {}, function(d) {
-      that.setData(d);
-      console.info(d);
-    });
+    
   },
 
   /**

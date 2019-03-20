@@ -3,13 +3,12 @@
     <view class='category-list-box' hidden="{{activeIndex != index}}" data-count="{{index}}">
       <scroll-view class='sub-cate' scroll-y style='height:{{scrollHeight}}px;'>
         <block wx:for="{{item.child}}" wx:for-item="sCate" wx:key="index">
-          <view id='{{index}}' data-cate="{{sCate.id}}" class='{{subActiveIndex != index ? "":"on"}}' bindtap='changeCate'>{{sCate.name}}</view>
+          <view data-id='{{index}}' data-cate="{{sCate.id}}" class='{{subActiveIndex != index ? "":"on"}}' bindtap='changeCate'>{{sCate.name}}</view>
         </block>
       </scroll-view>
-      <scroll-view class='sub-prod-list' scroll-y style='height:{{scrollHeight}}px;padding:40rpx 0;'>
-        <!-- <block wx:for="{{item.data[0].data}}" wx:key="index">
-      <product-item productData="{{item}}" peopleBuyShow="{{peopleBuyShow}}" count="{{item.count}}" bind:addEvent='addEventListener' bind:subEvent='subEventListener' bind:blurEvent='blurEventListener'></product-item>
-      </block> -->
+      <scroll-view class='sub-prod-list' scroll-y style='height:{{scrollHeight}}px;padding:40rpx 0;box-sizing:border-box;'>
+        <view hidden='{{goodsList.length}}' style='font-size:30rpx;text-align:center;color:#999;'>暂无更多数据</view>
+
         <block wx:for="{{goodsList}}" wx:key="index">
           <product-more productData="{{item}}"></product-more>
         </block>

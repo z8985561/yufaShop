@@ -1,3 +1,4 @@
+const app = getApp(), core = app.requirejs("core");
 // pages/me/order-detail/order-detail.js
 Page({
 
@@ -5,14 +6,23 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    orderData:{}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    var orderId = options.orderid;
+    core.get("order/detail",{
+      id: orderId
+    },res => {
+      console.log(res)
+      that.setData({
+        orderData:res
+      })
+    })
   },
 
   /**

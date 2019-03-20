@@ -31,8 +31,8 @@ Component({
   methods: {
     upCartTotal(params){
       var that = this;
-      core.get("",params,res=>{
-        console.log(res)
+      core.get("yufa/goods/uptotal",params,res=>{
+        
       })
     },
     showMore() {
@@ -54,6 +54,12 @@ Component({
         optionid: optionid,
         stock: stock
       }, {})
+      // 调取更新购物车数量ajax
+      this.upCartTotal({
+        id: this.data.goodsData.id,
+        optionid: optionid,
+        total: json.option[index].cartCount
+      })
     },
     sub: function(e) {
       var index = e.currentTarget.dataset.index,
@@ -70,6 +76,12 @@ Component({
         stock: stock,
         total: json.option[index].cartCount
       }, {})
+      // 调取更新购物车数量ajax
+      this.upCartTotal({
+        id: this.data.goodsData.id,
+        optionid: optionid,
+        total: json.option[index].cartCount
+      })
     },
     bindBlurChange: function(e) {
       var index = e.currentTarget.dataset.index,
@@ -89,6 +101,12 @@ Component({
         stock: stock,
         total: json.option[index].cartCount
       }, {})
+      // 调取更新购物车数量ajax
+      this.upCartTotal({
+        id: this.data.goodsData.id,
+        optionid: optionid,
+        total: json.option[index].cartCount
+      })
     },
   }
 })

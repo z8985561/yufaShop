@@ -5,9 +5,10 @@
   <van-field required data-name="userName" value="{{ userName }}" label="联系人" placeholder="请输入联系人" border="{{ true }}" bind:change="onChange" />
   <van-field required data-name="phoneNum" value="{{ phoneNum }}" label="联系电话" placeholder="请输入联系电话" border="{{ true }}" bind:change="onChange" />
   <van-field value="{{ wechat }}" data-name="wechat" label="微信号" placeholder="请输入微信号" border="{{ true }}" bind:change="onChange" />  
-  <van-field required  data-name="adress" value="{{ adress }}" label="详细地址" placeholder="请输入详细地址" border="{{ true }}" bind:change="onChange" />
+  <van-field required  data-name="address" value="{{ address }}" label="详细地址" placeholder="请输入详细地址" border="{{ true }}" bind:change="onChange" />
 <van-field required value="{{ uname }}" data-name="uname" label="账号" placeholder="用于登录商户后台" border="{{ true }}" bind:change="onChange" />  
   <van-field required  data-name="upass" value="{{ upass }}" label="密码" placeholder="密码" border="{{ true }}" bind:change="onChange" />
+  <van-field required value="{{ email }}" data-name="email" label="邮箱" placeholder="用于发送订单消息" border="{{ true }}" bind:change="onChange" />
 </van-cell-group>
 <view class='plr-20 mb-20'>
   <view class='fz-28 c6 mb-20'>上传证件照</view>

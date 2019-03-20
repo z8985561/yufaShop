@@ -3,32 +3,31 @@
   <view class="page__bd">
     <view class="weui-tab">
       <view class="weui-navbar">
-        <block wx:for="{{coupon}}" wx:key="index">
+        <block wx:for="{{tabs}}" wx:key="index">
           <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
-            <view class="weui-navbar__title">{{item.type}}</view>
+            <view class="weui-navbar__title">{{item}}</view>
           </view>
         </block>
         <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
       </view>
       <view class="weui-tab__panel plr-30">
         <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
-          
-          <block wx:for="{{coupon[0].data}}" wx:key="index">
+          <block wx:for="{{coupon}}" wx:key="index" wx:if="{{item.used == 0 && item.timepast == 0}}">
             <view class='coupon-item'>
               <view class='top'>
                 <view class='left flex flex-align-center'>
-                  <view class='price'>￥{{item.money}}</view>
+                  <view class='price'>￥{{item.deduct}}</view>
                   <view>
                     <view class='fz-30 c3'>通用指定品类可用</view>
-                    <view class='fz-26 c9'>{{item.date}}前可用</view>
+                    <view class='fz-26 c9'>{{item.timeend}} 前可用</view>
                   </view>
                 </view>
-                <navigator hover-class='none' url='{{item.url}}' class='right fz-30 cf orange'>
+                <navigator hover-class='none' url='/pages/index/index' class='right fz-30 cf orange'>
                   立即使用
                 </navigator>
               </view>
-              <view class='bottom flex flex-jus plr-30'>
-                <view class='fz-26 c6'>{{item.condition}}</view>
+              <view class='bottom flex flex-jus plr-30' style='box-sizing:border-box;'>
+                <view class='fz-26 c6'>{{item.couponname}}</view>
                 <view class='fz-26 c9'>用于标品商品（排除秒杀产品）</view>
               </view>
             </view>
@@ -37,22 +36,22 @@
         </view>
         <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
           
-          <block wx:for="{{coupon[1].data}}" wx:key="index">
+          <block wx:for="{{coupon}}" wx:key="index" wx:if="{{item.used == 1}}">
             <view class='coupon-item'>
               <view class='top'>
                 <view class='left flex flex-align-center'>
-                  <view class='price'>￥{{item.money}}</view>
+                  <view class='price'>￥{{item.deduct}}</view>
                   <view>
                     <view class='fz-30 c3'>通用指定品类可用</view>
-                    <view class='fz-26 c9'>{{item.date}}前可用</view>
+                    <view class='fz-26 c9'>{{item.timeend}} 前可用</view>
                   </view>
                 </view>
                 <navigator hover-class='none' url='{{item.url}}' class='right fz-30 cf green'>
                   已使用
                 </navigator>
               </view>
-              <view class='bottom flex flex-jus plr-30'>
-                <view class='fz-26 c6'>{{item.condition}}</view>
+              <view class='bottom flex flex-jus plr-30' style='box-sizing:border-box;'>
+                <view class='fz-26 c6'>{{item.couponname}}</view>
                 <view class='fz-26 c9'>用于标品商品（排除秒杀产品）</view>
               </view>
             </view>
@@ -61,22 +60,22 @@
         </view>
         <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
           
-          <block wx:for="{{coupon[2].data}}" wx:key="index">
+          <block wx:for="{{coupon}}" wx:key="index" wx:if="{{item.timepast == 1}}">
             <view class='coupon-item'>
               <view class='top'>
                 <view class='left flex flex-align-center'>
-                  <view class='price'>￥{{item.money}}</view>
+                  <view class='price'>￥{{item.deduct}}</view>
                   <view>
                     <view class='fz-30 c3'>通用指定品类可用</view>
-                    <view class='fz-26 c9'>{{item.date}}前可用</view>
+                    <view class='fz-26 c9'>{{item.timeend}}前可用</view>
                   </view>
                 </view>
                 <navigator hover-class='none' url='{{item.url}}' class='right fz-30 cf gray'>
-                  已使用
+                  已过期
                 </navigator>
               </view>
-              <view class='bottom flex flex-jus plr-30'>
-                <view class='fz-26 c6'>{{item.condition}}</view>
+              <view class='bottom flex flex-jus plr-30' style='box-sizing:border-box;'>
+                <view class='fz-26 c6'>{{item.couponname}}</view>
                 <view class='fz-26 c9'>用于标品商品（排除秒杀产品）</view>
               </view>
             </view>

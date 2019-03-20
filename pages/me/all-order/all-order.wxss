@@ -36,6 +36,7 @@ page {
   display: flex;
   justify-content: flex-end;
   width: auto;
+  height: 110rpx;
   margin: 0 20rpx;
   padding: 20rpx 0;
   border-top: 1px solid #ebebeb;

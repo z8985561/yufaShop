@@ -1,6 +1,6 @@
 // pages/me/discount coupon/discount-coupon.js
-var t = getApp(),
-  a = t.requirejs("core");
+var app = getApp(),
+  core = app.requirejs("core");
 var sliderWidth = 96; // 需要设置slider的宽度，用于计算中间位置
 
 Page({
@@ -9,86 +9,7 @@ Page({
     sliderOffset: 0,
     sliderLeft: 0,
     tabs: ["未使用", "已使用", "已过期"],
-    coupon:[
-      {
-        type:"未使用",
-        data:[
-          {
-            c_id:1,
-            money:6,
-            condition:"满66元可用",
-            date:"2019-12-29 23:30",
-            url:""
-          },
-          {
-            c_id: 2,
-            money: 10,
-            condition: "满66元可用",
-            date: "2019-12-29 23:30",
-            url: ""
-          },
-          {
-            c_id: 3,
-            money: 8,
-            condition: "满66元可用",
-            date: "2019-12-29 23:30",
-            url: ""
-          }
-        ]
-      },
-      {
-        type: "已使用",
-        data: [
-          {
-            c_id: 1,
-            money: 6,
-            condition: "满66元可用",
-            date: "2019-12-29 23:30",
-            url: ""
-          },
-          {
-            c_id: 2,
-            money: 10,
-            condition: "满66元可用",
-            date: "2019-12-29 23:30",
-            url: ""
-          },
-          {
-            c_id: 3,
-            money: 8,
-            condition: "满66元可用",
-            date: "2019-12-29 23:30",
-            url: ""
-          }
-        ]
-      },
-      {
-        type: "已过期",
-        data: [
-          {
-            c_id: 1,
-            money: 6,
-            condition: "满66元可用",
-            date: "2019-12-29 23:30",
-            url: ""
-          },
-          {
-            c_id: 2,
-            money: 10,
-            condition: "满66元可用",
-            date: "2019-12-29 23:30",
-            url: ""
-          },
-          {
-            c_id: 3,
-            money: 8,
-            condition: "满66元可用",
-            date: "2019-12-29 23:30",
-            url: ""
-          }
-        ]
-      }
-    ]
+    coupon: []
   },
   onLoad: function() {
     var that = this;
@@ -101,11 +22,12 @@ Page({
       }
     });
   },
-  onShow : function(){
+  onShow: function() {
     var that = this;
-    a.get("yufa/coupon/my/getlist", {}, function (d) {
-      that.setData(d);
-      console.info(d);
+    core.get("yufa/coupon/my/getlist", {}, function(res) {
+      that.setData({
+        coupon: res.list
+      })
     })
   },
   tabClick: function(e) {

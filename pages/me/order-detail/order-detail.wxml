@@ -1,7 +1,7 @@
 <!--pages/me/order-detail/order-detail.wxml-->
 <view class='top flex flex-jus fz-28 c9'>
-  <text>订单编号：148531634654463</text>
-  <text>已完成</text>
+  <text>订单编号：{{orderData.order.ordersn}}</text>
+  <text>{{orderData.order.statusstr}}</text>
 </view>
 <view class='goods-list'>
   <navigator class='flex flex-jus' url='' hover-class='none'>
@@ -14,56 +14,18 @@
     </view>
     <view class='fz-26 cf9721a'>小计￥187.00</view>
   </navigator>
-  <navigator class='flex flex-jus' url='' hover-class='none'>
-    <view class='flex'>
-      <image class='goods-pic' src='/img/product-3.png' mode='widthFix'></image>
-      <view>
-        <view class='fz-30'>新鲜瘦肉</view>
-        <view class='fz-24 c9'>￥19.23/袋(2.5斤)X2</view>
+  <block wx:for="{{orderData.goods}}" wx:key="index">
+    <navigator class='flex flex-jus' url='' hover-class='none' url='/pages/product-detail/product-detail?id={{item.id}}'>
+      <view class='flex'>
+        <image class='goods-pic' src='{{item.thumb}}' mode='widthFix'></image>
+        <view>
+          <view class='fz-30'>{{item.title}}</view>
+          <view class='fz-24 c9'>￥19.23/袋({{item.optionname}})X{{item.total}}</view>
+        </view>
       </view>
-    </view>
-    <view class='fz-26 cf9721a'>小计￥187.00</view>
-  </navigator>
-  <navigator class='flex flex-jus' url='' hover-class='none'>
-    <view class='flex'>
-      <image class='goods-pic' src='/img/product-3.png' mode='widthFix'></image>
-      <view>
-        <view class='fz-30'>新鲜瘦肉</view>
-        <view class='fz-24 c9'>￥19.23/袋(2.5斤)X2</view>
-      </view>
-    </view>
-    <view class='fz-26 cf9721a'>小计￥187.00</view>
-  </navigator>
-  <navigator class='flex flex-jus' url='' hover-class='none'>
-    <view class='flex'>
-      <image class='goods-pic' src='/img/product-3.png' mode='widthFix'></image>
-      <view>
-        <view class='fz-30'>新鲜瘦肉</view>
-        <view class='fz-24 c9'>￥19.23/袋(2.5斤)X2</view>
-      </view>
-    </view>
-    <view class='fz-26 cf9721a'>小计￥187.00</view>
-  </navigator>
-  <navigator class='flex flex-jus' url='' hover-class='none'>
-    <view class='flex'>
-      <image class='goods-pic' src='/img/product-3.png' mode='widthFix'></image>
-      <view>
-        <view class='fz-30'>新鲜瘦肉</view>
-        <view class='fz-24 c9'>￥19.23/袋(2.5斤)X2</view>
-      </view>
-    </view>
-    <view class='fz-26 cf9721a'>小计￥187.00</view>
-  </navigator>
-  <navigator class='flex flex-jus' url='' hover-class='none'>
-    <view class='flex'>
-      <image class='goods-pic' src='/img/product-3.png' mode='widthFix'></image>
-      <view>
-        <view class='fz-30'>新鲜瘦肉</view>
-        <view class='fz-24 c9'>￥19.23/袋(2.5斤)X2</view>
-      </view>
-    </view>
-    <view class='fz-26 cf9721a'>小计￥187.00</view>
-  </navigator>
+      <view class='fz-26 cf9721a'>小计￥{{item.price}}</view>
+    </navigator>
+  </block>
   <!-- 赠品 -->
   <view class='flex flex-align-start'>
     <view class='present'>赠品</view>
@@ -75,39 +37,39 @@
   <view class='flex flex-jus'>
     <view class='fz-30'>共6件</view>
     <view class='fz-30'>合计
-      <text class='cf9721a'>￥389.00</text>
+      <text class='cf9721a'>￥{{orderData.order.price}}</text>
     </view>
   </view>
 </view>
 
 <view class='p-30 list'>
   <view class='flex flex-jus'>
-    <view class='fz-26 c9 left'>下单门店：</view>
-    <view class='fz-26 right'>家庭/个人</view>
-  </view>
-  <view class='flex flex-jus'>
-    <view class='fz-26 c9 left'>下单账号：</view>
-    <view class='fz-26 right'>136****7474</view>
-  </view>
-  <view class='flex flex-jus'>
     <view class='fz-26 c9 left'>收货人：</view>
-    <view class='fz-26 right'>张燕 13547896547</view>
+    <view class='fz-26 right'>{{orderData.address.realname}} {{orderData.address.mobile}}</view>
   </view>
   <view class='flex flex-jus'>
     <view class='fz-26 c9 left'>收货地址：</view>
-    <view class='fz-26 right'>广东省佛山市</view>
+    <view class='fz-26 right'>{{orderData.address.province}}{{orderData.address.city}}{{orderData.address.area}}{{orderData.address.address}}</view>
   </view>
   <view class='flex flex-jus'>
     <view class='fz-26 c9 left'>支付方式：</view>
     <view class='fz-26 right'>货到付款</view>
   </view>
   <view class='flex flex-jus'>
-    <view class='fz-26 c9 left'>下单时间：</view>
-    <view class='fz-26 right'>2018-12-01  08:12:52</view>
+    <view class='fz-26 c9 left'>创建时间：</view>
+    <view class='fz-26 right'>{{orderData.order.createtime}}</view>
   </view>
-  <view class='flex flex-jus'>
-    <view class='fz-26 c9 left'>送达时间：</view>
-    <view class='fz-26 right'>2018-12-02  7:00-11：00</view>
+  <view class='flex flex-jus' wx:if="{{orderData.order.paytime}}">
+    <view class='fz-26 c9 left'>支付时间：</view>
+    <view class='fz-26 right'>{{orderData.order.paytime}}</view>
+  </view>
+  <view class='flex flex-jus' wx:if="{{orderData.order.sendtime}}">
+    <view class='fz-26 c9 left'>发货时间：</view>
+    <view class='fz-26 right'>{{orderData.order.sendtime}}</view>
+  </view>
+  <view class='flex flex-jus' wx:if="{{orderData.order.finishtime}}">
+    <view class='fz-26 c9 left'>完成时间：</view>
+    <view class='fz-26 right'>{{orderData.order.finishtime}}</view>
   </view>
 </view>
 <view class='flex flex-end' style='background-color:#fff;'>

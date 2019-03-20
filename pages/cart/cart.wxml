@@ -8,7 +8,7 @@
   <include src="/pages/index/openauth.wxml"></include>
 </view>
 <block wx:if='{{show}}'>
-  <view class='page 1footer-navbar' style="margin-bottom:120rpx">
+  <view class='page 1footer-navbar' style="margin-bottom:120rpx;padding-bottom:120rpx;">
     <block wx:for='{{merch_list}}' wx:for-item='item' wx:for-index='index' wx:key="merch_list">
       <view class='fui-cell-group fui-cell-click'>
         <navigator class='fui-cell' hoverClass='none' url='{{item.merchid?"/pages/shop/shop?merchid="+item.merchid:""}}' openType='navigate'>
@@ -23,7 +23,7 @@
                 <radio bindtap='selected' checked='{{val.selected == 1?1:""}}' class='zoom-190' color='#0EAF51' data-id='{{val.id}}' data-select='{{val.selected}}'></radio>
               </block>
               <block wx:if='{{edit}}'>
-                <radio class='zoom-901' color='#ef4f4f' data-id='{{val.id}}' bindtap='edit_list' checked='{{edit_list[val.id]?1:0}}'></radio>
+                <radio class='zoom-901' color='#0EAF51' data-id='{{val.id}}' bindtap='edit_list' checked='{{edit_list[val.id]?1:0}}'></radio>
               </block>
               <view class='fui-list-media' bindtap='toUrl' data-url='/pages/product-detail/product-detail?id={{val.goodsid}}'>
                 <image class='round' src='{{val.thumb}}'></image>
@@ -62,10 +62,10 @@
       <view class='fui-list-group cartlist'>
         <view class='fui-list noclick'>
           <block wx:if='{{!edit}}'>
-            <radio bindtap='selected' checked='{{val.selected == 1?1:0}}' class='zoom-90' color='#ef4f4f' data-id='{{val.id}}' data-select='{{val.selected}}'></radio>
+            <radio bindtap='selected' checked='{{val.selected == 1?1:0}}' class='zoom-90' color='#0EAF51' data-id='{{val.id}}' data-select='{{val.selected}}'></radio>
           </block>
           <block wx:if='{{edit}}'>
-            <radio class='zoom-90' color='#ef4f4f' data-id='{{val.id}}' bindtap='edit_list' checked='{{edit_list[val.id]?1:0}}'></radio>
+            <radio class='zoom-90' color='#0EAF51' data-id='{{val.id}}' bindtap='edit_list' checked='{{edit_list[val.id]?1:0}}'></radio>
           </block>
           <view class='fui-list-media'>
             <image class='round' src='{{val.thumb}}'></image>

@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 5,
 			"list": [
 				{
 					"id": 0,
@@ -48,8 +48,9 @@
 				{
 					"id": 1,
 					"name": "爆品专区",
-					"pathName": "pages/hot-sale/hot-sale",
-					"query": ""
+					"pathName": "pages/ready-sale/ready-sale",
+					"query": "",
+					"scene": null
 				},
 				{
 					"id": 2,
@@ -72,9 +73,9 @@
 				},
 				{
 					"id": 5,
-					"name": "个人中心-订单",
+					"name": "个人中心",
 					"pathName": "pages/me/all-order/all-order",
-					"query": "active=0",
+					"query": "orderid=96",
 					"scene": null
 				},
 				{

@@ -8,7 +8,7 @@
       <!-- 产品标题 -->
       <view class='fz-28'>{{goodsData.title}}</view>
       <view>
-        <text class='fz-28 cf9721a'>￥{{goodsData.minprice}}-{{goodsData.maxprice}}/{{goodsData.shorttitle}}</text>
+        <text class='fz-28 cf9721a'>￥{{goodsData.minprice}}-{{goodsData.maxprice}}/{{goodsData.option[0].spectitle}}</text>
       </view>
     </view>
     <view class='right'>
@@ -21,7 +21,7 @@
     <block wx:for="{{goodsData.option}}" wx:key="index">
       <navigator wx:if="{{item.stock > 0}}" hover-class='none' url='/pages/product-detail/product-detail?id={{goodsData.id}}'>
         <view class='left'>
-          <view class='fz-24 c9'> ￥{{item.marketprice}}/{{item.spectitle}}</view>
+          <view class='fz-24 c9'> {{item.optiontitle}}/{{item.spectitle}}</view>
           <text class='fz-30 cf9721a'>￥{{item.marketprice}}/{{item.spectitle}}</text>
         </view>
         <view class='right'>

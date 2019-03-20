@@ -54,14 +54,14 @@ Page({
       title: '加载中'
     })
     // 这里写请求。一下是示范
-    core.get("goods/get_list", {}, res => {
+    core.get("yufa/me/getNewDemand", {}, res => {
       console.log(res);
       //隐藏加载
       wx.hideLoading();
-      //设置数据
-      this.setData({
-        show: true
-      });
+      // //设置数据
+      // this.setData({
+      //   show: true
+      // });
     })
   },
   onClose() {
@@ -87,7 +87,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    this.showPopup();
   },
 
   /**

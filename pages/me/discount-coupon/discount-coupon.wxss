@@ -68,7 +68,7 @@ page,
   line-height: 86rpx;
 }
 .price{
-  width:180rpx;
+  width:270rpx;
   text-align: center;
   font-size: 66rpx;
   font-weight: 700;

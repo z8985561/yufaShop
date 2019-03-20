@@ -26,7 +26,7 @@
 </view>
 
 <!-- 店铺 -->
-<view class='shop'>
+<view class='shop' wx:if="{{merch_list[0].merchid}}">
   <image src='{{shop.logo}}' class='shop-logo'></image>
   <view class='shop-name'>
     <view class='fz-30 c3'>{{shop.name}}</view>

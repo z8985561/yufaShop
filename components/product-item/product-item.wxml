@@ -20,11 +20,11 @@
     <view class='fz-28 label' wx:if="{{productData.label}}">{{productData.label}}</view>
   </view>
   <view class='right'>
-    <view class='plus' catchtap='add' hidden='{{num > 0 ? true : false}}'>+</view>
+    <view class='plus' catchtap='add' data-id="{{item.id}}" data-optionid="{{item.optionid}}" hidden='{{num > 0 ? true : false}}'>+</view>
     <view class='ctrl-btn {{num == 0 ? "" : "on"}}'>
       <view catchtap='sub'>-</view>
       <input value='{{num}}' type='number' catchtap='fn' bindblur="bindBlurChange"></input>
-      <view catchtap='add'>+</view>
+      <view  data-id="{{item.id}}" data-optionid="{{item.optionid}}" catchtap='add'>+</view>
     </view>
   </view>
 </navigator>
