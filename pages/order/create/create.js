@@ -6,6 +6,12 @@ var t = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? func
 
 Page({
   data: {
+    invoiceType:1,
+    invoiceTypeList:[
+      { name: '1', value: '个人', checked:true},
+      { name: '2', value: '企业' }
+    ],
+    invoiceChecked:false,
     icons: e.requirejs("icons"),
     list: {},
     goodslist: {},
@@ -230,6 +236,8 @@ Page({
       t.list.carrierInfo = t.list.carrierInfo || {};
       var o = {
         id: t.options.id ? t.options.id : 0,
+        ischeck: t.invoiceChecked,
+        realprice: t.list.realprice,
         goods: t.goodslist,
         gdid: t.options.gdid,
         dispatchtype: t.data.dispatchtype,
@@ -432,6 +440,18 @@ Page({
       showcoupon: !1,
       gift: !1
     });
+  },
+  // 开发票选择事件
+  hasinvoiceEvent(){
+    this.setData({
+      invoiceChecked: !this.data.invoiceChecked
+    })
+  },
+  //
+  onchangeType(e){
+    this.setData({
+      invoiceType:e.detail.value
+    })
   },
   radioChange: function (t) {
     this.setData({

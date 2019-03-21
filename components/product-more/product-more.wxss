@@ -111,9 +111,10 @@
   min-width: 60rpx;
 }
 .down{
-  line-height:40rpx;
+  line-height:60rpx;
   transition: .3s;
 }
 .down.on{
   transform: rotate(180deg);
+  
 }

@@ -60,6 +60,9 @@ Page({
    */
   onLoad: function(options) {
     var that = this;
+    this.setData({
+      keyName: options.key
+    })
     try {
       const value = wx.getStorageSync('searchHistory');
       if (!value) {

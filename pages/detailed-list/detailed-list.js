@@ -1,16 +1,19 @@
 // pages/detailed-list/detailed-list.js
-var app = getApp(),core = app.requirejs("core");
+var app = getApp(),
+  core = app.requirejs("core");
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    active:0,
-    cartTotal: 0,//购物车
+    targetId: "",
+    navIndex: 0,
+    active: 0,
+    cartTotal: 0, //购物车
     activeIndex: .0,
     sliderOffset: 0,
-    listHeight:0,
+    listHeight: 0,
     productList: [{
         id: 1, //产品id
         navUrl: "#", //产品链接
@@ -77,12 +80,7 @@ Page({
         count: 0
       }
     ],
-    myDetailed:[
-      {
-        cateId:1,
-        cateName:"新鲜蔬菜",
-      }
-    ]
+    favoriteList: []
   },
   tabClick: function(e) {
     this.setData({
@@ -92,7 +90,7 @@ Page({
   },
 
   // 监听添加商品事件
-  addEventListener: function (e) {
+  addEventListener: function(e) {
     //console.log(e.detail)
     var addCartCount = this.data.cartListNum + 1;
     this.setData({
@@ -100,7 +98,7 @@ Page({
     })
   },
   // 监听删除商品事件
-  subEventListener: function (e) {
+  subEventListener: function(e) {
     //console.log(e.detail)
     var subCartCount = this.data.cartListNum - 1;
     this.setData({
@@ -108,29 +106,45 @@ Page({
     })
   },
   //监听input失去焦点事件
-  blurEventListener: function (e) {
+  blurEventListener: function(e) {
     //console.log(e.detail.value)
     var blurCartCount = this.data.cartListNum + e.detail.value;
     this.setData({
       cartListNum: blurCartCount
     })
   },
+  toList(e) {
+    var { id,index } = e.currentTarget.dataset;
+    this.setData({
+      targetId: id,
+      navIndex: index
+    })
+  },
+  scrollEvent(e){
+    console.log(e.detail.deltaX)
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    var that =this;
+    var that = this;
     wx.getSystemInfo({
       success: function(res) {
         that.setData({
-          listHeight:res.windowHeight - 130
+          listHeight: res.windowHeight - 130
         })
       },
     })
     //获取购物车数量
-    core.get("member/cart/get_cart", {}, function (res) {
+    core.get("member/cart/get_cart", {}, function(res) {
       that.setData({
         cartTotal: res.total
+      })
+    })
+    //获取我的清单
+    core.get("member.favorite.get_list", {}, function(res) {
+      that.setData({
+        favoriteList: res.list
       })
     })
   },

@@ -59,15 +59,25 @@ Page({
   getCategory(id){
     var that = this;
     core.get("shop/get_category",{},function(res){
-      var index = 0;
+      var index = 0,idx=0;
       res.category.forEach(function(k,v){
         if (k.id == id){
            index = v;
+           return
         }
+        k.child.forEach(function(i,j){
+          if (i.id == id) {
+            index=v;
+            idx = j;
+            console.info(index,idx);
+            return
+          }
+        })
       })
       that.setData({
         category: res.category,
-        activeIndex: index
+        activeIndex: index,
+        subActiveIndex: idx,
       })
     })
   },

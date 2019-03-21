@@ -83,6 +83,7 @@
   bottom: 20rpx;
 }
 .recharge .btn{
+  display: block;
   margin: 0 auto;
   width: 620rpx;
   height: 80rpx;

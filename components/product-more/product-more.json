@@ -1,6 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-    "van-transition": "/vant-ui/transition/index"
+    "van-icon": "/vant-ui/icon/index"
   }
 }

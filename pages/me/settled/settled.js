@@ -91,7 +91,7 @@ Page({
       });
       return
     }
-    if (!json.adress) {
+    if (!json.address) {
       Toast({
         message: '请填写店铺详细地址',
         duration: 1000
@@ -159,7 +159,7 @@ Page({
           userName: '',
           phoneNum: '',
           wechat: '',
-          adress: '',
+          address: '',
           salecate: '', // 主营项目
           uname: '', // 用户名
           upass: '', // 密码

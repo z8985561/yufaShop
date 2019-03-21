@@ -15,11 +15,28 @@
 <view class='tab-panel'>
   <!-- 我的清单 -->
   <view class='my-detailed' hidden='{{activeIndex != 0}}'>
-    <van-tabs active="{{ active }}" bind:change="onChange" border="{{false}}" color="#fff">
-      <van-tab title="标签 1" title-style="color:#0EAF52">内容 1</van-tab>
-      <van-tab title="标签 1" title-style="color:#0EAF52">内容 1</van-tab>
-      <van-tab title="标签 1" title-style="color:#0EAF52">内容 1</van-tab>
-    </van-tabs>
+  <scroll-view scroll-x style='height:80rpx;line-height:80rpx;'>
+   <block wx:for="{{favoriteList}}" wx:key="index" class="nav-list">
+    <view bindtap='toList' class='nav-item {{ navIndex == index ? "on":"" }}' data-id='A{{index}}' data-index="{{index}}">{{item.catename}}</view>
+    </block>
+  </scroll-view>
+    <scroll-view scroll-y style='height:400px;' scroll-with-animation="true" scroll-into-view="{{targetId}}" bindscroll="scrollEvent">
+      <block wx:for="{{favoriteList}}" wx:key="index">
+        <view>
+          <view class='title plr-20' id="A{{index}}">{{item.catename}}</view>
+          <view class='ptb-30'>
+            <block wx:for="{{item.goods}}" wx:for-item="goods" wx:key="idx">
+              <product-more productData="{{goods}}" bind:_upCartCount="upCartCount"></product-more>
+              <product-more productData="{{goods}}" bind:_upCartCount="upCartCount"></product-more>
+              <product-more productData="{{goods}}" bind:_upCartCount="upCartCount"></product-more>
+              <product-more productData="{{goods}}" bind:_upCartCount="upCartCount"></product-more>
+              <product-more productData="{{goods}}" bind:_upCartCount="upCartCount"></product-more>
+            </block>
+          </view>
+
+        </view>
+      </block>
+    </scroll-view>
   </view>
   <!-- 我的清单end -->
   <!-- 为你推荐 -->

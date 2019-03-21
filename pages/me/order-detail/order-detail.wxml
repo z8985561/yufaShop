@@ -4,7 +4,7 @@
   <text>{{orderData.order.statusstr}}</text>
 </view>
 <view class='goods-list'>
-  <navigator class='flex flex-jus' url='' hover-class='none'>
+  <!-- <navigator class='flex flex-jus' url='' hover-class='none'>
     <view class='flex'>
       <image class='goods-pic' src='/img/product-3.png' mode='widthFix'></image>
       <view>
@@ -13,14 +13,14 @@
       </view>
     </view>
     <view class='fz-26 cf9721a'>小计￥187.00</view>
-  </navigator>
+  </navigator> -->
   <block wx:for="{{orderData.goods}}" wx:key="index">
     <navigator class='flex flex-jus' url='' hover-class='none' url='/pages/product-detail/product-detail?id={{item.id}}'>
       <view class='flex'>
         <image class='goods-pic' src='{{item.thumb}}' mode='widthFix'></image>
         <view>
           <view class='fz-30'>{{item.title}}</view>
-          <view class='fz-24 c9'>￥19.23/袋({{item.optionname}})X{{item.total}}</view>
+          <view class='fz-24 c9'>￥{{item.marketprice}}/袋({{item.optionname}})X{{item.count}}</view>
         </view>
       </view>
       <view class='fz-26 cf9721a'>小计￥{{item.price}}</view>
@@ -35,9 +35,9 @@
     </view>
   </view> -->
   <view class='flex flex-jus'>
-    <view class='fz-30'>共6件</view>
+    <view class='fz-30'>共{{orderData.goodstotal}}件</view>
     <view class='fz-30'>合计
-      <text class='cf9721a'>￥{{orderData.order.price}}</text>
+      <text class='cf9721a'>￥{{orderData.order.goodsprice}}</text>
     </view>
   </view>
 </view>

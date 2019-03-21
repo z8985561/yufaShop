@@ -13,7 +13,7 @@
     </view>
     <view class='right'>
       <view class='plus down {{show?"on":""}}' catchtap='showMore'>
-        <image style='width:13px' src='/img/icon-down.png' mode='widthFix'></image>
+        <van-icon name="arrow-down" size='36rpx;'/>
       </view>
     </view>
   </navigator>

@@ -1,3 +1,9 @@
 {
+  "usingComponents": {
+    "van-checkbox": "/vant-ui/checkbox/index",
+    "van-checkbox-group": "/vant-ui/checkbox-group/index",
+    "van-radio": "/vant-ui/radio/index",
+    "van-radio-group": "/vant-ui/radio-group/index"
+  },
   "navigationBarTitleText": "确认订单"
 }

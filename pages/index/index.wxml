@@ -3,7 +3,7 @@
   <navigator class='icon' url='' hover-class='none'>
     <text class='fa fa-headphones cf'></text>
   </navigator>
-  <navigator class='search-box' url="/pages/index/index?name={{}}" hover-class='none'>
+  <navigator class='search-box' url="/pages/search/search?key={{search_text}}" hover-class='none'>
     <text class='fa fa-search c6'></text>
     <text class='fz-28 c9'>{{search_text}} </text>
   </navigator>

@@ -215,6 +215,27 @@ Page({
       url: `/pages/order/create/create?id=${this.data.productDetail.id}&total=${this.data.buyGoods.total}&optionid=${this.data.buyGoods.id}`,
     })
   },
+  //添加常用清单
+  favorite(e) {
+    var that = this;
+    if (!this.data.limits) {
+      var flag = e.currentTarget.dataset.isfavorite == 1 ? 0 : 1;
+      core.get("member/favorite/toggle", {
+        id: that.data.id,
+        isfavorite: flag
+      }, function (res) {
+        res.isfavorite ? that.setData({
+          "isfavorite": 1
+        }) : that.setData({
+          "isfavorite": 0
+        })
+      })
+    } else {
+      this.setData({
+        modelShow: !0
+      });
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -224,11 +245,25 @@ Page({
     core.get('yufa/goods/get_detail', {
       'id': options.id
     }, function(res) {
-      console.log(res);
       that.setData(res.goods)
       if (res.goods.content) {
         wxparse.wxParse("wxParseData", "html", res.goods.content, that, "5");
       }
+      var buyGoods = {
+        title: that.data.productDetail.title,
+        id: that.data.productDetail.specList[0].id,
+        total: 1
+      },
+        addCartGoods = {
+          title: that.data.productDetail.title,
+          id: that.data.productDetail.specList[0].id,
+          total: 1
+        };
+      that.setData({
+        buyGoods: buyGoods,
+        addCartGoods: addCartGoods
+      })
+      that.calculate()
     });
     core.get('yufa/goods/get_comments', {
       'id': options.id
@@ -241,20 +276,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-    var buyGoods = {
-        title: this.data.productDetail.title,
-        id: this.data.productDetail.specList[0].id,
-        total: 1
-      },
-      addCartGoods = {
-        title: this.data.productDetail.title,
-        id: this.data.productDetail.specList[0].id,
-        total: 1
-      };
-    this.setData({
-      buyGoods: buyGoods,
-      addCartGoods: addCartGoods
-    })
+    
   },
 
   /**
