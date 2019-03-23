@@ -10,7 +10,8 @@
   width: 100%;
 }
 .head-sale-item image{
-  width: 100%;
+  width: 200rpx;
+  height: 180rpx;
 }
 .flex{
   display: flex;

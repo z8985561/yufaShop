@@ -3,7 +3,7 @@ var app = getApp(),
   core = app.requirejs("core"),
   wxParse = app.requirejs("wxParse/wxParse"),
   i = app.requirejs("biz/diypage"),
-  jq = app.requirejs("jquery");
+  $ = app.requirejs("jquery");
 
 
 

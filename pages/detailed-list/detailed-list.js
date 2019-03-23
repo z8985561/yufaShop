@@ -14,73 +14,12 @@ Page({
     activeIndex: .0,
     sliderOffset: 0,
     listHeight: 0,
-    productList: [{
-        id: 1, //产品id
-        navUrl: "#", //产品链接
-        imgUrl: "/img/product-1.png", //产品图片
-        title: "100%花生食用油", //产品标题
-        peopleBuy: "2978", //购买人数
-        spec: "斤", //规格
-        specDec: "￥10.50/袋(10斤)", //规格描述
-        newPrice: "1.05", //最新价格
-        oldPrice: "1.40", //原始价格
-        label: "降价", //标签
-        count: 1
-      },
-      {
-        id: 2, //产品id
-        navUrl: "#", //产品链接
-        imgUrl: "/img/product-2.png", //产品图片
-        title: "小土豆", //产品标题
-        peopleBuy: "2978", //购买人数
-        spec: "斤", //规格
-        specDec: "￥10.50/袋(10斤)", //规格描述
-        newPrice: "1.05", //最新价格
-        oldPrice: "1.40", //原始价格
-        label: "降价", //标签
-        count: 0
-      },
-      {
-        id: 3, //产品id
-        navUrl: "#", //产品链接
-        imgUrl: "/img/product-3.png", //产品图片
-        title: "上等优质猪肉", //产品标题
-        peopleBuy: "2978", //购买人数
-        spec: "斤", //规格
-        specDec: "￥10.50/袋(10斤)", //规格描述
-        newPrice: "1.05", //最新价格
-        oldPrice: "1.40", //原始价格
-        label: "降价", //标签
-        count: 0
-      },
-      {
-        id: 4, //产品id
-        navUrl: "#", //产品链接
-        imgUrl: "/img/product-4.png", //产品图片
-        title: "大蒜", //产品标题
-        peopleBuy: "2978", //购买人数
-        spec: "斤", //规格
-        specDec: "￥10.50/袋(10斤)", //规格描述
-        newPrice: "10.05", //最新价格
-        oldPrice: "13.40", //原始价格
-        label: "降价", //标签
-        count: 2
-      },
-      {
-        id: 5, //产品id
-        navUrl: "#", //产品链接
-        imgUrl: "/img/product-1.png", //产品图片
-        title: "100%花生食用油", //产品标题
-        peopleBuy: "2978", //购买人数
-        spec: "斤", //规格
-        specDec: "￥10.50/袋(10斤)", //规格描述
-        newPrice: "1.05", //最新价格
-        oldPrice: "1.40", //原始价格
-        label: "降价", //标签
-        count: 0
-      }
-    ],
-    favoriteList: []
+    productList: [],
+    favoriteList: [],
+    loadOptions:{
+      page:1,
+      pagesize:2
+    }
   },
   tabClick: function(e) {
     this.setData({
@@ -121,7 +60,20 @@ Page({
     })
   },
   scrollEvent(e){
-    console.log(e.detail.deltaX)
+    console.log(e.detail.scrollHeight)
+  },
+  loadMore(){
+    var that = this;
+    this.data.loadOptions.page++;
+    //为您推荐
+    core.get("yufa/me/getRecommand", this.data.loadOptions, function (res) {
+      var json = that.data.productList;
+      json.concat(res.productList)
+      that.setData({
+        productList: json
+      })
+    })
+
   },
   /**
    * 生命周期函数--监听页面加载
@@ -131,15 +83,9 @@ Page({
     wx.getSystemInfo({
       success: function(res) {
         that.setData({
-          listHeight: res.windowHeight - 130
+          listHeight: res.windowHeight - 160
         })
       },
-    })
-    //获取购物车数量
-    core.get("member/cart/get_cart", {}, function(res) {
-      that.setData({
-        cartTotal: res.total
-      })
     })
     //获取我的清单
     core.get("member.favorite.get_list", {}, function(res) {
@@ -147,8 +93,21 @@ Page({
         favoriteList: res.list
       })
     })
+    //为您推荐
+    core.get("yufa/me/getRecommand", this.data.loadOptions, function (res) {
+      that.setData(res)
+    })
   },
-
+  //更新购物车数量
+  upCartCount(){
+    var that = this;
+    //获取购物车数量
+    core.get("member/cart/get_cart", {}, function (res) {
+      that.setData({
+        cartTotal: res.total
+      });
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -160,7 +119,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    this.upCartCount()
   },
 
   /**

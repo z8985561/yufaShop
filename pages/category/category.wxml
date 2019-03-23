@@ -3,9 +3,9 @@
   <navigator class='icon' url='' hover-class='none'>
     <text class='fa fa-headphones c6'></text>
   </navigator>
-  <navigator class='search-box' url="/pages/search/search" hover-class='none'>
+  <navigator class='search-box' url="/pages/search/search?key={{defaultSearchWord}}" hover-class='none'>
     <text class='fa fa-search c6'></text>
-    <text class='fz-28 c9'> 火锅丸子8.99折</text>
+    <text class='fz-28 c9'> {{defaultSearchWord}}</text>
   </navigator>
   <navigator class='icon' url='' hover-class='none'>
     <text class='fa fa-commenting c6'></text>

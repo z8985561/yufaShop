@@ -1,0 +1,13 @@
+{
+  "usingComponents": {
+    "van-field": "/vant-ui/field/index",
+    "van-cell": "/vant-ui/cell/index",
+    "van-toast": "/vant-ui/toast/index",
+    "van-cell-group": "/vant-ui/cell-group/index",
+    "van-steps": "/vant-ui/steps/index",
+    "van-icon": "/vant-ui/icon/index",
+    "van-row": "/vant-ui/row/index",
+    "van-col": "/vant-ui/col/index",
+    "van-button": "/vant-ui/button/index"
+  }
+}

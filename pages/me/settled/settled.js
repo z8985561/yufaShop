@@ -139,18 +139,28 @@ Page({
     }
 
     core.post("yufa/me/settled/apply", { "data": json }, function (e) {
+      wx.showLoading({
+        title: '加载中',
+      })
       if (e.error != 0) {
         Toast({
           message: e.message,
           duration: 2000
         });
+        wx.hideLoading();
         return
       }
       if (e.error == 0) {
-        Toast.success({
-          message: e.message,
-          duration: 1000
-        });
+        // Toast.success({
+        //   message: e.message,
+        //   duration: 1000
+        // });
+        wx.showToast({
+          title: '提交成功',
+          success(){
+            wx.hideLoading();
+          }
+        })
         that.setData({
           shopPicUrl: '',
           businessLicense: '',
@@ -172,7 +182,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    var that = this;
+    core.get('yufa/me/settled/getSettled',{},function(data){
+      that.setData(data);
+    });
   },
 
   /**

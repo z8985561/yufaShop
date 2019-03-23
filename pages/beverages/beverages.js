@@ -10,84 +10,8 @@ Page({
    */
   data: {
     cartTotal: 0,//购物车
-    hotSaleProduct: [
-      {
-        cateId: 1,
-        cateTitle: "酒类", //顶级分类名称
-        data: []
-      },
-      {
-        cateId: 2,
-        cateTitle: "饮料", //顶级分类名称
-        data: [
-          {
-            id: 1, //产品id
-            navUrl: "#", //产品链接
-            imgUrl: "/img/product-2.png", //产品图片
-            title: "100%花生食用油", //产品标题
-            peopleBuy: "2978", //购买人数
-            spec: "斤", //规格
-            specDec: "￥10.50/袋(10斤)", //规格描述
-            newPrice: "1.05", //最新价格
-            oldPrice: "1.40", //原始价格
-            label: "降价", //标签
-            count: 1
-          },
-          {
-            id: 2, //产品id
-            navUrl: "#", //产品链接
-            imgUrl: "/img/product-2.png", //产品图片
-            title: "小土豆", //产品标题
-            peopleBuy: "2978", //购买人数
-            spec: "斤", //规格
-            specDec: "￥10.50/袋(10斤)", //规格描述
-            newPrice: "1.05", //最新价格
-            oldPrice: "1.40", //原始价格
-            label: "降价", //标签
-            count: 0
-          },
-          {
-            id: 3, //产品id
-            navUrl: "#", //产品链接
-            imgUrl: "/img/product-3.png", //产品图片
-            title: "上等优质猪肉", //产品标题
-            peopleBuy: "2978", //购买人数
-            spec: "斤", //规格
-            specDec: "￥10.50/袋(10斤)", //规格描述
-            newPrice: "1.05", //最新价格
-            oldPrice: "1.40", //原始价格
-            label: "降价", //标签
-            count: 0
-          },
-          {
-            id: 4, //产品id
-            navUrl: "#", //产品链接
-            imgUrl: "/img/product-4.png", //产品图片
-            title: "大蒜", //产品标题
-            peopleBuy: "2978", //购买人数
-            spec: "斤", //规格
-            specDec: "￥10.50/袋(10斤)", //规格描述
-            newPrice: "10.05", //最新价格
-            oldPrice: "13.40", //原始价格
-            label: "降价", //标签
-            count: 2
-          },
-          {
-            id: 5, //产品id
-            navUrl: "#", //产品链接
-            imgUrl: "/img/product-1.png", //产品图片
-            title: "100%花生食用油", //产品标题
-            peopleBuy: "2978", //购买人数
-            spec: "斤", //规格
-            specDec: "￥10.50/袋(10斤)", //规格描述
-            newPrice: "1.05", //最新价格
-            oldPrice: "1.40", //原始价格
-            label: "降价", //标签
-            count: 0
-          }
-        ]
-      }
-    ],
+    hotSaleProduct: [],
+    headSaleProductData:[],
     subActiveIndex: 0
   },
   // 监听添加商品事件
@@ -121,23 +45,45 @@ Page({
       subActiveIndex: e.detail.index
     })
   },
+  //更新购物车数量
+  upCartCount() {
+    var that = this;
+    //获取购物车数量
+    core.get("member/cart/get_cart", {}, function (res) {
+      that.setData({
+        cartTotal: res.total
+      });
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that = this;
-    console.info(options);
     this.setData(options);
+    wx.showLoading({
+      title: '加载中',
+      mask:true
+    })
     core.get('yufa/goods/getZonegoods',{'id':this.options.id},function(data){
       that.setData(data);
-      console.info(data);
-    });
-    //获取购物车数量
-    core.get("member/cart/get_cart", {}, function (res) {
-      that.setData({
-        cartTotal: res.total
+      var headSaleProductData = that.data.headSaleProductData;
+      that.data.hotSaleProduct[0].data.forEach(item=>{
+        if (headSaleProductData.length <3){
+          if (item.isdiscount){
+            console.log(item)
+            headSaleProductData.push(item)
+          }
+        }else{
+          return;
+        }
       })
-    })
+      that.setData({
+        headSaleProductData: headSaleProductData
+      });
+      wx.hideLoading()
+    });
+    this.upCartCount()
   },
 
   /**

@@ -1,9 +1,9 @@
 <!--pages/me/add-demand/demand-list/demand-list.wxml-->
 
 <van-cell-group>
-<block wx:for="{{demandList}}" wx:key="index">
-  <van-cell title="{{item.title}}" value="{{item.status}}" is-link bind:click="showPopup" data-id="{{item.id}}" />
-</block>
+  <block wx:for="{{data}}" wx:key="index">
+    <van-cell title="{{item.proName}}" value="{{item.statusstring}}" is-link bind:click="showPopup" data-id="{{item.id}}" data-index="{{index}}" />
+  </block>
 </van-cell-group>
 <view class='plr-20 mt-40'>
   <navigator class='btn-big' url='../add-demand'>增加新品需求</navigator>
@@ -12,17 +12,16 @@
   <view style="width:100vw;height:100vh;">
     <van-steps steps="{{ progress.steps }}" active="{{ progress.status }}" />
     <van-cell-group>
-      <van-cell title="名称" value="{{progress.title}}" />
-      <van-cell title="分类" value="{{progress.cate}}" />
-      <van-cell title="品牌" value="{{progress.brand}}" />
+      <van-cell title="名称" value="{{progress.proName}}" />
+      <van-cell title="分类" value="{{progress.cateName}}" />
+      <van-cell title="品牌" value="{{progress.brandName}}" />
       <van-cell title="规格" value="{{progress.spec}}" />
-      <van-cell title="月需求量" value="{{progress.demand}}" />
+      <van-cell title="月需求量" value="{{progress.count}}" />
       <van-cell title="备注" value="{{progress.remarks}}" />
-      <van-cell title="提报时间" value="{{progress.date}}" border="{{ false }}" />
+      <van-cell title="提报时间" value="{{progress.createtime}}" border="{{ false }}" />
     </van-cell-group>
     <view class='plr-20 mt-40'>
       <view class='btn-big' bindtap="onClose">返回</view>
     </view>
   </view>
 </van-popup>
-

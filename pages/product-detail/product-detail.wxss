@@ -123,3 +123,22 @@ swiper image{
   right: 30rpx;
   bottom: 30rpx;
 }
+.seckill-container { display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; overflow: hidden; }
+.seckill-container .seckill-list, .seckill-container .seckill-list1 { background: #ef4f4f; }
+.seckill-container.notstart .seckill-list, .seckill-container.notstart .seckill-list1, .seckill-container.notstart .seckill-list2 { background:#00b950; }
+.seckill-container .seckill-list{ -webkit-flex:1; flex:1; color:#fff; padding:0em 20rpx; margin-top:-1px; }
+.seckill-container .seckill-list .fui-list-inner .text{ color:#fff; height:36rpx; }
+.seckill-container .seckill-list .seckill-price{ font-size:40rpx; color:#fff; -webkit-box-align: baseline; -webkit-align-items: baseline; -ms-flex-align: baseline; align-items: baseline; width:auto; }
+.seckill-container .seckill-list .seckill-price wx-text{ font-size:72rpx; }
+.seckill-container .seckill-list .oldprice{ color:rgba(255,255,255,.5); }
+.seckill-container .seckill-list .fui-list-media{ }
+.seckill-container .seckill-list .stitle{ display: inline-block; border:1px solid #fff; border-radius: 8rpx; font-size:16rpx; padding:0 8rpx; }
+.seckill-container .seckill-list1 .fui-list-inner .text{ text-align: center; color:#fff; }
+.seckill-container .seckill-list1 .fui-list-inner .text .process { float:left; width:160rpx; height:24rpx; border:1px solid #efd74f; border-radius: 20rpx; overflow:hidden; margin-top:12rpx; }
+.seckill-container .seckill-list1 .fui-list-inner .text .process .inner { width:200rpx; height:.24rpx; background:#efd74f; }
+.seckill-container .seckill-list2 .fui-list-inner .text { font-size:24rpx; text-align: center; height:38rpx; color:#ef4f4f }
+.seckill-container .seckill-list2 .fui-list-inner .text.timer wx-text { display: inline-block; background:#582e19; color:#fff; width:36rpx;height:36rpx; border-radius: 4rpx; line-height:36rpx; font-size:20rpx; text-align: center; }
+.seckill-container .seckill-list2{ padding:0; width:200rpx; background:#ffef32; }
+.seckill-container .seckill-list2, .seckill-container .seckill-list1 { margin-top:-4rpx; }
+.seckill-container.notstart .seckill-list2 .fui-list-inner .text { color:#fff; }
+.seckill-container.notstart .seckill-list2 .fui-list-inner .text.timer wx-text{ background:rgba(0,0,0,.7); }

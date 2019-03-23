@@ -59,7 +59,7 @@
   <block wx:if='{{list.cash.success && list.order.price != 0}}'>
     <view class='fui-list' bindtap='pay' data-type='cash'>
       <view class='fui-list-media car radius'>
-        <image class='round' src='/static/images/icon-white/car.png'></image>
+      <van-icon name="logistics"  color='#ffffff' size='70rpx'/>
       </view>
       <view class='fui-list-inner'>
         <view class='row'>

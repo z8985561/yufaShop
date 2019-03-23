@@ -223,7 +223,7 @@ Page({
       core.get("member/favorite/toggle", {
         id: that.data.id,
         isfavorite: flag
-      }, function (res) {
+      }, function(res) {
         res.isfavorite ? that.setData({
           "isfavorite": 1
         }) : that.setData({
@@ -236,24 +236,60 @@ Page({
       });
     }
   },
+  countDown: function(t, e, a) {
+    var o = parseInt(Date.now() / 1e3),
+      i = t > o ? t : e,
+      s = i - o,
+      n = parseInt(s),
+      r = Math.floor(n / 86400),
+      d = Math.floor((n - 24 * r * 60 * 60) / 3600),
+      c = Math.floor((n - 24 * r * 60 * 60 - 3600 * d) / 60);
+    Math.floor(n - 24 * r * 60 * 60 - 3600 * d - 60 * c);
+    if (this.setData({
+        day: Math.floor(n / 86400),
+        hour: Math.floor((n - 24 * r * 60 * 60) / 3600),
+        minute: Math.floor((n - 24 * r * 60 * 60 - 3600 * d) / 60),
+        second: Math.floor(n - 24 * r * 60 * 60 - 3600 * d - 60 * c)
+      }), "istime") {
+      var l = "";
+      t > o ? l = "距离限时购开始" : t <= o && e > o ? l = "距离限时购结束" : (l = "活动已经结束，下次早点来~", this.setData({
+          istime: 0
+        })),
+        this.setData({
+          istimeTitle: l
+        })
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
     this.calculate()
-    var that = this;
+    var that = this, o = parseInt(Date.now() / 1e3), lasttime = '';
     core.get('yufa/goods/get_detail', {
       'id': options.id
     }, function(res) {
-      that.setData(res.goods)
+      that.setData(res.goods);
+
+      if (that.data.seckillinfo){
+        core.get("goods/get_picker",{
+          id:that.data.id
+        },res =>{
+          console.log(res)
+        })
+      }
+
+      that.setData({
+        now: parseInt(Date.now() / 1e3)
+      })
       if (res.goods.content) {
         wxparse.wxParse("wxParseData", "html", res.goods.content, that, "5");
       }
       var buyGoods = {
-        title: that.data.productDetail.title,
-        id: that.data.productDetail.specList[0].id,
-        total: 1
-      },
+          title: that.data.productDetail.title,
+          id: that.data.productDetail.specList[0].id,
+          total: 1
+        },
         addCartGoods = {
           title: that.data.productDetail.title,
           id: that.data.productDetail.specList[0].id,
@@ -263,20 +299,83 @@ Page({
         buyGoods: buyGoods,
         addCartGoods: addCartGoods
       })
-      that.calculate()
+      that.calculate();
+
+      if (res.goods.isdiscount > 0 && res.goods.isdiscount_time >= o) {
+        clearInterval(that.data.timer);
+        var r = setInterval(function () {
+          that.countDown(0, res.goods.isdiscount_time)
+        }, 1e3);
+        that.setData({
+          timer: r
+        })
+      } else {
+        that.setData({
+          discountTitle: "活动已结束"
+        });
+      }
+  
+      if (res.goods.istime > 0) {
+        clearInterval(that.data.timer);
+        var r = setInterval(function () {
+          that.countDown(res.goods.timestart, res.goods.timeend, "istime")
+        }, 1e3);
+        that.setData({
+          timer: r
+        })
+      }
+
+      if (res.goods.seckillinfo != '') {
+        if (res.goods.seckillinfo.status == 0) {
+          lasttime = res.goods.seckillinfo.endtime - that.data.now;
+        } else {
+          lasttime = res.goods.seckillinfo.starttime - that.data.now;
+        }
+        clearInterval(that.data.timer);
+        var r = setInterval(function () {
+          lasttime -= 1
+          if (lasttime > 0) {
+            that.formatSeconds(lasttime)
+          }
+        }, 1e3)
+        that.setData({
+          timer: r
+        })
+      }
+
+
     });
     core.get('yufa/goods/get_comments', {
       'id': options.id
-    }, function (data) {
+    }, function(data) {
       that.setData(data);
     });
   },
+  formatSeconds: function (value) {
+    var t = this;
+    var theTime = parseInt(value);
+    var theTime1 = 0;
+    var theTime2 = 0;
+    if (theTime > 60) {
+      theTime1 = parseInt(theTime / 60);
+      theTime = parseInt(theTime % 60);
+      if (theTime1 > 60) {
+        theTime2 = parseInt(theTime1 / 60);
+        theTime1 = parseInt(theTime1 % 60)
+      }
+    }
 
+    t.setData({
+      hour: theTime2 < 10 ? '0' + theTime2 : theTime2,
+      minute: theTime1 < 10 ? '0' + theTime1 : theTime1,
+      second: theTime < 10 ? '0' + theTime : theTime
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-    
+
   },
 
   /**
@@ -285,7 +384,7 @@ Page({
   onShow: function() {
     var that = this;
     //获取购物车数量
-    core.get("member/cart/get_cart", {}, function (res) {
+    core.get("member/cart/get_cart", {}, function(res) {
       that.setData({
         cartTotal: res.total
       })

@@ -1,0 +1,39 @@
+<!--pages/me/settled/settled.wxml-->
+
+
+<view style='padding-top:30rpx;'></view>
+<van-row>
+  <van-col offset="1" span="8"><view><text>当前申请状态</text></view></van-col>
+</van-row>
+<van-row gutter="10">
+  <van-col offset="1" span="22">
+    <van-steps
+    steps="{{ steps }}"
+    active="{{ active }}"
+    active-color="{{activeColor}}"
+    />
+  </van-col>
+</van-row>
+<view class='mb-150' style='padding-bottom: 500rpx;'></view>
+
+<view class='plr-30 mb-40'>
+  <block wx:if="{{active<1}}">
+    <navigator class='btn-big' hover-class='none' url='/pages/me/settled/settled'>
+      <text class='btn-big'>填写申请</text>
+    </navigator>
+  </block>
+  <block wx:elif="{{active==1||active==3}}">
+    <navigator class='btn-big' hover-class='none' url='/pages/me/settled/settled'>
+      <text class='btn-big'>修改资料</text>
+    </navigator>
+  </block>
+  <block wx:else>
+      <text class='btn' style='background:#ccc;'>等待审核</text>
+  </block>
+</view>
+
+<view class='plr-30'>
+  <view class='btn' bindtap='goback'>返回</view>
+</view>
+
+<van-toast id="van-toast" /> <!-- 引入轻提示 -->

@@ -20,20 +20,15 @@
     <view bindtap='toList' class='nav-item {{ navIndex == index ? "on":"" }}' data-id='A{{index}}' data-index="{{index}}">{{item.catename}}</view>
     </block>
   </scroll-view>
-    <scroll-view scroll-y style='height:400px;' scroll-with-animation="true" scroll-into-view="{{targetId}}" bindscroll="scrollEvent">
+    <scroll-view scroll-y style='height:{{listHeight}}px;' scroll-with-animation="true" scroll-into-view="{{targetId}}" bindscroll="scrollEvent">
       <block wx:for="{{favoriteList}}" wx:key="index">
         <view>
           <view class='title plr-20' id="A{{index}}">{{item.catename}}</view>
-          <view class='ptb-30'>
+          <view class='ptb-30 plr-20'>
             <block wx:for="{{item.goods}}" wx:for-item="goods" wx:key="idx">
-              <product-more productData="{{goods}}" bind:_upCartCount="upCartCount"></product-more>
-              <product-more productData="{{goods}}" bind:_upCartCount="upCartCount"></product-more>
-              <product-more productData="{{goods}}" bind:_upCartCount="upCartCount"></product-more>
-              <product-more productData="{{goods}}" bind:_upCartCount="upCartCount"></product-more>
               <product-more productData="{{goods}}" bind:_upCartCount="upCartCount"></product-more>
             </block>
           </view>
-
         </view>
       </block>
     </scroll-view>
@@ -42,8 +37,9 @@
   <!-- 为你推荐 -->
   <view class='plr-20' hidden='{{activeIndex != 1}}'>
     <block wx:for="{{productList}}" wx:key="index">
-      <product-item productData="{{item}}" bind:addEvent='addEventListener' bind:subEvent='subEventListener' bind:blurEvent='blurEventListener' count="{{item.count}}"></product-item>
+              <product-more productData="{{item}}" bind:_upCartCount="upCartCount"></product-more>
     </block>
+    <view class='text-center fz-30 c9' bindtap='loadMore'>点击加载更多</view>
   </view>
   <!-- 为你推荐end -->
 </view>

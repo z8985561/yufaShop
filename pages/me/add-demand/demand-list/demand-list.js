@@ -26,13 +26,13 @@ Page({
     show: false,
     progress: {
       status: 0,
-      title:"加加 特级面条鲜",
-      cate:"特料干货",
-      brand:"加加",
-      spec:"500ml*12瓶/件",
-      demand:"30件",
-      remarks:"备注",
-      date:"2019.03.15 11:01:17",
+      title: "加加 特级面条鲜",
+      cate: "特料干货",
+      brand: "加加",
+      spec: "500ml*12瓶/件",
+      demand: "30件",
+      remarks: "备注",
+      date: "2019.03.15 11:01:17",
       steps: [{
           text: '新品已提报',
           desc: '2019-03-15'
@@ -50,18 +50,10 @@ Page({
 
   },
   showPopup(e) {
-    wx.showLoading({
-      title: '加载中'
-    })
-    // 这里写请求。一下是示范
-    core.get("yufa/me/getNewDemand", {}, res => {
-      console.log(res);
-      //隐藏加载
-      wx.hideLoading();
-      // //设置数据
-      // this.setData({
-      //   show: true
-      // });
+    console.log(e.currentTarget.dataset.index)
+    this.setData({
+      progress: this.data.data[e.currentTarget.dataset.index],
+      show: true
     })
   },
   onClose() {
@@ -87,7 +79,17 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    this.showPopup();
+    wx.showLoading({
+      title: '加载中'
+    })
+    // 这里写请求。一下是示范
+    core.get("yufa/me/getNewDemand", {}, res => {
+      console.log(res);
+      //隐藏加载
+      wx.hideLoading();
+      // //设置数据
+      this.setData(res);
+    })
   },
 
   /**

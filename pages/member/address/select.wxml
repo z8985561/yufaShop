@@ -15,7 +15,7 @@
               <view class='text'>{{item.province}}{{item.city}}{{item.area}} {{item.address}}</view>
             </view>
             <navigator hoverClass='none' openType='redirect' class='fui-list-angle' url='/pages/member/address/post?id={{item.id}}&type=order'>
-              <image src='/static/images/icon/edit.png' class='image-48'></image>
+              <van-icon name="edit" size='30px' color="#cccccc" />
             </navigator>
           </view>
         </view>

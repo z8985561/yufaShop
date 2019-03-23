@@ -63,6 +63,9 @@ Page({
     this.setData({
       keyName: options.key
     })
+    console.info(11)
+    console.info(this.data.keyName)
+    console.info(22)
     try {
       const value = wx.getStorageSync('searchHistory');
       if (!value) {
@@ -93,7 +96,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    var that = this;
+    
   },
 
   /**

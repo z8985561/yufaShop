@@ -106,6 +106,7 @@ Page({
     var that = this;
     this.getCartCount()
     this.getCategory(options.id);
+    core.get('yufa/getDefaultViewSearchWord',{id:4},function(data){that.setData(data)});
   },
 
   /**

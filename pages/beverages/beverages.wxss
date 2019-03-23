@@ -1,3 +1,10 @@
 .cate-nav{
   box-shadow:1px 1px 7px #ddd;
 }
+.hot-sale{
+  display: flex;
+  justify-content: space-between;
+}
+header-sale{
+  width: 30%;
+}

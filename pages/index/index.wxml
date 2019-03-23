@@ -113,7 +113,7 @@
           <view class="weui-navbar__title">{{item.cateTitle}}</view>
         </view>
       </block>
-      <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+      <view class="weui-navbar__slider" style="left: 30px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
     </view>
     <view class="weui-tab__panel pt-150">
       <block wx:for="{{recProductDataList}}" wx:key="index">

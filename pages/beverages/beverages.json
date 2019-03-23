@@ -1,7 +1,9 @@
 {
   "usingComponents": {
     "category-nav": "/components/category-nav/category-nav",
+    "header-sale": "/components/header-sale/header-sale",
     "product-item": "/components/product-item/product-item",
+    "product-more": "/components/product-more/product-more",
     "tabbar": "/components/tabbar/tabbar",
     "van-toast": "/vant-ui/toast/index"
   },

@@ -1,0 +1,15 @@
+/* pages/me/settled/settled.wxss */
+.icon{
+  width: 70rpx;
+  margin-bottom: 6rpx;
+}
+.up-pic{
+  width: 345rpx;
+  height: 269rpx;
+  border: 1px dashed #999;
+}
+.btn{
+  margin: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}

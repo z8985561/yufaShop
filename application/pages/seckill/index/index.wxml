@@ -64,23 +64,23 @@
                   <block wx:for="{{list.goods}}" wx:for-item='good' wx:for-index='index' wx:key="list">
                     <view class='fui-list align-start'>
                         <view class='fui-list-media'>
-                            <navigator url="/pages/goods/detail/index?id={{good.goodsid}}">
+                            <navigator url="/pages/product-detail/product-detail?id={{good.goodsid}}">
                               <image src="{{good.thumb}}"></image>
                             </navigator>
                         </view>
                         <view class='fui-list-inner'>
-                            <navigator class='text' url="/pages/goods/detail/index?id={{good.goodsid}}">{{good.title}}</navigator>
+                            <navigator class='text' url="/pages/product-detail/product-detail?id={{good.goodsid}}">{{good.title}}</navigator>
                             <view class="info">
                                   <view class="button">
                                       <block wx:if="{{time.status==1}}">
-                                      <navigator url="/pages/goods/detail/index?id={{good.goodsid}}" class="btn btn-success btn-sm">等待抢购</navigator>
+                                      <navigator url="/pages/product-detail/product-detail?id={{good.goodsid}}" class="btn btn-success btn-sm">等待抢购</navigator>
                                       </block>
                                       <block wx:if="{{time.status!=1}}">
                                           <block wx:if="{{good.percent>=100}}">
-                                            <navigator url="/pages/goods/detail/index?id={{good.goodsid}}" class="btn btn-default btn-sm">已抢空</navigator>
+                                            <navigator url="/pages/product-detail/product-detail?id={{good.goodsid}}" class="btn btn-default btn-sm">已抢空</navigator>
                                           </block>
                                           <block wx:if="{{good.percent<100}}">
-                                      <navigator url="/pages/goods/detail/index?id={{good.goodsid}}" class="btn btn-danger btn-sm">去抢购</navigator>
+                                      <navigator url="/pages/product-detail/product-detail?id={{good.goodsid}}" class="btn btn-danger btn-sm">去抢购</navigator>
 
                                           </block>
                                       </block>

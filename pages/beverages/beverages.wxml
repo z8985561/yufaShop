@@ -1,18 +1,23 @@
+<!-- 头部特惠区域 -->
+<view class='hot-sale plr-30 mb-40'>
+  <block wx:for="{{headSaleProductData}}" wx:key="index">
+    <header-sale bind:addEvent="addEventListener" productData="{{item}}"></header-sale>
+  </block>
+</view>
+<!-- 头部特惠区域end -->
 <!-- 分类导航部分 -->
-<category-nav class="cate-nav" titleList="{{hotSaleProduct}}" showAllCateShow="{{true}}" bind:tabEvent="tabEventListener"></category-nav>
+<category-nav wx:if="{{hotSaleProduct.length >1 }}" class="cate-nav" titleList="{{hotSaleProduct}}" showAllCateShow="{{true}}" bind:tabEvent="tabEventListener"></category-nav>
 <!-- 分类导航部分end -->
 <!-- 产品列表 -->
-<view class="weui-tab__panel mb-80">
-      <block wx:for="{{hotSaleProduct}}" wx:key="index">
-        <view class="weui-tab__content plr-20" hidden="{{subActiveIndex != index}}" data-count="{{index}}">
-          <block wx:for="{{item.data}}" wx:key="{{item.id}}">
-            <product-item productData="{{item}}" count="{{item.count}}" bind:addEvent='addEventListener' bind:subEvent='subEventListener' bind:blurEvent='blurEventListener' peopleBuyShow="{{peopleBuyShow}}">
-            <view class='fz-28 c9'>茎扁阔而颜色雪白;叶青，面上有许多...</view>
-            </product-item>
-          </block>
-        </view>
+<view class="weui-tab__panel mb-150" style='padding-top:10px;'>
+  <block wx:for="{{hotSaleProduct}}" wx:key="index">
+    <view class="weui-tab__content plr-20" hidden="{{subActiveIndex != index}}" data-count="{{index}}">
+      <block wx:for="{{item.data}}" wx:key="{{item.id}}">
+        <product-more style="overflow:hidden;" productData="{{item}}" bind:_upCartCount="upCartCount"></product-more>
       </block>
     </view>
+  </block>
+</view>
 <!-- 产品列表end -->
 <!-- 底部导航 -->
 <tabbar tabActive="{{0}}" cartTotal="{{cartTotal}}"></tabbar>

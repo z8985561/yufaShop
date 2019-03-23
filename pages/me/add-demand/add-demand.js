@@ -119,13 +119,8 @@ Page({
       }
       if(e.error==0){
         Toast.success({ message: e.message, duration: 1000 });
-        that.setData({
-          cateName: "", //分类名称
-          proName: "", //产品名称
-          brandName: "", //品牌名称
-          spec: "", //规格
-          count: "", //数量
-          remarks: "", //备注
+        wx.navigateBack({
+          delta:1
         })
       }
       

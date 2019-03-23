@@ -14,7 +14,61 @@
   <view class='fz-30 c9'>{{productDetail.description}}</view>
 </view>
 <!-- 产品标题、描述 end -->
-
+<!--秒杀start  -->
+<block wx:if='{{seckillinfo}}'>
+  <view class="seckill-container {{seckillinfo.status==1?notstart:''}}" data-starttime="{{seckillinfo.starttime-now}}" data-endtime="{{seckillinfo.endtime-now}}" data-status="{{gseckillinfo.status}}">
+    <view class="fui-list seckill-list" style="">
+      <view class="fui-list-media seckill-price">
+        ￥
+        <text>{{seckillinfo.price}}</text>
+      </view>
+      <view class="fui-list-inner">
+        <block wx:if="{{seckillinfo.tag!=''}}">
+          <view class="text">
+            <text class="stitle" style="white-space:nowrap; overflow:hidden; max-width:52px;">{{seckillinfo.tag}}</text>
+          </view>
+        </block>
+        <view class="text">
+          <view class="oldprice">￥{{minprice}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="fui-list seckill-list1">
+      <view class="fui-list-inner">
+        <view class="text ">
+          <block wx:if="{{seckillinfo.status==0}}">
+            已出售 {{seckillinfo.percent}}%
+          </block>
+        </view>
+        <view class="text ">
+          <block wx:if="{{seckillinfo.status==0}}">
+            <view class="process">
+              <view class="inner" style="width:{{seckillinfo.percent}}%"></view>
+            </view>
+          </block>
+        </view>
+      </view>
+    </view>
+    <view class="fui-list seckill-list2" style="">
+      <view class="fui-list-inner">
+        <view class="text ">距
+          <block wx:if="{{seckillinfo.status==1}}">
+            开始
+          </block>
+          <block wx:else>
+            结束
+          </block>
+          还有</view>
+        <view class="text timer">
+          <text class="time-hour">{{hour}}</text>
+          <text class="time-min">{{minute}}</text>
+          <text class="time-sec">{{second}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</block>
+<!--秒杀结束  -->
 <view class='bgc-f spec-list'>
   <view class='fz-36 fe893f'>￥{{productDetail.specList[active].price}}/{{productDetail.spec}}({{productDetail.specList[active].specTitle}})</view>
   <view class='fz-24 c9 mb-40'>￥{{single}}/斤</view>
@@ -140,7 +194,7 @@
 
 <!-- 底部按钮 -->
 <van-goods-action>
-  <van-goods-action-icon icon="{{isfavorite?'passed':'add-o'}}"  text="添加常用" bind:click="favorite" data-isfavorite="{{isfavorite}}" />
+  <van-goods-action-icon icon="{{isfavorite?'passed':'add-o'}}" text="添加常用" bind:click="favorite" data-isfavorite="{{isfavorite}}" />
   <van-goods-action-icon icon="cart-o" text="购物车" info="{{cartTotal}}" />
   <van-goods-action-button bind:click="showSheetAddCart" text="加入购物车" type="green" />
   <van-goods-action-button bind:click="showSheetBuy" text="立即购买" type='reseda' />

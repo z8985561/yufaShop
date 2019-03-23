@@ -119,7 +119,7 @@
         <image src='/img/icon-6.png'></image>
         <view class='fz-28 c6'>售后规则</view>
       </navigator>
-      <navigator class='text-center' hover-class='none' url='/pages/me/settled/settled'>
+      <navigator class='text-center' hover-class='none' url='/pages/me/settled-status/settled-status'>
         <image src='/img/icon-13.png'></image>
         <view class='fz-28 c6'>申请入驻</view>
       </navigator>
