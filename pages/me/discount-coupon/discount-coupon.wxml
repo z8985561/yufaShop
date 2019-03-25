@@ -22,7 +22,7 @@
                     <view class='fz-26 c9'>{{item.timeend}} 前可用</view>
                   </view>
                 </view>
-                <navigator hover-class='none' url='/pages/index/index' class='right fz-30 cf orange'>
+                <navigator hover-class='none' url='/pages/category/category' class='right fz-30 cf orange'>
                   立即使用
                 </navigator>
               </view>

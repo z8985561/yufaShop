@@ -105,7 +105,7 @@ Page({
   onLoad: function(options) {
     var that = this;
     this.getCartCount()
-    this.getCategory(options.id);
+    this.getCategory(options.cateid);
     core.get('yufa/getDefaultViewSearchWord',{id:4},function(data){that.setData(data)});
   },
 

@@ -2,7 +2,7 @@
 <block wx:for="{{goodsList}}" wx:key="index">
   <view class='p-30'>
     <view class='mb-20 flex flex-align-center'>
-      <image class='goods-pic' src='{{item.imgUrl}}' mode='widthFix'></image>
+      <image class='goods-pic' src='{{item.thumb}}' mode='widthFix'></image>
       <text class='fz-30 c3'>{{item.title}}</text>
     </view>
     <textarea bindblur="bindTextAreaBlur" data-index='{{index}}' class='text-box fz-26 p-30' placeholder="请写下您对该商品的评价~~"></textarea>

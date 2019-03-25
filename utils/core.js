@@ -99,7 +99,7 @@ module.exports = {
       duration: 1e3
     });
   },
-  upload: function (t) {
+  upload: function (callback) {
     var e = this;
     wx.chooseImage({
       success: function (n) {
@@ -116,7 +116,7 @@ module.exports = {
             var o = JSON.parse(n.data);
             if (0 != o.error) e.alert("上传失败"); else if ("function" == typeof t) {
               var i = o.files[0];
-              t(i);
+              callback(i);
             }
           }
         });

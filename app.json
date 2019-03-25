@@ -1,5 +1,5 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/category/category",
     "pages/ready-sale/ready-sale",
@@ -40,6 +40,7 @@
     "pages/member/recharge/index",
     "pages/member/withdraw/index",
     "pages/member/log/index",
+    "pages/public/coupon/index",
     "pages/member/address/index",
     "pages/member/address/post",
     "pages/member/address/select",
@@ -101,10 +102,10 @@
       ]
     }
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTitleText": "裕发食品",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   }
 }

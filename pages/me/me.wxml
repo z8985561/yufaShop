@@ -88,7 +88,7 @@
         <image src='/img/icon-7.png'></image>
         <view class='fz-28 c6'>新品需求</view>
       </navigator>
-      <navigator class='text-center' hover-class='none' url=''>
+      <navigator class='text-center' hover-class='none' url='/pages/me/invoice/invoice'>
         <image src='/img/icon-8.png'></image>
         <view class='fz-28 c6'>去开发票</view>
       </navigator>

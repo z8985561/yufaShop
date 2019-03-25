@@ -1,2 +1,54 @@
 <!--pages/me/invoice/invoice.wxml-->
-<text>pages/me/invoice/invoice.wxml</text>
+<view class='mb-40'>
+  <van-cell-group>
+    <van-cell title="开票说明" title-width="90px" value="发票将由XX公司提供，并收取5.0%的 服务费" />
+    <van-field value="{{ username }}" clearable label="备注" placeholder="选填，有备注信息请填写" border="{{ false }}" />
+  </van-cell-group>
+</view>
+<view class='mb-40'>
+  <van-cell-group title="发票信息">
+    <van-cell>
+      <view slot="title">
+        <view class="flex flex-jus">
+          <view>抬头类型</view>
+          <radio-group class="radio-group" bindchange="radioChangeType">
+            <label class="radio">
+              <radio value="{{1}}" checked="{{true}}" /> 企业
+            </label>
+            <label class="radio">
+              <radio value="{{0}}" checked="{{false}}" /> 个人
+            </label>
+          </radio-group>
+        </view>
+      </view>
+    </van-cell>
+    <van-field value="{{ username }}" required clearable label="发票抬头" placeholder="公司/单位全称" bind:click-icon="onClickIcon" />
+    <block wx:if="{{invoice}}">
+      <van-field value="{{ username }}" required clearable label="纳税人识别号" placeholder="公司/单位税务登记号" bind:click-icon="onClickIcon" />
+      <van-field value="{{ username }}" required clearable label="注册地址" placeholder="请输入详细注册地址" bind:click-icon="onClickIcon" />
+      <van-field value="{{ username }}" required clearable label="开户银行" placeholder="请输入银行账户" bind:click-icon="onClickIcon" />
+    </block>
+  </van-cell-group>
+</view>
+<view class='mb-40'>
+  <van-cell-group title="快递信息">
+    <van-field value="{{ username }}" required clearable label="联系人" placeholder="请输入联系人信息" bind:click-icon="onClickIcon" />
+    <van-field value="{{ 13257489457 }}" required clearable label="联系电话" placeholder="公司/单位税务登记号" bind:click-icon="onClickIcon" />
+    <van-cell>
+      <view slot="title">
+        <view class="flex">
+          <view style='width:90px;'>所在地区</view>
+          <picker bindchange="bindPickerChange" value="{{index}}" range="{{region}}">
+            <view class="picker">
+              佛山市 {{region[index]?region[index]:"请选择地区"}}
+            </view>
+          </picker>
+        </view>
+      </view>
+    </van-cell>
+    <van-field value="{{ username }}" required clearable label="详细地址" placeholder="请输入您的详细地址" bind:click-icon="onClickIcon" />
+  </van-cell-group>
+</view>
+<view class='plr-30 mb-40'>
+  <view class='btn-big'>保存</view>
+</view>

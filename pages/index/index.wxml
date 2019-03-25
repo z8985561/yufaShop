@@ -58,20 +58,20 @@
   <view class='seckill plr-20 mb-40' wx:if="{{showSeckill}}">
     <image class='seckill-time mb-20' src='/img/seckill.png' mode='widthFix'>
       <navigator class='fz-30' hover-class='none' url="/application/pages/seckill/index/index">
-        距{{timeField}}点场结束还剩
+        距{{time.time}}点场{{time.status == 1?"开始":"结束"}}还剩
         <text>{{hour}}</text> ：
-        <text>{{minute}}</text> ：
+        <text>{{min}}</text> ：
         <text>{{sec}}</text>
       </navigator>
     </image>
     <block wx:if="{{!!seckillProductList}}">
       <scroll-view scroll-x class='seckill-list'>
         <block wx:for="{{seckillProductList}}" wx:key="item.id">
-          <navigator class='seckill-item' url='{{item.url}}' hover-class='none'>
-            <image src='{{item.imgUrl}}' mode='widthFix'></image>
+          <navigator class='seckill-item' url='/pages/product-detail/product-detail?id={{item.goodsid}}' hover-class='none'>
+            <image src='{{item.thumb}}' mode='widthFix'></image>
             <view class='fz-30'>{{item.title}}</view>
             <view class='fz-30 c9'>{{item.specDes}}</view>
-            <view class='fz-30 cf9721a'>￥{{item.newPrice}}/{{item.spec}}</view>
+            <view class='fz-30 cf9721a'>￥{{item.price}}/{{item.spec}}</view>
             <view class='fz-24 c9 text-line'>￥{{item.oldPrice}}/{{item.spec}}</view>
           </navigator>
         </block>

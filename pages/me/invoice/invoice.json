@@ -1,4 +1,10 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "van-cell": "/vant-ui/cell/index",
+    "van-cell-group": "/vant-ui/cell-group/index",
+    "van-field": "/vant-ui/field/index",
+    "van-radio": "/vant-ui/radio/index",
+    "van-radio-group": "/vant-ui/radio-group/index"
+  },
   "navigationBarTitleText":"发票"
 }

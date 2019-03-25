@@ -36,13 +36,13 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 15,
 			"list": [
 				{
 					"id": 0,
 					"name": "全部菜品",
 					"pathName": "pages/category/category",
-					"query": "id=1259",
+					"query": "id=1264",
 					"scene": null
 				},
 				{
@@ -132,6 +132,20 @@
 					"name": "购物车",
 					"pathName": "pages/cart/cart",
 					"query": "active=0",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "发票",
+					"pathName": "pages/me/invoice/invoice",
+					"query": "orderid=96",
+					"scene": null
+				},
+				{
+					"id": 15,
+					"name": "订单",
+					"pathName": "pages/me/all-order/all-order",
+					"query": "",
 					"scene": null
 				}
 			]

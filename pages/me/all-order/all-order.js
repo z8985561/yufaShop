@@ -14,7 +14,11 @@ Page({
     active: 0,
     sHeight: 0,
     // 全部订单数据
-    list: [],
+    allOrdeList: [],//全部订单
+    unpaidList:[],//待支付订单
+    shipmentsList:[],//待发货
+    receiveList:[],//待收货
+    finishList:[],//完成
     cancel: cancelArray.cancelArray,
     cancelindex: 0
   },
@@ -98,6 +102,13 @@ Page({
     cancelArray.cancel(orderid, e.detail.value, "/pages/me/all-order/all-order?active=" + this.data.active)
     // this.onLoad()
   },
+  // 再来一单
+  onceAgain(e){
+    var { orderid } = e.currentTarget.dataset;
+    wx.navigateTo({
+      url: '/pages/order/create/create?orderid=' + orderid,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -114,9 +125,6 @@ Page({
     this.setData({
       active: options.active
     })
-    core.get("order/get_list", {}, function (d) {
-      that.setData(d);
-    });
   },
 
   /**
@@ -130,7 +138,40 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    
+    var that = this;
+    core.get("order/get_list", {}, function (res) {
+      that.setData({
+        allOrdeList:res
+      });
+    });
+    core.get("order/get_list", {
+      status: 0
+    }, function (res) {
+      that.setData({
+        unpaidList: res
+      });
+    });
+    core.get("order/get_list", {
+      status: 1
+    }, function (res) {
+      that.setData({
+        shipmentsList: res
+      });
+    });
+    core.get("order/get_list", {
+      status: 2
+    }, function (res) {
+      that.setData({
+        receiveList: res
+      });
+    });
+    core.get("order/get_list", {
+      status: 3
+    }, function (res) {
+      that.setData({
+        finishList: res
+      });
+    });
   },
 
   /**

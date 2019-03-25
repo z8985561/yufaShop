@@ -57,7 +57,7 @@ Page({
       t.goods = r, this.setData({
         ispackage: !0
       });
-    }
+    }    
     i.setData({
       options: t
     }), i.setData({
@@ -265,12 +265,13 @@ Page({
         bargain_id: e.data.options.bargainid,
         fromquick: t.fromquick
       };
-      if (t.list.storeInfo && (o.carrierid = t.list.storeInfo.id), 1 == t.data.dispatchtype || t.list.isvirtual || t.list.isverify) {
-        if ("" == r.trim(t.list.member.realname)) return void a.alert("请填写联系人!");
-        if ("" == r.trim(t.list.member.mobile)) return void a.alert("请填写联系方式!");
-        if (t.list.isforceverifystore && !t.list.storeInfo) return void a.alert("请选择门店!");
-        o.addressid = 0;
-      } else if (!o.addressid && !t.list.isonlyverifygoods) return void a.alert("地址没有选择!");
+      // if (t.list.storeInfo && (o.carrierid = t.list.storeInfo.id), 1 == t.data.dispatchtype || t.list.isvirtual || t.list.isverify) {
+      //   if ("" == r.trim(t.list.member.realname)) return void a.alert("请填写联系人!");
+      //   if ("" == r.trim(t.list.member.mobile)) return void a.alert("请填写联系方式!");
+      //   if (t.list.isforceverifystore && !t.list.storeInfo) return void a.alert("请选择门店!");
+      //   o.addressid = 0;
+      // } else 
+      if (!o.addressid && !t.list.isonlyverifygoods) return void a.alert("地址没有选择!");
       e.setData({
         submit: !0
       }), a.post("order/create/submit", o, function (t) {
