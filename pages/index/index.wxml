@@ -57,26 +57,25 @@
   <!-- 超级秒杀 -->
   <view class='seckill plr-20 mb-40' wx:if="{{showSeckill}}">
     <image class='seckill-time mb-20' src='/img/seckill.png' mode='widthFix'>
-      <navigator class='fz-30' hover-class='none' url="/application/pages/seckill/index/index">
+      <navigator wx:if="{{seckillProductList.length}}" class='fz-30' hover-class='none' url="/application/pages/seckill/index/index">
         距{{time.time}}点场{{time.status == 1?"开始":"结束"}}还剩
         <text>{{hour}}</text> ：
         <text>{{min}}</text> ：
         <text>{{sec}}</text>
       </navigator>
     </image>
-    <block wx:if="{{!!seckillProductList}}">
-      <scroll-view scroll-x class='seckill-list'>
-        <block wx:for="{{seckillProductList}}" wx:key="item.id">
-          <navigator class='seckill-item' url='/pages/product-detail/product-detail?id={{item.goodsid}}' hover-class='none'>
-            <image src='{{item.thumb}}' mode='widthFix'></image>
-            <view class='fz-30'>{{item.title}}</view>
-            <view class='fz-30 c9'>{{item.specDes}}</view>
-            <view class='fz-30 cf9721a'>￥{{item.price}}/{{item.spec}}</view>
-            <view class='fz-24 c9 text-line'>￥{{item.oldPrice}}/{{item.spec}}</view>
-          </navigator>
-        </block>
-      </scroll-view>
-    </block>
+    <scroll-view scroll-x class='seckill-list'>
+      <block wx:for="{{seckillProductList}}" wx:key="item.id">
+        <navigator class='seckill-item' url='/pages/product-detail/product-detail?id={{item.goodsid}}' hover-class='none'>
+          <image src='{{item.thumb}}' mode='widthFix'></image>
+          <view class='fz-30'>{{item.title}}</view>
+          <view class='fz-30 c9'>{{item.specDes}}</view>
+          <view class='fz-30 cf9721a'>￥{{item.price}}/{{item.spec}}</view>
+          <view class='fz-24 c9 text-line'>￥{{item.oldPrice}}/{{item.spec}}</view>
+        </navigator>
+      </block>
+    </scroll-view>
+    <view class='seckill-list-mask'><text>今日没有秒杀，请明天再来吧~</text></view>
   </view>
   <!-- 超级秒杀end -->
   <!-- 专区 -->
@@ -194,7 +193,7 @@
   </warrant>
 </view>
 <view class="fui-danmu {{displayshow}}" style="display:{{displaycss}}">
-	<image class="thumb" mode='widthFix' src="{{headimgurl?headimgurl:'https://s100.kemanduo.cc/addons/ewei_shopv2/static/images/nopic100.jpg'}}"></image>
-	<text class="text">{{showtext}}</text>
-	<text class="time">{{showtime}}</text>
+  <image class="thumb" mode='widthFix' src="{{headimgurl?headimgurl:'https://s100.kemanduo.cc/addons/ewei_shopv2/static/images/nopic100.jpg'}}"></image>
+  <text class="text">{{showtext}}</text>
+  <text class="time">{{showtime}}</text>
 </view>

@@ -1,30 +1,30 @@
 <!--components/product-item/product-item.wxml-->
 <navigator class='product-item mb-40' hover-class='none' url='/pages/product-detail/product-detail?id={{productData.id}}'>
   <view class='left'>
-    <image src='{{productData.imgUrl}}' mode='widthFix'></image>
+    <image src='{{productData.thumb}}' mode='widthFix'></image>
   </view>
   <view class='center'>
     <!-- 产品标题 -->
     <view class='fz-30'>{{productData.title}}</view>
     <slot></slot>
     <!-- 购买人数 -->
-    <view class='fz-24 count' wx:if="{{productData.peopleBuyShow}}">
+    <view class='fz-24 count' wx:if="{{productData.sales}}">
       <image src='/img/hot.png'></image>
-      <text class='cf9721a'>{{productData.peopleBuy}}人已买</text>
+      <text class='cf9721a'>{{productData.sales}}人已买</text>
     </view>
     <view class='fz-24 c9'>{{productData.specDec}}</view>
     <view>
-      <text class='fz-30 cf9721a'>￥{{productData.newPrice}}/{{productData.spec}}</text>
-      <text class='fz-24 c9 text-line'>￥{{productData.oldPrice}}/{{productData.spec}}</text>
+      <view class='fz-30 cf9721a'>￥{{productData.option[0].marketprice}}/{{productData.option[0].spectitle}}({{productData.option[0].optiontitle}})</view>
+      <view class='fz-24 c9 text-line'>￥{{productData.option[0].productprice}}/{{productData.option[0].spectitle}}</view>
     </view>
     <view class='fz-28 label' wx:if="{{productData.label}}">{{productData.label}}</view>
   </view>
   <view class='right'>
-    <view class='plus' catchtap='add' data-id="{{item.id}}" data-optionid="{{item.optionid}}" hidden='{{num > 0 ? true : false}}'>+</view>
+    <view class='plus' catchtap='add' data-id="{{productData.id}}" data-optionid="{{productData.option[0].optionid}}" hidden='{{num > 0 ? true : false}}'>+</view>
     <view class='ctrl-btn {{num == 0 ? "" : "on"}}'>
-      <view catchtap='sub'>-</view>
-      <input value='{{num}}' type='number' catchtap='fn' bindblur="bindBlurChange"></input>
-      <view  data-id="{{item.id}}" data-optionid="{{item.optionid}}" catchtap='add'>+</view>
+      <view data-id="{{productData.id}}" data-optionid="{{productData.option[0].optionid}}" catchtap='sub'>-</view>
+      <input value='{{num}}' type='number' data-id="{{productData.id}}" data-optionid="{{productData.option[0].optionid}}" catchtap='fn' bindblur="bindBlurChange"></input>
+      <view  data-id="{{productData.id}}" data-optionid="{{productData.option[0].optionid}}" catchtap='add'>+</view>
     </view>
   </view>
 </navigator>

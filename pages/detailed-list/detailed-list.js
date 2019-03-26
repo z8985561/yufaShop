@@ -16,9 +16,9 @@ Page({
     listHeight: 0,
     productList: [],
     favoriteList: [],
-    loadOptions:{
-      page:1,
-      pagesize:2
+    loadOptions: {
+      page: 1,
+      pagesize: 10
     }
   },
   tabClick: function(e) {
@@ -53,25 +53,29 @@ Page({
     })
   },
   toList(e) {
-    var { id,index } = e.currentTarget.dataset;
+    var {
+      id,
+      index
+    } = e.currentTarget.dataset;
     this.setData({
       targetId: id,
       navIndex: index
     })
   },
-  scrollEvent(e){
+  scrollEvent(e) {
     console.log(e.detail.scrollHeight)
   },
-  loadMore(){
+  loadMore() {
     var that = this;
-    this.data.loadOptions.page++;
+    ++this.data.loadOptions.page;
     //为您推荐
-    core.get("yufa/me/getRecommand", this.data.loadOptions, function (res) {
-      var json = that.data.productList;
-      json.concat(res.productList)
-      that.setData({
-        productList: json
-      })
+    core.get("yufa/me/getRecommand", this.data.loadOptions, function(res) {
+      if (res.productList) {
+        var json = that.data.productList.concat(res.productList);
+        that.setData({
+          productList: json
+        })
+      }
     })
 
   },
@@ -94,15 +98,15 @@ Page({
       })
     })
     //为您推荐
-    core.get("yufa/me/getRecommand", this.data.loadOptions, function (res) {
+    core.get("yufa/me/getRecommand", this.data.loadOptions, function(res) {
       that.setData(res)
     })
   },
   //更新购物车数量
-  upCartCount(){
+  upCartCount() {
     var that = this;
     //获取购物车数量
-    core.get("member/cart/get_cart", {}, function (res) {
+    core.get("member/cart/get_cart", {}, function(res) {
       that.setData({
         cartTotal: res.total
       });

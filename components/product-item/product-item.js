@@ -6,7 +6,7 @@ Component({
    */
   properties: {
     productData: Object, // 简化的定义方式
-    peopleBuyShow:Boolean
+    peopleBuyShow: Boolean
   },
 
   /**
@@ -19,7 +19,7 @@ Component({
     // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
     attached() {
       this.setData({
-        num: this.properties.productData.count
+        num: this.properties.productData.option[0].cartCount
       })
     }
   },
@@ -27,21 +27,20 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    add: function() {
-      var num = parseInt(this.data.num)  + 1;
+    upCartTotal(params) {
+      var that = this;
+      core.get("yufa/goods/uptotal", params, res => {})
+    },
+    add: function(e) {
+      var num = parseInt(this.data.num) + 1;
       this.setData({
         num: num
       });
-      core.get("member/cart/add", {
-        id: 2995,
-        optionid: 541,
-        total: 1
-        },function(res){
-        console.log(res)
-      });
-      this.triggerEvent('addEvent',{
+      var {id,optionid} = e.currentTarget.dataset;
+      this.upCartTotal({ id: id, optionid: optionid, total: num })
+      this.triggerEvent('addEvent', {
         value: num
-      },{})
+      }, {})
     },
     sub: function() {
       var num = this.data.num - 1;
@@ -52,14 +51,14 @@ Component({
         id: 2995,
         optionid: 541,
         total: -1
-      }, function (res) {
+      }, function(res) {
         console.log(res)
       });
       this.triggerEvent('subEvent', {
         value: num
       }, {})
     },
-    bindBlurChange:function(e){
+    bindBlurChange: function(e) {
       var num = e.detail.value - this.data.num
       this.setData({
         num: e.detail.value
@@ -68,7 +67,7 @@ Component({
         value: num
       }, {})
     },
-    fn:function(){
+    fn: function() {
       return false;
     }
   }

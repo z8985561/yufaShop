@@ -19,8 +19,9 @@
   transform: translateY(-50%);
 }
 .my-head navigator image{
-  width: 158rpx;
-  height: 158rpx;
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
 }
 
 .coupons{

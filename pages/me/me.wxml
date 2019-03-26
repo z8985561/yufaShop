@@ -80,7 +80,7 @@
   <view class='tool plr-30 mb-40'>
     <view class='fz-34 mb-20'>常用工具</view>
     <view class='flex flex-jus'>
-      <navigator class='text-center' hover-class='none' url=''>
+      <navigator class='text-center' hover-class='none' url='/pages/detailed-list/detailed-list'>
         <image src='/img/icon-6.png'></image>
         <view class='fz-28 c6'>常用清单</view>
       </navigator>
@@ -92,9 +92,13 @@
         <image src='/img/icon-8.png'></image>
         <view class='fz-28 c6'>去开发票</view>
       </navigator>
-      <navigator class='text-center' hover-class='none' url=''>
+      <!-- <navigator class='text-center' hover-class='none' url=''>
         <image src='/img/icon-9.png'></image>
         <view class='fz-28 c6'>裕发运费</view>
+      </navigator> -->
+      <navigator class='text-center' hover-class='none' url='/pages/me/settled-status/settled-status'>
+        <image src='/img/icon-13.png'></image>
+        <view class='fz-28 c6'>申请入驻</view>
       </navigator>
     </view>
   </view>
@@ -117,16 +121,12 @@
       </navigator>
       <navigator class='text-center' hover-class='none' url='/pages/me/help/question?type=1'>
         <image src='/img/icon-6.png'></image>
-        <view class='fz-28 c6'>售后规则</view>
+        <view class='fz-28 c6'>资质条款</view>
       </navigator>
-      <navigator class='text-center' hover-class='none' url='/pages/me/settled-status/settled-status'>
-        <image src='/img/icon-13.png'></image>
-        <view class='fz-28 c6'>申请入驻</view>
-      </navigator>
-      <navigator bindtap='makePhoneCall' class='text-center' hover-class='none' url=''>
+      <!-- <navigator bindtap='makePhoneCall' class='text-center' hover-class='none' url=''>
         <image src='/img/icon-14.png'></image>
         <view class='fz-28 c6'>一键拨号</view>
-      </navigator>
+      </navigator> -->
     </view>
   </view>
   <!-- 帮助中心end -->

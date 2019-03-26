@@ -5,7 +5,8 @@
     "product-item": "/components/product-item/product-item",
     "product-more": "/components/product-more/product-more",
     "tabbar": "/components/tabbar/tabbar",
-    "van-toast": "/vant-ui/toast/index"
+    "van-toast": "/vant-ui/toast/index",
+    "van-dialog": "/vant-ui/dialog/index"
   },
   "navigationBarTitleText": "酒饮专区"
 }

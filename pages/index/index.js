@@ -13,7 +13,7 @@ Page({
     timeField: "",
     couponlist: [],
     cartTotal: 0, //购物车数量
-    modelShow: true,
+    modelShow: false,
     rownum: 20, // 每行显示的个数=100/rownum  此处默认是每行5个图标
     search_text: '火锅丸子8.99折',
     topMsg: "您的订单已发货", //头部提示消息
@@ -156,41 +156,6 @@ Page({
       topMsgFlag: false
     });
   },
-  //超级秒杀倒计时事件
-  countTime() {
-    var that = this;
-    var date = new Date();
-    var now = date.getTime();
-    var endDate = new Date(that.data.endDate2); //设置截止时间
-    var end = endDate.getTime();
-    var leftTime = end - now; //时间差
-    var d, h, m, s, ms;
-    if (leftTime >= 0) {
-      d = Math.floor(leftTime / 1000 / 60 / 60 / 24);
-      h = Math.floor(leftTime / 1000 / 60 / 60 % 24);
-      m = Math.floor(leftTime / 1000 / 60 % 60);
-      s = Math.floor(leftTime / 1000 % 60);
-      ms = Math.floor(leftTime % 1000);
-      ms = ms < 100 ? "0" + ms : ms
-      s = s < 10 ? "0" + s : s
-      m = m < 10 ? "0" + m : m
-      h = h < 10 ? "0" + h : h
-      that.setData({
-        countdown: d + "：" + h + "：" + m + "：" + s + ":" + ms,
-        hour: h,
-        minute: m,
-        sec: s
-      })
-      //递归每秒调用countTime方法，显示动态时间效果
-      setTimeout(that.countTime, 100);
-    } else {
-      console.log('已截止')
-      that.setData({
-        countdown: '00:00:00'
-      })
-    }
-
-  },
   //tab切换事件
   tabClick: function(e) {
     this.setData({
@@ -261,7 +226,6 @@ Page({
    */
   onLoad: function(options) {
     var that = this;
-    that.countTime();
     wx.getSystemInfo({
       success: function(res) {
         that.setData({
@@ -342,6 +306,10 @@ Page({
       }
     });
 
+    core.get('yufa/getRandomSeckillGoods',{'num':2},function(){
+
+    });
+
     // 默认首页页面的id是4,固定的,到时上线时看看id是多少
     core.get("yufa/index", {
       'id': '4'
@@ -369,7 +337,6 @@ Page({
       'id': '4'
     }, function(d) {
       that.setData(d);
-      console.info(d);
     });
 
     //获取购物车数量
@@ -391,6 +358,10 @@ Page({
           timeindex: res.timeindex
         });
         that.get_goods();
+      } else if (!res.result.length){
+        core.get("yufa/getRandomSeckillGoods", {num:4}, res=> {
+          console.log(res)
+        })
       }
     })
   },

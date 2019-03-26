@@ -1,5 +1,6 @@
 
 import Toast from '../../vant-ui/toast/toast';
+import Dialog from '../../vant-ui/dialog/dialog';
 var app = getApp(),
   core = app.requirejs("core"),
   jq = app.requirejs("jquery");
@@ -66,22 +67,38 @@ Page({
       mask:true
     })
     core.get('yufa/goods/getZonegoods',{'id':this.options.id},function(data){
-      that.setData(data);
-      var headSaleProductData = that.data.headSaleProductData;
-      that.data.hotSaleProduct[0].data.forEach(item=>{
-        if (headSaleProductData.length <3){
-          if (item.isdiscount){
-            console.log(item)
-            headSaleProductData.push(item)
+      if(data.error==0){
+        wx.setNavigationBarTitle({
+          title: data.zoneName
+        })
+        that.setData(data);
+        var headSaleProductData = that.data.headSaleProductData;
+        that.data.hotSaleProduct[0].data.forEach(item => {
+          if (headSaleProductData.length < 3) {
+            if (item.isdiscount) {
+              console.log(item)
+              headSaleProductData.push(item)
+            }
+          } else {
+            return;
           }
-        }else{
-          return;
-        }
-      })
-      that.setData({
-        headSaleProductData: headSaleProductData
-      });
-      wx.hideLoading()
+        })
+        that.setData({
+          headSaleProductData: headSaleProductData
+        });
+        wx.hideLoading()
+      }else{
+        wx.hideLoading()
+        Dialog.alert({
+          message: data.message
+        }).then(() => {
+          wx.navigateBack({
+            delta: 1
+          })
+          return
+        });
+      }
+      
     });
     this.upCartCount()
   },
