@@ -37,6 +37,9 @@
         <view wx:else class='fz-28'>{{item.money}}</view>
       </view>
     </block>
+    <view wx:if="{{!bankList.length}}" class='fui-loading empty'>
+            <text class='text'>没有数据</text>
+    </view>
   </view>
 </scroll-view>
 <!-- 余额查询日期筛选 -->

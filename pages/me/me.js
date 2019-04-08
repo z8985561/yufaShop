@@ -17,50 +17,43 @@ Page({
     rechargeMoney:5000,
     active:2,
     modelShow: false,
-    nickname: '家庭/个人',
+    nickname: '',
     avatar: '/img/icon-shop.png',
     moneytext: '余额',
-    credit2: '10.01',
-    phone:"13800008888",
+    credit2: '',
+    phone:"",
     cartTotal:"",
-    statics : {
-      coupon : 7, // 优惠券
-      order_0: 7, // 待支付
-      order_1: 7, // 待发货
-      order_2: 7, // 待收货
-      order_3: 7, // 后台没写,这个可以填入[已收货]
-      order_4: 7, // 退换货
-    },
+    statics : {},
     moneyList: [
       {
         id: 1,
         money: 10000,
-        imgUrl: '/img/10000.png'
+        imgUrl: 'http://yufa.kemanduo.cc/attachment/imgs/10000.png'
       },
       {
         id: 2,
         money: 5000,
-        imgUrl: '/img/5000.png'
+        imgUrl: 'http://yufa.kemanduo.cc/attachment/imgs/5000.png'
       },
       {
         id: 3,
         money: 3000,
-        imgUrl: '/img/3000.png',
+        imgUrl: 'http://yufa.kemanduo.cc/attachment/imgs/3000.png',
       },
       {
         id: 4,
         money: 2000,
-        imgUrl: '/img/2000.png',
+        imgUrl: 'http://yufa.kemanduo.cc/attachment/imgs/2000.png',
       },
       {
         id: 5,
         money: 1000,
-        imgUrl: '/img/1000.png',
+        imgUrl: 'http://yufa.kemanduo.cc/attachment/imgs/1000.png',
       },
       {
         id: 6,
         money: 500,
-        imgUrl: '/img/500.png',
+        imgUrl: 'http://yufa.kemanduo.cc/attachment/imgs/500.png',
       },
     ]
   },
@@ -78,53 +71,12 @@ Page({
    */
   onLoad: function (options) {
     // 授权
-    app.
     app.checkAccount();
     var that = this;
     this.getCartCount();
-    // wx.getSystemInfo({
-    //   success: function (res) {
-    //     that.setData({
-    //       sliderLeft: (res.windowWidth / that.data.recProductDataList.length - sliderWidth) / 2,
-    //       sliderOffset: res.windowWidth / that.data.recProductDataList.length * that.data.activeIndex
-    //     });
-    //   }
-    // });
-
-    // wx.getSetting({
-    //   success: function (t) {
-    //     var a = t.authSetting["scope.userInfo"];
-    //     if (a != true) {
-    //       a = false;
-    //     }
-    //     that.setData({
-    //       limits: a
-    //     }), a || that.setData({
-    //       modelShow: !1
-    //     });
-    //   }
-    // });
-
-    // wx.getUserInfo({
-    //   success(res) {
-    //     e.globalData.userInfo = res.rawData;
-    //     that.setData({
-    //       modelShow: !1
-    //     })
-    //   },
-    //   fail(res) {
-    //     that.setData({
-    //       modelShow: !0
-    //     })
-    //   }
-    // });
-
-
-
   },
   // 选择充值金额
   changRechargeMoney:function(e){
-    //console.log(e.currentTarget.dataset.money)
     this.setData({
       rechargeMoney: e.currentTarget.dataset.money,
       active: e.currentTarget.dataset.id
@@ -152,21 +104,6 @@ Page({
         // 获取用户成功,设置页面数据
         console.info(res);
         that.setData(res);
-        // e.setData({
-        //   modelShow: !1,
-        //   nickname: t.nickname,
-        //   member: t,
-        //   show: !0,
-        //   background: t.background ? t.background : "#ff5555",
-        //   customer: t.customer,
-        //   customercolor: t.customercolor,
-        //   phone: t.phone,
-        //   phonecolor: t.phonecolor,
-        //   phonenumber: t.phonenumber,
-        //   // iscycelbuy: t.iscycelbuy,
-        //   bargain: t.bargain
-        // });
-        //wxParse.wxParse("wxParseData", "html", t.copyright, e, "5");
       }
     });
   },

@@ -1,1 +1,4 @@
 /* pages/me/invoice/invoice.wxss */
+.van-cell__value{
+  text-align: left !important;
+}

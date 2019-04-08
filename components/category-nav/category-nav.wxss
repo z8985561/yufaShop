@@ -2,8 +2,9 @@
   position: relative;
 }
 .category-nav{
+  padding-bottom: 3px;
   position: relative;
-  height: 84rpx;
+  height: 45px;
   line-height: 70rpx;
   width: 100%;
   white-space: nowrap;
@@ -28,12 +29,12 @@
 }
 .nav-slider{
   position: absolute;
-  width: 160rpx;
-  height: 60rpx;
-  top: 20rpx;
-  left: 20rpx;
+  width: 80px;
+  height: 30px;
+  top: 10px;
+  left: 10px;
   background-color: #0EAF51;
-  border-radius: 30rpx;
+  border-radius: 15px;
   transition: transform .3s;
 }
 .down{
@@ -74,6 +75,7 @@
   background-color: #EBEBEB;
   text-align: center;
   border-radius: 35rpx;
+  color: #666;
 }
 .mask{
   position: fixed;

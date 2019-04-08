@@ -23,11 +23,13 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    add: function () {
-      var num = this.data.num + 1;
+    add: function (e) {
+      var num = parseInt(this.data.num) + 1;
       this.setData({
         num: num
       });
+      var { id, optionid } = e.currentTarget.dataset;
+      this.upCartTotal({ id: id, optionid: optionid, total: num })
       this.triggerEvent('addEvent', {
         value: num
       }, {})

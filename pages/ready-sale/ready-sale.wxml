@@ -5,7 +5,7 @@
 </view>
 <view class='plr-30 mb-150'>
 <block wx:for="{{readySaleProductList}}" wx:key="index">
-<navigator class='product-item mb-40' hover-class='none' url='{{item.navUrl}}'>
+<navigator class='product-item mb-40' hover-class='none' url='/pages/product-detail/product-detail?id={{item.id}}'>
   <view class='left'>
     <image src='{{item.thumb}}' mode='widthFix'></image>
     <view class='top'>
@@ -13,13 +13,13 @@
           <view class='fz-24 {{index < 3 ? "cf" : "c9"}}'>{{index+1}}</view>
     </view>
   </view>
-  <view class='center'>
+  <view class='center1'>
     <!-- 产品标题 -->
     <view class='fz-30'>{{item.title}}</view>
     <!-- 购买人数 -->
     <view class='fz-24 count'  wx:if="{{item.showsales&&item.sales>0}}">
       <image src='/img/hot.png'></image>
-      <text class='cf9721a'>{{item.sales}}人已买</text>
+      <view class='cf9721a fz-22'>{{item.sales}}人已买</view>
     </view>
     <view class='fz-24 c9'>每{{item.option[0].spectitle}}/{{item.option[0].optiontitle}}</view>
     <view>

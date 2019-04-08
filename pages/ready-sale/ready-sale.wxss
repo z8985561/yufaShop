@@ -2,7 +2,7 @@
   display: flex;
   align-items: flex-end;
   padding-bottom: 20rpx;
-  border-bottom: 1rpx solid #ddd;
+  border-bottom: 1rpx solid #eee;
 }
 .product-item .left{
   position: relative;
@@ -11,23 +11,23 @@
 .product-item .left image{
   width: 100%;
 }
-.product-item .center{
+.product-item .center1{
   flex: 1;
   margin-left: 20rpx;
 }
-.product-item .center .count{
-  display: inline-block;
+.product-item .center1 .count{
+  display: inline-flex;
+  align-items: center;
   padding: 0 10rpx;
   border: 2rpx solid #f9721a;
   border-radius: 25rpx;
-  text-align: center;
 }
-.product-item .center .count image{
+.product-item .center1 .count image{
   width: 18rpx;
   height: 24rpx;
   margin-right: 10rpx;
 }
-.product-item .center .label{
+.product-item .center1 .label{
   width: 70rpx;
   height: 36rpx;
   line-height: 36rpx;
@@ -46,6 +46,8 @@
 }
  .right .btn{
    width: 100%;
+   height: 60rpx;
+   line-height: 60rpx;
    background-color: #f9721a;
    border-radius: 30rpx;
    text-align: center;
@@ -53,7 +55,7 @@
 
  .product-item .left .top{
    position: absolute;
-   top: 0;
+   top: 4rpx;
    left: 0;
    width: 52rpx;
    height: 56rpx;

@@ -1,16 +1,13 @@
-// pages/detailed-list/detailed-list.js
 var app = getApp(),
   core = app.requirejs("core");
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
+    modelShow:false,
+    flag:false,
     targetId: "",
     navIndex: 0,
     active: 0,
-    cartTotal: 0, //购物车
+    cartTotal: 0,
     activeIndex: .0,
     sliderOffset: 0,
     listHeight: 0,
@@ -19,8 +16,31 @@ Page({
     loadOptions: {
       page: 1,
       pagesize: 10
-    }
+    },
+    showGet:true
   },
+
+
+  // 显示授权窗
+  showAuthorization(){
+    this.setData({
+      modelShow:true
+    })
+  },
+  _cancelEvent(){
+    this.setData({
+      modelShow: false
+    })
+  },
+  _confirmEvent(){
+    
+  },
+  authorization(e) {
+    var that = this;
+    core.authorizationEvent(e, that);
+  },
+
+
   tabClick: function(e) {
     this.setData({
       sliderOffset: e.currentTarget.offsetLeft,
@@ -28,9 +48,7 @@ Page({
     });
   },
 
-  // 监听添加商品事件
   addEventListener: function(e) {
-    //console.log(e.detail)
     var addCartCount = this.data.cartListNum + 1;
     this.setData({
       cartListNum: addCartCount
@@ -38,7 +56,7 @@ Page({
   },
   // 监听删除商品事件
   subEventListener: function(e) {
-    //console.log(e.detail)
+
     var subCartCount = this.data.cartListNum - 1;
     this.setData({
       cartListNum: subCartCount
@@ -75,6 +93,10 @@ Page({
         that.setData({
           productList: json
         })
+      }else{
+        that.setData({
+          showGet:false
+        })
       }
     })
 
@@ -92,15 +114,15 @@ Page({
       },
     })
     //获取我的清单
-    core.get("member.favorite.get_list", {}, function(res) {
-      that.setData({
-        favoriteList: res.list
-      })
-    })
+    // core.get("member.favorite.get_list", {}, function(res) {
+    //   that.setData({
+    //     favoriteList: res.list
+    //   })
+    // })
     //为您推荐
-    core.get("yufa/me/getRecommand", this.data.loadOptions, function(res) {
-      that.setData(res)
-    })
+    // core.get("yufa/me/getRecommand", this.data.loadOptions, function(res) {
+    //   that.setData(res)
+    // })
   },
   //更新购物车数量
   upCartCount() {
@@ -123,7 +145,25 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    this.upCartCount()
+    var that = this;
+    this.upCartCount();
+    this.setData({
+      flag : app.getCache("userinfo").openid ? true : false,
+      modelShow: app.getCache("userinfo").openid ? false : true
+    });
+
+    //获取我的清单
+    core.get("member.favorite.get_list", {}, function (res) {
+      that.setData({
+        favoriteList: res.list
+      })
+    })
+    //为您推荐
+    core.get("yufa/me/getRecommand", this.data.loadOptions, function (res) {
+      that.setData(res)
+    })
+    
+    
   },
 
   /**

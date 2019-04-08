@@ -1,7 +1,7 @@
 <!--components/header-sale/header-sale.wxml-->
 <navigator class='head-sale-item' hover-class='none' url='/pages/product-detail/product-detail?id={{productData.id}}'>
   <image src='{{productData.thumb}}'></image>
-  <view class='fz-30'>{{productData.title}}</view>
+  <view class='fz-30 text-hide'>{{productData.title}}</view>
   <view class='fz-28 c9'>{{productData.option[0].optiontitle}}/{{productData.option[0].spectitle}}</view>
   <view class='flex'>
     <view>
@@ -9,6 +9,6 @@
       <view class='fz-24 text-line c9'>￥{{productData.option[0].productprice}}/{{productData.option[0].optiontitle}}</view>
     </view>
   </view>
-  <view class='btn' catchtap='add'>+</view>
+  <!-- <view class='btn' catchtap='add'>+</view> -->
   <image class='icon' src='/img/sale-1.png' mode="widthFix"></image>
 </navigator>

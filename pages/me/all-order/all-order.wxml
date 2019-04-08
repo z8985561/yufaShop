@@ -7,7 +7,7 @@
         <navigator class='order-item' url='../order-detail/order-detail?orderid={{item.id}}' hover-class='none' wx:if="{{item.status==1}}">
           <view class='top'>
             <text class='fz-26 c9'>下单时间：{{item.createtime}}</text>
-            <text class='fz-28 c0eaf51'>待发货</text>
+            <text class='fz-28 c0eaf51'>{{item.statusstr}}</text>
           </view>
           <view class='pro-list'>
             <block wx:for="{{item.nogift}}" wx:key="i" wx:for-item="nogift">
@@ -20,10 +20,11 @@
             <text class='fz-28 cf9721a'>￥{{item.price}}</text>
           </view>
           <view class='bottom' catchtap='fn'>
-            <van-button data-id='{{item.id}}' data-url="/pages/order/create/create?orderid=55" catch:click="confirmReceipt" class='ml-20' round type="green" size='small'>补货</van-button>
+            <van-button wx:if="{{!item.cancancelrefund}}" data-id='{{item.id}}' data-url="/pages/order/create/create?orderid=55" catch:click="confirmReceipt" class='ml-20' round type="green" size='small'>补货</van-button>
+            <van-button wx:if="{{item.cancancelrefund}}" bind:click="refund" round type="default" size='small' data-id="{{item.id}}">退款/售后</van-button>
           </view>
         </navigator>
-        <!-- 待收货 end -->
+        <!-- 待发货 end -->
         <!-- 待支付 -->
         <navigator class='order-item' url='../order-detail/order-detail?orderid={{item.id}}' hover-class='none' wx:if="{{item.status==0}}">
           <view class='top'>
@@ -85,7 +86,7 @@
             <text class='fz-28 cf9721a'>￥{{item.price}}</text>
           </view>
           <view class='bottom' catchtap='fn'>
-            <van-button bind:click="" round type="default" size='small' id="{{item.id}}">退款/售后</van-button>
+            <van-button bind:click="refund" round type="default" size='small' data-id="{{item.id}}">退款/售后</van-button>
             <van-button wx:if="{{item.iscomment==0}}" id='{{item.id}}' catch:click="onComment" class='ml-20' round type="green" size='small'>去评价</van-button>
             <van-button wx:if="{{item.iscomment==1}}" data-orderid='{{item.id}}' data-url="gdsf" catch:click="onceAgain" class='ml-20' round type="default" size='small'>再来一单</van-button>
           </view>
@@ -164,10 +165,10 @@
   <van-tab title-style="color:{{active == 2 ? '#0EAF51':'#AFAFAF'}};" title="待发货">
     <scroll-view scroll-y style='height:{{sHeight}}px'>
       <block wx:for="{{shipmentsList.list}}" wx:key="index">
-        <navigator class='order-item' hover-class='none' wx:if="{{item.status==1}}" url='../order-detail/order-detail?orderid={{item.id}}'>
+        <navigator class='order-item' url='../order-detail/order-detail?orderid={{item.id}}' hover-class='none' wx:if="{{item.status==1}}">
           <view class='top'>
             <text class='fz-26 c9'>下单时间：{{item.createtime}}</text>
-            <text class='fz-28 c0eaf51'>待发货</text>
+            <text class='fz-28 c0eaf51'>{{item.statusstr}}</text>
           </view>
           <view class='pro-list'>
             <block wx:for="{{item.nogift}}" wx:key="i" wx:for-item="nogift">
@@ -180,7 +181,8 @@
             <text class='fz-28 cf9721a'>￥{{item.price}}</text>
           </view>
           <view class='bottom' catchtap='fn'>
-            <van-button id='{{item.id}}' catch:click="confirmReceipt" class='ml-20' round type="green" size='small'>补货</van-button>
+            <van-button wx:if="{{!item.cancancelrefund}}" data-id='{{item.id}}' data-url="/pages/order/create/create?orderid=55" catch:click="confirmReceipt" class='ml-20' round type="green" size='small'>补货</van-button>
+            <van-button wx:if="{{item.cancancelrefund}}" bind:click="refund" round type="default" size='small' data-id="{{item.id}}">退款/售后</van-button>
           </view>
         </navigator>
       </block>
@@ -248,7 +250,7 @@
             <text class='fz-28 cf9721a'>￥{{item.price}}</text>
           </view>
           <view class='bottom' catchtap='fn'>
-            <van-button bind:click="" round type="default" size='small' id="{{item.id}}">退款/售后</van-button>
+            <van-button bind:click="refund" round type="default" size='small' data-id="{{item.id}}">退款/售后</van-button>
             <van-button wx:if="{{item.iscomment==0}}" id='{{item.id}}' catch:click="onComment" class='ml-20' round type="green" size='small'>去评价</van-button>
             <van-button wx:if="{{item.iscomment==1}}" data-orderid='{{item.id}}' data-url="gdsf" catch:click="onceAgain" class='ml-20' round type="default" size='small'>再来一单</van-button>
           </view>
@@ -256,6 +258,40 @@
         <!-- 待评论 end -->
       </block>
       <view class='p-30' wx:if="{{!finishList.list.length}}">
+        <view class='flex flex-center'>
+          <van-icon name="smile-o" size='100px' />
+        </view>
+        <view class='text-center mb-40'>暂时没有任何订单</view>
+        <van-button round type="default" size='large'>到处逛逛</van-button>
+      </view>
+    </scroll-view>
+  </van-tab>
+  <!-- 售后 -->
+  <van-tab title-style="color:{{active == 5 ? '#0EAF51':'#AFAFAF'}};" title="售后">
+    <scroll-view scroll-y style='height:{{sHeight}}px'>
+      <block wx:for="{{refundList.list}}" wx:key="index">
+        <navigator class='order-item' url='../order-detail/order-detail?orderid={{item.id}}' hover-class='none' wx:if="{{item.refundstate==1}}">
+          <view class='top'>
+            <text class='fz-26 c9'>下单时间：{{item.createtime}}</text>
+            <text class='fz-28 c0eaf51'>{{item.statusstr}}</text>
+          </view>
+          <view class='pro-list'>
+            <block wx:for="{{item.nogift}}" wx:key="i" wx:for-item="nogift">
+              <image src='{{nogift.thumb}}' mode='widthFix'></image>
+            </block>
+            <van-icon color="#999999" size="15px" name="arrow" />
+          </view>
+          <view class='top'>
+            <text class='fz-26 c9'>共{{item.nogift.length}}类商品</text>
+            <text class='fz-28 cf9721a'>￥{{item.price}}</text>
+          </view>
+          <view class='bottom' catchtap='fn'>
+            <van-button wx:if="{{!item.cancancelrefund}}" data-id='{{item.id}}' data-url="/pages/order/create/create?orderid=55" catch:click="confirmReceipt" class='ml-20' round type="green" size='small'>补货</van-button>
+            <van-button wx:if="{{item.cancancelrefund}}" bind:click="refund" round type="default" size='small' data-id="{{item.id}}">退款/售后</van-button>
+          </view>
+        </navigator>
+      </block>
+      <view class='p-30' wx:if="{{!refundList.list.length}}">
         <view class='flex flex-center'>
           <van-icon name="smile-o" size='100px' />
         </view>

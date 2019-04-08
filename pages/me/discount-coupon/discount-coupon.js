@@ -9,7 +9,7 @@ Page({
     sliderOffset: 0,
     sliderLeft: 0,
     tabs: ["未使用", "已使用", "已过期"],
-    coupon: []
+    couponlist: {}
   },
   onLoad: function() {
     var that = this;
@@ -26,7 +26,7 @@ Page({
     var that = this;
     core.get("yufa/coupon/my/getlist", {}, function(res) {
       that.setData({
-        coupon: res.list
+        couponlist: res.couponlist
       })
     })
   },

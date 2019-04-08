@@ -11,34 +11,34 @@ Page({
     money:3000,
     moneyList:[
       {
-        id:1,
-        money:10000,
-        imgUrl: '/img/10000-bg.png'
+        id: 1,
+        money: 10000,
+        imgUrl: 'http://yufa.kemanduo.cc/attachment/imgs/10000.png'
       },
       {
         id: 2,
         money: 5000,
-        imgUrl: '/img/5000-bg.png'
+        imgUrl: 'http://yufa.kemanduo.cc/attachment/imgs/5000.png'
       },
       {
         id: 3,
         money: 3000,
-        imgUrl: '/img/3000-bg.png',
+        imgUrl: 'http://yufa.kemanduo.cc/attachment/imgs/3000.png',
       },
       {
         id: 4,
         money: 2000,
-        imgUrl: '/img/2000-bg.png',
+        imgUrl: 'http://yufa.kemanduo.cc/attachment/imgs/2000.png',
       },
       {
         id: 5,
         money: 1000,
-        imgUrl: '/img/1000-bg.png',
+        imgUrl: 'http://yufa.kemanduo.cc/attachment/imgs/1000.png',
       },
       {
         id: 6,
         money: 500,
-        imgUrl: '/img/500-bg.png',
+        imgUrl: 'http://yufa.kemanduo.cc/attachment/imgs/500.png',
       },
     ]
   },

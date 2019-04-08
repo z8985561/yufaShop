@@ -1,15 +1,15 @@
 <!-- 头部搜索区域 -->
 <view class='hd-search {{showSearchBg ? "hd-bg":""}} ' hidden='{{showSearch}}'>
-  <navigator class='icon' url='' hover-class='none'>
-    <text class='fa fa-headphones cf'></text>
-  </navigator>
+  <button class='text-center' hover-class='none' open-type="contact" MsgType="miniprogrampage" send-message-title="{{nickname}}" send-message-img="" show-message-card="true">
+    <van-icon name="service" color='#ffffff' />
+  </button>
   <navigator class='search-box' url="/pages/search/search?key={{search_text}}" hover-class='none'>
     <text class='fa fa-search c6'></text>
     <text class='fz-28 c9'>{{search_text}} </text>
   </navigator>
-  <navigator class='icon' url='' hover-class='none'>
+  <!-- <navigator class='icon' url='' hover-class='none'>
     <text class='fa fa-commenting cf'></text>
-  </navigator>
+  </navigator> -->
 </view>
 <!-- 头部搜索区域end -->
 <!-- 通知 -->
@@ -38,26 +38,26 @@
   <!-- 轮播部分end -->
 
   <!-- 首页导航部分 -->
-  <view class='index-nav mb-40'>
+  <view class='index-nav' style="margin-bottom:30rpx;">
     <block wx:for="{{indexNavList}}" wx:key="index">
       <navigator class='mb-20' url='{{item.url}}' hover-class='none' style='width:{{rownum}}%'>
         <image src='{{item.imgUrl}}' mode='widthFix'></image>
-        <view class='fz-28' style='color:{{item.color}}'>{{item.text}}</view>
+        <view class='fz-28' style='color:{{item.color}}' style="margin-top:15rpx;">{{item.text}}</view>
       </navigator>
     </block>
   </view>
   <!-- 首页导航部分end -->
   <!-- 广告位1 -->
-  <view class='index-ad plr-20 mb-40' wx:if="{{indexAd[0].imgUrl}}">
+  <view class='index-ad plr-20 mb-20' wx:if="{{indexAd[0].imgUrl}}">
     <navigator url='{{indexAd[0].url}}' hover-class='none'>
       <image src='{{indexAd[0].imgUrl}}' mode='widthFix'></image>
     </navigator>
   </view>
   <!-- 广告位1end -->
   <!-- 超级秒杀 -->
-  <view class='seckill plr-20 mb-40' wx:if="{{showSeckill}}">
+  <view class='seckill plr-20 mb-20'>
     <image class='seckill-time mb-20' src='/img/seckill.png' mode='widthFix'>
-      <navigator wx:if="{{seckillProductList.length}}" class='fz-30' hover-class='none' url="/application/pages/seckill/index/index">
+      <navigator wx:if="{{showSeckill}}" class='fz-30' hover-class='none' url="/application/pages/seckill/index/index">
         距{{time.time}}点场{{time.status == 1?"开始":"结束"}}还剩
         <text>{{hour}}</text> ：
         <text>{{min}}</text> ：
@@ -67,19 +67,21 @@
     <scroll-view scroll-x class='seckill-list'>
       <block wx:for="{{seckillProductList}}" wx:key="item.id">
         <navigator class='seckill-item' url='/pages/product-detail/product-detail?id={{item.goodsid}}' hover-class='none'>
-          <image src='{{item.thumb}}' mode='widthFix'></image>
+          <image src='{{item.thumb||thumb_url[0]}}' mode='widthFix'></image>
           <view class='fz-30'>{{item.title}}</view>
           <view class='fz-30 c9'>{{item.specDes}}</view>
-          <view class='fz-30 cf9721a'>￥{{item.price}}/{{item.spec}}</view>
-          <view class='fz-24 c9 text-line'>￥{{item.oldPrice}}/{{item.spec}}</view>
+          <view class='fz-30 cf9721a'>￥{{item.price||item.marketprice}}/{{item.spectitle}}</view>
+          <view class='fz-24 c9 text-line'>￥{{item.maxprice}}/{{item.spectitle}}</view>
         </navigator>
       </block>
     </scroll-view>
-    <view class='seckill-list-mask'><text>今日没有秒杀，请明天再来吧~</text></view>
+    <view wx:if="{{!showSeckill}}" class='seckill-list-mask'>
+      <text>今日没有秒杀，请明天再来吧~</text>
+    </view>
   </view>
   <!-- 超级秒杀end -->
   <!-- 专区 -->
-  <view class='prefecture plr-20 mb-40'>
+  <view class='prefecture plr-20 mb-20'>
     <view class='left'>
       <navigator url='{{prefecture[0].url}}' hover-class='none'>
         <image src='{{prefecture[0].imgUrl}}' mode='widthFix'></image>
@@ -89,14 +91,14 @@
       <navigator url='{{prefecture[1].url}}' hover-class='none'>
         <image src='{{prefecture[1].imgUrl}}' mode='widthFix'></image>
       </navigator>
-      <navigator url='{{prefecture[2].url}}' hover-class='none'>
+      <navigator url='{{prefecture[2].url}}' hover-class='none' style="margin-top:10rpx;">
         <image src='{{prefecture[2].imgUrl}}' mode='widthFix'></image>
       </navigator>
     </view>
   </view>
   <!-- 专区end -->
   <!-- 广告位2 -->
-  <view class='index-ad plr-20 mb-40' wx:if="{{indexAd[1].imgUrl}}">
+  <view class='index-ad plr-20 mb-20' wx:if="{{indexAd[1].imgUrl}}">
     <navigator url='{{indexAd[1].url}}' hover-class='none'>
       <image src='{{indexAd[1].imgUrl}}' mode='widthFix'></image>
     </navigator>
@@ -137,13 +139,13 @@
 
 
 <!-- 优惠券 -->
-<view class='coupons' catchtouchmove="move" hidden='{{showCoupons}}' catchtap='closeCoupons' wx:if="{{couponlist.length!=0}}">
+<view class='coupons' catchtouchmove="move" hidden='{{showCoupons}}' catchtap='closeCoupons' wx:if="{{couponlist.usable.length!=0}}">
   <view class='coupons-box'>
     <view class='cf text-center mb-40'>你的专属优惠券</view>
     <scroll-view scroll-y style="height: 65%;" class='coupons-list mb-40'>
 
-      <block wx:for="{{couponlist}}" wx:key="index">
-        <navigator class='coupons-item mb-40'>
+      <block wx:for="{{couponlist.usable}}" wx:key="index">
+        <navigator class='coupons-item mb-40' url='/pages/category/category' wx:if="{{item.used == 0 && item.timepast == 0}}">
           <view class='left'>
             <block wx:if="{{!item.discount}}">
               <text>￥{{item.deduct}}</text>
@@ -157,13 +159,13 @@
             <view class='fz-28 c9'>{{item.usestr}}</view>
           </view>
           <view class='right'>
-            <view class='cf'>立即领取</view>
+            <view class='cf'>立即使用</view>
           </view>
         </navigator>
       </block>
 
     </scroll-view>
-    <navigator url='#' hover-class='none' class='cf text-center'>查看优惠券 ></navigator>
+    <navigator url='#' hover-class='none' class='cf text-center' url='/pages/me/discount-coupon/discount-coupon'>查看优惠券 ></navigator>
     <view class='coupons-close' catchtap='closeCoupons'>
       <text class='fa fa-times-circle-o'></text>
     </view>
@@ -189,9 +191,12 @@
 
 
 <view class="container" wx:if='{{modelShow}}'>
-  <warrant id='warrant' title='微信授权' content='{{title}} ,申请获得授权' cancelText='取消' confirm='确定' isShow="{{modelShow}}" bind:cancelEvent="_cancelEvent" bind:confirmEvent="_confirmEvent" bind:uu="yy">
+  <warrant id='warrant' cancelText='取消' confirm='确定' isShow="{{modelShow}}" bind:cancelEvent="_cancelEvent" bind:confirmEvent="_confirmEvent" bind:_authorizationEvent="authorization">
   </warrant>
 </view>
+
+
+
 <view class="fui-danmu {{displayshow}}" style="display:{{displaycss}}">
   <image class="thumb" mode='widthFix' src="{{headimgurl?headimgurl:'https://s100.kemanduo.cc/addons/ewei_shopv2/static/images/nopic100.jpg'}}"></image>
   <text class="text">{{showtext}}</text>

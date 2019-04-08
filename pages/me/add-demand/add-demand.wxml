@@ -8,9 +8,14 @@
   <van-field  bind:input="changeInput" data-name="count" value="{{count}}" placeholder="预计一个月购买量" label="月需求量" border="{{ true }}" />
   <van-field  bind:input="changeInput" data-name="remarks" value="{{remarks}}" placeholder="品种、口味、产地等信息" label="备注" border="{{ true }}" />
 </van-cell-group>
-<van-picker wx:if='{{show}}' show-toolbar title="标题" columns="{{ cateList }}" bind:cancel="onCancel" bind:confirm="onConfirm" />
+
+<van-popup show="{{ show }}" position="bottom" bind:close="onClose">
+  <van-picker show-toolbar title="请选择" columns="{{ cateList }}" bind:cancel="onCancel" bind:confirm="onConfirm" />
+</van-popup>
+
 
 <view class='p-30'>
   <view class='btn-big' bindtap='sumbit'>确定</view>
 </view>
+
 <van-toast id="van-toast" /> <!-- 引入轻提示 -->

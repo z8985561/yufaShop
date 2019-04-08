@@ -155,6 +155,28 @@ module.exports = {
         path: t + "mid=" + a
       };
   },
+  //授权事件
+  authorizationEvent: function (e,that) {
+    console.info(e.detail.detail.userInfo);
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
+    if (e.detail.detail.userInfo) {
+      wx.hideLoading();
+      that.onShow();
+      getApp().getUserInfo();
+      that.setData({
+        modelShow: false
+      })
+    } else {
+      wx.hideLoading();
+      wx.showToast({
+        title: '授权失败',
+        icon: "none"
+      })
+    }
+  },
   str2Obj: function (t) {
     if ("string" != typeof t) return t;
     if (t.indexOf("&") < 0 && t.indexOf("=") < 0) return {};

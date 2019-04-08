@@ -24,7 +24,7 @@ Page({
         desc: '审核中'
       }, 
       {
-        text: '第三步',
+        text: '第四步',
         desc: '成功'
       }
     ]
@@ -35,7 +35,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {	
-
+    var that = this;
+    this.getStatus();
   },
 
   /**
@@ -91,7 +92,7 @@ Page({
   getStatus : function(){
     var that = this;
     core.get('yufa/me/settled/getSettledStatus',{},function(data){
-      console.info(data)
+      console.log(data)
       that.setData(data)
     });
   },

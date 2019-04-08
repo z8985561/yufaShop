@@ -4,7 +4,8 @@
     "van-picker": "/vant-ui/picker/index",
     "van-cell": "/vant-ui/cell/index",
     "van-toast": "/vant-ui/toast/index",
-    "van-cell-group": "/vant-ui/cell-group/index"
+    "van-cell-group": "/vant-ui/cell-group/index",
+    "van-popup": "/vant-ui/popup/index"
   },
   "navigationBarTitleText": "添加新品信息"
 }

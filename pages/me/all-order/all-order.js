@@ -19,6 +19,7 @@ Page({
     shipmentsList:[],//待发货
     receiveList:[],//待收货
     finishList:[],//完成
+    refundList:[],//售后
     cancel: cancelArray.cancelArray,
     cancelindex: 0
   },
@@ -26,6 +27,13 @@ Page({
   onChange(e) {
     this.setData({
       active: e.detail.index
+    })
+  },
+  // 跳转售后
+  refund(e){
+    var {id} = e.currentTarget.dataset;
+    wx.navigateTo({
+      url: '/pages/order/refund/index?id='+id
     })
   },
   //确认收货事件
@@ -50,9 +58,7 @@ Page({
           wx.showToast({
             title: '确认成功！',
             success(){
-              that.onLoad({
-                active:0
-              })
+              that.onShow();
             }
           })
         } else {
@@ -170,6 +176,13 @@ Page({
     }, function (res) {
       that.setData({
         finishList: res
+      });
+    });
+    core.get("order/get_list", {
+      status: 4
+    }, function (res) {
+      that.setData({
+        refundList: res
       });
     });
   },

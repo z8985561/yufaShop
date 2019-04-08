@@ -5,6 +5,7 @@
 .c9{color:#999;}
 .cf9721a{color: #f9721a;}
 .text-line{text-decoration: line-through;}
+.text-hide{overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
 .head-sale-item{
   position: relative;
   width: 100%;
@@ -18,6 +19,7 @@
   align-items: flex-end;
 }
 .btn{
+  float: right;
   margin-left: 10rpx;
   width: 60rpx;
   height: 60rpx;

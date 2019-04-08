@@ -3669,7 +3669,7 @@ page {
 .ml-60{margin-left: 60rpx;}
 .ml-80{margin-left: 80rpx;}
 .mb-20{margin-bottom: 20rpx;}
-.mb-40{margin-bottom: 40rpx;}
+.mb-40{margin-bottom: 20px;}
 .mb-60{margin-bottom: 60rpx;}
 .mb-80{margin-bottom: 80rpx;}
 .mb-100{margin-bottom: 100rpx;}
@@ -3681,6 +3681,7 @@ page {
 .plr-20{padding-left: 20rpx;padding-right: 20rpx;}
 .plr-30{padding-left: 30rpx;padding-right: 30rpx;}
 .ptb-30{padding-top: 30rpx;padding-bottom: 30rpx;}
+.pt-10{padding-top: 10px;}
 .pt-150{padding-top: 150rpx;}
 /* 浮动 */
 .pull-left{
@@ -3765,7 +3766,12 @@ pull-right{
   height: 90rpx;
   z-index: 999;
 }
-
+.hd-search button{
+  background-color: transparent;
+}
+.hd-search button::after,.hd-search button::before{
+  border: none;
+}
 .hd-bg {
   background-color: #fff;
 }
@@ -3782,9 +3788,10 @@ pull-right{
 .hd-search .search-box {
   flex: 1;
   height: 70rpx;
+  margin-right: 40rpx;
   line-height: 70rpx;
   padding-left: 20rpx;
-  background-color: #eee;
+  background-color: #f7f7f7;
   border-radius: 10rpx;
 }
 /* 按钮样式 */

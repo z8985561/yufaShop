@@ -3,7 +3,7 @@ page{
   background-color: #F5F5F5;
 }
 swiper{
-  height: 400rpx;
+  height: 750rpx;
 }
 swiper image{
   width: 100vw;

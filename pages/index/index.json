@@ -2,7 +2,8 @@
   "usingComponents": {
     "product-item": "/components/product-item/product-item",
     "warrant": "/components/warrant/warrant",
-    "tabbar":"/components/tabbar/tabbar"
+    "tabbar":"/components/tabbar/tabbar",
+    "van-icon": "/vant-ui/icon/index"
   },
   "navigationBarBackgroundColor": "#ffffff"
 }

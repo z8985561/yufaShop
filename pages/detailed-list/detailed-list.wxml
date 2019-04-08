@@ -15,12 +15,16 @@
 <view class='tab-panel'>
   <!-- 我的清单 -->
   <view class='my-detailed' hidden='{{activeIndex != 0}}'>
-  <scroll-view scroll-x style='height:80rpx;line-height:80rpx;'>
-   <block wx:for="{{favoriteList}}" wx:key="index" class="nav-list">
-    <view bindtap='toList' class='nav-item {{ navIndex == index ? "on":"" }}' data-id='A{{index}}' data-index="{{index}}">{{item.catename}}</view>
-    </block>
-  </scroll-view>
+    <scroll-view scroll-x style='height:80rpx;line-height:80rpx;'>
+      <block wx:for="{{favoriteList}}" wx:key="index" class="nav-list">
+        <view bindtap='toList' class='nav-item {{ navIndex == index ? "on":"" }}' data-id='A{{index}}' data-index="{{index}}">{{item.catename}}</view>
+      </block>
+    </scroll-view>
     <scroll-view scroll-y style='height:{{listHeight}}px;' scroll-with-animation="true" scroll-into-view="{{targetId}}" bindscroll="scrollEvent">
+      <view hidden="{{flag}}" class='fz-34 c3 text-center plr-20'>
+        <view class='mb-40'>您还未登录</view>
+        <view class='btn-big' bindtap='showAuthorization'>登录</view>
+      </view>
       <block wx:for="{{favoriteList}}" wx:key="index">
         <view>
           <view class='title plr-20' id="A{{index}}">{{item.catename}}</view>
@@ -37,9 +41,11 @@
   <!-- 为你推荐 -->
   <view class='plr-20' hidden='{{activeIndex != 1}}'>
     <block wx:for="{{productList}}" wx:key="index">
-              <product-more productData="{{item}}" bind:_upCartCount="upCartCount"></product-more>
+      <product-more productData="{{item}}" bind:_upCartCount="upCartCount"></product-more>
     </block>
-    <view class='text-center fz-30 c9' bindtap='loadMore'>点击加载更多</view>
+    <view wx:if="{{showGet}}" class='text-center fz-30 c9 pt-10' bindtap='loadMore'>点击加载更多</view>
+    <view wx:if="{{!showGet}}" class='text-center fz-30 c9 pt-10' bindtap='loadMore'>暂无更多数据</view>
+    <view class='pt-150'></view>
   </view>
   <!-- 为你推荐end -->
 </view>
@@ -47,3 +53,10 @@
 <!-- 底部导航 -->
 <tabbar tabActive="2" cartTotal="{{cartTotal}}"></tabbar>
 <!-- 底部导航end -->
+
+<!-- 用户授权按钮 -->
+<view class="container" wx:if='{{modelShow}}'>
+  <warrant id='warrant' cancelText='取消' confirm='确定' isShow="{{modelShow}}" bind:cancelEvent="_cancelEvent" bind:confirmEvent="_confirmEvent" bind:_authorizationEvent="authorization">
+  </warrant>
+</view>
+<!-- 用户授权按钮结束end -->

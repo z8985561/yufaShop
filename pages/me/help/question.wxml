@@ -1,5 +1,4 @@
-<!--pages/me/help/question.wxml-->
-
+<block wx:if="{{cate.length>0}}">
 <block wx:for="{{cate}}" wx:key="index" wx:for-item="item">
 <view class='question-list'>
   <view class='title'>{{item.catename}}</view>
@@ -8,4 +7,9 @@
   </block>
 </view>
 </block>
-     
+</block>
+<block wx:else>
+<view style="text-align:center;margin-top:30px;color:#666;">
+  没有找到相关数据！
+</view>
+</block>

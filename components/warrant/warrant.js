@@ -62,7 +62,7 @@ Component({
     */
     onGotUserInfo(e){
       // console.info("组件后..");
-      this.triggerEvent("uu",e);
+      this.triggerEvent("_authorizationEvent",e);
     },
     
     _cancelEvent() {

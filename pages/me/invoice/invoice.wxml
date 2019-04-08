@@ -33,7 +33,7 @@
 <view class='mb-40'>
   <van-cell-group title="快递信息">
     <van-field value="{{ username }}" required clearable label="联系人" placeholder="请输入联系人信息" bind:click-icon="onClickIcon" />
-    <van-field value="{{ 13257489457 }}" required clearable label="联系电话" placeholder="公司/单位税务登记号" bind:click-icon="onClickIcon" />
+    <van-field value="" required clearable label="联系电话" placeholder="公司/单位税务登记号" bind:click-icon="onClickIcon" />
     <van-cell>
       <view slot="title">
         <view class="flex">

@@ -6,9 +6,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    orderData:{}
+    orderData:{},
+    orderId:""
   },
-
+  // 再来一单
+  onceAgain() {
+    var that = this;
+    wx.navigateTo({
+      url: '/pages/order/create/create?orderid=' + that.data.orderId,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -20,7 +27,8 @@ Page({
     },res => {
       console.log(res)
       that.setData({
-        orderData:res
+        orderData:res,
+        orderId: orderId
       })
     })
   },

@@ -35,11 +35,12 @@
   width: 50%;
 }
 .search view{
+  margin: 0 20rpx;
   padding: 0 30px;
   height: 66rpx;
   line-height: 66rpx;
   color:#999;
-  background-color: #eee;
+  background-color: #f7f7f7;
   border-radius: 33rpx;
 }
 .on{

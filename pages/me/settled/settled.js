@@ -155,26 +155,29 @@ Page({
         //   message: e.message,
         //   duration: 1000
         // });
+        wx.hideLoading();
         wx.showToast({
           title: '提交成功',
           success(){
-            wx.hideLoading();
+            wx.redirectTo({
+              url: '/pages/me/me',
+            })
           }
         })
-        that.setData({
-          shopPicUrl: '',
-          businessLicense: '',
-          shopHeader: '',
-          showName: '',
-          userName: '',
-          phoneNum: '',
-          wechat: '',
-          address: '',
-          salecate: '', // 主营项目
-          uname: '', // 用户名
-          upass: '', // 密码
-          email: '', 
-        });
+        // that.setData({
+        //   shopPicUrl: '',
+        //   businessLicense: '',
+        //   shopHeader: '',
+        //   showName: '',
+        //   userName: '',
+        //   phoneNum: '',
+        //   wechat: '',
+        //   address: '',
+        //   salecate: '', // 主营项目
+        //   uname: '', // 用户名
+        //   upass: '', // 密码
+        //   email: '', 
+        // });
       }
     })
   },

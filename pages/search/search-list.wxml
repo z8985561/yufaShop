@@ -1,8 +1,11 @@
 <!--pages/search/search-list.wxml-->
-<view class='plr-30 mb-100' wx:if="{{goodsList.length>0}}">
+<view class='plr-30 mb-100'>
   <block wx:for="{{goodsList}}" wx:for-item="product" wx:key="proIndex">
     <product-item productData="{{product}}" count="{{item.count}}" bind:addEvent='addEventListener' bind:subEvent='subEventListener' bind:blurEvent='blurEventListener'>
       <view class='fz-28 c9'>{{product.subtitle}}</view>
     </product-item>
   </block>
+  <view wx:if="{{!goodsList.length}}" class='fui-loading empty'>
+            <text class='text'>没有数据</text>
+  </view>
 </view>

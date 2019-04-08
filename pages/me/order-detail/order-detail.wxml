@@ -77,7 +77,9 @@
   </view>
 </view>
 <view class='flex flex-end' style='background-color:#fff;'>
-  <van-button round type="default" size="normal">退款/售后</van-button>
+  <navigator class='btn btn-default' hover-class='none' url='/pages/order/refund/index?id={{orderData.order.id}}'>退款/售后</navigator>
   <text class='cf'>1</text>
-  <van-button round type="default" size="normal">再来一单</van-button>
+  <block wx:if="{{orderData.order>='3'}}">
+  <view class='btn btn-default' bindtap='onceAgain'>再来一单</view>
+  </block>
 </view>

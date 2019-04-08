@@ -34,9 +34,7 @@ Page({
       if(data.error==0){
         console.info(data);
         that.setData(data);
-      }else{
-
-      }      
+      }     
     });
   },
 

@@ -70,11 +70,11 @@
 </block>
 <!--秒杀结束  -->
 <view class='bgc-f spec-list'>
-  <view class='fz-36 fe893f'>￥{{productDetail.specList[active].price}}/{{productDetail.spec}}({{productDetail.specList[active].specTitle}})</view>
-  <view class='fz-24 c9 mb-40'>￥{{single}}/斤</view>
+  <view class='fz-36 fe893f'>￥{{productDetail.specList[active].price}}/{{spec_titles}}({{productDetail.specList[active].specTitle}})</view>
+  <view class='fz-24 c9 mb-40'>单价:￥{{single}}</view>
   <view class='flex-wrap'>
     <block wx:for="{{productDetail.specList}}" wx:key="index">
-      <view class='spec-item fz-30 c6 {{active == index ? "on":""}}' data-index="{{index}}" data-id="{{item.id}}" bindtap='onChangeSpec'>每{{productDetail.spec}}({{item.specTitle}})</view>
+      <view class='spec-item fz-30 c6 {{active == index ? "on":""}}' data-index="{{index}}" data-id="{{item.id}}" bindtap='onChangeSpec'>每{{spec_titles}}({{item.specTitle}})</view>
     </block>
   </view>
 </view>
@@ -195,7 +195,7 @@
 <!-- 底部按钮 -->
 <van-goods-action>
   <van-goods-action-icon icon="{{isfavorite?'passed':'add-o'}}" text="添加常用" bind:click="favorite" data-isfavorite="{{isfavorite}}" />
-  <van-goods-action-icon icon="cart-o" text="购物车" info="{{cartTotal}}" />
+  <van-goods-action-icon icon="cart-o" text="购物车" info="{{cartTotal}}" url="/pages/cart/cart"/>
   <van-goods-action-button bind:click="showSheetAddCart" text="加入购物车" type="green" />
   <van-goods-action-button bind:click="showSheetBuy" text="立即购买" type='reseda' />
 </van-goods-action>

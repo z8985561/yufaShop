@@ -12,7 +12,7 @@
       </view>
       <view class="weui-tab__panel plr-30">
         <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
-          <block wx:for="{{coupon}}" wx:key="index" wx:if="{{item.used == 0 && item.timepast == 0}}">
+          <block wx:for="{{couponlist.usable}}" wx:key="index" wx:if="{{item.used == 0 && item.timepast == 0}}">
             <view class='coupon-item'>
               <view class='top'>
                 <view class='left flex flex-align-center'>
@@ -32,11 +32,13 @@
               </view>
             </view>
           </block>
-
+          <view wx:if="{{!couponlist.usable.length}}" class='fui-loading empty'>
+            <text class='text'>没有数据</text>
+          </view>
         </view>
         <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
           
-          <block wx:for="{{coupon}}" wx:key="index" wx:if="{{item.used == 1}}">
+          <block wx:for="{{couponlist.used}}" wx:key="index" wx:if="{{item.used == 1}}">
             <view class='coupon-item'>
               <view class='top'>
                 <view class='left flex flex-align-center'>
@@ -56,11 +58,13 @@
               </view>
             </view>
           </block>
-
+          <view wx:if="{{!couponlist.used.length}}" class='fui-loading empty'>
+            <text class='text'>没有数据</text>
+          </view>
         </view>
         <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
           
-          <block wx:for="{{coupon}}" wx:key="index" wx:if="{{item.timepast == 1}}">
+          <block wx:for="{{couponlist.timepast}}" wx:key="index" wx:if="{{item.timepast == 1}}">
             <view class='coupon-item'>
               <view class='top'>
                 <view class='left flex flex-align-center'>
@@ -80,7 +84,9 @@
               </view>
             </view>
           </block>
-          
+          <view wx:if="{{!couponlist.timepast.length}}" class='fui-loading empty'>
+            <text class='text'>没有数据</text>
+          </view>
         </view>
       </view>
     </view>

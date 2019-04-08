@@ -51,7 +51,8 @@
     "pages/register/select-type",
     "pages/register/create-store",
     "pages/cart/cart",
-    "pages/me/settled-status/settled-status"
+    "pages/me/settled-status/settled-status",
+    "pages/order/refund/index"
   ],
   "subPackages": [
     {
