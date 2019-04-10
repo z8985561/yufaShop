@@ -2,7 +2,8 @@
   "usingComponents": {
     "category-nav": "/components/category-nav/category-nav",
     "category-list": "/components/category-list/category-list",
-    "tabbar": "/components/tabbar/tabbar"
+    "tabbar": "/components/tabbar/tabbar",
+    "warrant": "/components/warrant/warrant"
   },
   "navigationBarTitleText": "全部类别"
 }

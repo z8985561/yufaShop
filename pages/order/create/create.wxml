@@ -201,7 +201,7 @@
             <view class="fui-cell-label" style='width:500rpx;'>
               <radio-group class="radio-group" bindchange="onchangeType">
                 <label class="radio" wx:for="{{invoiceTypeList}}" wx:key="index">
-                  <radio value="{{item.name}}" color="#0EAF51" checked="{{item.checked}}" /> {{item.value}}
+                  <radio value="{{item.name}}" color="#0EAF51" checked="{{item.checked}}" data-index="{{index}}"/> {{item.value}}
                 </label>
               </radio-group>
             </view>
@@ -217,7 +217,7 @@
           <view class="fui-cell" wx:if="{{invoiceType == 2}}">
             <view class="fui-cell-label">识别号</view>
             <view class="fui-cell-info">
-              <input bindinput="listChange" class="fui-input" id="invoicename" name="" type="text" value="{{list.invoicecore}}" placeholder='请输入纳税人识别号'></input>
+              <input bindinput="listChange" class="fui-input" id="invoicecore" name="" type="text" value="{{list.invoicecore}}" placeholder='请输入纳税人识别号'></input>
             </view>
           </view>
         </block>

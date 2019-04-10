@@ -17,9 +17,14 @@
 <category-nav class="category-wrap" titleList="{{category}}" bind:tabEvent="tabEventListener" bind:tabEvent2="tab2EventListener" activeIndex="{{activeIndex}}" bind:click="showAllCateListener"></category-nav>
 <!-- 分类导航 -->
 <!-- 展示全部类别产品区域 -->
-<category-list style="z-index:{{cateListShow?'1':'-1'}}"  allCateDataList="{{category}}" activeIndex="{{activeIndex}}" subActiveIndex="{{subActiveIndex}}" peopleBuyShow="{{peopleBuyShow}}" bind:_upCartCount="getCartCount"></category-list>
+<category-list style="z-index:{{cateListShow?'1':'-1'}}" allCateDataList="{{category}}" activeIndex="{{activeIndex}}" subActiveIndex="{{subActiveIndex}}" peopleBuyShow="{{peopleBuyShow}}" bind:_upCartCount="getCartCount"></category-list>
 <!-- 展示全部类别产品区域 -->
-
+<!-- 弹出授权提示框, -->
+<view class="container" wx:if='{{modelShow}}'>
+  <warrant id='warrant' cancelText='取消' confirm='确定' isShow="{{modelShow}}" bind:cancelEvent="_cancelEvent" bind:confirmEvent="_confirmEvent" bind:_authorizationEvent="authorization">
+  </warrant>
+</view>
+<!-- 弹出授权提示框结束 -->
 <!-- 底部导航 -->
 <tabbar tabActive="{{tabActive}}" cartTotal="{{cartTotal}}"></tabbar>
 <!-- 底部导航end -->

@@ -3,12 +3,12 @@
 
 <view class='mask' wx:if='{{isShow}}' catchtouchmove='banSlip'>
   <view class='tips'>
-    <view class='title'>微信授权</view>
-    <view class='content' style='font-size:36rpx;'>请登录</view>
+    <view class='title'>用户未授权</view>
+    <view class='content'>您需要先允许【用户授权】，才能进行后续操作哦~</view>
     <view class='btn'>
-      <button catchtap='_cancelEvent'>{{cancelText}}</button>
-      <button type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo" bindtap='_confirmEvent'>
-        {{confirmText}}
+      <view catchtap='_cancelEvent' class='cancel'>取消</view>
+      <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo" bindtap='_confirmEvent' style='background: #fff;font-size: 15px;color: #50b33c;line-height: 50px;width: 50%;'>
+        去授权
       </button>
     </view>
   </view>

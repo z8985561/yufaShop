@@ -1,5 +1,6 @@
 /* components/warrant.wxss */
-.mask{
+
+.mask {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -9,35 +10,54 @@
   z-index: 10000;
   font-size: 30rpx;
 }
-.mask .tips{
-  position: absolute;
-  top: 50%;
-  left: 30rpx;
-  right: 30rpx;
-  height: 400rpx;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transform: translateY(-50%);
-  background-color: #fff;
-  text-align: center;
-  border-radius: 10rpx;
+
+.mask .tips {
+  width: 624rpx;
+  height: 380rpx;
+  background: #fff;
+  border-radius: 8rpx;
+  margin: 260rpx auto;
   overflow: hidden;
 }
-.mask .tips .title{
-  font-size: 16px;
+
+.mask .tips .title {
+  font-size: 36rpx;
+  color: #000;
+  line-height: 100rpx;
+  text-align: center;
+  margin-top: 20rpx;
+  border-bottom: 1rpx solid #ebebeb;
 }
-.mask .tips .content{
-  font-size: 14px;
+
+.mask .tips .content {
+  margin-top: 36rpx;
+  padding: 0 80rpx;
+  color: #888;
+  font-size: 26rpx;
+  line-height: 40rpx;
 }
-.mask .tips .btn{
+
+.mask .tips .btn {
+  border-top: 1rpx solid #ebebeb;
+  height: 100rpx;
+  margin-top: 42rpx;
   display: flex;
+  text-align: center;
+  font-size: 30rpx;
+  color: #000;
+  line-height: 100rpx;
 }
-.mask .tips .btn button{
+
+.mask .tips .btn button {
   flex: 1;
   border-radius: 0;
 }
-.mask .tips .btn button::after{
-  border-radius: 0;
-  border: none;
+
+.cancel {
+  width: 50%;
+  position: relative;
+}
+
+button {
+  line-height: 2.55555556;
 }

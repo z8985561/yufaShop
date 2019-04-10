@@ -103,7 +103,7 @@
     </navigator> -->
     <block wx:for="{{recommend}}" wx:key="index">
       <navigator class='recommend' url='/pages/product-detail/product-detail?id={{item.id}}'>
-        <image src='{{item.img}}' mode='widthFix'></image>
+        <image src='{{item.img}}'></image>
         <view class='fz-28 c3 text-hide'>{{item.title}}</view>
         <view class='fz-28 c9'>每{{item.spec}}{{item.optiontitle}}</view>
         <view class='fz-28 cf9721a'>￥{{item.newPrice}}/{{item.spec}}</view>
@@ -123,7 +123,7 @@
     </view>
     <view class='ml-20'>
       <view class='fz-30 c6'>服务保障</view>
-      <view class='fz-28 c9'>该商品支持次日达，有裕发副食品配送</view>
+      <view class='fz-28 c9'>该商品支持次日达，由裕发副食品配送</view>
     </view>
   </view>
   <view class='flex flex-align-start service'>
@@ -141,7 +141,7 @@
     </view>
     <view class='ml-20'>
       <view class='fz-30 c6'>配送服务</view>
-      <view class='fz-28 c9'>该商品支持次日达，有裕发副食品配送</view>
+      <view class='fz-28 c9'>该商品支持次日达，由裕发副食品配送</view>
     </view>
   </view>
 </view>
@@ -168,6 +168,7 @@
       <van-cell title="{{item.key}}：" title-class="c9" title-width="175rpx" value="{{item.value}}" value-class="c6" />
     </block>
   </van-cell-group>
+  <view wx:if="{{!arguments.length}}" class='fz-30 ptb-30 c9 text-center'>暂无数据</view>
 </view>
 <!-- /规格参数 -->
 
@@ -188,7 +189,8 @@
       </view>
     </view>
   </block>
-  <navigator url="" class='fz-30 text-center c3'>查看更多</navigator>
+  <navigator wx:if="{{commentList.length}}" url="comment/comment?id={{id}}" class='fz-30 text-center c3'>查看更多</navigator>
+  <view wx:if="{{!commentList.length}}" class='fz-30 text-center c3 ptb-30' >暂时数据</view>
 </view>
 <!-- 评论 -->
 

@@ -1,0 +1,23 @@
+<!--pages/me/replenishment/replenishment.wxml-->
+<view class='plr-20'>
+<block wx:for="{{orderData.goods}}" wx:key="index">
+  <view class='flex ptb-30 bd-bottom'>
+    <image class='goods-pic' src='{{item.thumb}}'></image>
+    <view class='middle plr-20'>
+      <view class='fz-30' style='color:#363636'>{{item.title}}</view>
+      <view class='fz-24 c9'>￥{{item.marketprice}}/{{item.spectitle}}({{item.optiontitle}})</view>
+    </view>
+    <view class='right'>
+      <view class='cf9721a fz-26'>￥{{item.marketprice}}</view>
+      <van-stepper data-index='{{index}}' value="{{ value }}" plus-class="mwidth" input-class="mwidth" minus-class="mwidth" integer min="0" max="500" step="1" bind:change="onChangeTotal" />
+    </view>
+  </view>
+</block>
+</view>
+
+
+<van-submit-bar price="{{ param.sumPrice }}" price-class="cf9721a" button-type="green" button-text="去结算" bind:submit="replenishment">
+  <van-tag type="primary">
+    <view class='plr-30'>新增 <text class='cf9721a'>{{param.count}}</text> 件商品</view>
+  </van-tag>
+</van-submit-bar>

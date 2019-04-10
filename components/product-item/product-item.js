@@ -52,7 +52,7 @@ Component({
       var { id, optionid } = e.currentTarget.dataset;
       this.upCartTotal({ id: id, optionid: optionid, total: num })
       this.setData({
-        num: num
+        num: num > 0 ? num : 0
       })
       this.triggerEvent('subEvent', {
         value: num

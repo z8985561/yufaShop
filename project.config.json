@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 15,
+			"current": 16,
 			"list": [
 				{
 					"id": 0,
@@ -146,6 +146,13 @@
 					"name": "订单",
 					"pathName": "pages/me/all-order/all-order",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": 16,
+					"name": "补货",
+					"pathName": "pages/me/replenishment/replenishment",
+					"query": "id=24",
 					"scene": null
 				}
 			]

@@ -1,23 +1,25 @@
-// pages/ready-sale/ready-sale.js
-
-var app = getApp(),
-  core = app.requirejs("core");
-
+// pages/product-detail/comment/comment.js
+var app = getApp(), core = app.requirejs("core");
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    cartListNum:9,
-    readySaleProductList:[]
+    commentList:[],
+    count:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    core.get('yufa/goods/get_comment_list', {
+      'id': options.id
+    }, function (data) {
+      that.setData(data);
+    });
   },
 
   /**
@@ -31,10 +33,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var that = this;
-    core.get('yufa/index/getHotlist', { 'type': 0,'num':10},function(data){
-      that.setData(data);
-    });
+
   },
 
   /**

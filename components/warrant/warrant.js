@@ -1,5 +1,8 @@
 // components/warrant.js
 Component({
+  options: {
+    styleIsolation: 'isolated'
+  },
   /**
    * 组件的属性列表
    */
@@ -66,10 +69,7 @@ Component({
     },
     
     _cancelEvent() {
-      //触发取消回调
-      wx.navigateBack()
-      var myEventDetail = { isShow: this.properties.isShow }
-      this.triggerEvent("cancelEvent", myEventDetail,{})
+      this.triggerEvent("cancelEvent", {},{})
     },
     _confirmEvent() {
       //触发成功回调

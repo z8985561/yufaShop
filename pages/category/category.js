@@ -1,6 +1,7 @@
 var app = getApp(), core = app.requirejs("core");
 Page({
   data: {
+    modelShow: false,
     tabActive:1,
     cartTotal:0,
     category:"",
@@ -8,6 +9,17 @@ Page({
     activeIndex: 0,
     subActiveIndex:0,
     peopleBuyShow:false,
+  },
+  // 授权
+  authorization(e) {
+    var that = this;
+    core.authorizationEvent(e, that);
+  },
+  //取消事件
+  _cancelEvent() {
+    wx.redirectTo({
+      url: '/pages/index/index',
+    })
   },
   tabEventListener:function(e){
     this.setData({
@@ -98,7 +110,32 @@ Page({
   },
 
   onShow: function() {
+    var that = this;
+    wx.getSetting({
+      success: function (res) {
+        console.log(res)
+        var a = res.authSetting["scope.userInfo"];
+        that.setData({
+          limits: a
+        }), a || that.setData({
+          modelShow: !0
+        });
+      }
+    });
 
+    wx.getUserInfo({
+      success(res) {
+        app.globalData.userInfo = res.userInfo;
+        that.setData({
+          modelShow: false
+        })
+      },
+      fail(res) {
+        that.setData({
+          modelShow: true
+        })
+      }
+    });
   },
 
   onHide: function() {

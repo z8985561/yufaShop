@@ -164,8 +164,10 @@ module.exports = {
     })
     if (e.detail.detail.userInfo) {
       wx.hideLoading();
-      that.onShow();
-      getApp().getUserInfo();
+      getApp().getUserInfo(function(){
+        that.onShow();
+      });     
+      
       that.setData({
         modelShow: false
       })

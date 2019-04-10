@@ -68,10 +68,10 @@
       <block wx:for="{{seckillProductList}}" wx:key="item.id">
         <navigator class='seckill-item' url='/pages/product-detail/product-detail?id={{item.goodsid}}' hover-class='none'>
           <image src='{{item.thumb||thumb_url[0]}}' mode='widthFix'></image>
-          <view class='fz-30'>{{item.title}}</view>
-          <view class='fz-30 c9'>{{item.specDes}}</view>
-          <view class='fz-30 cf9721a'>￥{{item.price||item.marketprice}}/{{item.spectitle}}</view>
-          <view class='fz-24 c9 text-line'>￥{{item.maxprice}}/{{item.spectitle}}</view>
+          <view class='fz-30 text-hide'>{{item.title}}</view>
+          <view class='fz-30 c9'>每{{item.spec_title||item.spectitle}}{{item.spec_item_title||item.optiontitle}}</view>
+          <view class='fz-30 cf9721a'>￥{{item.price||item.marketprice}}元/{{item.spec_title||item.spectitle}}</view>
+          <view class='fz-24 c9 text-line'>￥{{item.marketprice}}</view>
         </navigator>
       </block>
     </scroll-view>
@@ -139,7 +139,7 @@
 
 
 <!-- 优惠券 -->
-<view class='coupons' catchtouchmove="move" hidden='{{showCoupons}}' catchtap='closeCoupons' wx:if="{{couponlist.usable.length!=0}}">
+<view class='coupons' catchtouchmove="move" catchtap='closeCoupons' wx:if="{{couponlist.usable.length && showCoupons}}">
   <view class='coupons-box'>
     <view class='cf text-center mb-40'>你的专属优惠券</view>
     <scroll-view scroll-y style="height: 65%;" class='coupons-list mb-40'>

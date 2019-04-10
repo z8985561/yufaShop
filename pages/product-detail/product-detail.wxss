@@ -76,7 +76,8 @@ swiper image{
   width: 230rpx;
 }
 .recommend image{
-  width: 100%;
+  width: 230rpx;
+  height: 230rpx;
 }
 .icon{
   width: 30rpx;

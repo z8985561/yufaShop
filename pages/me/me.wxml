@@ -110,11 +110,11 @@
         <image src='/img/icon-10.png'></image>
         <view class='fz-28 c6'>常见问题</view>
       </navigator>
-      <navigator class='text-center' hover-class='none' url='/pages/me/help/agreement'>
+      <navigator class='text-center' hover-class='none' url='/pages/me/help/question?type=1'>
         <image src='/img/icon-11.png'></image>
         <view class='fz-28 c6'>服务协议</view>
       </navigator>
-      <button class='text-center' style="background-color:#ffffff;" hover-class='none' open-type="contact" MsgType="miniprogrampage" send-message-title="{{nickname}}" send-message-img="" show-message-card="true">
+      <button class='text-center' style="background-color:#ffffff;line-height:1.3em;" hover-class='none' open-type="contact" MsgType="miniprogrampage" send-message-title="{{nickname}}" send-message-img="" show-message-card="true">
         <image src='/img/icon-12.png'></image>
         <view class='fz-28 c6'>在线客服</view>
       </button>
@@ -130,10 +130,10 @@
   </view>
   <!-- 帮助中心end -->
   <!-- 弹出授权提示框, -->
-  <view class="container" wx:if='{{!modelShow}}'>
-    <warrant id='warrant' title='微信授权' content='个人中心需要得到您的授权' cancelText='取消' confirm='确定' isShow="{{modelShow}}" bind:cancelEvent="_cancelEvent" bind:confirmEvent="_confirmEvent" bind:uu="yy">
-    </warrant>
-  </view>
+<view class="container" wx:if='{{modelShow}}'>
+  <warrant id='warrant' cancelText='取消' confirm='确定' isShow="{{modelShow}}" bind:cancelEvent="_cancelEvent" bind:confirmEvent="_confirmEvent" bind:_authorizationEvent="authorization">
+  </warrant>
+</view>
   <!-- 弹出授权提示框结束 -->
 </view>
 <!-- 底部导航 -->

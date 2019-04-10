@@ -20,7 +20,7 @@
             <text class='fz-28 cf9721a'>￥{{item.price}}</text>
           </view>
           <view class='bottom' catchtap='fn'>
-            <van-button wx:if="{{!item.cancancelrefund}}" data-id='{{item.id}}' data-url="/pages/order/create/create?orderid=55" catch:click="confirmReceipt" class='ml-20' round type="green" size='small'>补货</van-button>
+            <van-button wx:if="{{!item.cancancelrefund}}" data-id='{{item.id}}' catch:click="toReplenishment" class='ml-20' round type="green" size='small'>补货</van-button>
             <van-button wx:if="{{item.cancancelrefund}}" bind:click="refund" round type="default" size='small' data-id="{{item.id}}">退款/售后</van-button>
           </view>
         </navigator>
@@ -100,7 +100,7 @@
           <van-icon name="smile-o" size='100px' />
         </view>
         <view class='text-center mb-40'>暂时没有任何订单</view>
-        <van-button round type="default" size='large'>到处逛逛</van-button>
+        <van-button round type="default" size='large' bindtap='gotoAllGoods'>到处逛逛</van-button>
       </view>
       <!-- 已完成 -->
       <!-- <navigator class='order-item' hover-class='none''>
@@ -157,7 +157,7 @@
           <van-icon name="smile-o" size='100px' />
         </view>
         <view class='text-center mb-40'>暂时没有任何订单</view>
-        <van-button round type="default" size='large'>到处逛逛</van-button>
+        <van-button round type="default" size='large' bindtap='gotoAllGoods'>到处逛逛</van-button>
       </view>
     </scroll-view>
   </van-tab>
@@ -181,7 +181,7 @@
             <text class='fz-28 cf9721a'>￥{{item.price}}</text>
           </view>
           <view class='bottom' catchtap='fn'>
-            <van-button wx:if="{{!item.cancancelrefund}}" data-id='{{item.id}}' data-url="/pages/order/create/create?orderid=55" catch:click="confirmReceipt" class='ml-20' round type="green" size='small'>补货</van-button>
+            <van-button wx:if="{{!item.cancancelrefund}}" data-id='{{item.id}}' catch:click="toReplenishment" class='ml-20' round type="green" size='small'>补货</van-button>
             <van-button wx:if="{{item.cancancelrefund}}" bind:click="refund" round type="default" size='small' data-id="{{item.id}}">退款/售后</van-button>
           </view>
         </navigator>
@@ -191,7 +191,7 @@
           <van-icon name="smile-o" size='100px' />
         </view>
         <view class='text-center mb-40'>暂时没有任何订单</view>
-        <van-button round type="default" size='large'>到处逛逛</van-button>
+        <van-button round type="default" size='large' bindtap='gotoAllGoods'>到处逛逛</van-button>
       </view>
     </scroll-view>
   </van-tab>
@@ -215,8 +215,8 @@
             <text class='fz-28 cf9721a'>￥{{item.price}}</text>
           </view>
           <view class='bottom' catchtap='fn'>
-            <van-button data-orderid='{{item.id}}' data-url="" catch:click="" class='ml-20' round size='small'>查看物流</van-button>
-            <van-button data-orderid='{{item.id}}' data-url="" catch:click="confirmReceipt" class='ml-20' round type="green" size='small'>确认收货</van-button>
+            <van-button data-orderid='{{item.id}}' data-url="aaaa" class='ml-20' round size='small'>运送中</van-button>
+            <van-button wx:if='{{!item.canverify}}' data-orderid='{{item.id}}' data-url="" catch:click="confirmReceipt" class='ml-20' round type="green" size='small'>确认收货</van-button>
           </view>
         </navigator>
       </block>
@@ -225,7 +225,7 @@
           <van-icon name="smile-o" size='100px' />
         </view>
         <view class='text-center mb-40'>暂时没有任何订单</view>
-        <van-button round type="default" size='large'>到处逛逛</van-button>
+        <van-button round type="default" size='large' bindtap='gotoAllGoods'>到处逛逛</van-button>
       </view>
     </scroll-view>
   </van-tab>
@@ -250,8 +250,9 @@
             <text class='fz-28 cf9721a'>￥{{item.price}}</text>
           </view>
           <view class='bottom' catchtap='fn'>
-            <van-button bind:click="refund" round type="default" size='small' data-id="{{item.id}}">退款/售后</van-button>
-            <van-button wx:if="{{item.iscomment==0}}" id='{{item.id}}' catch:click="onComment" class='ml-20' round type="green" size='small'>去评价</van-button>
+            <van-button wx:if='{{item.canverify}}' bind:click="code" round type="default" size='small' data-orderid="{{item.id}}">我要使用</van-button>
+            <van-button class='ml-20' bind:click="refund" round type="default" size='small' data-id="{{item.id}}">退款/售后</van-button>
+            <van-button class='ml-20' wx:if="{{item.iscomment==0}}" id='{{item.id}}' catch:click="onComment" class='ml-20' round type="green" size='small'>去评价</van-button>
             <van-button wx:if="{{item.iscomment==1}}" data-orderid='{{item.id}}' data-url="gdsf" catch:click="onceAgain" class='ml-20' round type="default" size='small'>再来一单</van-button>
           </view>
         </navigator>
@@ -262,7 +263,7 @@
           <van-icon name="smile-o" size='100px' />
         </view>
         <view class='text-center mb-40'>暂时没有任何订单</view>
-        <van-button round type="default" size='large'>到处逛逛</van-button>
+        <van-button round type="default" size='large' bindtap='gotoAllGoods'>到处逛逛</van-button>
       </view>
     </scroll-view>
   </van-tab>
@@ -286,7 +287,7 @@
             <text class='fz-28 cf9721a'>￥{{item.price}}</text>
           </view>
           <view class='bottom' catchtap='fn'>
-            <van-button wx:if="{{!item.cancancelrefund}}" data-id='{{item.id}}' data-url="/pages/order/create/create?orderid=55" catch:click="confirmReceipt" class='ml-20' round type="green" size='small'>补货</van-button>
+            <van-button wx:if="{{!item.cancancelrefund}}" data-id='{{item.id}}' catch:click="toReplenishment" class='ml-20' round type="green" size='small'>补货</van-button>
             <van-button wx:if="{{item.cancancelrefund}}" bind:click="refund" round type="default" size='small' data-id="{{item.id}}">退款/售后</van-button>
           </view>
         </navigator>
@@ -296,10 +297,43 @@
           <van-icon name="smile-o" size='100px' />
         </view>
         <view class='text-center mb-40'>暂时没有任何订单</view>
-        <van-button round type="default" size='large'>到处逛逛</van-button>
+        <van-button round type="default" size='large' bindtap='gotoAllGoods'>到处逛逛</van-button>
+      </view>
+    </scroll-view>
+  </van-tab>
+  <!-- 关闭 -->
+  <van-tab title-style="color:{{active == 6 ? '#0EAF51':'#AFAFAF'}};" title="关闭">
+    <scroll-view scroll-y style='height:{{sHeight}}px'>
+      <block wx:for="{{closeList.list}}" wx:key="index">
+        <navigator class='order-item' url='../order-detail/order-detail?orderid={{item.id}}' hover-class='none'>
+          <view class='top'>
+            <text class='fz-26 c9'>下单时间：{{item.createtime}}</text>
+            <text class='fz-28 c0eaf51'>{{item.statusstr}}</text>
+          </view>
+          <view class='pro-list'>
+            <block wx:for="{{item.nogift}}" wx:key="i" wx:for-item="nogift">
+              <image src='{{nogift.thumb}}' mode='widthFix'></image>
+            </block>
+            <van-icon color="#999999" size="15px" name="arrow" />
+          </view>
+          <view class='top'>
+            <text class='fz-26 c9'>共{{item.nogift.length}}类商品</text>
+            <text class='fz-28 cf9721a'>￥{{item.price}}</text>
+          </view>
+          <view class='bottom' catchtap='fn'>
+            <van-button wx:if="{{item.iscomment==1}}" data-orderid='{{item.id}}' data-url="gdsf" catch:click="onceAgain" class='ml-20' round type="default" size='small'>再来一单</van-button>
+          </view>
+        </navigator>
+      </block>
+      <view class='p-30' wx:if="{{!closeList.list.length}}">
+        <view class='flex flex-center'>
+          <van-icon name="smile-o" size='100px' />
+        </view>
+        <view class='text-center mb-40'>暂时没有任何订单</view>
+        <van-button round type="default" size='large' bindtap='gotoAllGoods'>到处逛逛</van-button>
       </view>
     </scroll-view>
   </van-tab>
 </van-tabs>
-
+<include src='public/verify.wxml' />
 <van-dialog id="van-dialog" />

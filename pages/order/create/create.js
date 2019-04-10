@@ -57,7 +57,11 @@ Page({
       t.goods = r, this.setData({
         ispackage: !0
       });
-    }    
+      // 补货
+    }else if(t.json){
+      var json = JSON.parse(t.json);
+      console.log(json)
+    }
     i.setData({
       options: t
     }), i.setData({
@@ -89,9 +93,23 @@ Page({
           goodslist: s,
           merchs: t.merchs
         }, 1800);
-      } else a.toast(t.message, "loading"), setTimeout(function () {
-        wx.navigateBack();
-      }, 1e3);
+      } else{
+        // a.alert(t.message, function () {
+        //   wx.navigateBack();
+        // });
+        wx.showModal({
+          title: '提示',
+          content: t.message,
+          showCancel:false,
+          confirmText: '确定',
+          complete(){
+            wx.navigateBack();
+          }
+        })
+      }
+      // setTimeout(function () {
+      //   wx.navigateBack();
+      // }, 1e3);
       if ("" != t.fullbackgoods) {
         if (void 0 == t.fullbackgoods) return;
         var d = t.fullbackgoods.fullbackratio, o = t.fullbackgoods.maxallfullbackallratio, d = Math.round(d), o = Math.round(o);
@@ -257,6 +275,7 @@ Page({
         deduct2: t.data.deduct2,
         couponid: t.data.couponid,
         invoicename: t.list.invoicename,
+        invoicecore: t.list.invoicecore,
         submit: !0,
         packageid: t.list.packageid,
         giftid: d,
@@ -316,7 +335,9 @@ Page({
       case "realname":
         e.member.realname = t.detail.value;
         break;
-
+      case "invoicecore":
+        e.invoicecore = t.detail.value;
+        break;
       case "mobile":
         e.member.mobile = t.detail.value;
     }
@@ -450,8 +471,15 @@ Page({
   },
   //
   onchangeType(e){
+    console.log(e)
+    var invoiceTypeList = this.data.invoiceTypeList;
+    invoiceTypeList.forEach(item=>{
+      item.checked = false;
+    })
+    invoiceTypeList[e.detail.value - 1].checked = true;
     this.setData({
-      invoiceType:e.detail.value
+      invoiceType:e.detail.value,
+      invoiceTypeList: invoiceTypeList
     })
   },
   radioChange: function (t) {

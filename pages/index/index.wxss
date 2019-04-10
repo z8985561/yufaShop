@@ -115,7 +115,7 @@ swiper {
 
 .seckill-item {
   display: inline-block;
-  width: 168rpx;
+  width: 180rpx;
   margin-right: 20rpx;
 }
 
@@ -128,7 +128,7 @@ swiper {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  text-align: center;
+  text-align: left;
 }
 
 .prefecture {

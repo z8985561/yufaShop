@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "van-submit-bar": "/vant-ui/submit-bar/index",
+    "van-stepper": "/vant-ui/stepper/index"
+  },
+  "navigationBarTitleText":"补货"
+}

@@ -3656,7 +3656,7 @@ page {
 .ca{color:#aaa;}
 .cc{color:#ccc;}
 .cf{color:#fff;}
-.cf9721a{color: #F9721A}
+.cf9721a{color: #F9721A !important;}
 .c0eaf51{color: #0eaf51;}
 .fe893f{color: #FE893F;}
 .bgc-f{background-color: #fff;}
@@ -3728,6 +3728,7 @@ pull-right{
 .flex-align-center{
   align-items: center;
 }
+
 /* 底部导航样式 */
 .footer-nav{
   position: fixed;

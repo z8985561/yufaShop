@@ -1,0 +1,18 @@
+<!--pages/product-detail/comment/comment.wxml-->
+<view class='ptb-30 plr-20 bgc-f mb-150 arguments'>
+  <view class=' fz-34 c3 mb-20'>商品评论</view>
+  <block wx:for="{{commentList}}" wx:key="index">
+    <view class='flex comment mb-20'>
+      <view>
+        <image src='{{item.headimgurl}}'></image>
+      </view>
+      <view>
+        <view class='flex flex-jus fz-26 c9'>
+          <text>{{item.nickname}}</text>
+          <text>{{item.createtime}}</text>
+        </view>
+        <view class='fz-28 c3'>{{item.content}}</view>
+      </view>
+    </view>
+  </block>
+</view>

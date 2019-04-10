@@ -16,7 +16,7 @@ Page({
   data: {
     rechargeMoney:5000,
     active:2,
-    modelShow: false,
+    modelShow: true,
     nickname: '',
     avatar: '/img/icon-shop.png',
     moneytext: '余额',
@@ -57,6 +57,17 @@ Page({
       },
     ]
   },
+  // 授权
+  authorization(e) {
+    var that = this;
+    core.authorizationEvent(e, that);
+  },
+  //取消事件
+  _cancelEvent() {
+    wx.redirectTo({
+      url: '/pages/index/index',
+    })
+  },
   // 获取购物车数量
   getCartCount(){ 
     var that = this;
@@ -72,8 +83,33 @@ Page({
   onLoad: function (options) {
     // 授权
     app.checkAccount();
-    var that = this;
     this.getCartCount();
+    var that = this;
+    wx.getSetting({
+      success: function (res) {
+        console.log(res)
+        var a = res.authSetting["scope.userInfo"];
+        that.setData({
+          limits: a
+        }), a || that.setData({
+          modelShow: !0
+        });
+      }
+    });
+
+    wx.getUserInfo({
+      success(res) {
+        app.globalData.userInfo = res.userInfo;
+        that.setData({
+          modelShow: false
+        })
+      },
+      fail(res) {
+        that.setData({
+          modelShow: true
+        })
+      }
+    });
   },
   // 选择充值金额
   changRechargeMoney:function(e){
@@ -163,22 +199,9 @@ Page({
   onShareAppMessage: function () {
 
   },
-  
-  // 取消事件
-  _cancelEvent(e){
-    this.onShow();
-  },
   //确认事件
   _confirmEvent() {
     // console.log('你点击了确定');
-  },
-  yy: function (a) {
-    var that = this;
-    if (a.detail.detail.userInfo) {
-      e.getUserInfo(function () {
-        that.onShow();
-      });
-    }
   },
   // 一键拨号
   makePhoneCall(){

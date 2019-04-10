@@ -16,28 +16,6 @@ Page({
     search_text: '火锅丸子8.99折',
     topMsg: "您的订单已发货", //头部提示消息
     topMsgFlag: false,
-    tabbarIcon: {
-      home: {
-        normal: '/img/home.png',
-        active: '/img/home-active.png'
-      },
-      cate: {
-        normal: '/img/cate.png',
-        active: '/img/cate-active.png'
-      },
-      inventory: {
-        normal: '/img/inventory.png',
-        active: '/img/inventory-active.png'
-      },
-      cart: {
-        normal: '/img/cart.png',
-        active: '/img/cart-active.png'
-      },
-      my: {
-        normal: '/img/my.png',
-        active: '/img/my-active.png'
-      }
-    },
     indexBannerList: [],
     indicatorDots: true,
     autoplay: true,
@@ -98,7 +76,7 @@ Page({
   },
   closeCoupons: function() {
     this.setData({
-      showCoupons: true
+      showCoupons: false
     })
   },
   scroll: function(e) {
@@ -137,9 +115,9 @@ Page({
   },
 
   //取消事件
-  _cancelEvent(e) {
+  _cancelEvent() {
     this.setData({
-      modelShow: !e.detail.isShow
+      modelShow: false
     })
   },
   //确认事件
@@ -245,7 +223,6 @@ Page({
     core.get("yufa.coupon.my.getlist", {'type':1}, function(d) {
       that.setData(d);
     });
-
     //获取购物车数量
     core.get("member/cart/get_cart", {}, function(res) {
       that.setData({
@@ -379,7 +356,7 @@ Page({
               displaycss: ""
             })
           }, 2000);
-        }, 3000);
+        }, 5000);
 
         that.setData({
           dm_json: res.list,

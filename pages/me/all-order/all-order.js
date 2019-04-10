@@ -11,6 +11,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    code: !1,
     active: 0,
     sHeight: 0,
     // 全部订单数据
@@ -20,6 +21,7 @@ Page({
     receiveList:[],//待收货
     finishList:[],//完成
     refundList:[],//售后
+    closeList:[],//关闭
     cancel: cancelArray.cancelArray,
     cancelindex: 0
   },
@@ -27,6 +29,13 @@ Page({
   onChange(e) {
     this.setData({
       active: e.detail.index
+    })
+  },
+  // 补货
+  toReplenishment(e){
+    var {id} = e.currentTarget.dataset;
+    wx.navigateTo({
+      url: '/pages/me/replenishment/replenishment?id='+id,
     })
   },
   // 跳转售后
@@ -185,6 +194,13 @@ Page({
         refundList: res
       });
     });
+    core.get("order/get_list", {
+      status: -1
+    }, function (res) {
+      that.setData({
+        closeList: res
+      });
+    });
   },
 
   /**
@@ -223,5 +239,26 @@ Page({
   },
   fn() {
     return false;
-  }
+  },
+  // 核销码
+  code: function (e) {
+    var that = this,
+      orderid = core.data(e).orderid;
+    core.post("verify/qrcode", {
+      id: orderid
+    }, function (res) {
+      0 == res.error ? that.setData({
+        code: !0,
+        qrcode: res.url
+      }) : core.alert(res.message)
+    }, !0)
+  },
+  close: function () {
+    this.setData({
+      code: !1
+    })
+  },
+  gotoAllGoods(){
+    wx.redirectTo({ url: '/pages/category/category', });
+  },
 })

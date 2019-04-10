@@ -1,0 +1,10 @@
+/* pages/product-detail/comment/comment.wxss */
+.arguments .c6{
+  color: #666;
+  text-align: left;
+}
+.comment image{
+  width: 64rpx;
+  height: 64rpx;
+  margin-right: 20rpx;
+}
